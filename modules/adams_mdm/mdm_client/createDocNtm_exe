@@ -1,0 +1,50 @@
+#!/bin/sh
+
+SOURCE_JAVA="	Ntmclient.java\
+	Counters.java\
+	Reports.java\
+	NTM_JF_Frame.java\
+	NTM_JF_LoginStart_1.java\
+	NTM_JD_ChangePWD.java\
+	NTM_JP_RestrictionList.java\
+	NTM_JP_RestrictionsHelp.java\
+	NTM_JP_SelectAnalisys.java\
+	NTM_JP_Calendar.java\
+	NTM_JP_SelectLevel.java\
+	NTM_JP_SelectRelations.java\
+	NTM_JP_SelectRestrictions.java\
+	NTM_JP_SelectSort.java\
+	NTM_JP_RestrictionDimension.java\
+	NTM_JP_RestrictionMode.java\
+	Analisi.java\
+	jpRestrictions.java\
+	IconPool.java\
+	JListIcon.java\
+	JTextFieldFilter.java\
+	Nodo.java\
+	getConfigFiltro.java\
+	insiemi.java\
+	staticLib.java\
+	TrafficElement.java\
+	Relation.java\
+	NTM_JP_Summary.java\
+	NTM_JP_CellSummary.java\
+	NTM_JP_Centrali.java\
+	NTM_JP_ProgBar.java\
+	NTM_JP_Jobs.java\
+	paintTrafficElement.java\
+	BufferRestrizioni.java\
+	elementoBase.java\
+	connCORBA.java\
+	OBJpool.java\
+	nodoSummaryEXT.java\
+	SampleData.java\
+	SampleTreeCellRenderer.java\
+	JComboIcon.java\
+	Eccezioni.java\
+	HelpDescVector.java\
+	HelpDescBASE.java\
+	NTM_JD_wait.java"
+echo Creazione della Documentazione in corso ...
+javadoc -d ./DocNtmclient -version -author $SOURCE_JAVA
+echo Creazione documentazione completata... directory DocNtmclient.

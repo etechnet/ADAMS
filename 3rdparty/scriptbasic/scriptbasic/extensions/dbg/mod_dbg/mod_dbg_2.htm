@@ -1,0 +1,42 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: Installing the Preprocessor dbg</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Installing the Preprocessor dbg">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Installing the Preprocessor dbg">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Installing the Preprocessor dbg</H1>
+<A HREF="mod_dbg_1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+Installing the preprocessor is usually not needed as this is automatically installed during ScriptBasic installation. In the following sections I describe how to install it in case something is not working or you want to set up some files differently.
+<P>
+The debugger is implemented as an internal preprocessor. This means that the code of the preprocessor is in a <font size="3"><tt>.dll</tt></font> file under Windows and <font size="3"><tt>.so</tt></font> file under UNIX. Internal preprocessors have to be configured to be invoked by the interpreter.
+<P>
+To do this the file <font size="3"><tt>scriba.conf.lsp</tt></font> has to be modified and recompiled using the program <font size="3"><tt>cftc</tt></font> in case the default configuration does not fit you.
+<P>
+The preprocessors in the configuration file are configured under the key <font size="3"><tt>preproc</tt></font>.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+preproc (
+  internal (
+    dbg "E:\\ScriptBasic\\modules\\dbg.dll"
+    )
+  )
+</PRE></FONT>
+<P>
+This is the configuration file fragment on the development station. This names the preprocessor the name <font size="3"><tt>dbg</tt></font> and specifies the exact location. You can name the debugger different though this would not be wise. In case you rename the debugger you have to invoke it with the option `<font size="3"><tt>-I newname</tt></font>'.
+<P>
+The debugger requires no other configuration.<HR>
+<A HREF="mod_dbg_1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

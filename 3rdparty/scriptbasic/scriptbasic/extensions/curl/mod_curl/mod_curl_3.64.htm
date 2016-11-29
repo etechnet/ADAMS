@@ -1,0 +1,62 @@
+<HEAD>
+<TITLE>Documentation of the module curl: HTTPPOST string</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module curl: HTTPPOST string">
+<META NAME="keywords" CONTENT="Documentation of the module curl: HTTPPOST string">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>HTTPPOST string</H1>
+<A HREF="mod_curl_3.63.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_curl_3.65.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+curl::option CurlHandle,"HTTPPOST","name=Desade+Marquis"
+</PRE></FONT>
+<P>
+Use this option to specify form data in case of complex HTTP POST operation. As third argument specify a string
+as POST data. You can specify many post data calling the <font size="3"><tt>curl::option</tt></font> function with this option in successive calls.
+The string argument should have the following format:
+<P>
+<UL>
+<LI> <font size="3"><tt>name=content</tt></font>
+<P>
+This can be used to specify textual form data. This is like what the browser sends to the web server when an
+&lt;input type=text name="name" value="content"&gt; is used.
+<P>
+<LI> <font size="3"><tt>name=@filename</tt></font>
+<P>
+This can be used to specify a file to upload. This is like what the browser sends to the web server when an
+&lt;input type=file name="name"&gt; is used.
+<P>
+<LI> <font size="3"><tt>name=@filename1,filename2,...</tt></font>
+<P>
+Add a form field named <font size="3"><tt>name</tt></font> with the contents as read from the local files
+named <font size="3"><tt>filename1</tt></font> and <font size="3"><tt>filename2</tt></font>. This is identical to the previous, except that
+you get the contents of several files in one section.
+<P>
+<LI> <font size="3"><tt>name=@filename;type=content-type</tt></font>
+<P>
+Whenever you specify a file to read from, you can optionally specify the
+content-type as well. The content-type is passed to the server together with
+the contents of the file. The underlying CURL library will guess content-type for a
+number of well-known extensions and otherwise it will set it to binary. You
+can override the internal decision by using this option.
+<P>
+<LI> <font size="3"><tt>name=@filename1,filename2,...;type=content-type</tt></font>
+<P>
+When you specify several files to read the contents from, you can set the
+content-type for all of them in the same way as with a single file.
+<P>
+</UL><HR>
+<A HREF="mod_curl_3.63.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_curl_3.65.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

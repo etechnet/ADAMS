@@ -1,0 +1,53 @@
+#-----------------------------------------------------------------------
+# Copyright 2008 Ciaran McHale.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# 	The above copyright notice and this permission notice shall be
+# 	included in all copies or substantial portions of the Software.  
+#
+# 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# 	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# 	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# 	NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# 	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# 	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# 	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# 	OTHER DEALINGS IN THE SOFTWARE.
+#-----------------------------------------------------------------------
+
+!include "..\..\Makefile.win.inc"
+
+CORBA_LINK_FLAGS=	/incremental:no /libpath:$(ART_LIB_DIR)
+
+CORBA_LIBS =		it_naming.lib it_poa.lib it_art.lib it_ifc.lib 
+
+SYS_LIBS =		msvcrt.lib kernel32.lib ws2_32.lib \
+			advapi32.lib user32.lib
+
+#--------
+# Lists of files used by make rules.
+#--------
+OBJ =		PolicyListParser.obj
+
+#--------
+# Rules
+#--------
+
+default:	all
+
+all:		$(OBJ)
+
+test.exe:	test.obj PolicyListParser.obj
+		link /out:test.exe $(CORBA_LINK_FLAGS) \
+			test.obj PolicyListParser.obj \
+			$(CORBA_LIBS) $(SYS_LIBS)
+
+clean:
+	-del *.obj *.pdb

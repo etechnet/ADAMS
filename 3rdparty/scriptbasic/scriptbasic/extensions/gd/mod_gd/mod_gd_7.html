@@ -1,0 +1,122 @@
+<HEAD>
+<TITLE>Using the module GD: 7. Sample code</TITLE>
+
+<META NAME="description" CONTENT="Using the module GD: Sample code">
+<META NAME="keywords" CONTENT="Using the module GD: Sample code">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_gd_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>7. Sample code</H1>
+<A HREF="mod_gd_6.31.html">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_8.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+This sample code was used (among other scripts) to test the functionality of the module. You can find this or some version of this sample code in the directory examples of ScriptBasic distribution. You can see that some lines are commented out. Tile filling caused stack overflow on a well-configured Windows NT and brushed drawing did not work correct during out test. Due to license issues the True Type Font support is not included in the GD module. However you can try to compile the libraries to use the True Type Font support and it may work. We did not test so far.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+import gd.bas
+<P>
+brush = gd::Create(10,10)
+white = gd::Color(brush,255,255,255)
+black = gd::Color(brush,0,240,0)
+gd::Line brush,0,0,10,10,black
+gd::Line brush,0,10,10,0,black
+<P>
+gd::SavePng brush,"brush.png"
+<P>
+image = gd::Create(400,300)
+<P>
+white = gd::Color(image,255,255,255)
+gd::SetTransparentColor image,white
+black = gd::Color(image,0,0,0)
+red =  gd::Color(image,255,0,0)
+blue =  gd::Color(image,0,0,255)
+green = gd::Color(image,0,255,0)
+<P>
+gd::Point image,0,0,black
+<P>
+gd::Rectangle image,200,50,250,100,red
+gd::FilledRectangle image,225,75,275,125,green
+<P>
+gd::Rectangle image,324,190,376,290,black
+gd::SetTile image,brush
+' caused stack overflow on a fine NT? Should be some poor implementation
+'gd::FillToBorder image,325,191,black,gd::Tiled
+<P>
+gd::Circle image,350,50,40,blue
+gd::FillToBorder image,350,50,blue,green
+gd::Fill image,201,51,blue
+<P>
+gd::SetBrush image,brush
+gd::Line image,300,200,300,350,gd::Brushed
+<P>
+gd::SetColor image,black
+<P>
+gd::SetFont image,gd::FontTiny
+gd::print image,0,0,"THIS PICTURE WAS CREATED FROM ScriptBasic USING THE MODULE GD/PNG"
+gd::print image,0,10,"x=",gd::SizeX(image)," y=",gd::SizeY(image)
+gd::print image,100,100,"Tiny ",12*3+55
+<P>
+gd::SetFont image,gd::FontSmall
+gd::print image,100,120,"Small ",55*63
+<P>
+gd::SetFont image,gd::FontMedium
+gd::print image,100,150,"Medium ",24/19
+<P>
+gd::SetFont image,gd::FontLarge
+gd::print image,100,190,"Large ",sin(3.1)
+<P>
+gd::SetFont image,gd::FontGiant
+gd::print image,100,240,"Giant ",log(1000)
+<P>
+
+for i=0 to 65 step 5
+  gd::Line image,i,20,65-i,75
+next i
+<P>
+LineStyle[0] = black
+LineStyle[1] = black
+LineStyle[2] = undef
+LineStyle[3] = undef
+LineStyle[4] = red
+LineStyle[5] = green
+LineStyle[6] = blue
+LineStyle[7] = undef
+LineStyle[8] = red
+LineStyle[9] = red
+<P>
+gd::LineStyle image,LineStyle
+<P>
+gd::Line image,0,90,100,90,undef
+<P>
+for i=0 to 65 step 5
+  gd::Line image,i,100,65-i,165,undef
+next i
+<P>
+
+ImagePng = gd::Png(image)
+<P>
+gd::Destroy image
+<P>
+fn = 0
+open "test.png" for output as fn
+binmode fn
+print#fn,ImagePng
+undef ImagePng
+close#fn
+</PRE></FONT><HR>
+<A HREF="mod_gd_6.31.html">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_8.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

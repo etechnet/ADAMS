@@ -1,0 +1,24 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cio.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cio.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_cio.texi
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cio.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cio.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\s_interface.obj  
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cio.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cio.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\interface.obj 
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\s_interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cio\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_cio.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_cio.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_cio.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_cio.hhp & set ERRORLEVEL=0
+
+

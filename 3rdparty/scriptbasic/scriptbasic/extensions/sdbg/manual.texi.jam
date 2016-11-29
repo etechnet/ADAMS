@@ -1,0 +1,92 @@
+{#sep/[[[/]]]}\
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@setfilename prep_dbg
+@settitle ScriptBasic Users Guide
+@setchapternewpage odd
+@c %**end of header
+
+@ifinfo
+This file contains the texinfo format documentation how to use the ScriptBasic debugger dbg.
+
+Copyright 1999-2001 Peter Verhas
+@end ifinfo
+
+@titlepage
+@title ScriptBasic Debugger Users' Guide
+@author Peter Verhas
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 1999-2001 Peter Verhas
+Published by @code{peter.verhas.com}
+
+@end titlepage
+@summarycontents
+@contents
+
+@menu
+@end menu
+@chapter Introduction
+
+ScriptBasic debugger @code{sdbg} allows programmers to debug BASIC programs. The debugger provides a socket interface that can be used to execute a program line, by line, to a specified line, set break points and while in debug mode examine variables.
+
+The debugger can also be used to debug CGI programs utilizing the Eszter SB Application Engine, or in ordinary CGI environment.
+
+@chapter Installing the Preprocessor sdbg
+
+Installing the preprocessor is usually not needed as this is automatically installed during ScriptBasic installation. In the following sections I describe how to install it in case something is not working or you want to set up some files differently.
+
+The debugger is implemented as an internal preprocessor. This means that the code of the preprocessor is in a @code{.dll} file under Windows and @code{.so} file under UNIX. Internal preprocessors have to be configured to be invoked by the interpreter.
+
+To do this the file @code{scriba.conf.lsp} has to be modified and recompiled using the program @code{cftc} in case the default configuration does not fit you.
+
+The preprocessors in the configuration file are configured under the key @code{preproc}.
+
+@example
+preproc (
+  internal (
+    sdbg "E:\\ScriptBasic\\modules\\sdbg.dll"
+    )
+  )
+@end example
+
+This is the configuration file fragment on the development station. It names the preprocessor the name @code{sdbg} and specifies the exact location. You can name the debugger different though this would not be wise. In case you rename the debugger you have to invoke it with the option @option{-i newname}.
+
+The debugger requires no other configuration.
+
+Newer version of ScriptBasic finds a preprocessor even if it is not configured in the configuration file is the DLL file can be found in the library configured for the modules. In this case the command line option @option{-i sdbg} has to be used to allow the interpreter to find the preprocessor implemented in the dynamic link library @code{dbg.dll}.
+
+@chapter Using the Debugger
+
+Users generally do not use this debugger directly. They will rather use a graphical front-end that uses the services of this debugger. This chapter defines the architecture of the communication between the front-end and the debugger and the actual commands that the front-end should use.
+ 
+@section Debugger Architecture
+
+When the debugger starts it starts to listen on the local address @code{127.0.0.1} on port @code{8888}. The debugger client has to connect to this port. When the client connects the debugger sends initial information to the client, and starts to wait for the client commands.
+
+@section Protocol Definition
+
+The protocol between the client and the server is text based. The server (the debugger) sends information to the client (the graphical debugger interface) and it gets commands from the client.
+
+The information the server sends contains lines. Each line has the format
+
+@example
+identifier: value
+@end example
+
+The @code{identifier} identifies the information contained on the line and the @code{value} is the information to be sent. The identifier is closed by a colon and a space. The line is terminated by carriage-return and new-line characters.
+
+The client has to send commands to the server. The command is always a single character optionally followed by a space and arguments. The commands and the syntax are the same as those implemented in the sample command line interpreter. The end of the command line sent to the server has to be terminated by carriage-return and new-line characters.
+
+This architecture also allows a normal telnet client to be used to debug the communication with the server, although the information printed by the server is not easily readable by humans.
+
+@section Debugger Commands
+
+
+
+
+
+@bye
+
+

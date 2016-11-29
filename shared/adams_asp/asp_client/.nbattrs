@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<attributes version="1.0">
+   <fileobject name="PsMonitorMasterServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="PsMonitorMasterServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="PsMonitorMasterServer"/>
+      <attr name="class_dependency_PsMonitorMasterServerOperations" stringvalue="PsMonitorMasterServer"/>
+   </fileobject>
+   <fileobject name="DATA_RS_OBJECT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_OBJECT"/>
+   </fileobject>
+   <fileobject name="ProcesDetailSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ProcesDetailSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_CONFIG_LIBHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_CONFIG_LIBHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_OBJECT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RSO_OBJECT"/>
+   </fileobject>
+   <fileobject name="STSEntryPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="STSEntryPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="STSEntryPOA"/>
+   </fileobject>
+   <fileobject name="_ProcessMonitorServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_ProcessMonitorServerStub"/>
+      <attr name="class_dependency_ProcessMonitorServer" stringvalue="_ProcessMonitorServerStub"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_ADD_DEL_CounterKit.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_ADD_DEL_CounterKit"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JD_ADD_DEL_CounterKit"/>
+   </fileobject>
+   <fileobject name="ALARM_PARAMETER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_PARAMETER"/>
+   </fileobject>
+   <fileobject name="FunctionDescriptionHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FunctionDescriptionHolder"/>
+   </fileobject>
+   <fileobject name="NAZIONE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NAZIONE"/>
+   </fileobject>
+   <fileobject name="DispatcherDescriptionHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DispatcherDescriptionHolder"/>
+   </fileobject>
+   <fileobject name="AlarmDataServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="AlarmDataServer"/>
+      <attr name="class_dependency_AlarmDataServerOperations" stringvalue="AlarmDataServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="AlarmDataServer"/>
+   </fileobject>
+   <fileobject name="TableSorter.java">
+      <attr name="class_dependency_java.lang.Comparable" stringvalue="TableSorter.Row"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="TableSorter"/>
+   </fileobject>
+   <fileobject name="AlarmSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_FOOTER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RSO_FOOTER"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Cal.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Cal"/>
+   </fileobject>
+   <fileobject name="SPOT_ELEMENTS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SPOT_ELEMENTS"/>
+   </fileobject>
+   <fileobject name="DETAIL_EVENTSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DETAIL_EVENTSHolder"/>
+   </fileobject>
+   <fileobject name="E_MAILHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="E_MAILHolder"/>
+   </fileobject>
+   <fileobject name="MONITOR_USER_GRANT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="MONITOR_USER_GRANT"/>
+   </fileobject>
+   <fileobject name="ALARM_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_INFO"/>
+   </fileobject>
+   <fileobject name="FunctionDescriptionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FunctionDescriptionSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMMasterServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTMMasterServerHolder"/>
+   </fileobject>
+   <fileobject name="S_LOGIN.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_LOGIN"/>
+   </fileobject>
+   <fileobject name="CounterGUIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CounterGUIHolder"/>
+   </fileobject>
+   <fileobject name="NTMServerConfigurationPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="NTMServerConfigurationPOA"/>
+      <attr name="class_dependency_NTMServerConfigurationOperations" stringvalue="NTMServerConfigurationPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="NTMServerConfigurationPOA"/>
+   </fileobject>
+   <fileobject name="logProcessHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="logProcessHolder"/>
+   </fileobject>
+   <fileobject name="DATA_CDR.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_CDR"/>
+   </fileobject>
+   <fileobject name="ConfigMonitorServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="ConfigMonitorServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="ConfigMonitorServerPOA"/>
+   </fileobject>
+   <fileobject name="ModuleSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ModuleSeqHolder"/>
+   </fileobject>
+   <fileobject name="MasterServerFactoryHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MasterServerFactoryHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_RelationBuildProperties.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_RelationBuild;NTMC_JD_RelationBuildProperties"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_RelationBuildProperties.MyTableModel"/>
+   </fileobject>
+   <fileobject name="IMAGEServerConfigurationHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="IMAGEServerConfigurationHolder"/>
+   </fileobject>
+   <fileobject name="DIR_ENTRYHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DIR_ENTRYHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Relations_Alarm.java_save">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Script_p3.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Script_p3"/>
+   </fileobject>
+   <fileobject name="S_ROLE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_ROLE"/>
+   </fileobject>
+   <fileobject name="_PsMonitorMasterServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_PsMonitorMasterServerStub"/>
+      <attr name="class_dependency_PsMonitorMasterServer" stringvalue="_PsMonitorMasterServerStub"/>
+   </fileobject>
+   <fileobject name="ALARM_RELATION.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_RELATION"/>
+   </fileobject>
+   <fileobject name="NTMC_Vector_T_CONFIG_NTM.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_Vector_T_CONFIG_NTM"/>
+      <attr name="class_dependency_java.util.Vector" stringvalue="NTMC_Vector_T_CONFIG_NTM"/>
+   </fileobject>
+   <fileobject name="DetailInfoSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DetailInfoSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_Plugin.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="NTMC_Plugin"/>
+   </fileobject>
+   <fileobject name="DATA_RS_HTML.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_HTML"/>
+   </fileobject>
+   <fileobject name="ViewSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ViewSeqHolder"/>
+   </fileobject>
+   <fileobject name="OutputTypeSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="OutputTypeSeqHolder"/>
+   </fileobject>
+   <fileobject name="_ConfigMonitorServerStub.java">
+      <attr name="class_dependency_ConfigMonitorServer" stringvalue="_ConfigMonitorServerStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_ConfigMonitorServerStub"/>
+   </fileobject>
+   <fileobject name="Makefile">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="DATA_RS_COMMONHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_COMMONHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_RegisterServerAlarm_DB.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_RegisterServerAlarm_DB"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_RegisterServerAlarm_DB.MyTableModel"/>
+   </fileobject>
+   <fileobject name="ALARM_ELEMENTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_ELEMENTHolder"/>
+   </fileobject>
+   <fileobject name="_GarbageMonitorServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_GarbageMonitorServerStub"/>
+      <attr name="class_dependency_GarbageMonitorServer" stringvalue="_GarbageMonitorServerStub"/>
+   </fileobject>
+   <fileobject name="FunctionDescriptionWrapp.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="FunctionDescriptionWrapp"/>
+   </fileobject>
+   <fileobject name="DetailValuesSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DetailValuesSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTM_COMPLETE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTM_COMPLETE"/>
+   </fileobject>
+   <fileobject name="DATA_CENTRALI_IMAGEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_CENTRALI_IMAGEHolder"/>
+   </fileobject>
+   <fileobject name="NTM_USERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTM_USERHolder"/>
+   </fileobject>
+   <fileobject name="NTMDataServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTMDataServerHolder"/>
+   </fileobject>
+   <fileobject name="DETAIL_VALUES.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DETAIL_VALUES"/>
+   </fileobject>
+   <fileobject name="SOGDataServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="SOGDataServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="SOGDataServerPOA"/>
+   </fileobject>
+   <fileobject name="DIR_ENTRY.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DIR_ENTRY"/>
+   </fileobject>
+   <fileobject name="MagCentraliSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MagCentraliSeqHolder"/>
+   </fileobject>
+   <fileobject name="ReportHeaderSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportHeaderSeqHolder"/>
+   </fileobject>
+   <fileobject name="SOGDataServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SOGDataServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="SOGDataServer"/>
+      <attr name="class_dependency_SOGDataServerOperations" stringvalue="SOGDataServer"/>
+   </fileobject>
+   <fileobject name="InputItem.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="InputItem"/>
+   </fileobject>
+   <fileobject name="LinkSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="LinkSeqHolder"/>
+   </fileobject>
+   <fileobject name="ENABLE_KPI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ENABLE_KPI"/>
+   </fileobject>
+   <fileobject name="DATA_RS_TOTALIZERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_TOTALIZERHolder"/>
+   </fileobject>
+   <fileobject name="LayoutSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="LayoutSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPT_VARLIST.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_SCRIPT_VARLIST"/>
+   </fileobject>
+   <fileobject name="COORDINATE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="COORDINATE"/>
+   </fileobject>
+   <fileobject name="nodoSummaryEXT.java">
+      <attr name="class_dependency_javax.swing.tree.DefaultMutableTreeNode" stringvalue="nodoSummaryEXT"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_Wizard.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTMC_JF_Wizard"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JF_Wizard"/>
+   </fileobject>
+   <fileobject name="tempoRisHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="tempoRisHolder"/>
+   </fileobject>
+   <fileobject name="CounterGUI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="CounterGUI"/>
+   </fileobject>
+   <fileobject name="COUNTERS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="COUNTERS"/>
+   </fileobject>
+   <fileobject name="S_CONFIG_NTMHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_CONFIG_NTMHolder"/>
+   </fileobject>
+   <fileobject name="ERROR_TEXT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ERROR_TEXT"/>
+   </fileobject>
+   <fileobject name="_MAGServerConfigurationStub.java">
+      <attr name="class_dependency_MAGServerConfiguration" stringvalue="_MAGServerConfigurationStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_MAGServerConfigurationStub"/>
+   </fileobject>
+   <fileobject name="InputSubFunctionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="InputSubFunctionSeqHolder"/>
+   </fileobject>
+   <fileobject name="OutputTypeHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="OutputTypeHolder"/>
+   </fileobject>
+   <fileobject name="AlarmDataServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="AlarmDataServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="AlarmDataServerPOA"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_Threshold.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_ALARM;NTMC_JD_ALARM_1;NTMC_JD_Threshold"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_Threshold.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JD_ALARM"/>
+   </fileobject>
+   <fileobject name="NTM_PROFILE_GRANTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTM_PROFILE_GRANTHolder"/>
+   </fileobject>
+   <fileobject name="ValuesTypesHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ValuesTypesHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_HTMLHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_HTMLHolder"/>
+   </fileobject>
+   <fileobject name="MAGServerConfiguration.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="MAGServerConfiguration"/>
+      <attr name="class_dependency_MAGServerConfigurationOperations" stringvalue="MAGServerConfiguration"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="MAGServerConfiguration"/>
+   </fileobject>
+   <fileobject name="RELSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="RELSeqHolder"/>
+   </fileobject>
+   <fileobject name="GRANT_LAYOUT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="GRANT_LAYOUT"/>
+   </fileobject>
+   <fileobject name="S_FUNCTIONHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_FUNCTIONHolder"/>
+   </fileobject>
+   <fileobject name="ParamSelectedSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParamSelectedSeqHolder"/>
+   </fileobject>
+   <fileobject name="JobUserSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="JobUserSeqHolder"/>
+   </fileobject>
+   <fileobject name="UserPoolSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="UserPoolSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_USER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_USER"/>
+   </fileobject>
+   <fileobject name="DBConfigurationServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DBConfigurationServerHolder"/>
+   </fileobject>
+   <fileobject name="CS_INFO_PROCSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CS_INFO_PROCSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_TOTALIZER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RSO_TOTALIZER"/>
+   </fileobject>
+   <fileobject name="JOBSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="JOBSeqHolder"/>
+   </fileobject>
+   <fileobject name="_MONITORConfigurationStub.java">
+      <attr name="class_dependency_MONITORConfiguration" stringvalue="_MONITORConfigurationStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_MONITORConfigurationStub"/>
+   </fileobject>
+   <fileobject name="DispatcherDescriptionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DispatcherDescriptionSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_CDRHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_CDRHolder"/>
+   </fileobject>
+   <fileobject name="USERLOGIN.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="USERLOGIN"/>
+   </fileobject>
+   <fileobject name="ACQ_CAT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ACQ_CAT"/>
+   </fileobject>
+   <fileobject name="InputItemSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="InputItemSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Analisi.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JP_Analisi"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Analisi"/>
+   </fileobject>
+   <fileobject name="tempoRis.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="tempoRis"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_LoginStart.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTMC_JF_LoginStart"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JF_LoginStart"/>
+   </fileobject>
+   <fileobject name="AlarmInfoSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmInfoSeqHolder"/>
+   </fileobject>
+   <fileobject name="SessionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SessionSeqHolder"/>
+   </fileobject>
+   <fileobject name="DETAIL_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DETAIL_INFO"/>
+   </fileobject>
+   <fileobject name="S_ROLEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_ROLEHolder"/>
+   </fileobject>
+   <fileobject name="Chart.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="Chart"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_OBJECTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RSO_OBJECTHolder"/>
+   </fileobject>
+   <fileobject name="DATE_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATE_INFO"/>
+   </fileobject>
+   <fileobject name="InputSubFunction.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="InputSubFunction"/>
+   </fileobject>
+   <fileobject name="GARBAGE_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GARBAGE_INFOHolder"/>
+   </fileobject>
+   <fileobject name="HelperSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="HelperSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_TIPOANALISI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_TIPOANALISI"/>
+   </fileobject>
+   <fileobject name="LogProcessSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="LogProcessSeqHolder"/>
+   </fileobject>
+   <fileobject name="THRESHOLD_GENERATOR.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="THRESHOLD_GENERATOR"/>
+   </fileobject>
+   <fileobject name="GLOBALOPTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GLOBALOPTHolder"/>
+   </fileobject>
+   <fileobject name="NTMJobActivatorPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="NTMJobActivatorPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="NTMJobActivatorPOA"/>
+   </fileobject>
+   <fileobject name="VectorHelp.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="VectorHelp"/>
+   </fileobject>
+   <fileobject name="NTMServerConfigurationHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTMServerConfigurationHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_COMMON.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_COMMON"/>
+   </fileobject>
+   <fileobject name="LayoutWrappHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="LayoutWrappHolder"/>
+   </fileobject>
+   <fileobject name="ALARMMasterServer.java">
+      <attr name="class_dependency_ALARMMasterServerOperations" stringvalue="ALARMMasterServer"/>
+   </fileobject>
+   <fileobject name="DETAIL_REQUESTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DETAIL_REQUESTHolder"/>
+   </fileobject>
+   <fileobject name="SampleTreeCellRenderer.java">
+      <attr name="class_dependency_javax.swing.JLabel" stringvalue="SampleTreeCellRenderer"/>
+   </fileobject>
+   <fileobject name="DATA_RS_FOOTER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_FOOTER"/>
+   </fileobject>
+   <fileobject name="CounterKitSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CounterKitSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_TOTALIZER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_TOTALIZER"/>
+   </fileobject>
+   <fileobject name="GESTIONE_PSWDHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GESTIONE_PSWDHolder"/>
+   </fileobject>
+   <fileobject name="NODO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NODO"/>
+   </fileobject>
+   <fileobject name="_NTMServerConfigurationStub.java">
+      <attr name="class_dependency_NTMServerConfiguration" stringvalue="_NTMServerConfigurationStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_NTMServerConfigurationStub"/>
+   </fileobject>
+   <fileobject name="STSEntry.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STSEntry"/>
+      <attr name="class_dependency_STSBasicConfiguration" stringvalue="STSEntry"/>
+      <attr name="class_dependency_STSEntryOperations" stringvalue="STSEntry"/>
+   </fileobject>
+   <fileobject name="SubFunctionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SubFunctionSeqHolder"/>
+   </fileobject>
+   <fileobject name="CONF_CENTRALIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CONF_CENTRALIHolder"/>
+   </fileobject>
+   <fileobject name="GLOBALOPT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="GLOBALOPT"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPT_TEXT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_SCRIPT_TEXT"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Counters.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_Counters.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JP_Counters"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Counters"/>
+   </fileobject>
+   <fileobject name="ALARM_SPOTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_SPOTHolder"/>
+   </fileobject>
+   <fileobject name="FunctionDescription.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="FunctionDescription"/>
+   </fileobject>
+   <fileobject name="DATA_REPORTSCHEMA.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_REPORTSCHEMA"/>
+   </fileobject>
+   <fileobject name="STSEntryHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STSEntryHolder"/>
+   </fileobject>
+   <fileobject name="VariablesSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="VariablesSeqHolder"/>
+   </fileobject>
+   <fileobject name="FontChart.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="FontChart"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_RelationBuild.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_RelationBuild"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_RelationBuild.MyTableModel"/>
+   </fileobject>
+   <fileobject name="GESTIONE_PSWD.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="GESTIONE_PSWD"/>
+   </fileobject>
+   <fileobject name="DATA_TIPOANALISIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_TIPOANALISIHolder"/>
+   </fileobject>
+   <fileobject name="PARAMHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PARAMHolder"/>
+   </fileobject>
+   <fileobject name="REST_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="REST_INFO"/>
+   </fileobject>
+   <fileobject name="PsMonitorMasterServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="PsMonitorMasterServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="PsMonitorMasterServerPOA"/>
+   </fileobject>
+   <fileobject name="_ACQPebMGRServerStub.java">
+      <attr name="class_dependency_ACQPebMGRServer" stringvalue="_ACQPebMGRServerStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_ACQPebMGRServerStub"/>
+   </fileobject>
+   <fileobject name="GarbageMonitorServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GarbageMonitorServerHolder"/>
+   </fileobject>
+   <fileobject name="LAYOUT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="LAYOUT"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_WIZARDBASE.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JF_WIZARDBASE"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_FOOTERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RSO_FOOTERHolder"/>
+   </fileobject>
+   <fileobject name="COORDINATEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="COORDINATEHolder"/>
+   </fileobject>
+   <fileobject name="Polling.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="Polling"/>
+   </fileobject>
+   <fileobject name="ALARM_RELATIONHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_RELATIONHolder"/>
+   </fileobject>
+   <fileobject name="RelationSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="RelationSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_Relation.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="NTMC_Relation"/>
+   </fileobject>
+   <fileobject name="SProfileSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SProfileSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_APP_LOG.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_APP_LOG"/>
+   </fileobject>
+   <fileobject name="DateSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DateSeqHolder"/>
+   </fileobject>
+   <fileobject name="SConfigSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SConfigSeqHolder"/>
+   </fileobject>
+   <fileobject name="FUNCTION_ENABLED.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="FUNCTION_ENABLED"/>
+   </fileobject>
+   <fileobject name="SYSTEM_TIME.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SYSTEM_TIME"/>
+   </fileobject>
+   <fileobject name="PollingHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PollingHolder"/>
+   </fileobject>
+   <fileobject name="S_CONFIG_NTM.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_CONFIG_NTM"/>
+   </fileobject>
+   <fileobject name="ProcessMonitorServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ProcessMonitorServerHolder"/>
+   </fileobject>
+   <fileobject name="IDListSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="IDListSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTM_PROFILE_GRANT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTM_PROFILE_GRANT"/>
+   </fileobject>
+   <fileobject name="NTMMasterServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTMMasterServer"/>
+      <attr name="class_dependency_NTMMasterServerOperations" stringvalue="NTMMasterServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="NTMMasterServer"/>
+   </fileobject>
+   <fileobject name="ALARM_PARAMETERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_PARAMETERHolder"/>
+   </fileobject>
+   <fileobject name="LayoutWrapp.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="LayoutWrapp"/>
+   </fileobject>
+   <fileobject name="DATA_ECCEZIONI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_ECCEZIONI"/>
+   </fileobject>
+   <fileobject name="ReportTotalizerSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportTotalizerSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_LOGINHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_LOGINHolder"/>
+   </fileobject>
+   <fileobject name="_SOGMasterServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_SOGMasterServerStub"/>
+      <attr name="class_dependency_SOGMasterServer" stringvalue="_SOGMasterServerStub"/>
+   </fileobject>
+   <fileobject name="SubFunctionJoined.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SubFunctionJoined"/>
+   </fileobject>
+   <fileobject name="Output_Type.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="Output_Type"/>
+   </fileobject>
+   <fileobject name="ProcesDetailHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ProcesDetailHolder"/>
+   </fileobject>
+   <fileobject name="CentralSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CentralSeqHolder"/>
+   </fileobject>
+   <fileobject name="USER_PROFILE_IMG.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="USER_PROFILE_IMG"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Alarm.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Alarm"/>
+   </fileobject>
+   <fileobject name="EXTERNAL_MODULEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="EXTERNAL_MODULEHolder"/>
+   </fileobject>
+   <fileobject name="FontChartSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FontChartSeqHolder"/>
+   </fileobject>
+   <fileobject name="_AlarmDataServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_AlarmDataServerStub"/>
+      <attr name="class_dependency_AlarmDataServer" stringvalue="_AlarmDataServerStub"/>
+   </fileobject>
+   <fileobject name="GarbageMonitorServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="GarbageMonitorServer"/>
+      <attr name="class_dependency_GarbageMonitorServerOperations" stringvalue="GarbageMonitorServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="GarbageMonitorServer"/>
+   </fileobject>
+   <fileobject name="DATA_RS_HEADER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_HEADER"/>
+   </fileobject>
+   <fileobject name="BtreeSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="BtreeSeqHolder"/>
+   </fileobject>
+   <fileobject name="PIVOTREQ.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="PIVOTREQ"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_VerifyLimits.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_VerifyLimits"/>
+   </fileobject>
+   <fileobject name="InputItemType.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="InputItemType"/>
+   </fileobject>
+   <fileobject name="_NTMDataServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_NTMDataServerStub"/>
+      <attr name="class_dependency_NTMDataServer" stringvalue="_NTMDataServerStub"/>
+   </fileobject>
+   <fileobject name="NtmJobUserQueeSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NtmJobUserQueeSeqHolder"/>
+   </fileobject>
+   <fileobject name="JListIcon.java">
+      <attr name="class_dependency_javax.swing.JList" stringvalue="JListIcon"/>
+   </fileobject>
+   <fileobject name="S_PROFILE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_PROFILE"/>
+   </fileobject>
+   <fileobject name="MAGServerConfigurationHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MAGServerConfigurationHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_PARAMSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STRUCT_PARAMSHolder"/>
+   </fileobject>
+   <fileobject name="InputSubFunctionHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="InputSubFunctionHolder"/>
+   </fileobject>
+   <fileobject name="MONITORConfiguration.java">
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="MONITORConfiguration"/>
+      <attr name="class_dependency_MONITORConfigurationOperations" stringvalue="MONITORConfiguration"/>
+   </fileobject>
+   <fileobject name="_SOGDataServerStub.java">
+      <attr name="class_dependency_SOGDataServer" stringvalue="_SOGDataServerStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_SOGDataServerStub"/>
+   </fileobject>
+   <fileobject name="EXPORT_COL.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="EXPORT_COL"/>
+   </fileobject>
+   <fileobject name="MONITOR_USER_GRANTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MONITOR_USER_GRANTHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_CALLDETAIL.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STRUCT_CALLDETAIL"/>
+   </fileobject>
+   <fileobject name="GARBAGE_INFOSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GARBAGE_INFOSeqHolder"/>
+   </fileobject>
+   <fileobject name="PARAM.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="PARAM"/>
+   </fileobject>
+   <fileobject name="ParamValue.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ParamValue"/>
+   </fileobject>
+   <fileobject name="IMAGEServerConfigurationPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="IMAGEServerConfigurationPOA"/>
+   </fileobject>
+   <fileobject name="INVOKE_STATUSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="INVOKE_STATUSHolder"/>
+   </fileobject>
+   <fileobject name="S_USERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_USERHolder"/>
+   </fileobject>
+   <fileobject name="ChartHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ChartHolder"/>
+   </fileobject>
+   <fileobject name="ACQ_PEB_MGR.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ACQ_PEB_MGR"/>
+   </fileobject>
+   <fileobject name="SHOW_TYPE_ALARM.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SHOW_TYPE_ALARM"/>
+   </fileobject>
+   <fileobject name="ParamSelectedHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParamSelectedHolder"/>
+   </fileobject>
+   <fileobject name="ParamSelected.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ParamSelected"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Relations_Alarm.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_Relations_Alarm.MyTableModel"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Relations_Alarm"/>
+   </fileobject>
+   <fileobject name="SHOW_TYPE_ALARMHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SHOW_TYPE_ALARMHolder"/>
+   </fileobject>
+   <fileobject name="CS_BLOCK_LOG.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="CS_BLOCK_LOG"/>
+   </fileobject>
+   <fileobject name="VIEWHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="VIEWHolder"/>
+   </fileobject>
+   <fileobject name="DATA_TRAFFICELEMENTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_TRAFFICELEMENTHolder"/>
+   </fileobject>
+   <fileobject name="ShowTypeAlarmSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ShowTypeAlarmSeqHolder"/>
+   </fileobject>
+   <fileobject name="ParamValueSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParamValueSeqHolder"/>
+   </fileobject>
+   <fileobject name="COUNTER_KIT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="COUNTER_KIT"/>
+   </fileobject>
+   <fileobject name="DATA_RS_HEADERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_HEADERHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_TransferConf.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JF_TransferConf"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JF_TransferConf"/>
+   </fileobject>
+   <fileobject name="COUNTER_KITHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="COUNTER_KITHolder"/>
+   </fileobject>
+   <fileobject name="SubFunctionJoinedSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SubFunctionJoinedSeqHolder"/>
+   </fileobject>
+   <fileobject name="DispatcherDescription.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DispatcherDescription"/>
+   </fileobject>
+   <fileobject name="AlarmRelationSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmRelationSeqHolder"/>
+   </fileobject>
+   <fileobject name="DetailEventsSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DetailEventsSeqHolder"/>
+   </fileobject>
+   <fileobject name="_ALARMDataServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_ALARMDataServerStub"/>
+   </fileobject>
+   <fileobject name="DATA_PLUGINREGISTRY.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_PLUGINREGISTRY"/>
+   </fileobject>
+   <fileobject name="MONITORConfigurationHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MONITORConfigurationHolder"/>
+   </fileobject>
+   <fileobject name="ProcesDetail.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ProcesDetail"/>
+   </fileobject>
+   <fileobject name="CentralImageSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CentralImageSeqHolder"/>
+   </fileobject>
+   <fileobject name="MAG_CENTRALIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="MAG_CENTRALIHolder"/>
+   </fileobject>
+   <fileobject name="HELP_LISTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="HELP_LISTHolder"/>
+   </fileobject>
+   <fileobject name="ExportColSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ExportColSeqHolder"/>
+   </fileobject>
+   <fileobject name="SOGDataServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SOGDataServerHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_BODYHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RSO_BODYHolder"/>
+   </fileobject>
+   <fileobject name="STSBasicConfigurationPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="STSBasicConfigurationPOA"/>
+   </fileobject>
+   <fileobject name="DETAIL_REQUEST.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DETAIL_REQUEST"/>
+   </fileobject>
+   <fileobject name="AnalisysSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AnalisysSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_CLASS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_CLASS"/>
+   </fileobject>
+   <fileobject name="sLinksHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="sLinksHolder"/>
+   </fileobject>
+   <fileobject name="MONITORConfigurationPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="MONITORConfigurationPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="MONITORConfigurationPOA"/>
+   </fileobject>
+   <fileobject name="DATA_RS_BODYHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_BODYHolder"/>
+   </fileobject>
+   <fileobject name="USER_PROFILE_IMGHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="USER_PROFILE_IMGHolder"/>
+   </fileobject>
+   <fileobject name="_IMAGEServerConfigurationStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_IMAGEServerConfigurationStub"/>
+      <attr name="class_dependency_IMAGEServerConfiguration" stringvalue="_IMAGEServerConfigurationStub"/>
+   </fileobject>
+   <fileobject name="TText.java">
+      <attr name="class_dependency_java.awt.datatransfer.Transferable" stringvalue="TText"/>
+   </fileobject>
+   <fileobject name="ProcessMonitorServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ProcessMonitorServer"/>
+      <attr name="class_dependency_ProcessMonitorServerOperations" stringvalue="ProcessMonitorServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="ProcessMonitorServer"/>
+   </fileobject>
+   <fileobject name="SUserSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SUserSeqHolder"/>
+   </fileobject>
+   <fileobject name="Output_TypeHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="Output_TypeHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_Vector_TAB_EVENTI_GUI.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="NTMC_Vector_TAB_EVENTI_GUI"/>
+   </fileobject>
+   <fileobject name="ScriptTextSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ScriptTextSeqHolder"/>
+   </fileobject>
+   <fileobject name="GarbageMonitorServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="GarbageMonitorServerPOA"/>
+      <attr name="class_dependency_GarbageMonitorServerOperations" stringvalue="GarbageMonitorServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="GarbageMonitorServerPOA"/>
+   </fileobject>
+   <fileobject name="NTM_USER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTM_USER"/>
+   </fileobject>
+   <fileobject name="DATA_TRAFFICELEMENT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_TRAFFICELEMENT"/>
+   </fileobject>
+   <fileobject name="TYPE_ALARM.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="TYPE_ALARM"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_BODY.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RSO_BODY"/>
+   </fileobject>
+   <fileobject name="ValuesTypes.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ValuesTypes"/>
+   </fileobject>
+   <fileobject name="NTM_JOB_USER_QUEEEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTM_JOB_USER_QUEEEHolder"/>
+   </fileobject>
+   <fileobject name="IdSubFunctionJoinedSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="IdSubFunctionJoinedSeqHolder"/>
+   </fileobject>
+   <fileobject name="E_MAIL.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="E_MAIL"/>
+   </fileobject>
+   <fileobject name="ChartSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ChartSeqHolder"/>
+   </fileobject>
+   <fileobject name="DescrittoreSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DescrittoreSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPT_TEXTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_SCRIPT_TEXTHolder"/>
+   </fileobject>
+   <fileobject name="ACQ_CATSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ACQ_CATSeqHolder"/>
+   </fileobject>
+   <fileobject name="AlarmGeneratorSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmGeneratorSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMMasterServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="NTMMasterServerPOA"/>
+      <attr name="class_dependency_NTMMasterServerOperations" stringvalue="NTMMasterServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="NTMMasterServerPOA"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_TOTALIZERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RSO_TOTALIZERHolder"/>
+   </fileobject>
+   <fileobject name="SLoginSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SLoginSeqHolder"/>
+   </fileobject>
+   <fileobject name="Descrittore.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="Descrittore"/>
+   </fileobject>
+   <fileobject name="InputItemHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="InputItemHolder"/>
+   </fileobject>
+   <fileobject name="CS_INFO_PROCHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CS_INFO_PROCHolder"/>
+   </fileobject>
+   <fileobject name="EXTERNAL_MODULE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="EXTERNAL_MODULE"/>
+   </fileobject>
+   <fileobject name="DATA_CENTRALIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_CENTRALIHolder"/>
+   </fileobject>
+   <fileobject name="DATA_CENTRALI_IMAGE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_CENTRALI_IMAGE"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_ALARM.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_ADD_DEL_CounterKit_1;NTMC_JD_ALARM"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_ALARM.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JD_ALARM"/>
+   </fileobject>
+   <fileobject name="TTMSELECT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="TTMSELECT"/>
+   </fileobject>
+   <fileobject name="SampleData.java">
+      <attr name="class_dependency_java.lang.Object" stringvalue="SampleData"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_RegisterPlugin_DB.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_RegisterPlugin_DB"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_RegisterPlugin_DB.MyTableModel"/>
+   </fileobject>
+   <fileobject name="SOGMasterServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SOGMasterServerHolder"/>
+   </fileobject>
+   <fileobject name="AlarmParameterSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmParameterSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_CONFIG_LIB.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_CONFIG_LIB"/>
+   </fileobject>
+   <fileobject name="GESTIONE_PSWDSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GESTIONE_PSWDSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_ECCEZIONIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_ECCEZIONIHolder"/>
+   </fileobject>
+   <fileobject name="ScriptSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ScriptSeqHolder"/>
+   </fileobject>
+   <fileobject name="SPOT_ELEMENTSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SPOT_ELEMENTSHolder"/>
+   </fileobject>
+   <fileobject name="ticketsTypes.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ticketsTypes"/>
+   </fileobject>
+   <fileobject name="LAYOUTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="LAYOUTHolder"/>
+   </fileobject>
+   <fileobject name="S_CLASSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_CLASSHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Relations.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_Relations.MyTableModel"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Relations"/>
+   </fileobject>
+   <fileobject name="PIVOTDATANODEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PIVOTDATANODEHolder"/>
+   </fileobject>
+   <fileobject name="STSEntryOperations.java">
+      <attr name="class_dependency_MAGServerConfigurationOperations" stringvalue="STSEntryOperations"/>
+      <attr name="class_dependency_NTMServerConfigurationOperations" stringvalue="STSEntryOperations"/>
+      <attr name="class_dependency_MONITORConfigurationOperations" stringvalue="STSEntryOperations"/>
+      <attr name="class_dependency_IMAGEServerConfigurationOperations" stringvalue="STSEntryOperations"/>
+      <attr name="class_dependency_STSBasicConfigurationOperations" stringvalue="STSEntryOperations"/>
+   </fileobject>
+   <fileobject name="TypeValoreHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TypeValoreHolder"/>
+   </fileobject>
+   <fileobject name="DATE_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATE_INFOHolder"/>
+   </fileobject>
+   <fileobject name="VIEW.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="VIEW"/>
+   </fileobject>
+   <fileobject name="ProcessMonitorServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="ProcessMonitorServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="ProcessMonitorServerPOA"/>
+   </fileobject>
+   <fileobject name="DATA_PLUGINREGISTRYHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_PLUGINREGISTRYHolder"/>
+   </fileobject>
+   <fileobject name="SCRIPT_VALIDATEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SCRIPT_VALIDATEHolder"/>
+   </fileobject>
+   <fileobject name="DATA_HELP.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_HELP"/>
+   </fileobject>
+   <fileobject name="GrantLayoutSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GrantLayoutSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMDataServer.java">
+      <attr name="class_dependency_NTMDataServerOperations" stringvalue="NTMDataServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="NTMDataServer"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_ViewRelWithRestriction.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_ViewRelWithRestriction"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_ViewRelWithRestriction.MyTableModel"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_ViewServerAlarm_DB.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="IMG_F_HistoricalAlarmDetails;NTMC_JF_ViewServerAlarm_DB"/>
+   </fileobject>
+   <fileobject name="SOGMasterServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SOGMasterServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="SOGMasterServer"/>
+      <attr name="class_dependency_SOGMasterServerOperations" stringvalue="SOGMasterServer"/>
+   </fileobject>
+   <fileobject name="PLUGIN_CONFIG.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="PLUGIN_CONFIG"/>
+   </fileobject>
+   <fileobject name="ConfigMonitorServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ConfigMonitorServerHolder"/>
+   </fileobject>
+   <fileobject name="SubFunctionHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SubFunctionHolder"/>
+   </fileobject>
+   <fileobject name="AlarmDataServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmDataServerHolder"/>
+   </fileobject>
+   <fileobject name="SYSTEM_TIMEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SYSTEM_TIMEHolder"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPT_VARLISTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_SCRIPT_VARLISTHolder"/>
+   </fileobject>
+   <fileobject name="COUNTERSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="COUNTERSHolder"/>
+   </fileobject>
+   <fileobject name="ENABLE_KPIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ENABLE_KPIHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_HEADER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RSO_HEADER"/>
+   </fileobject>
+   <fileobject name="ticketsTypesHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ticketsTypesHolder"/>
+   </fileobject>
+   <fileobject name="HelpListSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="HelpListSeqHolder"/>
+   </fileobject>
+   <fileobject name="ALARM_SPOT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_SPOT"/>
+   </fileobject>
+   <fileobject name="DATA_DESC.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_DESC"/>
+   </fileobject>
+   <fileobject name="NODOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NODOHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RSO_HEADERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RSO_HEADERHolder"/>
+   </fileobject>
+   <fileobject name="TtmSelectSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TtmSelectSeqHolder"/>
+   </fileobject>
+   <fileobject name="SubFunction.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SubFunction"/>
+   </fileobject>
+   <fileobject name="DescSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DescSeqHolder"/>
+   </fileobject>
+   <fileobject name="MAG_CENTRALI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="MAG_CENTRALI"/>
+   </fileobject>
+   <fileobject name="ParameterKeysHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParameterKeysHolder"/>
+   </fileobject>
+   <fileobject name="CS_INFO_PROC.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="CS_INFO_PROC"/>
+   </fileobject>
+   <fileobject name="TYPE_ALARMHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TYPE_ALARMHolder"/>
+   </fileobject>
+   <fileobject name="_AlarmMasterServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_AlarmMasterServerStub"/>
+      <attr name="class_dependency_AlarmMasterServer" stringvalue="_AlarmMasterServerStub"/>
+   </fileobject>
+   <fileobject name="ACQPebMGRServer.java">
+      <attr name="class_dependency_ACQPebMGRServerOperations" stringvalue="ACQPebMGRServer"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ACQPebMGRServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="ACQPebMGRServer"/>
+   </fileobject>
+   <fileobject name="ElementSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ElementSeqHolder"/>
+   </fileobject>
+   <fileobject name="ALARM_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_INFOHolder"/>
+   </fileobject>
+   <fileobject name="ExtraInfoSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ExtraInfoSeqHolder"/>
+   </fileobject>
+   <fileobject name="AlarmElementSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmElementSeqHolder"/>
+   </fileobject>
+   <fileobject name="ALARM_ELEMENT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_ELEMENT"/>
+   </fileobject>
+   <fileobject name="TypeValore.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="TypeValore"/>
+   </fileobject>
+   <fileobject name="DETAIL_VALUESHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DETAIL_VALUESHolder"/>
+   </fileobject>
+   <fileobject name="SFunctionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SFunctionSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_UsersJob.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_UsersJob.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JP_UsersJob"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_UsersJob"/>
+   </fileobject>
+   <fileobject name="ACQPebMGRServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ACQPebMGRServerHolder"/>
+   </fileobject>
+   <fileobject name="ReportObjectSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportObjectSeqHolder"/>
+   </fileobject>
+   <fileobject name="CountersSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CountersSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_FUNCTION.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="S_FUNCTION"/>
+   </fileobject>
+   <fileobject name="REST_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="REST_INFOHolder"/>
+   </fileobject>
+   <fileobject name="FunctionDescriptionWrappHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FunctionDescriptionWrappHolder"/>
+   </fileobject>
+   <fileobject name="CDRSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CDRSeqHolder"/>
+   </fileobject>
+   <fileobject name="SessionHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SessionHolder"/>
+   </fileobject>
+   <fileobject name="E_MAILSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="E_MAILSeqHolder"/>
+   </fileobject>
+   <fileobject name="ParameterHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParameterHolder"/>
+   </fileobject>
+   <fileobject name="ACQ_CATHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ACQ_CATHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_USER.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STRUCT_USER"/>
+   </fileobject>
+   <fileobject name="sTypeIdHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="sTypeIdHolder"/>
+   </fileobject>
+   <fileobject name="EXTRA_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="EXTRA_INFOHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_BODY.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RS_BODY"/>
+   </fileobject>
+   <fileobject name="NTM_COMPLETEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTM_COMPLETEHolder"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPT.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_SCRIPT"/>
+   </fileobject>
+   <fileobject name="ContinentSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ContinentSeqHolder"/>
+   </fileobject>
+   <fileobject name="logProcess.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="logProcess"/>
+   </fileobject>
+   <fileobject name="MasterServerFactoryPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="MasterServerFactoryPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="MasterServerFactoryPOA"/>
+   </fileobject>
+   <fileobject name="NTMC_JF_AddMod_conf.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTMC_JF_AddMod_conf"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTMC_JF_AddMod_conf"/>
+   </fileobject>
+   <fileobject name="CONTINENTE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="CONTINENTE"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_setPlugin.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_setPlugin"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JD_setPlugin.MyTableModel"/>
+   </fileobject>
+   <fileobject name="FunctionDefaultHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FunctionDefaultHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_JOB.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STRUCT_JOB"/>
+   </fileobject>
+   <fileobject name="ERROR_TEXTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ERROR_TEXTHolder"/>
+   </fileobject>
+   <fileobject name="ConfigMonitorServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ConfigMonitorServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="ConfigMonitorServer"/>
+      <attr name="class_dependency_ConfigMonitorServerOperations" stringvalue="ConfigMonitorServer"/>
+   </fileobject>
+   <fileobject name="FunctionDefault.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="FunctionDefault"/>
+   </fileobject>
+   <fileobject name="NTM_JOB_USER_QUEEE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTM_JOB_USER_QUEEE"/>
+   </fileobject>
+   <fileobject name="CounterSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CounterSeqHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_PARAMS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STRUCT_PARAMS"/>
+   </fileobject>
+   <fileobject name="MasterServerFactory.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="MasterServerFactory"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="MasterServerFactory"/>
+      <attr name="class_dependency_MasterServerFactoryOperations" stringvalue="MasterServerFactory"/>
+   </fileobject>
+   <fileobject name="DATA_RELATIONSHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RELATIONSHolder"/>
+   </fileobject>
+   <fileobject name="_NTMMasterServerStub.java">
+      <attr name="class_dependency_NTMMasterServer" stringvalue="_NTMMasterServerStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_NTMMasterServerStub"/>
+   </fileobject>
+   <fileobject name="_STSBasicConfigurationStub.java">
+      <attr name="class_dependency_STSBasicConfiguration" stringvalue="_STSBasicConfigurationStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_STSBasicConfigurationStub"/>
+   </fileobject>
+   <fileobject name="TimeUnitsHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TimeUnitsHolder"/>
+   </fileobject>
+   <fileobject name="GRANT_LAYOUTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="GRANT_LAYOUTHolder"/>
+   </fileobject>
+   <fileobject name="DATA_CENTRALI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_CENTRALI"/>
+   </fileobject>
+   <fileobject name="ReportBodySeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportBodySeqHolder"/>
+   </fileobject>
+   <fileobject name="THRESHOLD_GENERATORHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="THRESHOLD_GENERATORHolder"/>
+   </fileobject>
+   <fileobject name="EXTRA_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="EXTRA_INFO"/>
+   </fileobject>
+   <fileobject name="AlarmMasterServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="AlarmMasterServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="AlarmMasterServer"/>
+      <attr name="class_dependency_AlarmMasterServerOperations" stringvalue="AlarmMasterServer"/>
+   </fileobject>
+   <fileobject name="AlarmMasterServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="AlarmMasterServerPOA"/>
+      <attr name="class_dependency_AlarmMasterServerOperations" stringvalue="AlarmMasterServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="AlarmMasterServerPOA"/>
+   </fileobject>
+   <fileobject name="EXPORT_ROWHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="EXPORT_ROWHolder"/>
+   </fileobject>
+   <fileobject name="SClassSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SClassSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JD_Message.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTMC_JD_Message"/>
+   </fileobject>
+   <fileobject name="SRoleSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SRoleSeqHolder"/>
+   </fileobject>
+   <fileobject name="EXPORT_COLHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="EXPORT_COLHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_USERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STRUCT_USERHolder"/>
+   </fileobject>
+   <fileobject name="_DBConfigurationServerStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_DBConfigurationServerStub"/>
+      <attr name="class_dependency_DBConfigurationServer" stringvalue="_DBConfigurationServerStub"/>
+   </fileobject>
+   <fileobject name="SubFuctionGUIHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SubFuctionGUIHolder"/>
+   </fileobject>
+   <fileobject name="DescrittoreHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DescrittoreHolder"/>
+   </fileobject>
+   <fileobject name="JTextFieldFilter.java">
+      <attr name="class_dependency_javax.swing.text.PlainDocument" stringvalue="JTextFieldFilter"/>
+   </fileobject>
+   <fileobject name="ThresholdGeneratorSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ThresholdGeneratorSeqHolder"/>
+   </fileobject>
+   <fileobject name="GARBAGE_INFO.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="GARBAGE_INFO"/>
+   </fileobject>
+   <fileobject name="NTMJobActivator.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTMJobActivator"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="NTMJobActivator"/>
+      <attr name="class_dependency_NTMJobActivatorOperations" stringvalue="NTMJobActivator"/>
+   </fileobject>
+   <fileobject name="CONF_CENTRALI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="CONF_CENTRALI"/>
+   </fileobject>
+   <fileobject name="NTMJobActivatorHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NTMJobActivatorHolder"/>
+   </fileobject>
+   <fileobject name="PIVOTDATANODE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="PIVOTDATANODE"/>
+   </fileobject>
+   <fileobject name="ACQ_PEB_MGRHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ACQ_PEB_MGRHolder"/>
+   </fileobject>
+   <fileobject name="_MasterServerFactoryStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_MasterServerFactoryStub"/>
+      <attr name="class_dependency_MasterServerFactory" stringvalue="_MasterServerFactoryStub"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_TrafficElement.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_TrafficElement.MyTableModel"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_TrafficElement"/>
+   </fileobject>
+   <fileobject name="CS_BLOCK_LOGSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CS_BLOCK_LOGSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMServerConfiguration.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="NTMServerConfiguration"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="NTMServerConfiguration"/>
+      <attr name="class_dependency_NTMServerConfigurationOperations" stringvalue="NTMServerConfiguration"/>
+   </fileobject>
+   <fileobject name="DATA_DESCHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_DESCHolder"/>
+   </fileobject>
+   <fileobject name="PIVOTREQHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PIVOTREQHolder"/>
+   </fileobject>
+   <fileobject name="ConfCentraliSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ConfCentraliSeqHolder"/>
+   </fileobject>
+   <fileobject name="STSBasicConfigurationHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STSBasicConfigurationHolder"/>
+   </fileobject>
+   <fileobject name="PLUGIN_CONFIGHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PLUGIN_CONFIGHolder"/>
+   </fileobject>
+   <fileobject name="SpotElementSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SpotElementSeqHolder"/>
+   </fileobject>
+   <fileobject name="TTMRECORDIMAGE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="TTMRECORDIMAGE"/>
+   </fileobject>
+   <fileobject name="NtmUserSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NtmUserSeqHolder"/>
+   </fileobject>
+   <fileobject name="SubFunctionJoinedHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="SubFunctionJoinedHolder"/>
+   </fileobject>
+   <fileobject name="Session.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="Session"/>
+   </fileobject>
+   <fileobject name="TTMRECORDIMAGEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TTMRECORDIMAGEHolder"/>
+   </fileobject>
+   <fileobject name="DATA_HELPHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_HELPHolder"/>
+   </fileobject>
+   <fileobject name="_STSEntryStub.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_STSEntryStub"/>
+      <attr name="class_dependency_STSEntry" stringvalue="_STSEntryStub"/>
+   </fileobject>
+   <fileobject name="STSBasicConfiguration.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="STSBasicConfiguration"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="STSBasicConfiguration"/>
+      <attr name="class_dependency_STSBasicConfigurationOperations" stringvalue="STSBasicConfiguration"/>
+   </fileobject>
+   <fileobject name="OutputType.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="OutputType"/>
+   </fileobject>
+   <fileobject name="InputItemTypeHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="InputItemTypeHolder"/>
+   </fileobject>
+   <fileobject name="HELP_LIST.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="HELP_LIST"/>
+   </fileobject>
+   <fileobject name="NTMC_JTab_TE_EXC_REL.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JTab_TE_EXC_REL"/>
+   </fileobject>
+   <fileobject name="PsMonitorMasterServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PsMonitorMasterServerHolder"/>
+   </fileobject>
+   <fileobject name="PivotDataNodeSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PivotDataNodeSeqHolder"/>
+   </fileobject>
+   <fileobject name="PollingSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PollingSeqHolder"/>
+   </fileobject>
+   <fileobject name="NAZIONEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NAZIONEHolder"/>
+   </fileobject>
+   <fileobject name="USERLOGINHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="USERLOGINHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_FOOTERHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_FOOTERHolder"/>
+   </fileobject>
+   <fileobject name="NTMDataServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="NTMDataServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="NTMDataServerPOA"/>
+   </fileobject>
+   <fileobject name="FunctionEnabledSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FunctionEnabledSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_REPORTSCHEMAHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_REPORTSCHEMAHolder"/>
+   </fileobject>
+   <fileobject name="SOGMasterServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="SOGMasterServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="SOGMasterServerPOA"/>
+   </fileobject>
+   <fileobject name="DATA_RELATIONS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DATA_RELATIONS"/>
+   </fileobject>
+   <fileobject name="AlarmMasterServerHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmMasterServerHolder"/>
+   </fileobject>
+   <fileobject name="STRUCT_CALLDETAILHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STRUCT_CALLDETAILHolder"/>
+   </fileobject>
+   <fileobject name="SCRIPT_VALIDATE.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SCRIPT_VALIDATE"/>
+   </fileobject>
+   <fileobject name="FontChartHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FontChartHolder"/>
+   </fileobject>
+   <fileobject name="TTMSELECTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="TTMSELECTHolder"/>
+   </fileobject>
+   <fileobject name="ParamValueHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParamValueHolder"/>
+   </fileobject>
+   <fileobject name="AlarmSpotSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="AlarmSpotSeqHolder"/>
+   </fileobject>
+   <fileobject name="TimeUnits.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="TimeUnits"/>
+   </fileobject>
+   <fileobject name="ReportSchemaSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportSchemaSeqHolder"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Script_p2.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Script_p2"/>
+   </fileobject>
+   <fileobject name="NTMC_typeList.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="NTMC_typeList"/>
+   </fileobject>
+   <fileobject name="ReportFooterSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ReportFooterSeqHolder"/>
+   </fileobject>
+   <fileobject name="DirEntrySeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DirEntrySeqHolder"/>
+   </fileobject>
+   <fileobject name="ACQPebMGRServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="ACQPebMGRServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="ACQPebMGRServerPOA"/>
+   </fileobject>
+   <fileobject name="IMAGEServerConfiguration.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="IMAGEServerConfiguration"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="IMAGEServerConfiguration"/>
+      <attr name="class_dependency_IMAGEServerConfigurationOperations" stringvalue="IMAGEServerConfiguration"/>
+   </fileobject>
+   <fileobject name="CS_BLOCK_LOGHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CS_BLOCK_LOGHolder"/>
+   </fileobject>
+   <fileobject name="INVOKE_STATUS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="INVOKE_STATUS"/>
+   </fileobject>
+   <fileobject name="ExportDataSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ExportDataSeqHolder"/>
+   </fileobject>
+   <fileobject name="clas.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="AlarmDataServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="AlarmDataServerPOA"/>
+   </fileobject>
+   <fileobject name="S_APP_LOGHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_APP_LOGHolder"/>
+   </fileobject>
+   <fileobject name="EXPORT_ROW.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="EXPORT_ROW"/>
+   </fileobject>
+   <fileobject name="SubFuctionGUI.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="SubFuctionGUI"/>
+   </fileobject>
+   <fileobject name="FUNCTION_ENABLEDHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="FUNCTION_ENABLEDHolder"/>
+   </fileobject>
+   <fileobject name="DATA_RS_OBJECTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_RS_OBJECTHolder"/>
+   </fileobject>
+   <fileobject name="DBConfigurationServerPOA.java">
+      <attr name="class_dependency_org.omg.PortableServer.Servant" stringvalue="DBConfigurationServerPOA"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.InvokeHandler" stringvalue="DBConfigurationServerPOA"/>
+   </fileobject>
+   <fileobject name="DETAIL_EVENTS.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DETAIL_EVENTS"/>
+   </fileobject>
+   <fileobject name="DBConfigurationServer.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="DBConfigurationServer"/>
+      <attr name="class_dependency_DBConfigurationServerOperations" stringvalue="DBConfigurationServer"/>
+      <attr name="class_dependency_org.omg.CORBA.Object" stringvalue="DBConfigurationServer"/>
+   </fileobject>
+   <fileobject name="_NTMJobActivatorStub.java">
+      <attr name="class_dependency_NTMJobActivator" stringvalue="_NTMJobActivatorStub"/>
+      <attr name="class_dependency_org.omg.CORBA.portable.ObjectImpl" stringvalue="_NTMJobActivatorStub"/>
+   </fileobject>
+   <fileobject name="STRUCT_JOBHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="STRUCT_JOBHolder"/>
+   </fileobject>
+   <fileobject name="NationSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="NationSeqHolder"/>
+   </fileobject>
+   <fileobject name="CONTINENTEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="CONTINENTEHolder"/>
+   </fileobject>
+   <fileobject name="ParamSeqSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ParamSeqSeqHolder"/>
+   </fileobject>
+   <fileobject name="DATA_SCRIPTHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DATA_SCRIPTHolder"/>
+   </fileobject>
+   <fileobject name="PluginRegistrySeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="PluginRegistrySeqHolder"/>
+   </fileobject>
+   <fileobject name="ALARM_GENERATOR.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.IDLEntity" stringvalue="ALARM_GENERATOR"/>
+   </fileobject>
+   <fileobject name="DETAIL_INFOHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="DETAIL_INFOHolder"/>
+   </fileobject>
+   <fileobject name="ExceptionSeqHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ExceptionSeqHolder"/>
+   </fileobject>
+   <fileobject name="S_PROFILEHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="S_PROFILEHolder"/>
+   </fileobject>
+   <fileobject name="ALARM_GENERATORHolder.java">
+      <attr name="class_dependency_org.omg.CORBA.portable.Streamable" stringvalue="ALARM_GENERATORHolder"/>
+   </fileobject>
+</attributes>

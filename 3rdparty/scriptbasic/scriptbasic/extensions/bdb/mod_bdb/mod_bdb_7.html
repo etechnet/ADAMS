@@ -1,0 +1,99 @@
+<HEAD>
+<TITLE>Using the module BDB: 7. Sample program</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Sample program">
+<META NAME="keywords" CONTENT="Using the module BDB: Sample program">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>7. Sample program</H1>
+<A HREF="mod_bdb_6.17.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_8.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+This program represents how to create a counter in a database. The counter is a typical programming task that many programmers lacking concurrent programming experience fail to implement correctly.
+<P>
+A simple counter reads the current value of the counter, increments it and then writes the new result back. The issue is the record protection when there are more than one processes trying to use the counter. The process getting access to the counter should prevent the other processes accessing the counter until it has finished its incrementing the counter.
+<P>
+This protection can be done using transactions. Transactions automatically perform the necessary underlying record locks and provide a simpler view of the program flow. The transaction can be seen as a single, non-interruptible sequence of program lines.
+<P>
+To test the sample program, run it from the command line simultaneously in two windows on the same machine. Start the program in one window switch the other window and start the program again in the other window. The program instance started first starts the transaction, gets the counter value and waits your key press. The second instance opens the database, starts the transaction and gets locked when trying to read the counter value. Switch back to the first instance and press enter twice to let the transaction proceed. When the code finishes the transaction, commits the changes and releases the locks, you will soon see the second instance in the other window to proceed getting and displaying the new value of the counter.
+<P>
+Try and experience the program behavior starting it simultaneously in two or more terminal windows.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+include bdb.bas
+Const nl = "\n"
+</PRE></FONT>
+<P>
+This line opens the database. This command is not locked by any transaction
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+DB = bdb::open("counter.db",bdb::BTree,bdb::Create,0)
+</PRE></FONT>
+<P>
+Begin a transaction. This command just starts a transaction telling the database software that all record accesses from now on are performed under the transaction.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+bdb::BeginTransaction
+print "transaction started\n"
+</PRE></FONT>
+<P>
+Accessing the record can be done only if the record is not locked. In other words if there is any program executing this transaction and has already got this record locking it this call will not return until the record is freed.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+Counter = bdb::Get(DB,"COUNTER")
+print "Counter is ",Counter,nl
+print "Press enter to continue...\n"
+line input wait$
+<P>
+If IsDefined(Counter) Then
+</PRE></FONT>
+<P>
+If there was already a record with the key COUNTER then increment it and update. Numbers are converted to string and stored as decimal numbers.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+  Counter = Counter + 1
+  bdb::Update DB,Counter
+  print "updated\nPress enter to continue...\n"
+  line input wait$
+Else
+</PRE></FONT>
+<P>
+If there is no record with the key COUNTER then create one with the value 1.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ Counter = 1
+ bdb::Put DB,"COUNTER",Counter
+  print "put\nPress enter to continue...\n"
+  line input wait$
+End If
+</PRE></FONT>
+<P>
+End the transaction, commit all changes and release the counter record.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+bdb::EndTransaction
+print "transaction has finished\n"
+</PRE></FONT>
+<P>
+Although the interpreter automatically closes databases it is a disciplined behavior to close it programmatically.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+bdb::close(DB)
+</PRE></FONT><HR>
+<A HREF="mod_bdb_6.17.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_8.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

@@ -1,0 +1,60 @@
+<HEAD>
+<TITLE>Using the module BDB: 6. Berkeley DB Module Functions Reference</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Berkeley DB Module Functions Reference">
+<META NAME="keywords" CONTENT="Using the module BDB: Berkeley DB Module Functions Reference">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>6. Berkeley DB Module Functions Reference</H1>
+<A HREF="mod_bdb_5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.1.html">[&gt;&gt;&gt;]</A>
+<UL>
+<A HREF="mod_bdb_6.1.html">6.1. Open</A><BR>
+<A HREF="mod_bdb_6.2.html">6.2. Close</A><BR>
+<A HREF="mod_bdb_6.3.html">6.3. Put</A><BR>
+<A HREF="mod_bdb_6.4.html">6.4. Get</A><BR>
+<A HREF="mod_bdb_6.5.html">6.5. First</A><BR>
+<A HREF="mod_bdb_6.6.html">6.6. Last</A><BR>
+<A HREF="mod_bdb_6.7.html">6.7. Next</A><BR>
+<A HREF="mod_bdb_6.8.html">6.8. Previous</A><BR>
+<A HREF="mod_bdb_6.9.html">6.9. Key</A><BR>
+<A HREF="mod_bdb_6.10.html">6.10. Update</A><BR>
+<A HREF="mod_bdb_6.11.html">6.11. DeleteRecord</A><BR>
+<A HREF="mod_bdb_6.12.html">6.12. DeleteAll</A><BR>
+<A HREF="mod_bdb_6.13.html">6.13. BeginTransaction</A><BR>
+<A HREF="mod_bdb_6.14.html">6.14. CommitTransaction</A><BR>
+<A HREF="mod_bdb_6.15.html">6.15. EndTransaction</A><BR>
+<A HREF="mod_bdb_6.16.html">6.16. AbortTransaction</A><BR>
+<A HREF="mod_bdb_6.17.html">6.17. Drop</A><BR>
+<HR>
+<P>
+
+To use the module the basic program should include the file <font size="3"><tt>bdb.bas</tt></font>. To do this the program should contain the line
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+include bdb.bas
+</PRE></FONT>
+<P>
+somewhere at the start of the code. Note that there are no double quote characters before and after the file name. This tells the interpreter that the include file is located in a module include directory. This include file contains all the declarations that are needed to use the bdb functions.
+<P>
+The program using the module should call the functions declared in the include file. The binary library file is loaded when the first function call is executed.
+<P>
+The Berkeley DB has a very simple database model. A database is a collection of keys and assigned values. Keys and values are byte arrays. The program using the bdb can insert a key/value pair into a database, retrieve a value knowing the key, delete certain or all pairs with a given key or update the value assigned to a key. The programmer can work with several databases at a time.
+<P>
+If you are an experienced data base programmer, who uses SQL databases for a long time you may find it cumbersome. However you may notice after a while that all these structures are just the basic structures that an SQL database running a Windows NT service or UNIX daemon listening on some TCP port may use. You can perform all operation using the Berkeley DB that you can do with an SQL database with some extra work. On the other hand you may get a faster program.
+<P>
+The ScriptBasic module bdb delivers functions that can use the simple database. These are detailed in the following sections.<HR>
+<A HREF="mod_bdb_5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.1.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

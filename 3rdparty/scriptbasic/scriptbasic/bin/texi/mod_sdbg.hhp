@@ -1,0 +1,20 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=mod_sdbg.chm
+Contents file=mod_sdbg.hhc
+Default topic=mod_sdbg_title.htm
+Display compile progress=No
+Full-text search=Yes
+Index file=mod_sdbg.hhk
+Language=0x409 English (United States)
+Title=ScriptBasic Debugger Users' Guide
+
+[FILES]
+mod_sdbg_title.htm
+mod_sdbg_1.htm
+mod_sdbg_2.htm
+mod_sdbg_3.htm
+mod_sdbg_3.1.htm
+mod_sdbg_3.2.htm
+mod_sdbg_3.3.htm
+[INFOTYPES]

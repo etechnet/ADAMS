@@ -1,0 +1,24 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\trial.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\trial.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_trial.texi
+
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\trial.lib : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\s_interface.obj 
+	tlib /a C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\trial.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\s_interface.obj  
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\trial.dll : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\interface.obj 
+	bcc32 -WD -L"E:\Program Files\Borland\BCC32\Lib" -eC:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\trial.dll C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\interface.obj 
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\interface.obj : interface.c 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\s_interface.obj : interface.c 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -DSTATIC_LINK=1 -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\trial\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_trial.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_trial.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_trial.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_trial.hhp & set ERRORLEVEL=0
+
+

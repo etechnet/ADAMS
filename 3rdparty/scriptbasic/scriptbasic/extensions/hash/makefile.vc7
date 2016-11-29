@@ -1,0 +1,24 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\hash.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\hash.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_hash.texi
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\hash.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\hash.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\s_interface.obj  
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\hash.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\hash.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\interface.obj 
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\s_interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\hash\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_hash.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_hash.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_hash.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_hash.hhp & set ERRORLEVEL=0
+
+

@@ -1,0 +1,59 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.1. Starting Program Debug from Command Line</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Starting Program Debug from Command Line">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Starting Program Debug from Command Line">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.1. Starting Program Debug from Command Line</H1>
+<A HREF="mod_dbg_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.2.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+To start a program in debug mode you should start the program on the command line with the option `<font size="3"><tt>-i dbg</tt></font>'. This will load the debugger module into the interpreter before starting to execute the program, and after successful compilation of the code into internal format the execution stops and waits for user intervention.
+<P>
+For example you can say:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+scriba -i debugtest.bas
+</PRE></FONT>
+<P>
+to start the sample program `<font size="3"><tt>debugtest.bas</tt></font>' in debug mode. ScriptBasic compiles the program into byte-code and gives you a prompt:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+<P>
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+(The <font size="3"><tt>_</tt></font> character shows the place of the blinking cursor.)
+<P>
+The debugger has already listed some of the code around the actual program line. The <font size="3"><tt>&gt;</tt></font> character precedes the line where the execution of the program is waiting.<HR>
+<A HREF="mod_dbg_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.2.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

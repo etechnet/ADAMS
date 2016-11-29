@@ -1,0 +1,172 @@
+<HEAD>
+<TITLE>Documentation of the module dyc: DYC("format", arguments)</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module dyc: DYC("format", arguments)">
+<META NAME="keywords" CONTENT="Documentation of the module dyc: DYC("format", arguments)">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>DYC("format", arguments)</H1>
+<A HREF="mod_dyc_1.htm">[&lt;&lt;&lt;]</A> [&gt;&gt;&gt;]
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+import dyc.bas
+print dyc::dyc("ms,i,USER32.DLL,MessageBox,PZZL",0,"test message","title",3)
+</PRE></FONT>
+<P>
+This function calls an arbitrary function from an arbitrary dll. The first argument to the function has to be a format string
+and the rest of the arguments are the arguments for the function to be called. The format string has to specify the calling
+convention of the function, the return value, the name of the DLL and the function to call and the argument types. These have
+to be specified one after the other separated by commas. The format string should not contain space.
+<P>
+The format string has the following format:
+<P>
+<font size="3"><tt>"Xc,Xr,DllName,FunctionName,Xargs"</tt></font>
+<P>
+where
+<P>
+<UL>
+<LI> <font size="3"><tt>Xc</tt></font> specifies the calling convention
+<LI> <font size="3"><tt>Xr</tt></font> specifies the return value
+<LI> <font size="3"><tt>DllName</tt></font> is the name of the DLL
+<LI> <font size="3"><tt>FunctionName</tt></font> is the name of the function
+<LI> <font size="3"><tt>Xargs</tt></font> specifies the arguments
+</UL>
+<P>
+When the function is called the arguments are converted from their BASIC value and the function is called according to the
+format specification. However note that a misformed format string can cause access violation in the program and thus stopping
+the process. Therefore it is recommended that you fully debug your code and the way you use this function. It may be a wise
+idea not to install this module on a server where different programmers can develop their programs and run in shared process
+n multiple threads. For example a hosted web server running the Eszter SB Application Engine can be stopped by a BASIC program
+using this external module.
+<P>
+In the following I describe the format string specifiers.
+<P>
+<UL>
+<LI> <font size="3"><tt>Xc</tt></font> CALLING CONVENTION
+</UL>
+<P>
+The calling convention can be one, two or at most three characters. The character <font size="3"><tt>m</tt></font> or <font size="3"><tt>M</tt></font> means that the code was compiled
+using Microsoft compiler. This is the default behavour, thus there is no need to specify this. The opposite is <font size="3"><tt>b</tt></font> or <font size="3"><tt>B</tt></font>
+meaning that the code was compiled using Borland compiler. The difference between these two compilers is how the return value
+is passed back to the caller. You should not use both <font size="3"><tt>b</tt></font> and <font size="3"><tt>m</tt></font> at a time. Actually <font size="3"><tt>m</tt></font> will be ignored.
+<P>
+The calling convention can also be <font size="3"><tt>s</tt></font> or <font size="3"><tt>S</tt></font> meaning standard callign convention or <font size="3"><tt>c</tt></font> or <font size="3"><tt>C</tt></font> meaning language C
+calling convention. Only one of them is to be used in a function call. If you are callign some function from a Windows system
+DLL then it is certainly <font size="3"><tt>s</tt></font>. If you do not know which to use write a small test program and experiment.
+<P>
+The difference between standard and C calling convention is the order of the arguments placed on the stack and also who the
+responsible is to clean the arguments from the stack (the called function or the calling code).
+<P>
+Finally you can specify <font size="3"><tt>4</tt></font> or <font size="3"><tt>8</tt></font> to specify that the function is returning a four or eight-byte floating point number.
+Although this is a kind of return value specification, it is stated here, because this affects the calling convention. These
+values are returned not in a memory place from the function but rather in the co-processor register and function <font size="3"><tt>dyc</tt></font> has
+to know to fetch them from there rather than expection the function to return a four or eight-byte memory chunk.
+<P>
+<UL>
+<LI> <font size="3"><tt>Xr</tt></font> RETURN VALUE
+</UL>
+<P>
+The return value should be specified using a single character. This can be:
+<P>
+<font size="3"><tt>i</tt></font> or <font size="3"><tt>I</tt></font> <font size="3"><tt>int</tt></font>, <font size="3"><tt>l</tt></font> or <font size="3"><tt>L</tt></font> <font size="3"><tt>long</tt></font>, <font size="3"><tt>p</tt></font> or <font size="3"><tt>P</tt></font> pointer, <font size="3"><tt>f</tt></font> or <font size="3"><tt>F</tt></font> <font size="3"><tt>float</tt></font>,
+<font size="3"><tt>d</tt></font> or <font size="3"><tt>D</tt></font> for <font size="3"><tt>double</tt></font> or <font size="3"><tt>v</tt></font> or <font size="3"><tt>V</tt></font> for <font size="3"><tt>__int64</tt></font>.
+<P>
+The int and long types are converted to a BASIC integer number, which is stored as a long in ScriptBasic. float and double values
+are returned as real number, which is stored as double in ScriptBasic. A pointer value is converted to long and is returned in an
+integer value. An <font size="3"><tt>__int64</tt></font> value is returned as an 8 byte string copiing the bytes of the original <font size="3"><tt>__int64</tt></font> value to the bytes
+of the BASIC string.
+<P>
+<UL>
+<LI> <font size="3"><tt>DllName</tt></font>
+</UL>
+<P>
+This parameter has to specify the name of the DLL. This name will be used to load the DLL calling the system function <font size="3"><tt>LoadLibrary</tt></font>.
+This means that the name can but also may not include the full path to the file. In the latter case the system function will search
+the path for the DLL as specified int he Microsoft provided documentation for the function <font size="3"><tt>LoadLibrary</tt></font>.
+<P>
+When a function from a certain DLL is called first the module loads the DLL and when the BASIC program finishes and the module is
+unloaded it unloads all DLLs it loaded. Any DLL by the module will only be loaded once. Whent he module is used in a multi-thread
+environment the interpreter threads load and unload the DLLs independently. If you do not understand what it means then just ignore
+this explanation: nothing to worry about.
+<P>
+<UL>
+<LI> <font size="3"><tt>FunctionName</tt></font>
+</UL>
+<P>
+The name of the function to be called from the certain DLL. If the function is not present in the DLL then the program tries to
+use the function with the original name with an 'A' appended to it. Many system functions happen to have this format in the
+Windows librares.
+<P>
+<UL>
+<LI> <font size="3"><tt>Xargs</tt></font> argument types
+</UL>
+<P>
+This parameter should specify the arguments. It has to have as many character as many arguments there are. Each character should specify
+exactly one argument and will control how the actual BASIC arguments are converted to their native format. For each argument one of the
+following characters can be used:
+<P>
+<UL>
+<LI> <font size="3"><tt>1</tt></font>
+<LI> <font size="3"><tt>2</tt></font>
+<LI> <font size="3"><tt>4</tt></font>
+<LI> <font size="3"><tt>8</tt></font> specifies that the argument is an arbitrary 1-, 2-, 4- or 8-byte argument. The BASIC argument should be string value and
+should have at least as many characters as needed (1, 2, 4 or 8 as specified).
+<P>
+It is possible to use undefined, integer or real value for 1-, 2- or 4-byte values. In this case the value will be converted to integer and
+the bytes of the value will be used as argument. In case of 8-byte argument the BASIC argument is converted to string.
+<P>
+<LI> <font size="3"><tt>c</tt></font> specifies that the argument is a single character. If the BASIC argument is a string then the first character of the string is
+used. If the argument is a real number or an integer number then the value will be used as ASCII code. If the argument is <font size="3"><tt>undef</tt></font> or if the
+string has no characters in it then the value will be zero.
+<P>
+<LI> <font size="3"><tt>s</tt></font> specifies that the argument is a short(2-byte) value. The BASIC argument is converted to an integervalue if needed and
+truncated to two bytes if needed.
+<P>
+<LI> <font size="3"><tt>f</tt></font> specifies that the argument is a float value. The BASIC argument is converted to a real value and its precision is decreased
+from double to float.
+<LI> <font size="3"><tt>h</tt></font>
+<LI> <font size="3"><tt>p</tt></font>
+<LI> <font size="3"><tt>l</tt></font> specifies that the argument is a handle, pointer or long. In these cases the BASIC argument is converted to an integer value if
+needed.
+<P>
+<LI> <font size="3"><tt>z</tt></font> specifies that the argument is a pointer that should point to a zero terminated string. The BASIC argument is converted to string and
+a pointer to the start of the string is passed as actual argument. Note that BASIC strings are not zero terminated and the function <font size="3"><tt>dyc</tt></font>
+does not append the terminating zero character to the string. Thus you have to append a zero character to the BASIC string before you
+pass it as zero terminated string. For example:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+import dyc.bas
+<P>
+a$ = "message"
+a$ &amp;= " text"
+<P>
+REM Make the string zero character terminated
+a$ &amp;= chr$(0)
+<P>
+print dyc::dyc("ms,i,USER32.DLL,MessageBox,PZZL",0,a$,"title",3)
+</PRE></FONT>
+<P>
+On the other hand you can safely use string constants as argument like in the example above <font size="3"><tt>"title"</tt></font> because string constants in ScriptBasic
+contain an extra zero character following their normal characters.
+<P>
+<LI> <font size="3"><tt>d</tt></font> specifies that the argument is a double value. The BASIC argument is converted to a real value if needed, which is stored in BASIC
+internally as double and is passed to the function.
+</UL>
+<P>
+Note that this is a wise idea to write a wrapper function in BASIC that gets the arguments performs some checks if needed and calls the
+module <font size="3"><tt>dyc</tt></font> instead of putting the dyc call into the main BASIC code.
+<P>
+ <HR>
+<A HREF="mod_dyc_1.htm">[&lt;&lt;&lt;]</A> [&gt;&gt;&gt;]
+</FONT>
+</BODY>
+
+</HTML>

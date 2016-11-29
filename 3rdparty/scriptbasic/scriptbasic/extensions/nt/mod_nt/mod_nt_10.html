@@ -1,0 +1,40 @@
+<HEAD>
+<TITLE>Documentation of the module nt: 10. Start a Windows NT service</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Start a Windows NT service">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Start a Windows NT service">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_nt_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>10. Start a Windows NT service</H1>
+<A HREF="mod_nt_9.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_11.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+This function starts an installed Windows NT service.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+nt::StartService "Service name"
+</PRE></FONT>
+<P>
+The argument for this subroutine call is the name of the service to start. This is the
+name that was used to create the service and you can read this name when you start the
+graphical service control manager application.
+<P>
+The subroutine returns <font size="3"><tt>undef</tt></font> value. If the service can not be started the function
+raises error. Calling this subroutine for an already running service is not an error.<HR>
+<A HREF="mod_nt_9.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_11.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

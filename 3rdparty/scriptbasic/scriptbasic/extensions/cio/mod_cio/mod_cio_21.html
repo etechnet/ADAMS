@@ -1,0 +1,65 @@
+<HEAD>
+<TITLE>Documentation of the module cio: 21. cio::SetColor col</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module cio: cio::SetColor col">
+<META NAME="keywords" CONTENT="Documentation of the module cio: cio::SetColor col">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_cio_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>21. cio::SetColor col</H1>
+<A HREF="mod_cio_20.html">[&lt;&lt;&lt;]</A> <A HREF="mod_cio_22.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+The the color of the consecutive printings or clear screeen <a href="mod_cio_html">cls</A>.
+<P>
+The argument should be an integer value defining the actual color.
+To create this value the constants defined in <font size="3"><tt>cio.bas</tt></font> should be used.
+These are:
+<P>
+<UL>
+<LI> <font size="3"><tt>FBlue</tt></font> the foreground in blue
+<LI> <font size="3"><tt>FGreen</tt></font> the foreground is green
+<LI> <font size="3"><tt>FRed</tt></font> the foreground in red
+<LI> <font size="3"><tt>FIntense</tt></font> the foreground is intense
+<LI> <font size="3"><tt>BBlue</tt></font> the background in blue
+<LI> <font size="3"><tt>BGreen</tt></font> the background is green
+<LI> <font size="3"><tt>BRed</tt></font> the background is red
+<LI> <font size="3"><tt>BIntense</tt></font> the background is intense
+</UL>
+<P>
+To set the actual color of the foreground and the background the
+programmer may use and expression that <font size="3"><tt>or</tt></font> connects these values.
+For example
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+cio::SetColor FBlue or BIntense
+</PRE></FONT>
+<P>
+sets the foreground blue and the backgound black with intense bit set (a kind
+of light grey). To get the actual colors play a bit with the sample program
+<font size="3"><tt>testconcol.bas</tt></font> in the directory examples.
+<P>
+To ease different color settings the header file <font size="3"><tt>cio.bas</tt></font> defines the following
+constants:
+<UL>
+<LI> <font size="3"><tt>FGrey</tt></font>
+<LI> <font size="3"><tt>FWhite</tt></font>
+<LI> <font size="3"><tt>BGrey</tt></font>
+<LI> <font size="3"><tt>BWhite</tt></font>
+</UL><HR>
+<A HREF="mod_cio_20.html">[&lt;&lt;&lt;]</A> <A HREF="mod_cio_22.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

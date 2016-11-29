@@ -1,0 +1,1761 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+
+#ifndef _COMMOM_DATATYPES_IDL
+#define _COMMOM_DATATYPES_IDL
+
+// This is to keep quite java idl compiler
+#ifndef _ASP_IDL
+#ifndef _SSM_IDL
+#ifndef _MDM_IDL
+#ifndef _ETSS_IDL
+ #define _ASP_IDL
+ #define _SSM_IDL
+ #define _MDM_IDL
+ #define _ETSS_IDL
+#endif
+#endif
+#endif
+#endif
+
+#include <adams_limits.h>
+#include <idlincludes.h>
+#include <ssm_master_server_h.h>
+
+
+#define MAX_EINFO_LEN				161	/* Lunghezza max stringhe extrainfo */
+#define MAX_ELEMENT_CODE_LEN			21	/* Lunghezza max codice elemento (alfanumerico) */
+#define DATETIME_FORMAT_LEN			15	/* Formato data/ora [yyyymmddoommss\0] */
+#define MAXNODI					11	/* Num nodi telecom */
+#define TTM_FLAG_LEN				2	/* Define per cartellino */
+#define TTM_OPERATOR_LEN			9
+#define TTM_TYPE_LEN				5
+#define TTM_TRAFFIC_LEN				11
+#define TTM_CODE_LEN				6
+#define TTM_FLDEST_LEN				2
+#define TTM_AC_LEN				6
+#define TTM_IAG_LEN				5
+#define TTM_NODE_LEN				4
+#define TTM_CITY_LEN				13
+#define TTM_ALARMON_LEN				25
+#define TTM_IDALARM_LEN				256
+#define TTM_ANOMALY_C_LEN			11
+#define TTM_ORIGIN_C_LEN			11
+#define TTM_ANOMALY_LEN				51
+#define TTM_ORIGIN_LEN				51
+#define TTM_DATE_LEN				25
+#define TTM_FLAGGEN_LEN				2
+#define TTM_LOGIN_LEN				25
+#define TTM_PASSWD_LEN				25	/* end define per cartellino */
+#define NUM_TYPE_ANOMALIES			50
+#define TTM_SELECT_LEN				129
+
+module net {
+
+module etech {
+
+// --------------- MDM / ETSS
+
+#ifdef _MDM_IDL
+#define _MDM_ETSS_IDL
+#endif
+#ifdef _ETSS_IDL
+#define _MDM_ETSS_IDL
+#endif
+
+#ifdef _MDM_ETSS_IDL
+
+enum ticketsTypes {
+	workingTicket,
+	closedTicket
+};
+
+/**
+  * definizione dei possibili tipi valore
+  */
+
+enum ValuesTypes {
+	VoidValue,
+	NumericValue,
+	StringValue,
+	BooleanValue
+};
+
+/**
+  * definizione coppie label/valore
+  */
+
+struct DETAIL_VALUES
+{
+	char descr[MAX_VAL_DESCR_LEN];
+	char fieldValue[MAX_VAL_VALUE_LEN];
+	ValuesTypes imgValueType;
+	boolean highlight;
+};
+
+typedef sequence<DETAIL_VALUES> DetailValuesSeq;
+
+/**
+  * sequenza eventi
+  */
+
+struct DETAIL_EVENTS
+{
+	char eventName[MAX_EVENT_NAME_LEN];
+	long linkRef;
+	DetailValuesSeq eventValues;
+};
+
+typedef sequence<DETAIL_EVENTS> DetailEventsSeq;
+
+/**
+  * Sequence di dettaglio
+  */
+
+struct DETAIL_INFO
+{
+	char groupLabel[MAX_GROUP_LABEL_LEN];
+	char groupIconUrl[MAX_GROUP_ICON_URL_LEN];
+	DetailEventsSeq info;
+};
+
+typedef sequence<DETAIL_INFO> DetailInfoSeq;
+
+/**
+  * Sequence di richiesti dettaglio
+  */
+
+typedef sequence<long> sLinks;
+typedef sequence<short> sTypeId;
+
+struct DETAIL_REQUEST
+{
+	short alarmFamilyId;				// famiglia allarmi (CC,IAG,....)
+	char elementCode[MAX_ELEMENT_CODE_LEN];		// codice elemento allarmato
+	sTypeId alarmTypeId;				// id tipo allarme (NOTRUNK, SUPPLIER, ....)
+	sLinks links;					// db links
+};
+
+struct DATA_FEP_IMAGE
+{
+   long IdFep;						//Identificativo Centrale
+   char Description[NODE_DESC_LEN];				//Descrizione Centrale
+};
+typedef sequence<DATA_FEP_IMAGE> FepImageSeq;
+
+/**
+ * Sequence per informazioni aggiuntivo al singolo allarme
+ */
+
+struct EXTRA_INFO
+{
+	char einfo[MAX_EINFO_LEN];
+};
+typedef sequence<EXTRA_INFO> ExtraInfoSeq;
+
+/**
+ * Sequence per passaggio informazioni allarmi
+ */
+
+typedef sequence<long> LinkSeq;
+
+struct ALARM_INFO
+{
+	long	elementType;					// Tipo elemento
+	char	elementCode[MAX_ELEMENT_CODE_LEN];		// Codice elemento
+	long	status;						// Stato (on, off, book, ticket)
+	long	codeTypeAlarm;					// codice del tipo di allarme
+	char	dateTime[DATETIME_FORMAT_LEN];			// Data e ora
+	LinkSeq	link;						// Link dettaglio allarmi
+	ExtraInfoSeq extraInfo;					// Infos aggiuntive
+};
+typedef sequence<ALARM_INFO> AlarmInfoSeq;
+
+/**
+  * Definizione record cartellini auditing
+  */
+
+
+struct TTMRECORDIMAGE
+{
+	char ttm_flag_cart[TTM_FLAG_LEN];
+	char ttm_operator[TTM_OPERATOR_LEN];
+	char ttm_type[TTM_TYPE_LEN];
+	char ttm_traffic[TTM_TRAFFIC_LEN];
+	char ttm_code[TTM_CODE_LEN];
+	char ttm_flagdest[TTM_FLDEST_LEN];
+	char ttm_ac[TTM_AC_LEN];
+	char ttm_iag[TTM_IAG_LEN];
+	char ttm_node[TTM_NODE_LEN];
+	char ttm_city[TTM_CITY_LEN];
+	char ttm_alarmon[TTM_ALARMON_LEN];
+	char ttm_idalarm[TTM_IDALARM_LEN];
+	char ttm_anomaly[NUM_TYPE_ANOMALIES][TTM_ANOMALY_LEN];
+	char ttm_origin[TTM_ORIGIN_LEN];
+	char ttm_anomaly_c[NUM_TYPE_ANOMALIES][TTM_ANOMALY_C_LEN];
+	char ttm_origin_c[TTM_ORIGIN_C_LEN];
+	char ttm_ticketdate[TTM_DATE_LEN];
+	char ttm_flaggen[TTM_FLAGGEN_LEN];
+	long linkRef;
+};
+
+
+struct TTMSELECT
+{
+	char ttmDesc[TTM_SELECT_LEN];
+	TTMRECORDIMAGE ttmRecord;
+};
+typedef sequence<TTMSELECT> TtmSelectSeq;
+
+
+struct USERLOGIN
+{
+	string login;
+	string password;
+	short ticketType;
+	long elementType;
+	string elementCode;
+	long linkRef;
+};
+
+// Struttura relativa al DR.
+struct DATA_DR
+{
+	long position;
+	long fieldtype;
+	long offset;
+	long size;
+	long type_size;
+	boolean is_array;
+	long array_size;
+	char description[DR_FIELDSDESCRIPTIONLENGHT];
+	boolean isIndex;
+	boolean indexByPlugin;
+	long indexBlockSize;
+	long indexRealTimeBlockSize;
+	long startSize;
+	char indexSuffix[TE_SUFFIX_LEN];
+	char startTime[DR_DATE_LEN];
+	char endTime[DR_DATE_LEN];
+};
+
+// Struttura GlobalOpt
+
+struct GLOBALOPT
+{
+	boolean drUsePlugin;
+	char drPluginName[DR_PLUGINNAME_LEN];
+	boolean drUsePath;
+	char drPathName[DR_PATH_LEN];
+	char glbDefaultPluginPath[GLB_INFO_LEN];
+	char glbAlias[GLB_INFO_LEN];
+	char glbAuthor[GLB_INFO_LEN];
+	char glbLastModified[GLB_INFO_LEN];
+	char indexFileName[MAX_CONFIG_FILENAME];
+	boolean alarmManagement;
+};
+
+// Struttura relativa alle relazioni
+struct DATA_RELATIONS
+{
+	long idRelation;				                // identificativo univoco
+	long idParentRelation;			                	// identificativo relazione padre alternativo alla selezione del 2^ el. traf.
+	long idFirstElement;			                	// link all'elemento di traffico primario
+	long idSecondElement;			                	// link all'elemento di traffico secondario
+	long admittedDirections;			            	// direzioni ammesse (tagDirections)
+	boolean admitHexValues;						// ammette valorizzazioni esadecimali
+	boolean admitNetworkAnalisys;					// ammette analisi network
+	boolean ghostRelation;				        	// relazione fantasma
+	long nextLevelRelations[NEXTLEVEL_RELATIONS];               	// lista relazioni di livello successivo
+	long restrictions[MAX_RESTRICTIONS];				// lista delle restrizioni
+	long tiedRestrictions[MAX_RESTRICTIONS];			// restrizioni obbligatorie
+	boolean freeFormat;						// Relazione fittizia per il free-format
+};
+
+// Struttura relativa al Traffic Element
+struct DATA_DATAELEMENT
+{
+	long	idElement;					// identificativo univoco
+	char	shortDescription[SHORT_DESC_LEN];		// descrizione breve (tag)
+	char	longDescription[LONG_DESC_LEN];			// descrizione
+	long	guiObject;					// tipo di oggetto GUI
+	char	pixmapFileName[PIXMAP_FILENAME_LEN];		// pixmap associata
+	char	valueRange[VALUE_RANGE_LEN];			// range di valori
+	double	valueList[MAX_OPTIONS];				// valori in lista
+	char	valueListLabel[MAX_OPTIONS][OPTION_LABEL_LEN];	// etichette associate ai valori (valueList)
+	double	defaultValue;					// selezione di default
+	boolean	acceptHex;					// accetta valori esadecimali;
+	long	priority;					// priorita' restrizione
+	long	aggregateRestrictions[MAX_AGGREGATE_RESTR];	// sottorestrizioni
+	long	exceptions[MAX_EXCEPTIONS];			// eccezioni
+	long	idDRLink;					// link base dati
+	long	elementType;					// tipologia dati (SOLO se idDRlink == 0)
+	long	compareSelection;				// abil. selezione operatore
+	char	Suffix[TE_SUFFIX_LEN];				// prefisso file start/indici (per static conf.)
+	long	LengthInRelation;				// Lunghezza dell'elemento in chiave
+	char	valueShifter[VALSHIFTER_MAX][VALSHIFTER_LEN*3];	// Ranges for values shifter
+	long	scripts[MAX_TE_SCRIPTS];			// te Scripts
+	long	idPlugin;					// Id of the handler plugin
+	long	idPluginGUI;					// Id of the GUI handler plugin
+	boolean	repeatKey;					// force key show on report
+	boolean	ffEnabled;					// available for free-format relations
+};
+
+struct REST_INFO
+{
+	long Level;
+	long Element;
+	long Value[MAX_N_VALUE];
+	char AsciiValue[MAX_N_VALUE][ASCII_REST_LEN];
+	long Operator;
+	long Priority;
+};
+
+struct DATA_FEP
+{
+	long IdFep;				//Identificativo Centrale
+	char Description[SHORT_DESC_LEN];		//Descrizione Centrale
+};
+
+struct DATA_ANALYSISTYPE
+{
+	long idAnalysis;				// identificativo univoco
+	boolean FlagArchiveData;   			// Flag per l'attivazione del tab relativo ai Dati
+	boolean FlagCentrale;				// Flag per l'attivazione del tab relativo alle centrali
+	boolean FlagDate;	        		// Flag per l'attivazione del tab relativo alle date
+	boolean FlagOutputType;				// Flag per l'attivazione del tab relativo tipo di output
+	boolean FlagTimeRes;				// Flag per l'attivazione del tab relativo restrizione oraria
+	boolean FlagTrafficType;   			// Flag per l'attivazione del tab relativo tipo di traffico
+	boolean FlagSort;          			// Flag per l'attivazione del tab relativo all'ordinamento
+	boolean FlagCumulativeData;			// Flag per la generazione di analisi a cumulazione dei dati
+	char LongDescription[LONG_DESC_LEN];		// Descrizione dettagliata
+	char ShortDescription[SHORT_DESC_LEN];		// Descrizione breve
+	long relations[MAX_RELATION];			// Relazioni
+	long countersKitId;				// Tag del kit contatori abbinatoa questa analisi
+	long reportsId[MAX_ANALYSIS_REPORTS];		// id reports abilitati
+};
+
+struct DATA_EXCEPTIONS
+{
+	long 	idException;				// identificativo univoco
+	char	tag[SHORT_DESC_LEN];			// descrizione breve (tag)
+	char	description[LONG_DESC_LEN];		// descrizione dettagliata
+	long	idTriggerRestriction;			// identificativo restrizione trigger
+	long	triggeredStatus;			// stato in trigger
+	char	triggeredValue[ASCII_REST_LEN];		// valore in trigger
+	long	action;					// azione (true=abilita, false=disabilita)
+	char	targetValue[ASCII_REST_LEN];		// valore in set
+	long	idAggregateException;			// ulteriore eccezione (opzionale)
+};
+
+struct DATE_INFO
+{
+	char dateString[9];
+};
+
+
+typedef sequence<REST_INFO> RELSeq;
+typedef sequence<DATE_INFO> DateSeq;
+
+struct DATA_HELP
+{
+	char key[ASCII_REST_LEN];
+	char data[HELPER_DESC_LEN];
+};
+typedef sequence<DATA_HELP> HelperSeq;
+
+struct STRUCT_JOB
+{
+	short 	new_job;						/*1=Nuovo 0=Vecchio*/
+	short 	job_id;							/*Identificativo Job*/
+	char 	user_str[JQ_USR_STR_SIZE];
+	long	user_id;						/*Identificativo Utente*/
+	long 	data_start;						/*Data di partenza della schedulazione*/
+	long 	data_end;						/*Data di fine della schedulazione*/
+	short 	hour;							/*Ora di partenza del Job*/
+	long 	modality;						/*Modalit�*/
+	long 	qnt;							/*Quantit�*/
+	char 	dest_fep[JQ_NODO_FEP_SIZE];				/*Descrizione del nodo*/
+	long 	last_day;						/*Ultimo giorno*/
+	long 	last_month;						/*Ultimo mese*/
+	short 	last_quarter;						/*Ultimo quarto d'ora*/
+	char 	dest_dir[JQ_DIR_DEST_SIZE];				/*Directory di destinazione*/
+	short 	locked;							/*Identifica se il Job � in esecuzione*/
+	short 	period;							/**/
+	short 	start_hour;						/**/
+	short 	end_hour;						/**/
+	char 	description[JQ_DESC_SIZE];				/**/
+};
+
+typedef sequence<STRUCT_JOB> JOBSeq;
+
+struct STRUCT_USER
+{
+	char user[JOB_USR_LOGIN_LEN];
+	char password[JOB_USR_PASSWD_LEN];
+	long job;
+	long frequence;
+	long iID_User;
+};
+
+typedef sequence<STRUCT_USER> JobUserSeq;
+
+struct COUNTER_KIT {
+	short triggerField;
+	long triggerValue;
+	short counterIndex;
+	short counterType;
+	short percentOf;
+	short triggerCounter;
+	char tag[CNT_TAG_LEN];
+	char description[CNT_DESC_LEN];
+};
+
+typedef sequence<COUNTER_KIT> CounterKitSeq;
+
+struct COUNTERS {
+	long idCounter;
+	char tag[SHORT_DESC_LEN];
+	boolean usePlugin;
+	char pluginName[CNT_PLUGINNAME_LEN];
+	boolean usePath;
+	char pathName[CNT_PATH_LEN];
+	CounterKitSeq counterKit;
+};
+
+typedef sequence<COUNTERS> CountersSeq;
+
+struct DATA_PLUGINREGISTRY {
+	long idPlugin;					// unique id
+	char tag[SHORT_DESC_LEN];			// descrizione breve (tag)
+	char pluginName[PLR_PLUGINNAME_LEN];		// plugin (file) name
+	long usage;					// kind of plugin/utlization
+	boolean enabled;				// active or deletion scheduled
+};
+
+typedef sequence<DATA_PLUGINREGISTRY> PluginRegistrySeq;
+
+struct DATA_SCRIPT_VARLIST {
+	char d[SCRIPT_VARNAME_LEN];
+};
+
+typedef sequence<DATA_SCRIPT_VARLIST> VariablesSeq;
+
+struct DATA_SCRIPT_TEXT {
+	char d[SCRIPT_TEXT_LEN];
+};
+
+typedef sequence<DATA_SCRIPT_TEXT> ScriptTextSeq;
+
+struct DATA_SCRIPT {
+	long idScript;
+	char tag[SHORT_DESC_LEN];
+	long dataOrigin;
+	VariablesSeq variables;
+	ScriptTextSeq scriptText;
+	char resultVariableName[SCRIPT_VARNAME_LEN];
+	long resultType;
+};
+
+typedef sequence<DATA_SCRIPT> ScriptSeq;
+
+struct DATA_RS_HTML {
+	long vSize;
+	long hSize;
+	long vAlign;
+	long hAlign;
+	boolean wrap;
+	long foreground_r;
+	long foreground_g;
+	long foreground_b;
+	long background_r;
+	long background_g;
+	long background_b;
+	long style;
+	long fontSize;
+	boolean bold;
+	boolean italic;
+	boolean underline;
+};
+
+struct DATA_RS_OBJECT {
+	char tag[SHORT_DESC_LEN];
+	boolean hasBorder;
+	long excelCSV;
+	boolean simpleBody;
+	long idAnalisys;
+	boolean usePlugin;
+	char pluginName[SHORT_PLUGIN_NAME];
+	long defaultForeground_r;
+	long defaultForeground_g;
+	long defaultForeground_b;
+	long defaultBackground_r;
+	long defaultBackground_g;
+	long defaultBackground_b;
+};
+
+struct DATA_RS_HEADER {
+	char userLabel[REPO_LABEL_LEN];
+	long value;
+	char userValue[REPO_USER_LEN];
+	boolean isUrl;
+	long line;
+};
+
+struct DATA_RS_BODY {
+	long source;
+	long idKey;
+	long idCounter;
+	long idScript;
+	long idPlugin;
+	char userValue[REPO_USER_LEN];
+	boolean isUrl;
+	boolean noTotals;
+	boolean	repeatKey;
+	long decimals;
+	long line;
+};
+
+struct DATA_RS_TOTALIZER {
+	long trigger;
+	char label[REPO_LABEL_LEN];
+	boolean redrawHeader;
+	boolean border;
+	long line;
+	boolean useScript;
+	long idScript;
+};
+
+struct DATA_RS_FOOTER {
+	long source;
+	char label[REPO_LABEL_LEN];
+	char userValue[REPO_USER_LEN];
+	boolean isUrl;
+	long line;
+};
+
+struct DATA_RS_COMMON {
+	long idObject;
+	long idReportSchema;
+	long type;
+	char tag[REPO_LABEL_LEN];
+};
+
+struct DATA_RSO_OBJECT {
+	DATA_RS_COMMON c;
+	DATA_RS_HTML html;
+	DATA_RS_OBJECT u;
+};
+
+typedef sequence<DATA_RSO_OBJECT> ReportObjectSeq;
+
+struct DATA_RSO_HEADER {
+	DATA_RS_COMMON c;
+	DATA_RS_HTML html;
+	DATA_RS_HEADER u;
+};
+
+typedef sequence<DATA_RSO_HEADER> ReportHeaderSeq;
+
+struct DATA_RSO_BODY {
+	DATA_RS_COMMON c;
+	DATA_RS_HTML html;
+	DATA_RS_BODY u;
+};
+
+typedef sequence<DATA_RSO_BODY> ReportBodySeq;
+
+struct DATA_RSO_TOTALIZER {
+	DATA_RS_COMMON c;
+	DATA_RS_HTML html;
+	DATA_RS_TOTALIZER u;
+};
+
+typedef sequence<DATA_RSO_TOTALIZER> ReportTotalizerSeq;
+
+struct DATA_RSO_FOOTER {
+	DATA_RS_COMMON c;
+	DATA_RS_HTML html;
+	DATA_RS_FOOTER u;
+};
+
+typedef sequence<DATA_RSO_FOOTER> ReportFooterSeq;
+
+struct DATA_REPORTSCHEMA {
+	long idReportSchema;
+	char tag[SHORT_DESC_LEN];
+	DATA_RSO_OBJECT objO;
+	ReportHeaderSeq hdrV;
+	ReportBodySeq bdyV;
+	ReportTotalizerSeq totV;
+	ReportFooterSeq fooV;
+};
+
+
+typedef sequence<DATA_REPORTSCHEMA> ReportSchemaSeq;
+
+typedef sequence<long> LongSeq;
+
+struct STRUCT_PARAMS
+{
+	char	Name[MAX_CONFIG_FILENAME];	// Nome della configurazione in uso
+	long 	AnalysisType;			// Indica il tipo di analisi.
+	long    NetworkRealTime;		// Indica se � una elaborazione
+	long 	DataType;			// Indica il tipo di dati.
+	long 	OutputType;			// Indica il tipo di output.
+	DateSeq	ElaborationData;		// date da elaborare
+	LongSeq Fep;				// Indica le centrali prescelte.
+	long 	Relation;			// relazione
+	long 	RelationDirection;		// Indica la direzione della
+	RELSeq 	Filters;			// Restrizioni.
+	boolean OppositeRestriction;		// inversione restrizioni
+	boolean FlagSort;			// sort richiesto
+	long 	ElementToSort;			// contatore sort
+	boolean Ascendent;			// direzione sort
+	boolean Reserved;			// visualizzazione estesa
+	boolean SingleRelation;			// Indica che si vuole visualizzare
+	boolean IsPercent;			// Indica se si vuole la visualizzazione
+	long 	HexValue;			// Stampa esadecimale
+	boolean isScheduled;			// Attivo se il report viene gestito dallo schedulatore
+	long 	idUser;				// id utente per job activator
+	long 	idJob;				// id del job
+	char 	Description[JQ_DESC_SIZE];	// Descrizione del Job
+	long 	idReportSchema;			// id del ReportShema selezionato... Necessario al masterserver
+	char	user[USR_LOGIN_LEN];		// utente relativo alla richiesta
+	char	user_ip[IP_STRING_LEN];		// ip utente relativo alla richiesta
+	boolean	freeFormat;			// utilizza relazione free-format
+	long	ffRelation[MAX_DIMENSION];	// definizione relazione free-format
+};
+
+
+typedef sequence<DATA_DR>DRSeq;
+typedef sequence<DATA_RELATIONS>RelationSeq;
+typedef sequence<DATA_DATAELEMENT>ElementSeq;
+typedef sequence<DATA_FEP> FEPSeq;
+typedef sequence<DATA_ANALYSISTYPE> AnalisysSeq;
+typedef sequence<DATA_EXCEPTIONS> ExceptionSeq;
+
+// Definizione per Albero binario
+
+union TypeValore switch(short)
+{
+	case 1:unsigned long long UnsignedInteger;
+	case 2:long long          Integer;
+	case 3:double             Decimal;
+};
+
+struct PARAM
+{
+	long IDNodo;
+	long Type;
+	boolean isPercent;
+	TypeValore Value;
+};
+typedef sequence<PARAM>Parameter;
+
+typedef sequence<octet> UserPoolSeq;
+typedef sequence<string> ParameterKeys;
+typedef	sequence<string> IDListSeq;
+
+struct FEP_NODE
+{
+	char Key[MAX_KEY_LENGTH];
+	Parameter ParamSeq;
+	UserPoolSeq userPool;
+};
+
+typedef sequence<FEP_NODE>BtreeSeq;
+typedef unsigned long BtreeID;
+
+struct PIVOTDATANODE
+{
+	ParameterKeys pkeySeq;
+	Parameter ParamSeq;
+};
+typedef sequence<PIVOTDATANODE>PivotDataNodeSeq;
+
+struct PIVOTREQ
+{
+	boolean enabledKeys[MAX_PIVOT_KEYS];
+	long enabledColumns[CNT_NUM];
+	long sortColumn;
+	boolean descending;
+	string focusOn;
+	long last_row;
+	string last_key;
+	long elementToSort;
+	boolean percent;
+};
+
+// Definizione per Albero binario per Call Monitoring
+
+// struct NODO_CALL_MONITORING
+// {
+//   char Chiave[MAX_KEY_LENGTH];
+//   char DR[200];
+// };
+// typedef sequence<NODO_CALL_MONITORING>BtreeCallMonSeq;
+
+struct INVOKE_STATUS
+{
+	long percent[CORBA_NCEN];
+	char desc[CORBA_NCEN][20];
+	char url[CORBA_NCEN][512];
+};
+
+struct DIR_ENTRY
+{
+	char name[257];
+	char date[15];
+};
+typedef sequence<DIR_ENTRY> DirEntrySeq;
+
+struct ADAMS_USER
+{
+	char login[USR_LOGIN_LEN];
+	char passwd[USR_PASSWD_LEN];
+	boolean userAdmin;
+	boolean configAdmin;
+	char enabledConfigurations[MAX_ENABLE_CONFIGS][MAX_CONFIG_FILENAME];
+};
+typedef sequence<ADAMS_USER> AdamsUserSeq;
+
+// Data structures for alarm generation & data collection
+
+// Relazioni (direttrici) di allarme
+
+struct ALARM_RELATION
+{
+	long 	idAlarmRelation;				// identificativo univoco
+	char	description[LONG_DESC_LEN];			// descrizione
+	long	relationElements[MAX_DIMENSION];		// id elementi di traffico direttrice
+	long	relationElementsEnabled[MAX_DIMENSION];		// id elementi di traffico direttrice Abilitati
+	long	alarmHandlers[MAX_ALARM_GENERATOR];		// lista generatori allarme
+	long	timeFractionElementId;				// traffic element di rottura oraria
+	long	familyId;					// alarm family (type) aggregation code
+	long	countersKitId;					// tag del kit contatori abbinato
+	long	idConditionScript;				// script condizioni valutazione contatori
+	long	idConditionPlugin;				// plugin condizioni valutazione contatori
+};
+
+// Plugin generatori allarme
+
+struct ALARM_GENERATOR
+{
+	long	idAlarmGenerator;				// identificativo univoco
+	char	shortDescription[SHORT_DESC_LEN];		// descrizione breve (tag)
+	char	longDescription[LONG_DESC_LEN];			// descrizione
+	long	idPlugin;					// id of the handler plugin
+	boolean	thresholdManagement;				// abolitazione generazione soglie
+	long	idThresholdGenerator[MAX_THRESHOLD_GENERATOR];	// lista id generatori soglie abbinato
+};
+
+// Plugin gestione soglie
+
+struct THRESHOLD_GENERATOR
+{
+	long	idThresholdGenerator;				// identificativo univoco
+	char	description[LONG_DESC_LEN];			// descrizione
+	long 	typeThreshold;					// tipo solgia attualmente (min o max)
+	boolean	enableHolydayThreshold;				// abilita soglie festive
+	long	idPlugin;					// id of the handler plugin
+	long	thresholdPersistence;				// persistenza dello storico soglie
+	long	hoursAggregate;					// Numere ore di aggregazione delle soglie
+};
+
+struct ALARM_PARAMS
+{
+	long	relationList[MAX_ALARMS];
+	long	masterServerID;
+};
+
+typedef sequence<ALARM_RELATION>AlarmRelationSeq;
+typedef sequence<ALARM_GENERATOR>AlarmGeneratorSeq;
+typedef sequence<THRESHOLD_GENERATOR>ThresholdGeneratorSeq;
+
+// end of alarm definitions
+
+// define a global struct to pass configuration in & out
+struct ADAMS_COMPLETE_CONFIG
+{
+	AdamsUserSeq userSequence;
+	GLOBALOPT globalOptions;
+	DRSeq drSequence;
+	ElementSeq elementSequence;
+	RelationSeq relationSequence;
+	ExceptionSeq exceptionSequence;
+	AnalisysSeq analisysSequence;
+	CountersSeq counterSequence;
+	PluginRegistrySeq pluginRegistrySequence;
+	ScriptSeq scriptSequence;
+	ReportSchemaSeq reportSequence;
+	ThresholdGeneratorSeq thresholdGeneratorSequence;
+	AlarmGeneratorSeq alarmGeneratorSequence;
+	AlarmRelationSeq alarmRelationSequence;
+};
+
+// A struct to ask MasterServer for script validation
+struct SCRIPT_VALIDATE {
+	char variables[SCRIPT_MAX_VAR][SCRIPT_VARNAME_LEN];
+	char variablesText[SCRIPT_MAX_TEXT * SCRIPT_TEXT_LEN];
+	char scriptText[SCRIPT_MAX_TEXT * SCRIPT_TEXT_LEN];
+	char resultVariableName[SCRIPT_VARNAME_LEN];
+	long resultType;
+};
+
+struct ERROR_TEXT
+{
+	char text[ERROR_TEXT_LEN];
+};
+
+// strutture per export report
+struct EXPORT_COL
+{
+	long typeCol;		/* tipo del contenuto di ogni singola riga es.: intestazione key(1),intestazione counter(2),int(3),double(4),string(5),*/
+	string valueCol;	/* elemento riga */
+};
+typedef sequence<EXPORT_COL> ExportColSeq;
+
+struct EXPORT_ROW
+{
+	ExportColSeq	exportCol;			/* elementi della riga */
+};
+typedef sequence<EXPORT_ROW> ExportDataSeq;
+
+#endif // _MDM_ETSS_IDL
+// --------------- MDM / ETSS
+
+// --------------- SSM
+
+#ifdef _SSM_IDL
+
+struct DATA_CENTRALI
+{
+	long IdCentrale;				//Identificativo Centrale
+	char Descrizione[SHORT_DESC_LEN];		//Descrizione Centrale
+};
+typedef sequence<DATA_CENTRALI> CentralSeq;
+
+struct logProcess
+{
+        char descr[MAX_DESCRITTORE_PROCESS_LEN];		/* Linee del descrittore */
+};
+typedef sequence<logProcess> LogProcessSeq;
+
+typedef sequence<long> ParamSeqSeq;				/* Parametri di output generati dal proceesso*/
+
+struct ProcesDetail
+{
+	long idProcesso;					/* Identificativo del processo */
+	char tipoProcesso[MAX_TIPO_PROCESSO_LEN];		/* Tipologia di processo */
+	char nomeProcesso[MAX_NOME_PROCESSO_LEN];		/* Nome del processo */
+	char colorBKnomeProcesso[MAX_COLOR_LEN];		/* Colore di BackGround del nome del processo*/
+
+	ParamSeqSeq param;					/* Parametri di output generati dal proceesso*/
+	long statusProcesso;					/* Stato del processo*/
+	long numRestartTime;					/* Numero di volte di restart per il processo*/
+	boolean flagSched;					/* Flag di schedulazione */
+
+	char msgProcesso[MAX_MSG_PRROCESSO_LEN];		/* Eventuale messagio fornito dal processo */
+	char colorBKmsgProcesso[MAX_COLOR_LEN];			/* Colore di Background del messaggio fornito dal processo */
+
+};
+typedef sequence<ProcesDetail> ProcesDetailSeq;
+
+struct tempoRis{
+        long giorno;
+        long mese;
+        long anno;
+        long ore;
+        long min;
+};
+
+struct CS_INFO_PROC{
+        tempoRis	tempo_proc;    /* data del risveglio */
+        long		flag_attiv;    /* bit di abilitazione  */
+        long		flag_sched;    /* bit di schedulazione */
+        long		num_proc;      /* numero del processo  */
+        long		legami[CS_MAXPROCLEGAMI];
+        long		tipo_proc;      /* tipologie di processo: 0,1,2,3,4,5*/
+        long		LastRestartTime; /* Tempo dell'ultima attivazione */
+	long		NumRestartTimes; /* Counter of Restart */
+        unsigned long	ProcessPID;     /* PID del Processo */
+        char		nome_proc[CS_MAXLENPROCNAME]; /* nome del processo   */
+        char		cmd_start[CS_COMMAND_LENGTH]; /* di start del processo */
+        char		nome_fep[CS_MAXNAMEFEP];
+        long		idFep;
+};
+typedef sequence<CS_INFO_PROC> CS_INFO_PROCSeq;
+
+struct CS_BLOCK_LOG{
+        long item;
+        long block;
+        long cod_err;
+        long urgenza;
+        long priorita;
+        char msg[CS_LOGMSGLENGTH];
+        char nome[CS_LENPRONAME];
+        long idFep;
+};
+typedef sequence<CS_BLOCK_LOG> CS_BLOCK_LOGSeq;
+
+struct GARBAGE_INFO{
+        char user[GB_LENUSER];			/* utente fittizio */
+        char path[GB_LENPATH];			/* path fisico del file */
+        char filter[GB_LENFILTER];		/* filtro che indentifica i file */
+        char frequence[GB_LENFREQUENCE];	/* frequenza dll'evento */
+        char path_log[GB_LENPATH_LOG];			/* path fisico del file */
+};
+typedef sequence<GARBAGE_INFO> GARBAGE_INFOSeq;
+
+struct	ACQ_CAT {
+	char name[CAT_NAME_DIM];
+	boolean processedOK;
+};
+typedef sequence<ACQ_CAT> ACQ_CATSeq;
+
+struct	ACQ_PEB_MGR {
+	char processing[CAT_NAME_DIM];				// current catalog
+	long drFileProg;					// current DR file (referred to "processing")
+	long drFileRemaining;					// remaining DR files to process (referred to "processing")
+	boolean startWithRestart;				// perform a CAT reprocess startup
+	boolean restartWithCacheFlush;				// clean CAT cache before doing reprocess
+	boolean pauseAcqCat;					// pause acqcat child process
+	boolean twoDaysRun;					// tell acqcat for how long we are running
+	long acqCatPid;						// my acqcat pid number
+	char PEBName[PEB_NAME_DIM];				// my PEB name
+	ACQ_CATSeq processedVector;				// processed in-cache catalogs
+
+};
+
+struct	GESTIONE_PSWD {
+	char nomeNodo[DIM_PSWD_NOME_NODO];
+	char oggetto[DIM_PSWD_OGGETTO];
+	char login[DIM_PSWD_LOGIN];
+	char pswd[DIM_PSWD_PASSWORD];
+	char validita;
+	char dataScadenza[DIM_PSWD_DATA_SCADENZA];
+	char flag;
+};
+typedef sequence<GESTIONE_PSWD> GESTIONE_PSWDSeq;
+
+#endif // _SSM_IDL
+
+// --------------- SSM
+
+// --------------- ASP
+
+#ifdef _ASP_IDL
+
+struct CONF_NODE
+{
+	long idNode;
+	char nameNode[MAX_NAME_NODE];
+	char descNode[MAX_DESC_NODE];
+	char tipoNode[MAX_TIPO_NODE];
+};
+typedef sequence<CONF_NODE> ConfNodeSeq;
+
+struct S_ROLE
+{
+	long idRole;
+	char descRole[MAX_DESC_ROLE];
+};
+typedef sequence<S_ROLE> SRoleSeq;
+
+struct S_CLASS
+{
+	long idClass;
+	char descClass[MAX_DESC_CLASS];
+};
+typedef sequence<S_CLASS> SClassSeq;
+
+struct S_FUNCTION
+{
+	long idClass;
+	long idFunction;
+	char nameFunction[MAX_NAME_FUNCTION];
+	char descFunction[MAX_DESC_FUNCTION];
+	char version[MAX_VERSION];
+	char releasedData[MAX_RELEASED_DATA];
+	char author[MAX_AUTHOR];
+	char vendor[MAX_VENDOR];
+};
+typedef sequence<S_FUNCTION> SFunctionSeq;
+
+struct S_LOGIN
+{
+	char login[MAX_LOGIN_LEN];			/* Login Utente */
+};
+typedef sequence<S_LOGIN> SLoginSeq;
+
+struct S_PROFILE
+{
+	char profile[MAX_PROFILE];
+	char descProfile[MAX_DESC_PROFILE];
+	long idClass;
+	SFunctionSeq functionSeq;
+	SLoginSeq loginSeq;
+};
+typedef sequence<S_PROFILE> SProfileSeq;
+
+struct S_USER
+{
+	char login[MAX_LOGIN_LEN];			/* Login Utente */
+	char password[MAX_PASSWORD_LEN];		/* Password Utente */
+	char nomeUtente[MAX_NOMEUTENTE_LEN];		/* Nome Utente */
+	char descUser[MAX_DESC_USER_LEN];		/* Descrizione utente */
+	long idRole;
+	boolean abilitazioneUtente;
+	SProfileSeq profileSeq;
+};
+typedef sequence<S_USER> SUserSeq;
+
+struct S_CONFIG_LIB
+{
+	SRoleSeq roleSeq;
+	SClassSeq classSeq;
+	SFunctionSeq functionSeq;
+	SProfileSeq profileSeq;
+	SUserSeq userSeq;
+};
+
+/**
+ * Struttura per il log delle applicazioni
+ */
+struct S_APP_LOG
+{
+	char timeStamp[MAX_TIME_STAMP];
+	char ip_server[MAX_IP_GENERATORE];
+	char hostname_server[MAX_HOSTNAME_GENERATORE];
+	char ip_client[MAX_IP_CLIENT];
+	char hostname_client[MAX_HOSTNAME_CLIENT];
+	char application_user[MAX_UTENZA_APPLICATIVA];
+	char client_user[MAX_UTENZA_CLIENT];
+	char application[MAX_APPLICATIVO_CLIENT];
+	char action[MAX_AZIONE];
+	char action_object[MAX_OGGETTO];
+	char parameter[MAX_PARAMETRI];
+	char successful[MAX_ESITO];
+	long return_code;
+};
+
+
+/**
+ * Struttura relativa alle funzioni abilitate per un utente.
+ */
+struct FUNCTION_ENABLED
+{
+	long ID_EnabledFunction;			/* Identificativo univoco della funzione abilitata */
+};
+typedef sequence<FUNCTION_ENABLED> FunctionEnabledSeq;
+
+
+/**
+ * Struttura relativa ai grant dell'utente monitor.
+ */
+struct MONITOR_USER_GRANT
+{
+	char profile[MAX_PROFILE];			/* Login Utente */
+//	long ID_User;					/* Identificativo univoco dell'utente (da client ==> -1 nuovo utente)*/
+	long configRT;					/* flag di abilitazione alla configurazione in RealTime dei grafici */
+	long numMaxChart;				/* numero massimo di grafici consentiti per l'utente */
+	FunctionEnabledSeq FunctionEnabled;		/* Sequenza di funzioni abilitate per lo specifico utente */
+	FunctionEnabledSeq FunctionDisabled;		/* Sequenza di funzioni disabilitate per lo specifico utente */
+};
+
+/**
+ * Viene definita le funzioni di descrizione delle funzionalit� del plugin
+ * In questa enum sono elencati i tipi base di unita di tempo riconosciuti.
+ */
+enum TimeUnits {
+	Second,						/* Secondi */
+	Minute,						/* Minuti */
+	Quarter,					/* Quarti d'ora */
+	Hour,						/* Ore */
+	Day,						/* Giorni */
+	Week,						/* Settimana */
+	Month,						/* Mese */
+	Year						/* Anno */
+};
+
+/**
+ * Questa enum elenca delle opzioni sulle possibilit� di rappresentazione (come oggetto GUI) di
+ * una lista di selezione
+ */
+enum InputItemType {
+	List,
+	Toggle,
+	Combo,
+	RadioButton,
+	TextField_Numeric,
+	TextField_Ascii,
+	Calendar,
+	MultiList
+};
+
+/**
+ * Questa enum elenca i tipi di grafici ammissibili da una determinata SubFunction. L'elencazione
+ * NON � riferita ad uno specifico tipo di grafico ma piuttosto alla modalit� generica (tipologia)
+ * di rappresentazione dei dati.
+ */
+enum OutputType {
+	Linear_V,	/* tipologia di grafico lineare Vertical, comprende: linea, barre, punti, area */
+	Linear_H,	/* tipologia di grafico lineare Horizontal, comprende: linea, barre, punti, area */
+	Bar_V,		/* tipologia di grafico a barre Vertical */
+	Bar_H,		/* tipologia di grafico a barre Horizontal */
+	Radar,		/* tipologia di grafico radar */
+	Pie,		/* tipologia di grafico a torta */
+	Counter,	/* indica che la sottofunzione � un contatore */
+        Table   	/* tabella per RTT*/
+
+};
+
+
+
+/**
+ * Questa struttura continene la definizione dei parametri di input necessari ad una determinata
+ * sottofunzione. L'associazione tra input richiesti e grandezze (sottofunzioni) avviene sotto forma
+ * di liste associate. Da notare per� che tramite lo uniqueId un tipo di input pu� essere associato contemporaneamente
+ * (ossia senza necessit� di duplicazione) a pi� sottofunzioni.
+ */
+struct InputItem {
+	char inputItemName[MAX_IMPUT_NAME_LEN];			/* Nome identificativo dell'item (es. "CC") */
+	char alternativeLongName[MAX_ALTERNATIVE_NAME_LEN];	/* Nome item lungo (es. "Country Codes") */
+	long uniqueId;						/* Serial number univoco associato all'item CC ,AC */
+	InputItemType inputType;				/* Modalit� GUI di rappresentazione della lista */
+	long needResyncOnUserAction;				/* E' richiesto il reload delle liste se l'utente interagisce su questa */
+	long flagInputItem;					/* Indica se l'input item deve essere visibile o meno nel titolo del grafico
+									0=no visibile; 1=visibile */
+	long enabled;						/* InputItem abilitato/disabilitato */
+};
+typedef sequence<InputItem> InputItemSeq;
+
+
+/**
+ * Descrizione del tipo utilizzato per elencare gli intervalli di polling
+ */
+struct Polling {
+	long value;						/* valore del polling (l'unit� di misura dipende dal campo ) */
+	long enabled;						/* Polling abilitato/disabilitato */
+};
+typedef sequence<Polling> PollingSeq;
+
+/**
+ * Descrizione del tipo utilizzato per i tipi di output ammessi dal PlugIn
+ */
+struct Output_Type
+{
+	OutputType value;					/* rappresenta il tipo di output (Es.: Grafico Lineare, Grafico a Barre, Contatore)*/
+	long enabled;						/* OutputType abilitato/disabilitato */
+};
+typedef sequence<Output_Type> OutputTypeSeq;
+
+/**
+ * Variabili che carratterizzano una sottufunzione che non possono essere configurabili dall'utente ma dipendono dal tipo di PlugIn
+ */
+struct SubFuctionGUI{
+	long threshold;						/* Identifica se la sottofunzione deve essere rappresentata come una soglia. */
+	long typeThreshold;					/* Identifica come deve essere rappresentata la soglia. */
+	long noShift;						/* Identifica la traslazione del grafico */
+	char color[MAX_COLOR_LEN];      			/* Identifica il colore di rappresentazione della subfunzione nel grafico/legenda.*/
+	//long priorit�;					/* Identifica la priorit� del colore (il grafico assume il colore con priorit� maggiore) */
+};
+
+struct ParamValue
+{
+	char paramValueIn[MAX_VALUE_LEN];			/* Valore dell'elemento di traffico. */
+	char descValueIn[MAX_DESC_LEN];				/* Descrizione dell'elemento di traffico. */
+};
+typedef sequence<ParamValue> ParamValueSeq;
+
+struct ParamSelected
+{
+	long idSubFunction;					/* identificativo sottofunzione */
+	long idInputType;					/* identificativo parametro di input */
+	ParamValueSeq paramValue;				/* sequenza di valori per il parametro di input in questione */
+};
+typedef sequence<ParamSelected> ParamSelectedSeq;
+
+struct CounterGUI
+{
+	long idSubFunction;					/* identificativo sottofunzione */
+	long xPos;						/* coordinata x del contatore */
+	long yPos;     						/* ccordinata y del contatore */
+};
+typedef sequence<CounterGUI> CounterSeq;
+
+/**
+ * Struttura che definisce la tipologia dei font per ogni componente del grafico
+ */
+struct FontChart
+{
+	long idComponent;					/* Identificativo univoco usato dal client per localizzare un componente, */
+	char nameFont[MAX_FONT_NAME_LEN];			/* Nome del font, */
+	long styleFont;						/* Stile del font, */
+	long sizeFont;						/* Dimensioni espresse in pixel del font, */
+	char colorFont[MAX_COLOR_LEN]; 				/* Eventuale colore di foregraund del font (Non utilizzato per ora). */
+};
+typedef sequence<FontChart> FontChartSeq;
+
+/**
+ *
+ */
+struct Chart
+{
+	long idChart;						/* identificativo del grafico */
+	long xPosScreen;					/* coordinata x del punto alto-sinistro*/
+	long yPosScreen; 					/* coordinata y del punto alto-sinistro*/
+	long heigth;						/* larghezza del grafico */
+	long weigth;						/* altezza del grafico */
+	long northExistence;					/* abilitazione/disabilitazione pannello nord */
+	long chartExistence;					/* abilitazione/disabilitazione pannello centrale */
+	long southExistence;					/* abilitazione/disabilitazione pannello pannello sud */
+	long legendExistence;					/* abilitazione/disabilitazione pannello legenda */
+	long chartGridExistence;				/* abilitazione/disabilitazione pannello griglia */
+	char chartBackgroundColor[MAX_COLOR_LEN];		/* colore di sfondo del grafico */
+	char chartForegroundColor[MAX_COLOR_LEN];		/* colore di primo piano del grafico */
+	char titleFontColor[MAX_COLOR_LEN];			/* colore del titolo */
+	char legendBackgroundColor[MAX_COLOR_LEN];		/* colore di sfondo della legenda */
+	char legendFontColor[MAX_COLOR_LEN];			/* colore di primo piano della legenda */
+	CounterSeq counterList;					/* sequenza di contatori associata al grafico */
+	FontChartSeq fontChartList;				/* sequenza dei font ridefinito dall'utente relativi ad ogni
+								   ogetto del grafico */
+	ParamSelectedSeq paramSelectedList;			/* sequenza di parametri di input per il PlugIn
+								   selezionati dall'utente */
+	long outputType;					/* tipologia di output del PlugIn */
+	long outputTypeSpecify;					/* sotto tipologia del tipo di output */
+	long pollInterval;					/* intervallo di pol del plugin selezionato */
+
+	long trasparence;					/* attivazione o meno dell'effetto trasparenza sul grafico */
+	long blending;						/* attivazione o meno dell'effetto blending sul grafico */
+	long spessoreLinea;					/* indica lo spessore delle linee del grafico */
+
+};
+typedef sequence<Chart> ChartSeq;
+
+struct Session
+{
+	char login[MAX_LOGIN_LEN];				/* identificativo dell'utente */
+	long idSession;						/* identificativo della sessione */
+	long idFunction;					/* identificativo della funzione */
+	char descSession[MAX_DESC_SESSION];			/* descrizione sessione */
+	long xPos;						/* coordinata x della frame rappresentante una sessione */
+	long yPos;						/* coordinata y della frame rappresentante una sessione */
+	long heigth;						/* larghezza della frame rappresentante una sessione */
+	long weigth;						/* altezzadella frame rappresentante una sessione */
+	ChartSeq ChartList;					/* sequenza di grafici contenuti in una sessione */
+};
+typedef sequence<Session> SessionSeq;
+
+struct FunctionDefault
+{
+	char northCenterStr[MAX_DESC_LEN];			/* stringa centrale del pannello nord */
+	char northCenterIcon[MAX_STR_LEN];			/* eventuale icona centrale dell pannello nord */
+	char northRigthStr[MAX_DESC_LEN];			/* stringa a destra del pannello nord */
+	long northRigthType;					/* indica se � presente la data, la stringa o un icona */
+	char northFontColor[MAX_COLOR_LEN];			/* colore di primo piano del pannello nord */
+	long northExistence;					/* abilitazione/disabilitazione panello nord */
+	char chartBackgroundColor[MAX_COLOR_LEN];		/* colore di sfondo del grafico */
+	char chartFontColor[MAX_COLOR_LEN];			/* colore di primo piano del grafico */
+	long chartExistence;					/* abilitazione/disabilitazione pannello centrale (contenente il grafico */
+	long chartGridExistence;				/* abilitazione/disabilitazione griglia */
+	char legendBackgroundColor[MAX_COLOR_LEN];		/* colore di sfondo della legenda */
+	char legendFontColor[MAX_COLOR_LEN];			/* colore di primo piano della legenda */
+	long legendExistence;					/* abilitazione/disabilitazione legenda */
+	char southFontColor[MAX_COLOR_LEN];			/* colore di primo piano del panello sud */
+	long southExistence;					/* abilitazione/disabilitazione pannello sud */
+};
+
+// Questa struttura contiene la definizione di una sottofunzione ovvero la descrizione di
+// una "grandezza"
+// prodotta in output dal plugin
+
+
+typedef sequence<long> IdSubFunctionJoinedSeq;
+
+struct SubFunctionJoined {
+	long idSubFunction;
+	char descrizione[MAX_DESC_LEN];
+	IdSubFunctionJoinedSeq idSubFunctionJoined;
+};
+typedef sequence<SubFunctionJoined> SubFunctionJoinedSeq;
+
+struct SubFunction {
+	long idSubFunction;					/* Identificativo univoco della sottofunzione */
+	char subFunctionName[MAX_SUB_FUNCTION_NAME_LEN];	/* Nome logico delle sotto-funzione (es. "ABR") */
+	char description[MAX_DESC_LEN];				/* Descrizione della sottofunzione */
+	boolean realTimeOnly;					/* Attivo se la funzione NON � in grado di fornire dati storici */
+	long dataAvailability;					/* Se realTimeOnly == false indica la validit� temporale dei dati storici */
+	TimeUnits pollIntervalUnits;				/* Unit� di tempo utilizzata per descrivere gli intervalli di polling ammessi */
+	PollingSeq pollIntervalList;				/* Intervalli di poll ammessi */
+	char pollRange[MAX_POL_RANGE_LEN];			/* Definizione alternativa (range) degli intervalli di poll (es. "30-3600 [Seconds]") */
+	char outputBaseUnit[MAX_OUTPUT_BASE_UNIT_LEN];		/* Unit� di misura dell'output */
+	char minValue[MAX_MIN_VALUE_LEN];			/* Valore minimo assunto dall'output */
+	char maxValue[MAX_MIN_VALUE_LEN];			/* Valore massimo assunto dall'output (minValue - maxValue descrivono il range si output) */
+	OutputTypeSeq admittedOutputType;			/* Tipologie di output ammesse */
+	InputItemSeq inputItemsList;				/* Valori di selezione richiesti all'utente */
+        SubFuctionGUI subFunctionGUI;				/* secifiche di parametro */
+        long enabled;						/* sottofunzione abilitata/disabilitata */
+};
+typedef sequence<SubFunction> SubFunctionSeq;
+
+struct Descrittore
+{
+        char descr[MAX_DESCRITTORE_LEN];			/* linee del descrittore */
+};
+typedef sequence<Descrittore> DescrittoreSeq;
+
+/**
+ * DispatcherDescription
+ * Questa struttuta contiene il nome e la descrizione dei vari Dispatcher disponibili.
+ */
+struct DispatcherDescription {
+	char dispatcherName[MAX_DISPATCHER_NAME_LEN];		/* Tag di identificazione del dispatcher che deve eseguire il PlugIn */
+	char dispDescription[MAX_DISPATCHER_DESCRIPTION_LEN];	/* Descrizione del dispatcher */
+};
+typedef sequence<DispatcherDescription> DispatcherDescriptionSeq;
+
+/**
+ * FunctionDescription
+ * Questa struttuta contiene le definizioni principali per l'identificazione del plugin
+ */
+struct FunctionDescription {
+	long idFunction;					/* id Funzione; */
+	char pluginName[MAX_PLUGIN_NAME_LEN];			/* Nome reale del plugin */
+        char pluginTag[MAX_PLUGIN_TAG_LEN];			/* Tag breve (univoco) di identificazione */
+        char dispatcherName[MAX_DISPATCHER_NAME_LEN];		/* Tag di identificazione del dispatcher che deve eseguire il PlugIn */
+	char logicalFunction[MAX_LOGICAL_FUNCTION_LEN];		/* Funzione logica di apparteneza del plugin (es. "ITEMS") */
+	char longDescription[MAX_FUNCTION_DESCRIPTION_LEN];	/* Descrizione della funzionalit� */
+	char version[MAX_VERSION_LEN];				/* Numero versione (es. "1.0") */
+	char releaseDate[MAX_RELEASE_DATA_LEN];			/* Data rilascio nel formato aaaammggoommss (secondi forzati a zero) */
+	char vendor[MAX_VENDOR_LEN];				/* Plugin vendor (es. "Compaq") */
+	char author[MAX_AUTHOR_LEN];				/* Autore */
+	SubFunctionSeq SubFunctionList;				/* Lista delle sottofunzioni attive */
+	SubFunctionJoinedSeq subFunctionJoinedList;		/* Lista di sottofunzioni accorpate */
+	char sourceData[MAX_SOURCE_DATA_LEN];			/* Tipo di sorgenti dei dati */
+	char sourceLocation[MAX_SOURCE_LOCATION_LEN];		/* Locazione fisica delle sorgenti dei dati. */
+	long pluginStatus;					/* Stato del Plug-In: 0-> NON Valido(Da convalidare) ; 1-> valido(convalidato) ; 2-> Configurato; */
+	DescrittoreSeq descrittore;				/* Descrittore del plugin. */
+	FunctionDefault function_Default;			/* Eventuale default della funzione */
+};
+typedef sequence<FunctionDescription> FunctionDescriptionSeq;
+
+struct FunctionDescriptionWrapp
+{
+	FunctionDescriptionSeq plugin;
+};
+
+/************************************************************************************************/
+/******************************    DATA HELP   **************************************************/
+/************************************************************************************************/
+
+struct SYSTEM_TIME
+{
+	long gg;						/* Giorno */
+	long mm;						/* Mese */
+	long aa;						/* Anno */
+	long sec;						/* Secondi */
+	long min;						/* Minuti */
+	long hh;						/* Ore */
+};
+
+struct InputSubFunction
+{
+	long idSubFunction;					/* Identificativo univoco della sottofunzione */
+	long idInputType;					/* Identificativo univoco dell'elemento di Traffico(es.: CC=2; AC=3) */
+	ParamValueSeq paramValue;				/* Sequenza di valori per l'elemento di traffico. */
+};
+
+typedef sequence<InputSubFunction> InputSubFunctionSeq;
+
+
+struct PLUGIN_CONFIG
+{
+	long idFunction;					/* Identificativo univoco della Funzione */
+	char pluginName[MAX_PLUGIN_NAME_LEN];			/* Nome reale del plugin */
+	char pluginTag[MAX_PLUGIN_TAG_LEN];			/* Tag breve (univoco) di identificazione */
+	char logicalFunction[MAX_LOGICAL_FUNCTION_LEN];		/* Funzione logica di apparteneza del plugin (es. "ITEMS") */
+	char longDescription[MAX_FUNCTION_DESCRIPTION_LEN];	/* Descrizione della funzionalit� */
+	char version[MAX_VERSION_LEN];				/* Numero versione (es. "1.0") */
+	char releaseDate[MAX_RELEASE_DATA_LEN];			/* Data rilascio nel formato aaaammggoommss (secondi forzati a zero) */
+	SYSTEM_TIME validTime;					/* Intervallo di richiesta dati al PlugIn */
+	InputSubFunctionSeq inputSubFunction;			/* Valori di input per il Plugin */
+	boolean mergedInput;					/* I valori di input sono comuni per tutte le sottofunzioni */
+	boolean isFirstCall;					/* indica se � la prima chiamata al dispatcher o sono le chiamate succesive*/
+	long timePolling;					/* Intervallo di poll del PlugIn espresso in Sec. */
+};
+
+
+struct DATA_DESC
+{
+	char valueHelp[MAX_HELP_VALUE_LEN];			/* Valore dell'help */
+	char descHelp[MAX_HELP_DESC_LEN];			/* Descrizione del valore di help.*/
+};
+typedef sequence<DATA_DESC> DescSeq;
+
+
+
+struct HELP_LIST
+{
+	long idHelp;						/* id univoco della lista di help */
+	//long typeTitle;					/* Indica come deve essere rappresentato l'elemento sul titolo del grafico */
+	DescSeq dataHelp;					/* valori di help per l'elemento in questione */
+};
+typedef sequence<HELP_LIST> HelpListSeq;
+
+/**
+* Struttura relativa ad applicativi esterni.
+*/
+struct EXTERNAL_MODULE
+{
+	long ID_ExternalModule;				/* Identificativo dell'applicativo esterno */
+	char NameModule[MAX_IMG_NAME_MODULE];		/* Abilitazione all'utilizzo del applicativo esterno */
+	char Descrizione[MAX_IMG_DESC_MODULE_LEN];		/* Descrizione dell'applicativo esterno */
+
+	boolean modify;					/* flag di modifica campi effettuata */
+};
+typedef sequence<EXTERNAL_MODULE> ModuleSeq;
+
+
+
+/**
+* Struttura relativa all'abilitazione della visualizzazione degli allarmi
+*/
+struct SHOW_TYPE_ALARM
+{
+	long ID_EventAllarm;				/* Identificativo univoco della tipologia allarme */
+	boolean enabled;				/* Abilitazione alla visualizzazione della tipologia d'allarme*/
+	boolean modify;					/* flag di modifica campi effettuata */
+};
+typedef sequence<SHOW_TYPE_ALARM> ShowTypeAlarmSeq;
+
+struct ENABLE_KPI
+{
+	long id_kpi;				/* Identificativo univoco della tipologia di allarme */
+	long show_on;				/* Identificativo univoco della tipologia di visualizzazione 0=MAP 1=TAB 2=BOTH*/
+};
+typedef sequence<ENABLE_KPI> ENABLE_KPISeq;
+
+/**
+* Struttura relativa al GRANT_LAYOUT
+*/
+struct GRANT_LAYOUT
+{
+	char profile[MAX_PROFILE];
+	long idFunction;					/* Identificativo univoco della funzione */
+
+	boolean EditingEnableGUI;				/* Abilitazione Editing aspetto grafico true/false */
+	boolean EditingEnableDati;				/* Abilitazione Editing DATI true/false */
+
+	boolean ShowTabLev1;					/* Abilitazione alla Visulaizzazione tabella primo livello true/false */
+	boolean EditingNumColTab;				/* Abilitazione Editing numero colonne tabella primo livello true/false */
+	boolean EditingNumRowTab;				/* Abilitazione Editing numero righe tabella primo livello true/false */
+	boolean EditingColBackTab;				/* Abilitazione Editing colore sfondo tabella primo livello true/false */
+	boolean	EditOther[MAX_IMG_EDIT_OTHER];			/* Abilitazione future */
+
+	ENABLE_KPISeq EnableShowTypeAlarm;			/* Struttura relativa all'abilitazione della visualizzazione degli allarmi sul layout */
+	boolean	HideAlarm;					/* Abilitazione modifica della visualizzazione degli allarmi true/false */
+
+	boolean ShowGlobalMap;					/* Abilitazione alla Visulaizzazione Mappa Globale true/false */
+	boolean ShowView[MAX_IMG_VIEW];				/* Abilitazione alla visualizzazione  delle VIEW    */
+
+	boolean EnableBooking;					/* Abilitazione per effettuare il booking true/false */
+	boolean EnableTicketing;				/* Abilitazione per effettuare il Ticketing true/false */
+	boolean EnableExternalModule[MAX_IMG_EXTERNAL_MODULE]; 	/* Struttura relativa all'abilitazione dei moduli esterni */
+
+	boolean modify;						/* flag di modifica campi effettuata */
+
+};
+typedef sequence<GRANT_LAYOUT> GrantLayoutSeq;
+
+
+
+struct ALARM_PARAMETER
+{
+	long idFunction;					/* Identificativo univoco del Layout*/
+	long ID_Param;
+	char ParamDesc[MAX_IMG_PARAM_DESC];
+	long ID_ParentParam;
+};
+typedef sequence<ALARM_PARAMETER> AlarmParameterSeq;
+
+
+
+struct TYPE_ALARM
+{
+	long idFunction;					/* Identificativo univoco del Layout*/
+	long ID_EventAllarm;
+	char AllarmTypeDesc[MAX_IMG_DESC_TYPE_ALARM];
+	long priority;
+	char OnColor[RGB_TRIPLE];
+	char OnIconURL[LEN_ICON_URL];
+
+	/* inutilizzati */
+	char OffColor[RGB_TRIPLE];
+	char OffIconURL[LEN_ICON_URL];
+};
+typedef sequence<TYPE_ALARM> AlarmSeq;
+
+
+
+/**
+* Struttura relativa al LAYOUT
+*/
+struct LAYOUT
+{
+	long idFunction;					/* Identificativo univoco del Layout*/
+	long type_Layout;
+	char Name[MAX_NAME_FUNCTION];				/* Nome Layout */
+	char Descrizione[MAX_DESC_FUNCTION];			/* Descrizione del Layout*/
+
+	char ConfigServerName[MAX_IMG_CONFIG_SERVER_NAME_LEN];	/* Nome del Server di Configurazione */
+
+	char AllarmServerName1[MAX_IMG_ALARM_SERVER_NAME_LEN];	/* Nome del Server Allarmi */
+	char AllarmServerName2[MAX_IMG_ALARM_SERVER_NAME_LEN];	/* Nome del Server Allarmi */
+	char AllarmServerName3[MAX_IMG_ALARM_SERVER_NAME_LEN];	/* Nome del Server Allarmi */
+	char AllarmServerName4[MAX_IMG_ALARM_SERVER_NAME_LEN];	/* Nome del Server Allarmi */
+	char AllarmServerName5[MAX_IMG_ALARM_SERVER_NAME_LEN];	/* Nome del Server Allarmi */
+
+	char DetailServerName1[MAX_IMG_DETAIL_SERVER_NAME_LEN];	/* Nome del Server Dettagli */
+	char DetailServerName2[MAX_IMG_DETAIL_SERVER_NAME_LEN];	/* Nome del Server Dettagli */
+	char DetailServerName3[MAX_IMG_DETAIL_SERVER_NAME_LEN];	/* Nome del Server Dettagli */
+	char DetailServerName4[MAX_IMG_DETAIL_SERVER_NAME_LEN];	/* Nome del Server Dettagli */
+	char DetailServerName5[MAX_IMG_DETAIL_SERVER_NAME_LEN];	/* Nome del Server Dettagli */
+
+	char MapRepository[MAX_IMG_GENERAL_LEN];			/* URL del Map Repository */
+	char IconRepository[MAX_IMG_GENERAL_LEN];			/* URL dell'Icon Repository */
+
+	long RefreshTime;					/* Tempo di refresh */
+
+	AlarmParameterSeq AllarmParameter;			/* Sequenza degli elementi di Allarme */
+	AlarmSeq Allarm;					/* Sequenza degli Allarmi */
+
+	char MapName[MAX_IMG_MAPNAME_LEN];				/* Nome Mappa*/
+	char MapDesc[MAX_IMG_GENERAL_LEN];				/* Descrizione Mappa */
+	char MapURL[MAX_IMG_GENERAL_LEN];				/* URL della Mappa*/
+
+	char defOffColor[RGB_TRIPLE];				/* Colore di default dell'allarme */
+	char defOffIconURL[LEN_ICON_URL];			/* Icona di default */
+
+	boolean modify;						/* flag di modifica campi effettuata */
+};
+typedef sequence<LAYOUT> LayoutSeq;
+
+struct LayoutWrapp
+{
+	LayoutSeq layout;
+};
+
+
+/**
+* Struttura relativa al Profilo Utente.
+*/
+struct USER_PROFILE_IMG
+{
+	char profile[MAX_PROFILE];
+	GrantLayoutSeq grantLayout;			/* Grant Layout  */
+	LayoutSeq layout;				/* Layout  */
+	boolean modify;					/* flag di modifica campi effettuata */
+};
+
+
+/**************************************  CONFIGURAZIONE ELEMENTI MAPPA/TABELLA  ********************************************/
+
+/**
+ * Nazione
+ */
+struct NAZIONE
+{
+	long idNazione;					/* codice identificativo nazione */
+	long idFunction;					/* Identificativo univoco del Layout*/
+	char shortDescription[MAX_IMG_SHORT_DESC];		/* descrizione breve */
+	char longDescritpion[MAX_IMG_LONG_DESC];		/* descrizione dettagliata */
+	char firstIconURL[LEN_ICON_URL];		/* URL prima icona associata */
+	char secondIconURL[LEN_ICON_URL];		/* URL seconda icona associata */
+	boolean modify;					/* modificato da configurazione */
+};
+typedef sequence<NAZIONE> NationSeq;
+
+
+
+/**
+ * Continente
+ */
+struct CONTINENTE
+{
+	long idContinente;				/* codice identificativo continente */
+	long idFunction;					/* Identificativo univoco del Layout*/
+	char shortDescription[MAX_IMG_SHORT_DESC];		/* descrizione breve */
+	char longDescritpion[MAX_IMG_LONG_DESC];		/* descrizione dettagliata */
+	char firstIconURL[LEN_ICON_URL];		/* URL icona associata */
+	char secondIconURL[LEN_ICON_URL];		/* URL seconda icona associata */
+	long idView;					/* View associata di default */
+	boolean modify;					/* modificato da configurazione */
+};
+typedef sequence<CONTINENTE> ContinentSeq;
+
+
+
+/**
+ * Coordinate punti
+ */
+struct COORDINATE
+{
+	long x;						/* ascissa */
+	long y;						/* ordinata */
+};
+
+
+
+/**
+ * struttura View
+ */
+struct VIEW
+{
+	long idView;					/* codice view */
+	long idFunction;					/* Identificativo univoco del Layout*/
+	char shortDescription[MAX_IMG_SHORT_DESC];		/* descrizione breve */
+	char longDescritpion[MAX_IMG_LONG_DESC];		/* descrizione dettagliata */
+	COORDINATE upLeft;				/* coordinate angolo superiore sinistro */
+	COORDINATE downRight;				/* coordinate angolo inferiore destro */
+	boolean modify;					/* modificato da configurazione */
+};
+typedef sequence<VIEW>	ViewSeq;
+
+
+
+/**
+ * Elementi spot
+ */
+struct ALARM_SPOT
+{
+	long idAlarmElement;				/* Identificativo legato all ID dell'elemento di allarme */
+	char AlarmSpotValue[MAX_IMG_SPOT_VALUE];		/* codice elemento spot (primario e secondario) */
+	long ID_Param;					/* tipo (link a ALARM_PARAMETER) */
+	long idFunction;					/* Identificativo univoco del Layout*/
+	char shortDescription[MAX_IMG_SHORT_DESC];		/* descrizione breve */
+	char longDescritpion[MAX_IMG_LONG_DESC];		/* descrizione dettagliata */
+	boolean modify;					/* modificato da configurazione */
+	long TypeLevel;					/* definisce il livello (primario o secondario)*/
+};
+typedef sequence<ALARM_SPOT> AlarmSpotSeq;
+
+
+struct SPOT_ELEMENTS
+{
+	ALARM_SPOT primaryElement;			/* elemento spot primario */
+	AlarmSpotSeq secondaryElement;			/* elementi spot secondari */
+};
+typedef sequence<SPOT_ELEMENTS> SpotElementSeq;
+
+/**
+ * informazioni ELEMENTO
+ */
+struct ALARM_ELEMENT
+{
+	long idAlarmElement;				/* codice identificativo */
+	long idFunction;					/* Identificativo univoco del Layout*/
+	long ID_NEXT_Layout;				/* id layout successivo */
+	COORDINATE mapLocation;				/* coordinate su mappa */
+	char shortDescription[MAX_IMG_SHORT_DESC];		/* descrizione breve */
+	char longDescritpion[MAX_IMG_LONG_DESC];		/* descrizione dettagliata */
+	SpotElementSeq spotElement;			/* elementi spot secondari */
+	long alarmMode;					/* tipo rappr. all'evento di allarme */
+	char ovrOffColor[RGB_TRIPLE];			/* colore ststo off (tripletta RGB) */
+	char offIconURL[LEN_ICON_URL];			/* URL icona stato off */
+	char ovrOnColor[RGB_TRIPLE];			/* colore stato on (tripletta RGB) */
+	char onIconURL[LEN_ICON_URL];			/* URL icona stato on */
+	long bookMode;					/* tipo rappr. stato book */
+	long ticketMode;				/* tipo rappr. stato ticket */
+	boolean showOnMap;				/* abil. visualizzazione su mappa */
+	boolean showOnTab;				/* abil. visualizzazione su tabella */
+	long idContinent;				/* codice continenete di appartenenza */
+	long idNation;					/* codice nazione di app. */
+	long idGroup;					/* codice raggruppo (riservato) */
+	long status;					/* stato dell'elemento */
+	long alwaysVisible;				/* */
+	boolean modify;					/* modificato da configurazione */
+};
+typedef sequence<ALARM_ELEMENT> AlarmElementSeq;
+
+
+struct MAG_CENTRALI
+{
+	long idCentrale;
+	char nameCen[MAX_IMG_NAME_CEN];
+	char descCen[MAX_IMG_DESC_CEN];
+	long pollTime;
+	long soglia;
+};
+typedef sequence<MAG_CENTRALI> MagCentraliSeq;
+
+struct S_CONFIG_ADAMS
+{
+	char configName[MAX_CONFIG_ADAMS_LEN];			/* Login Utente */
+};
+typedef sequence<S_CONFIG_ADAMS> SConfigSeq;
+
+
+struct ADAMS_PROFILE_GRANT
+{
+	char profile[MAX_PROFILE];
+	//boolean userAdmin; --> Numero
+	//boolean configAdmin; --> Calendario
+	boolean completeNumber;
+	boolean wideCalnedar;
+	long jobSched;
+	long queeNumber;
+	SConfigSeq configSeq;
+};
+
+
+struct E_MAIL
+{
+	long id_email;
+	char utente[MAX_UTENTE];
+	char data_email[MAX_DATA_EMAIL];
+	char data_delete_email[MAX_DATA_DELETE_EMAIL];
+	char email_to[MAX_EMAIL_TO];
+	char email_cc[MAX_EMAIL_CC];
+	char email_from[MAX_EMAIL_FROM];
+	char email_subject[MAX_EMAIL_SUBJECT];
+	char email_attach[MAX_EMAIL_ATTACH];
+	char email_msg[MAX_EMAIL_MSG];
+	long type_email; 	//0=inviata; 1=ricevuta;
+	long status_email; 	//0=non letta; 1=letta;
+};
+typedef sequence<E_MAIL> E_MAILSeq;
+
+#endif // _ASP_IDL
+
+// --------------- ASP
+
+
+}; // etech
+
+}; // net
+
+#endif // _COMMOM_DATATYPES_IDL

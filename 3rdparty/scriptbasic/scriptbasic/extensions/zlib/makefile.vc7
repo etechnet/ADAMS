@@ -1,0 +1,26 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\zlib.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\zlib.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_zlib.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\zlib.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\zlib.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\s_interface.obj  zdll.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\zlib.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\zlib.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\interface.obj zdll.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\interface.obj : interface.c zlib.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\s_interface.obj : interface.c zlib.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\zlib\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_zlib.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_zlib.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_zlib.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_zlib.hhp & set ERRORLEVEL=0
+
+

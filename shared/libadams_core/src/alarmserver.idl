@@ -1,0 +1,224 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+
+/***************************************************************************
+
+                          alarmserver.idl  -  description
+                             -------------------
+    begin                : Wed Dec  6 14:07:24 MET 2000
+    copyright            : (C) 2001 by Piergiorgio Betti
+    email                : pbetti@lpconsul.net
+
+
+****[ History ]*************************************************************
+
+   --- Date --- By ----------------- What -----------------------------------
+
+ ***************************************************************************/
+
+/**
+  *  	In questo IDL vengono definite le diverse strutture relative all'interfacciamento da/verso
+  * 	il server allarmi
+  */
+
+#define MAX_EINFO_LEN				161	/* Lunghezza max stringhe extrainfo */
+#define MAX_ELEMENT_CODE_LEN			21	/* Lunghezza max codice elemento (alfanumerico) */
+#define DATETIME_FORMAT_LEN			15	/* Formato data/ora [yyyymmddoommss\0] */
+#define MAXNODI					11	/* Num nodi telecom */
+#define TTM_FLAG_LEN				2	/* Define per cartellino */
+#define TTM_OPERATOR_LEN			9
+#define TTM_TYPE_LEN				5
+#define TTM_TRAFFIC_LEN				11
+#define TTM_CODE_LEN				6
+#define TTM_FLDEST_LEN				2
+#define TTM_AC_LEN				6
+#define TTM_IAG_LEN				5
+#define TTM_NODE_LEN				4
+#define TTM_CITY_LEN				13
+#define TTM_ALARMON_LEN				25
+#define TTM_IDALARM_LEN				256
+#define TTM_ANOMALY_C_LEN			11
+#define TTM_ORIGIN_C_LEN			11
+#define TTM_ANOMALY_LEN				51
+#define TTM_ORIGIN_LEN				51
+#define TTM_DATE_LEN				25
+#define TTM_FLAGGEN_LEN				2
+#define TTM_LOGIN_LEN				25
+#define TTM_PASSWD_LEN				25	/* end define per cartellino */
+#define NUM_TYPE_ANOMALIES			50
+#define TTM_SELECT_LEN				129
+
+enum ticketsTypes {
+	workingTicket,
+	closedTicket
+};
+
+/**
+ * Sequence per informazioni aggiuntivo al singolo allarme
+ */
+
+struct EXTRA_INFO
+{
+	char einfo[MAX_EINFO_LEN];
+};
+typedef sequence<EXTRA_INFO> ExtraInfoSeq;
+
+/**
+ * Sequence per passaggio informazioni allarmi
+ */
+
+typedef sequence<long> LinkSeq;
+
+struct ALARM_INFO
+{
+	long	elementType;					// Tipo elemento
+	char	elementCode[MAX_ELEMENT_CODE_LEN];		// Codice elemento
+	long	status;						// Stato (on, off, book, ticket)
+	long	codeTypeAlarm;					// codice del tipo di allarme
+	char	dateTime[DATETIME_FORMAT_LEN];			// Data e ora
+	LinkSeq	link;						// Link dettaglio allarmi
+	ExtraInfoSeq extraInfo;					// Infos aggiuntive
+};
+typedef sequence<ALARM_INFO> AlarmInfoSeq;
+
+/**
+  * Definizione record cartellini auditing
+  */
+
+
+struct TTMRECORDIMAGE
+{
+	char ttm_flag_cart[TTM_FLAG_LEN];
+	char ttm_operator[TTM_OPERATOR_LEN];
+	char ttm_type[TTM_TYPE_LEN];
+	char ttm_traffic[TTM_TRAFFIC_LEN];
+	char ttm_code[TTM_CODE_LEN];
+	char ttm_flagdest[TTM_FLDEST_LEN];
+	char ttm_ac[TTM_AC_LEN];
+	char ttm_iag[TTM_IAG_LEN];
+	char ttm_node[TTM_NODE_LEN];
+	char ttm_city[TTM_CITY_LEN];
+	char ttm_alarmon[TTM_ALARMON_LEN];
+	char ttm_idalarm[TTM_IDALARM_LEN];
+	char ttm_anomaly[NUM_TYPE_ANOMALIES][TTM_ANOMALY_LEN];
+	char ttm_origin[TTM_ORIGIN_LEN];
+	char ttm_anomaly_c[NUM_TYPE_ANOMALIES][TTM_ANOMALY_C_LEN];
+	char ttm_origin_c[TTM_ORIGIN_C_LEN];
+	char ttm_ticketdate[TTM_DATE_LEN];
+	char ttm_flaggen[TTM_FLAGGEN_LEN];
+	long linkRef;
+};
+
+
+struct TTMSELECT
+{
+	char ttmDesc[TTM_SELECT_LEN];
+	TTMRECORDIMAGE ttmRecord;
+};
+typedef sequence<TTMSELECT> TtmSelectSeq;
+
+
+struct USERLOGIN
+{
+	string login;
+	string password;
+	short ticketType;
+	long elementType;
+	string elementCode;
+	long linkRef;
+};
+
+// INTERFACCE
+
+#ifndef ALARMS_IN_ADAMS_IDL
+
+interface IMAGEAlarmServer
+{
+	const long eTTM_FLAG_LEN = TTM_FLAG_LEN;
+	const long eTTM_OPERATOR_LEN = TTM_OPERATOR_LEN;
+	const long eTTM_TYPE_LEN = TTM_TYPE_LEN;
+	const long eTTM_TRAFFIC_LEN = TTM_TRAFFIC_LEN;
+	const long eTTM_CODE_LEN = TTM_CODE_LEN;
+	const long eTTM_FLDEST_LEN = TTM_FLDEST_LEN;
+	const long eTTM_AC_LEN = TTM_AC_LEN;
+	const long eTTM_IAG_LEN = TTM_IAG_LEN;
+	const long eTTM_NODE_LEN = TTM_NODE_LEN;
+	const long eTTM_CITY_LEN = TTM_CITY_LEN;
+	const long eTTM_ALARMON_LEN = TTM_ALARMON_LEN;
+	const long eTTM_IDALARM_LEN = TTM_IDALARM_LEN;
+	const long eTTM_ANOMALY_LEN = TTM_ANOMALY_LEN;
+	const long eTTM_ORIGIN_LEN = TTM_ORIGIN_LEN;
+	const long eTTM_ANOMALY_C_LEN = TTM_ANOMALY_C_LEN;
+	const long eTTM_ORIGIN_C_LEN = TTM_ORIGIN_C_LEN;
+	const long eTTM_DATE_LEN = TTM_DATE_LEN;
+	const long eTTM_FLAGGEN_LEN = TTM_FLAGGEN_LEN;
+	const long eTTM_LOGIN_LEN = TTM_LOGIN_LEN;
+	const long eTTM_PASSWD_LEN = TTM_PASSWD_LEN;
+	const long eNUM_TYPE_ANOMALIES = NUM_TYPE_ANOMALIES;
+	const long eTTM_SELECT_LEN = TTM_SELECT_LEN;
+
+		// ** alarmStatusRefresh: ritorna lo stato degli allarmi dopo il refresh periodico
+		// Input:	none
+		// Output:	sequenza di ALARM_INFO contenente una lista di allarmi _di cui � variato lo stato_
+		//
+	boolean alarmStatusRefresh(out AlarmInfoSeq alarmInfo);
+
+		// ** globalAlarmStatus: ritorna lo stato degli allarmi per _tutti_ gli elementi configurati
+		// Input:	none
+		// Output:	sequenza di ALARM_INFO contenente la lista allarmi
+		//
+	boolean globalAlarmStatus(out AlarmInfoSeq alarmInfo);
+
+		// ** setBooking: effettua le operazioni necessarie a porre in stato book l'elemento richiesto
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		bookStatus		(stato book [on/off])
+		// Output:	none
+		//
+	boolean setBooking(in long elementType, in string elementCode, in boolean bookStatus);
+
+		// ** setTicketed: effettua le operazioni necessarie a porre in ticket emesso l'elemento richiesto
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		ticketStatus		(stato ticket [on/off])
+		// Output:	none
+		//
+	boolean setTicketed(in long elementType, in string elementCode, in TTMRECORDIMAGE ttmr, in long anom_index);
+
+		// ** authTTM: effettua l'autenticazione dell'utente e la precompilazione del cartellino
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		ticketStatus		(stato ticket [on/off])
+		// Output:	none
+		//
+	boolean authTTM(in USERLOGIN user, out TtmSelectSeq ttms);
+
+		// ** shutDown:	termina l'esecuzione del server
+		// Input:	none
+		// Output:	none
+	oneway void shutDown();
+};
+
+#endif

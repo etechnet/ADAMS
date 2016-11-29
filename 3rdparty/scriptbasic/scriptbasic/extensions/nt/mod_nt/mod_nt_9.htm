@@ -1,0 +1,47 @@
+<HEAD>
+<TITLE>Documentation of the module nt: Get the list of the running processes</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Get the list of the running processes">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Get the list of the running processes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Get the list of the running processes</H1>
+<A HREF="mod_nt_8.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_10.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+This procedure gathers the information on the actually executiong processes and returns
+the information in an array.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+nt::ListProcesses PS
+</PRE></FONT>
+<P>
+The result is stored in the variable <font size="3"><tt>PS</tt></font>. This will be an array, with each element being also an
+array holding information for the process. The number of running processes can be determined
+using <font size="3"><tt>ubound(PS)+1</tt></font>.
+<P>
+The elements of the array is indexed from 0 to 8 contaiing the following elements:
+<P>
+<UL>
+<LI> 0 Number of references to the process. A process exists as long as its usage count is nonzero. As soon as its usage count becomes zero, a process terminates.
+<LI> 1 Identifier of the process. The contents of this member can be used by Win32 API elements.
+<LI> 2 Identifier of the default heap for the process. The contents of this member has meaning only to the tool help functions. It is not a handle, nor is it usable by Win32 API elements.
+<LI> 3 Module identifier of the process. The contents of this member has meaning only to the tool help functions. It is not a handle, nor is it usable by Win32 API elements.
+<LI> 4 Number of execution threads started by the process.
+<LI> 5 Identifier of the process that created the process being examined. The contents of this member can be used by Win32 API elements.
+<LI> 6 Base priority of any threads created by this process. 
+<LI> 7 Reserved; do not use.
+<LI> 8 Path and filename of the executable file for the process.
+</UL><HR>
+<A HREF="mod_nt_8.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_10.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

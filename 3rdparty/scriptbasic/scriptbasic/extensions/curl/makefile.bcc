@@ -1,0 +1,26 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\curl.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\curl.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_curl.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\curl.lib : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\s_interface.obj 
+	tlib /a C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\curl.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\s_interface.obj  libcurl_imp.lib zlib.lib ssleay32.lib libeay32.lib gdi32.lib ws2_32.lib winmm.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\curl.dll : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\interface.obj 
+	bcc32 -WD -L"E:\Program Files\Borland\BCC32\Lib" -eC:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\curl.dll C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\interface.obj libcurl_imp.lib zlib.lib ssleay32.lib libeay32.lib gdi32.lib ws2_32.lib winmm.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\interface.obj : interface.c 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\s_interface.obj : interface.c 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -DSTATIC_LINK=1 -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\curl\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_curl.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_curl.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_curl.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_curl.hhp & set ERRORLEVEL=0
+
+

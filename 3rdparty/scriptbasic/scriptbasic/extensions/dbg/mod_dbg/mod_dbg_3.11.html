@@ -1,0 +1,53 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.11. Getting Help</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Getting Help">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Getting Help">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.11. Getting Help</H1>
+<A HREF="mod_dbg_3.10.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.12.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+At any time when the debugger waits for your input the command <font size="3"><tt>h</tt></font> prints a help screen.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#h
+h help
+s step one line, or just press return on the line
+S step one line, do not step into functions or subs
+o step until getting out of the current function
+  (if you stepped into but changed your mind)
+? var  print the value of a variable
+u step one level up in the stack
+d step one level down in the stack (for variable printing)
+D step down in the stack to current execution depth
+G list all global variables
+L list all local variables
+l [n-m] list the source lines
+r [n] run to line n
+R [n] run to line n but do not stop in recursive function call
+b [n] set breakpoint on the line n or the current line
+B [n-m] remove breakpoints from lines
+q quit the program
+#_
+</PRE></FONT><HR>
+<A HREF="mod_dbg_3.10.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.12.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

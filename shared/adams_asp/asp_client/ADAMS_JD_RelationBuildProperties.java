@@ -1,0 +1,435 @@
+/**
+ *
+ * @author  luca
+ */
+
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.*;
+import java.awt.Cursor;
+import java.util.Vector;
+
+public class ADAMS_JD_RelationBuildProperties extends javax.swing.JDialog {
+
+     
+    /** Creates new form ADAMS_JD_RelationBuildProperties */   
+    public ADAMS_JD_RelationBuildProperties(java.awt.Frame parent, Vector v_relation_ID, Vector v_relation_name,Vector v_detail) 
+    {
+        super(parent, true);        
+       
+        this.V_RELATION_ID   = v_relation_ID;
+        this.V_RELATION_NAME = v_relation_name;
+        this.V_DETAIL     = v_detail;
+        
+        initComponents();
+
+        myTableModel_TE = new MyTableModel(all_columnNames);
+        sorter_TE = new TableSorter(myTableModel_TE);
+    
+        jTable_TE = new javax.swing.JTable(sorter_TE);
+        JTableHeader header = jTable_TE.getTableHeader();
+        header.setFont(ADAMS_GlobalParam.font_P11);
+        header.setReorderingAllowed(false);
+
+        sorter_TE.setTableHeader(header);        
+        
+        jTable_TE.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable_TE.getTableHeader().setToolTipText("Click to specify sorting; Control-Click to specify secondary sorting");
+        jTable_TE.setFont(new java.awt.Font("Verdana", 0, 10));
+        jTable_TE.setRowHeight(20);
+        jTable_TE.setRowMargin(2);
+        jTable_TE.setAutoCreateColumnsFromModel(false);
+        jTable_TE.setBorder(new javax.swing.border.LineBorder(java.awt.Color.black));
+  
+        jScrollPane_TE.setViewportView(jTable_TE);
+        
+        jTable_TE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable_TEMouseReleased(evt);
+            }
+        });
+        
+        jB_cancel.setCursor(Cur_hand);
+        jB_ok.setCursor(Cur_hand);
+        jTable_TE.setCursor(Cur_hand);
+        
+        //Set Cursor
+        jL_title.setFont(ADAMS_GlobalParam.font_B12);
+    
+        SetTable(jTable_TE,30,cellDimen_TE);
+        AddRowJTabel_TE();      
+    }
+
+      
+    public void open_RelationBuildP()
+    {        
+        OPERATION_VALID = false;
+        setCenteredFrame(480,480);
+        setVisible(true);
+        toFront();
+    }
+    
+    private void SetTable(javax.swing.JTable jtable, int minCellDimension, int[] CellDimension)
+    {
+        this.setCursor(Cur_wait);
+
+        jtable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        JTableHeader header = jtable.getTableHeader();
+        header.setFont(ADAMS_GlobalParam.font_P11);
+        header.setReorderingAllowed(false);
+
+        TableColumn column = null;
+        for(int i=0; i<jtable.getColumnCount(); i++)
+        {
+            column = jtable.getColumnModel().getColumn(i);
+            
+            column.setMinWidth(minCellDimension);
+            column.setPreferredWidth(CellDimension[i]);            
+        }
+        
+        if((jtable.isShowing())&&(jtable.isVisible()))
+            jtable.updateUI();
+                        
+        this.setCursor(Cur_default);
+    }
+    
+    
+    public void setTableConfig()
+    {
+        AddRowJTabel_TE();
+        jTable_TE.clearSelection();        
+    }
+    
+    
+    private void AddRowJTabel_TE()
+    {    
+        jTable_TE.setCursor(Cur_wait); 
+        jL_title.setText("Relation Elements");
+
+        int SIZE = V_RELATION_ID.size();
+        Object[][] dataValues = new Object[SIZE][all_columnNames.length];
+        for(int i=0; i<SIZE; i++)
+        {
+            Integer ID_ELEMENT = (Integer)(V_RELATION_ID.elementAt(i));
+            
+            dataValues[i][0] = ID_ELEMENT;
+            dataValues[i][1] = ((String)(V_RELATION_NAME.elementAt(i))).trim();
+            
+            int ELEMENT_ENABLED = ((Integer)(V_DETAIL.elementAt(i))).intValue();
+            if(ELEMENT_ENABLED == 1)
+                dataValues[i][2] = new Boolean(true);
+            else
+                dataValues[i][2] = new Boolean(false);            
+        }
+        myTableModel_TE.setDataValues(dataValues);
+        sorter_TE.setTableModel(myTableModel_TE);
+        jScrollPane_TE.setViewportView(jTable_TE);
+                               
+        jTable_TE.setCursor(Cur_default);
+    }
+
+    private void setCenteredFrame(int width,int height)
+    {
+        java.awt.Toolkit kit = java.awt.Toolkit.getDefaultToolkit();
+        java.awt.Dimension screenSize = kit.getScreenSize();        
+        int screenWCenter = screenSize.width/2;
+        int screenHCenter = screenSize.height/2;        
+        this.setSize(width,height);
+        this.setLocation(screenWCenter-(width/2),screenHCenter-(height/2));  
+    }
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    private void initComponents() {//GEN-BEGIN:initComponents
+        jP_TOT = new javax.swing.JPanel();
+        jL_title = new javax.swing.JLabel();
+        jP_center = new javax.swing.JPanel();
+        jScrollPane_TE = new javax.swing.JScrollPane();
+        jP_ss = new javax.swing.JPanel();
+        jP_sn = new javax.swing.JPanel();
+        jB_ok = new javax.swing.JButton();
+        jB_cancel = new javax.swing.JButton();
+        
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closeDialog(evt);
+            }
+        });
+        
+        jP_TOT.setLayout(new java.awt.BorderLayout());
+        
+        jP_TOT.setBackground(new java.awt.Color(230, 230, 230));
+        jL_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jL_title.setText("Relation Build Properties");
+        jL_title.setMinimumSize(new java.awt.Dimension(149, 40));
+        jL_title.setPreferredSize(new java.awt.Dimension(150, 40));
+        jP_TOT.add(jL_title, java.awt.BorderLayout.NORTH);
+        
+        jP_center.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagConstraints gridBagConstraints1;
+        
+        jP_center.setBackground(new java.awt.Color(230, 230, 230));
+        jP_center.setBorder(new javax.swing.border.TitledBorder(null, " Relation Elements ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 10)));
+        jScrollPane_TE.setBackground(new java.awt.Color(230, 230, 230));
+        jScrollPane_TE.setBorder(null);
+        jScrollPane_TE.setAutoscrolls(true);
+        gridBagConstraints1 = new java.awt.GridBagConstraints();
+        gridBagConstraints1.gridx = 0;
+        gridBagConstraints1.gridy = 0;
+        gridBagConstraints1.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints1.weightx = 1.0;
+        gridBagConstraints1.weighty = 1.0;
+        jP_center.add(jScrollPane_TE, gridBagConstraints1);
+        
+        jP_TOT.add(jP_center, java.awt.BorderLayout.CENTER);
+        
+        jP_ss.setLayout(new java.awt.BorderLayout());
+        
+        jP_ss.setBackground(new java.awt.Color(230, 230, 230));
+        jP_ss.setPreferredSize(new java.awt.Dimension(152, 40));
+        jP_sn.setBackground(new java.awt.Color(230, 230, 230));
+        jP_sn.setMinimumSize(new java.awt.Dimension(0, 30));
+        jP_sn.setPreferredSize(new java.awt.Dimension(0, 30));
+        jB_ok.setBackground(new java.awt.Color(230, 230, 230));
+        jB_ok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok.jpg")));
+        jB_ok.setBorderPainted(false);
+        jB_ok.setContentAreaFilled(false);
+        jB_ok.setFocusPainted(false);
+        jB_ok.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jB_ok.setMaximumSize(new java.awt.Dimension(0, 0));
+        jB_ok.setMinimumSize(new java.awt.Dimension(0, 0));
+        jB_ok.setPreferredSize(new java.awt.Dimension(80, 30));
+        jB_ok.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok_press.jpg")));
+        jB_ok.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok_over.jpg")));
+        jB_ok.setEnabled(false);
+        jB_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_okActionPerformed(evt);
+            }
+        });
+        
+        jP_sn.add(jB_ok);
+        
+        jB_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.jpg")));
+        jB_cancel.setToolTipText("Cancel");
+        jB_cancel.setBorderPainted(false);
+        jB_cancel.setContentAreaFilled(false);
+        jB_cancel.setFocusPainted(false);
+        jB_cancel.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jB_cancel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_press.jpg")));
+        jB_cancel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_over.jpg")));
+        jB_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_cancelActionPerformed(evt);
+            }
+        });
+        
+        jP_sn.add(jB_cancel);
+        
+        jP_ss.add(jP_sn, java.awt.BorderLayout.CENTER);
+        
+        jP_TOT.add(jP_ss, java.awt.BorderLayout.SOUTH);
+        
+        getContentPane().add(jP_TOT, java.awt.BorderLayout.CENTER);
+        
+        pack();
+    }//GEN-END:initComponents
+
+    private void jB_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_cancelActionPerformed
+         close_Dialog();
+    }//GEN-LAST:event_jB_cancelActionPerformed
+
+    private void close_Dialog()
+    {
+        //System.out.println("Frame width ="+this.getSize().width+" Frame width ="+this.getSize().height );
+        OPERATION_VALID = false;
+        dispose();
+    }
+    
+    private void jB_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_okActionPerformed
+        if(ADAMS_GlobalParam.ctrl_LOCK_TABLE(false) == false)
+            return;
+        
+        OPERATION_VALID = true;
+        dispose();
+    }//GEN-LAST:event_jB_okActionPerformed
+  
+
+    public boolean get_OPERATION_VALID()
+    {
+        return OPERATION_VALID;
+    }
+   
+    public Vector get_V_DETAIL()
+    {   
+        if(OPERATION_VALID == false)
+            return V_DETAIL;
+        else
+        {
+            V_DETAIL.removeAllElements();
+            for(int i=0; i<jTable_TE.getRowCount(); i++)
+            {
+                Boolean enabled = (Boolean)(jTable_TE.getValueAt(i,2));
+                if(enabled.booleanValue() == true)
+                    V_DETAIL.addElement(new Integer(1));
+                else
+                    V_DETAIL.addElement(new Integer(0));
+            }
+            return V_DETAIL;
+        }
+    }
+    
+    /** Closes the dialog */
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+       close_Dialog();
+    }//GEN-LAST:event_closeDialog
+
+    private void jTable_TEMouseReleased(java.awt.event.MouseEvent evt) 
+    {
+        this.setCursor(Cur_wait);
+        
+        int selectedRow = jTable_TE.getSelectedRow();
+        if(selectedRow >= 0)
+        {            
+            Boolean enabled = (Boolean)(jTable_TE.getValueAt(selectedRow,2));            
+            jTable_TE.setValueAt(new Boolean(!enabled.booleanValue()),selectedRow,2);
+            
+            if (jB_ok.isEnabled() == false)
+                jB_ok.setEnabled(true);
+        }
+        this.setCursor(Cur_default);
+    }
+
+    //////////////////////////////////////////// Internal CLASS ////////////////////////////////////////////    
+    class MyTableModel extends AbstractTableModel 
+    {
+        private String[] columnNames;
+        MyTableModel(String[] all_columnNames)
+        {
+            columnNames = all_columnNames;
+        }
+
+        private Object[][] data = {};   
+        
+        public void setColumnName(String[] all_columnNames)
+        {
+            columnNames = all_columnNames;
+        }
+        
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+        public int getRowCount() 
+        {
+            return data.length;
+        }    
+        public String getColumnName(int col) 
+        {
+            return columnNames[col];
+        }
+        public java.lang.Object getValueAt(int row, int col) 
+        {
+            return data[row][col];
+        }
+        public void setDataValues(Object[][] datavalues)
+        {
+            data = datavalues;
+        }
+        
+        /*
+         * JTable uses this method to determine the default renderer/
+         * editor for each cell.  If we didn't implement this method,
+         * then the last column would contain text ("true"/"false"),
+         * rather than a check box.
+         */
+        public Class getColumnClass(int c) 
+        {
+            return getValueAt(0, c).getClass();
+        }
+
+        /*
+         * Don't need to implement this method unless your table's
+         * editable.
+         */
+        public boolean isCellEditable(int row, int col) 
+        {
+            //Note that the data/cell address is constant,
+            //no matter where the cell appears onscreen.
+            /*if (col < 2) {
+                return false;
+            } else {
+                return true;
+            }*/
+            return false; //nessuna cella editabile
+        }
+        /*
+         * Don't need to implement this method unless your table's
+         * data can change.
+         */
+        public void setValueAt(Object value, int row, int col) 
+        {
+            if (DEBUG) {
+                System.out.println("Setting value at " + row + "," + col
+                                   + " to " + value
+                                   + " (an instance of "
+                                   + value.getClass() + ")");
+            }
+
+            data[row][col] = value;
+            fireTableCellUpdated(row, col);
+
+            if (DEBUG) {
+                System.out.println("New value of data:");
+                printDebugData();
+            }
+        }
+        private void printDebugData() 
+        {
+            int numRows = getRowCount();
+            int numCols = getColumnCount();
+
+            for (int i=0; i < numRows; i++) {
+                System.out.print("    row " + i + ":");
+                for (int j=0; j < numCols; j++) {
+                    System.out.print("  " + data[i][j]);
+                }
+                System.out.println();
+            }
+            System.out.println("--------------------------");
+        }
+    }
+        
+//////////////////////////////////////////// END Internal CLASS ////////////////////////////////////////////  
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jP_TOT;
+    private javax.swing.JLabel jL_title;
+    private javax.swing.JPanel jP_center;
+    private javax.swing.JScrollPane jScrollPane_TE;
+    private javax.swing.JPanel jP_ss;
+    private javax.swing.JPanel jP_sn;
+    private javax.swing.JButton jB_ok;
+    private javax.swing.JButton jB_cancel;
+    // End of variables declaration//GEN-END:variables
+
+    private boolean DEBUG = false;
+        
+    private Cursor Cur_default  = new Cursor(Cursor.DEFAULT_CURSOR);
+    private Cursor Cur_wait     = new Cursor(Cursor.WAIT_CURSOR);
+    private Cursor Cur_hand     = new Cursor(Cursor.HAND_CURSOR);
+    
+    private javax.swing.JTable jTable_TE;
+    private TableSorter sorter_TE;
+    private MyTableModel myTableModel_TE;
+    private String[] all_columnNames ={"ID","TAG","Enable For Details"};
+    private int [] cellDimen_TE ={30,310,140};
+    
+    private Vector V_RELATION_NAME = null;
+    private Vector V_RELATION_ID   = null;
+    private Vector V_DETAIL = null; 
+
+    private boolean OPERATION_VALID;
+
+}
+

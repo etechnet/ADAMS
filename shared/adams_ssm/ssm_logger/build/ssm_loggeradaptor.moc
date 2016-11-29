@@ -1,0 +1,121 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'ssm_loggeradaptor.h'
+**
+** Created by: The Qt Meta Object Compiler version 63 (Qt 4.8.5)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "ssm_loggeradaptor.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'ssm_loggeradaptor.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.5. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Ssm_loggerAdaptor[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       2,   14, // classinfo
+       3,   18, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // classinfo: key, value
+      45,   18,
+     939,   61,
+
+ // slots: signature, parameters, type, tag, flags
+     972,  964,  960,  959, 0x0a,
+    1027,  993,  959,  959, 0x0a,
+    1088, 1071,  959,  959, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Ssm_loggerAdaptor[] = {
+    "Ssm_loggerAdaptor\0net.etech.adams.ssm_logger\0"
+    "D-Bus Interface\0"
+    "  <interface name=\"net.etech.adams.ssm_logger\">\n    <method name=\""
+    "toLogger\">\n      <arg direction=\"in\" type=\"i\" name=\"level\"/>\n"
+    "      <arg direction=\"in\" type=\"((iii)(iiii)i)\" name=\"time\"/>\n "
+    "     <annotation value=\"QDateTime\" name=\"org.qtproject.QtDBus.QtTyp"
+    "eName.In1\"/>\n      <arg direction=\"in\" type=\"s\" name=\"process\""
+    "/>\n      <arg direction=\"in\" type=\"i\" name=\"processPid\"/>\n    "
+    "  <arg direction=\"in\" type=\"s\" name=\"msg\"/>\n    </method>\n    "
+    "<method name=\"toMonitor\">\n      <arg direction=\"in\" type=\"((iii)"
+    "(iiii)i)\" name=\"time\"/>\n      <annotation value=\"QDateTime\" name"
+    "=\"org.qtproject.QtDBus.QtTypeName.In0\"/>\n      <arg direction=\"in\""
+    " type=\"s\" name=\"process\"/>\n      <arg direction=\"in\" type=\"s\""
+    " name=\"msg\"/>\n    </method>\n    <method name=\"getLogLevel\">\n   "
+    "   <arg direction=\"out\" type=\"i\"/>\n      <arg direction=\"in\" ty"
+    "pe=\"s\" name=\"process\"/>\n    </method>\n  </interface>\n\0"
+    "D-Bus Introspection\0\0int\0process\0"
+    "getLogLevel(QString)\0"
+    "level,time,process,processPid,msg\0"
+    "toLogger(int,QDateTime,QString,int,QString)\0"
+    "time,process,msg\0toMonitor(QDateTime,QString,QString)\0"
+};
+
+void Ssm_loggerAdaptor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        Ssm_loggerAdaptor *_t = static_cast<Ssm_loggerAdaptor *>(_o);
+        switch (_id) {
+        case 0: { int _r = _t->getLogLevel((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 1: _t->toLogger((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< const QDateTime(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< const QString(*)>(_a[5]))); break;
+        case 2: _t->toMonitor((*reinterpret_cast< const QDateTime(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData Ssm_loggerAdaptor::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject Ssm_loggerAdaptor::staticMetaObject = {
+    { &QDBusAbstractAdaptor::staticMetaObject, qt_meta_stringdata_Ssm_loggerAdaptor,
+      qt_meta_data_Ssm_loggerAdaptor, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Ssm_loggerAdaptor::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Ssm_loggerAdaptor::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Ssm_loggerAdaptor::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Ssm_loggerAdaptor))
+        return static_cast<void*>(const_cast< Ssm_loggerAdaptor*>(this));
+    return QDBusAbstractAdaptor::qt_metacast(_clname);
+}
+
+int Ssm_loggerAdaptor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDBusAbstractAdaptor::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

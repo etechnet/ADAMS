@@ -1,0 +1,456 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+// This is to keep quite java idl compiler
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+/***************************************************************************
+                          adams_limits.h  -  description
+                             -------------------
+    begin                : Thu Aug 29 2002
+    copyright            : (C) 2002 by Piergiorgio Betti
+    email                : pbetti@lpconsul.net
+ ***[ History ]*************************************************************
+
+   - Date - - By ---------------- - What -----------------------------------
+ ***************************************************************************/
+// In questo header sono inserite tutte le define's comuni sia alla componente
+// idl (CORBA) sia alla modellazione interna dei dati.
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+/**********************************************  DEFINE x MONITOR *********************************************************/
+/**********************************************  DEFINE x IMAGE *********************************************************/
+/*************************************************** DEFINE PER LOG APPLICATIVO MAG ***************************************/
+/*************************************************** DEFINE PER LOG APPLICATIVO ***************************************/
+/************************************************ DEFINE PER NUOVO STSCONFIGSERVERNEW **********************************/
+/************************************************ DEFINE PER EMAIL MAG **********************************/
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$\ $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+module net {
+module etech {
+// --------------- MDM
+// --------------- MDM
+// --------------- SSM
+struct DATA_CENTRALI
+{
+ long IdCentrale; //Identificativo Centrale
+ char Descrizione[30]; //Descrizione Centrale
+};
+typedef sequence<DATA_CENTRALI> CentralSeq;
+struct logProcess
+{
+        char descr[250]; /* Linee del descrittore */
+};
+typedef sequence<logProcess> LogProcessSeq;
+typedef sequence<long> ParamSeqSeq; /* Parametri di output generati dal proceesso*/
+struct ProcesDetail
+{
+ long idProcesso; /* Identificativo del processo */
+ char tipoProcesso[10]; /* Tipologia di processo */
+ char nomeProcesso[100]; /* Nome del processo */
+ char colorBKnomeProcesso[10]; /* Colore di BackGround del nome del processo*/
+ ParamSeqSeq param; /* Parametri di output generati dal proceesso*/
+ long statusProcesso; /* Stato del processo*/
+ long numRestartTime; /* Numero di volte di restart per il processo*/
+ boolean flagSched; /* Flag di schedulazione */
+ char msgProcesso[150]; /* Eventuale messagio fornito dal processo */
+ char colorBKmsgProcesso[10]; /* Colore di Background del messaggio fornito dal processo */
+};
+typedef sequence<ProcesDetail> ProcesDetailSeq;
+struct tempoRis{
+        long giorno;
+        long mese;
+        long anno;
+        long ore;
+        long min;
+};
+struct CS_INFO_PROC{
+        tempoRis tempo_proc; /* data del risveglio */
+        long flag_attiv; /* bit di abilitazione  */
+        long flag_sched; /* bit di schedulazione */
+        long num_proc; /* numero del processo  */
+        long legami[10];
+        long tipo_proc; /* tipologie di processo: 0,1,2,3,4,5*/
+        long LastRestartTime; /* Tempo dell'ultima attivazione */
+ long NumRestartTimes; /* Counter of Restart */
+        unsigned long ProcessPID; /* PID del Processo */
+        char nome_proc[11]; /* nome del processo   */
+        char cmd_start[50]; /* di start del processo */
+        char nome_fep[10];
+        long idFep;
+};
+typedef sequence<CS_INFO_PROC> CS_INFO_PROCSeq;
+struct CS_BLOCK_LOG{
+        long item;
+        long block;
+        long cod_err;
+        long urgenza;
+        long priorita;
+        char msg[132];
+        char nome[40];
+        long idFep;
+};
+typedef sequence<CS_BLOCK_LOG> CS_BLOCK_LOGSeq;
+struct GARBAGE_INFO{
+        char user[10]; /* utente fittizio */
+        char path[257]; /* path fisico del file */
+        char filter[15]; /* filtro che indentifica i file */
+        char frequence[5]; /* frequenza dll'evento */
+        char path_log[257]; /* path fisico del file */
+};
+typedef sequence<GARBAGE_INFO> GARBAGE_INFOSeq;
+struct ACQ_CAT {
+ char name[29];
+ boolean processedOK;
+};
+typedef sequence<ACQ_CAT> ACQ_CATSeq;
+struct ACQ_PEB_MGR {
+ char processing[29]; // current catalog
+ long drFileProg; // current DR file (referred to "processing")
+ long drFileRemaining; // remaining DR files to process (referred to "processing")
+ boolean startWithRestart; // perform a CAT reprocess startup
+ boolean restartWithCacheFlush; // clean CAT cache before doing reprocess
+ boolean pauseAcqCat; // pause acqcat child process
+ boolean twoDaysRun; // tell acqcat for how long we are running
+ long acqCatPid; // my acqcat pid number
+ char PEBName[128]; // my PEB name
+ ACQ_CATSeq processedVector; // processed in-cache catalogs
+};
+struct GESTIONE_PSWD {
+ char nomeNodo[50];
+ char oggetto[100];
+ char login[50];
+ char pswd[50];
+ char validita;
+ char dataScadenza[9];
+ char flag;
+};
+typedef sequence<GESTIONE_PSWD> GESTIONE_PSWDSeq;
+// --------------- SSM
+// --------------- ASP
+// --------------- ASP
+}; // etech
+}; // net
+module net {
+module etech {
+module SSM {
+interface ConfigMonitorServer
+{
+ //Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+ const long eCMS = 1;
+ const long eCMS1 = 1;
+ boolean KillOrbixProcess(in long flag,in long num_pid);
+ boolean refreshConfigProcess(in long flag,out CS_INFO_PROCSeq configProcesslList);
+ boolean refreshConfigBloc(in long flag,out CS_BLOCK_LOGSeq configBloclList); //flag=-1 solo blocchi flag!=0 msg del blocco specificato in flag
+ long writeModifyProcess(in string nomeProcesso,in long flag,in CS_INFO_PROC configProcess);
+ long writeModifyLog(in long flag,in CS_BLOCK_LOGSeq configBloclList);
+ long deleteProcess(in long flag,in string nomeProcesso);
+ long deleteBlockLog(in long flag,in long idBlock);
+ long SystemStart(in long flag);
+ long SystemStop(in long flag);
+ /**
+	 * Esegue lo ShutDown del server.
+	 */
+ oneway void ShutDown();
+};
+interface ProcessMonitorServer
+{
+ //Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+ const long eHELP = 1;
+ const long eMACRO = 2;
+ const long ePS_ORBIX = 3;
+ const long ePS_ORBIX_HELP = 4;
+ const long eSINGLE_PROCESS = 1;
+ const long eALL_PROCESS = 2;
+ const long eMAX_DESCRITTORE_PROCESS_LEN = 250;
+ const long eMAX_NOME_PROCESSO_LEN = 100;
+ const long eMAX_COLOR_LEN = 10;
+ const long eMAX_TIPO_PROCESSO_LEN = 10;
+ const long eMAX_MSG_PRROCESSO_LEN = 150;
+ /**
+	 * Il method fa il refresh dei processi del nodo sul quale viene invocato.
+	 * @param procesDetailList ogetto di tipo <ProcesDetailSeq> contenente una sequenza di processi con relative informazioni.
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+ boolean refreshMonitorProcess(out ProcesDetailSeq procesDetailList);
+ boolean checkStatus(out ProcesDetailSeq procesDetailList);
+ /**
+	 * Il method ritorna il file di help relativo al processo selezionato
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param logProcesso log associato al processo selezionato.
+	 * @param flagDETAIL descrimina il tipo di dettaglio che viene richiesto sul processo
+			flagDETAIL=HELP   ==> dettaglio di help,
+			flagDETAIL=MACRO  ==> dettaglio del Macro Allarme
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+ boolean getDeteilProcess(in long flagDETAIL,in string nomeProcesso,out LogProcessSeq logProcesso);
+ /**
+	 * Il method ritorna il file di history log relativo al processo selezionato
+	 * @param flagSINGLE_ALL_PROCESS indicha se prendere l'history log di un singolo processo(SINGLE_PROCESS) o di tutti i processi(ALL_PROCESS)
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param data fiorno del
+	 * @param logProcesso log associato al processo selezionato.
+	 * @return ritorna :	 1 se nell'operazione non si sono verificati errori.
+	 			-1 se ci sono stati problemi
+	 			 2 se il file di log � troppo grande, in questo caso l'utente ha la possibilita di scegliere se vuole comunque
+	 			 	tutto il report o meno(se vuole tutto il report il method deve essere richiamato con la flag flagALLDOCUMENT a true)
+	 */
+ long getHistoryProcess(in long flagWORK,in long flagSINGLE_ALL_PROCESS,in boolean flagALLDOCUMENT,in string nomeProcesso,in long data,out LogProcessSeq logProcesso);
+ long resetField(in long field,in long flagTIPORESET,in string nomeProcesso);
+ /**
+	 * Esegue lo ShutDown del server.
+	 */
+ oneway void ShutDown();
+};
+interface ACQPebMGRServer
+{
+ const long eCAT_NAME_DIM = 29;
+ const long ePEB_NAME_DIM = 128;
+ //Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+ long refreshACQPebMGR(in long flag,out ACQ_PEB_MGR acqPebMgr);
+ long writeACQPebMGR(in boolean cleanAll,in ACQ_PEB_MGR acqPebMgr);
+ oneway void ShutDown();
+};
+interface GarbageMonitorServer
+{
+ //Alessandra Pau - Telecom Italia S.p.A.
+ const long eGB_LENUSER = 10;
+ const long eGB_LENPATH = 257;
+ const long eGB_LENPATH_LOG = 257;
+ const long eGB_LENFILTER = 15;
+ const long eGB_LENFREQUENCE = 5;
+ long refreshGarbage(out GARBAGE_INFOSeq GarbageInfoOut);
+ long writeGarbage(in boolean modify, in GARBAGE_INFOSeq GarbageInfoIn);
+ oneway void ShutDown();
+};
+interface PsMonitorMasterServer
+{
+ //Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+ const long ePSM = 1;
+ const long eCOMP = 1;
+ boolean LaunchPsMonitorMasterServer(out CentralSeq CEN);
+ boolean KillOrbixProcess(in string nameSwitch,in long flag,in long num_pid);
+ /**
+	 * Il method fa il refresh dei processi del nodo sul quale viene invocato.
+	 * @param procesDetailList ogetto di tipo <ProcesDetailSeq> contenente una sequenza di processi con relative informazioni.
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+ boolean refreshMonitorProcess(in string nameSwitch,in long flag,out ProcesDetailSeq procesDetailLis);
+ /**
+	 * Il method ritorna il file di help relativo al processo selezionato
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param logProcesso log associato al processo selezionato.
+	 * @param flagDETAIL descrimina il tipo di dettaglio che viene richiesto sul processo
+			flagDETAIL=HELP   ==> dettaglio di help,
+			flagDETAIL=MACRO  ==> dettaglio del Macro Allarme
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+ boolean getDeteilProcess(in long flagDETAIL,in string nameSwitch,in string nomeProcesso,out LogProcessSeq logProcesso);
+ boolean getSystemTime(in string nameSwitch,out LogProcessSeq systemTime);
+ /**
+	 * Il method ritorna il file di history log relativo al processo selezionato
+	 * @param flagSINGLE_ALL_PROCESS indicha se prendere l'history log di un singolo processo(SINGLE_PROCESS) o di tutti i processi(ALL_PROCESS)
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param data fiorno del
+	 * @param logProcesso log associato al processo selezionato.
+	 * @return ritorna :	 1 se nell'operazione non si sono verificati errori.
+	 			-1 se ci sono stati problemi
+	 			 2 se il file di log � troppo grande, in questo caso l'utente ha la possibilita di scegliere se vuole comunque
+	 			 	tutto il report o meno(se vuole tutto il report il method deve essere richiamato con la flag flagALLDOCUMENT a true)
+	 */
+ long getHistoryProcess(in long flagWORK,in long flagSINGLE_ALL_PROCESS,in boolean flagALLDOCUMENT,in string nameSwitch,in string nomeProcesso,in long data,out LogProcessSeq logProcesso);
+ long resetField(in string nameSwitch,in long field,in long flagTIPORESET,in string nomeProcesso);
+ boolean refreshConfigProcess(in string nameSwitch,in long flag,out CS_INFO_PROCSeq configProcesslList);
+ boolean refreshConfigBloc(in string nameSwitch,in long flag,out CS_BLOCK_LOGSeq configBloclList); //flag=-1 solo blocchi flag!=0 msg del blocco specificato in flag
+ long writeModifyProcess(in string nomeProcesso,in string nameSwitch,in long flag,in CS_INFO_PROC configProcess);
+ long writeModifyLog(in string nameSwitch,in long flag,in CS_BLOCK_LOGSeq configBloclList,out CentralSeq switchSeq);
+ long createLogFile(in string nameSwitch,in long flag);
+ long deleteProcess(in string nameSwitch,in long flag,in string nomeProcesso);
+ long deleteBlockLog(in string nameSwitch,in long flag,in long idBlock,in long idFep);
+ long SystemStart(in string nameSwitch,in long flag);
+ long SystemStop(in string nameSwitch,in long flag);
+ //***** Metodi del processo ACQPEB Mgr +++++++++++++++++++++
+ long refreshACQPebMGR(in string nameSwitch,in long flag,out ACQ_PEB_MGR acqPebMgr);
+ long writeACQPebMGR(in string nameSwitch,in boolean cleanAll,in ACQ_PEB_MGR acqPebMgr);
+ //***** Metodi del p rocesso GarbageMonitorServer +++++++++++++++++++++
+ long refreshGarbage(in string nameSwitch, out GARBAGE_INFOSeq GarbageInfoOut);
+ long writeGarbage(in string nameSwitch, in boolean modify, in GARBAGE_INFOSeq GarbageInfoIn);
+ //***** Metodi del processo DBConfigurationServer +++++++++++++++++++++
+// 	long putConfigurationDRonFEP(in string nameSwitch,in string nameFile,in long flag,in DRSeq drSequence);
+ long putFilePSWD(in string nameSwitch,in string nameFile,in long flag,in GESTIONE_PSWDSeq pswdSequence);
+ long getFilePSWD(in string nameSwitch,in string nameFile,in long flag,out GESTIONE_PSWDSeq pswdSequence);
+oneway void ShutDown();
+};
+interface DBConfigurationServer
+{
+ //Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+ const long eDBCS = 3;
+ const long eBLOCK_SIZE = 1;
+ const string eCHIAVE = "lawi@[4u;ptncq3lj4hfo2734tkqref";
+ const long eDIM_PSWD_NOME_NODO = 50;
+ const long eDIM_PSWD_OGGETTO = 100;
+ const long eDIM_PSWD_LOGIN = 50;
+ const long eDIM_PSWD_PASSWORD = 50;
+ const long eDIM_PSWD_DATA_SCADENZA = 9;
+// 	long putConfigurationDRonFEP(in string nameFile,in long flag,in DRSeq drSequence);
+ long renameIndexTimeCFG(in string nameFile);
+ long putFilePSWD(in string nameFile,in long flag,in GESTIONE_PSWDSeq pswdSequence);
+ long getFilePSWD(in string nameFile,in long flag,out GESTIONE_PSWDSeq pswdSequence);
+ oneway void ShutDown();
+};
+// SSM Scheduler
+ interface ssm_scheduler_server
+ {
+  oneway void adamsConfigurationChanged();
+  oneway void processConfigurationChanged();
+  oneway void iniFileChanged();
+  boolean dummy();
+ };
+// SSM Logger
+ interface ssm_logger_server
+ {
+  boolean get_logs(in string process_name);
+ };
+// SSM Garbage
+ interface ssm_garbage_server
+ {
+  boolean dummy();
+ };
+}; // ssm
+}; // etech
+}; // net

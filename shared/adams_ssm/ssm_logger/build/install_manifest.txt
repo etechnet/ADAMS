@@ -1,0 +1,2 @@
+/home/pbetti/adams/install/bin/ssm_logger
+/home/pbetti/adams/install/bin/ssm_logger_send

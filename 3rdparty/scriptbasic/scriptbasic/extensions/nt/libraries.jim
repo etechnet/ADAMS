@@ -1,0 +1,2 @@
+{#define LdNeededLibraryFiles=advapi32.lib user32.lib kernel32.lib}
+{#define LibNeededLibraryFiles=advapi32.lib user32.lib kernel32.lib}

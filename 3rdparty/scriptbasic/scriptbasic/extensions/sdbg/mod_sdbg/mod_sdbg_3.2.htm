@@ -1,0 +1,36 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: Protocol Definition</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Protocol Definition">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Protocol Definition">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Protocol Definition</H1>
+<A HREF="mod_sdbg_3.1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_sdbg_3.3.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+The protocol between the client and the server is text based. The server (the debugger) sends information to the client (the graphical debugger interface) and it gets commands from the client.
+<P>
+The information the server sends contains lines. Each line has the format
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+identifier: value
+</PRE></FONT>
+<P>
+The <font size="3"><tt>identifier</tt></font> identifies the information contained on the line and the <font size="3"><tt>value</tt></font> is the information to be sent. The identifier is closed by a colon and a space. The line is terminated by carriage-return and new-line characters.
+<P>
+The client has to send commands to the server. The command is always a single character optionally followed by a space and arguments. The commands and the syntax are the same as those implemented in the sample command line interpreter. The end of the command line sent to the server has to be terminated by carriage-return and new-line characters.
+<P>
+This architecture also allows a normal telnet client to be used to debug the communication with the server, although the information printed by the server is not easily readable by humans.<HR>
+<A HREF="mod_sdbg_3.1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_sdbg_3.3.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

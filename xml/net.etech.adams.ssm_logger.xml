@@ -1,0 +1,23 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="net.etech.adams.ssm_logger">
+    <method name="toLogger">
+      <arg name="level" type="i" direction="in"/>
+      <arg name="time" type="((iii)(iiii)i)" direction="in"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In1" value="QDateTime"/>
+      <arg name="process" type="s" direction="in"/>
+      <arg name="processPid" type="i" direction="in"/>
+      <arg name="msg" type="s" direction="in"/>
+    </method>
+    <method name="toMonitor">
+      <arg name="time" type="((iii)(iiii)i)" direction="in"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QDateTime"/>
+      <arg name="process" type="s" direction="in"/>
+      <arg name="msg" type="s" direction="in"/>
+    </method>
+    <method name="getLogLevel">
+      <arg type="i" direction="out"/>
+      <arg name="process" type="s" direction="in"/>
+    </method>
+  </interface>
+</node>

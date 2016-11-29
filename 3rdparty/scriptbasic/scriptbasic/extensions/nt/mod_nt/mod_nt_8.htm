@@ -1,0 +1,52 @@
+<HEAD>
+<TITLE>Documentation of the module nt: ShutDown a Windows NT server or workstation</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: ShutDown a Windows NT server or workstation">
+<META NAME="keywords" CONTENT="Documentation of the module nt: ShutDown a Windows NT server or workstation">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>ShutDown a Windows NT server or workstation</H1>
+<A HREF="mod_nt_7.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_9.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+Calling this function shuts down a Windows NT Server, Workstation or
+W2K machine. It was tested on a W2K Professional.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+nt::ShutDown "machine","message",timeout,force,reboot
+</PRE></FONT>
+<P>
+The first argument is the name of the machine to reboot. If this is <font size="3"><tt>undef</tt></font>
+then the actual machine running is shutting down.
+<P>
+The second argument is the message that the system will display on the screen
+before starting the actual shutdown. This argument may also be <font size="3"><tt>undef</tt></font> in case
+there is no need for such a message.
+<P>
+The argument <font size="3"><tt>timeout</tt></font> is the number of seconds that the operating system will wait
+before starting the actual shutdown.
+<P>
+<font size="3"><tt>force</tt></font> specifies whether applications with unsaved changes are to be forcibly closed.
+If this parameter is TRUE, such applications are closed. If this parameter is FALSE,
+a dialog box is displayed prompting the user to close the applications.
+<P>
+<font size="3"><tt>reboot</tt></font> specifies whether the computer is to restart immediately after shutting 
+down. If this parameter is TRUE, the computer is to restart. If this parameter is FALSE,
+the system flushes all caches to disk, clears the screen, and displays a message indicating 
+that it is safe to power down or switches off automatically.
+<P>
+The function calls the Windows NT <font size="3"><tt>InitiateSystemShutdown</tt></font> function. Some sentences of this
+ScriptBasic documentation was copied from the original documentation of the Windows NT system
+API documentation.<HR>
+<A HREF="mod_nt_7.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_9.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

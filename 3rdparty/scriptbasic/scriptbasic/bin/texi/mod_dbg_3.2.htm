@@ -1,0 +1,56 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: Single Stepping</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Single Stepping">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Single Stepping">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Single Stepping</H1>
+<A HREF="mod_dbg_3.1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.3.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+After you have started the program the most frequent thing you will do is single-step. Single step means executing one line of the BASIC program at a time. To do this press <font size="3"><tt>s</tt></font> and <font size="3"><tt>ENTER</tt></font>. Because this is the command you will issue most frequently it is enough just to press <font size="3"><tt>ENTER</tt></font>.
+
+Now what you see is (also recalling the lines that were already presented in the previous section):
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#s
+hello
+
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+You can see that the program has written to the console <font size="3"><tt>hello</tt></font> that actually came from the BASIC program and a new listing. Notice that the actual line now is the second line and the character <font size="3"><tt>&gt;</tt></font> points this line.
+<HR>
+<A HREF="mod_dbg_3.1.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.3.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

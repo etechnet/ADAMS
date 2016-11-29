@@ -1,0 +1,43 @@
+<HEAD>
+<TITLE>Documentation of the module nt: 4. Read the registry</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Read the registry">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Read the registry">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_nt_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>4. Read the registry</H1>
+<A HREF="mod_nt_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_5.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+a = nt::RegRead("HKLM\\Software\\ScriptBasic\\config")
+</PRE></FONT>
+<P>
+This function reads a registry entry and returns the value of the entry or 
+undef if the entry does not ex-ists or if it is not readable by the 
+interpreter process/thread.
+<P>
+If the argument string specifies a key and the last character of the argument 
+is \ then the default value for the key is retrieved.  Note that 
+HKLM\Software\ScriptBasic can have a subkey named config as well 
+as a value named config. The string 
+<font size="3"><tt>"HKLM\\Software\\ScriptBasic\\config"</tt></font> refers to the value while 
+<font size="3"><tt>"HKLM\\Software\\ScriptBasic\\config\\"</tt></font> refers to the default value of 
+the subkey.<HR>
+<A HREF="mod_nt_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_5.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

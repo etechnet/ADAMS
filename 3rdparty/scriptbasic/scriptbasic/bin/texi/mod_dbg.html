@@ -1,0 +1,688 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Table of Contents">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Table of Contents">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<H1>ScriptBasic Debugger Users' Guide</H1>
+<H3>by Peter Verhas</H3>
+<A NAME="contents"><H2>Table of Contents</H2></A>
+<UL>
+<A HREF="#1.">1.   Introduction</A><BR>
+<A HREF="#2.">2.   Installing the Preprocessor dbg</A><BR>
+<A HREF="#3.">3.   Using the Debugger</A><BR>
+<UL>
+<A HREF="#3.1.">3.1.   Starting Program Debug from Command Line</A><BR>
+<A HREF="#3.2.">3.2.   Single Stepping</A><BR>
+<A HREF="#3.3.">3.3.   Listing Lines</A><BR>
+<A HREF="#3.4.">3.4.   Stepping over Function or Subroutine</A><BR>
+<A HREF="#3.5.">3.5.   Stopping the program</A><BR>
+<A HREF="#3.6.">3.6.   Running to Line</A><BR>
+<A HREF="#3.7.">3.7.   Walking Along the Stack</A><BR>
+<A HREF="#3.8.">3.8.   Listing Variables</A><BR>
+<A HREF="#3.9.">3.9.   Stepping Out of Function</A><BR>
+<A HREF="#3.10.">3.10.   Setting Break Points</A><BR>
+<A HREF="#3.11.">3.11.   Getting Help</A><BR>
+<A HREF="#3.12.">3.12.   Debugging CGI programs</A><BR>
+</UL>
+<A HREF="#4.">4.   Known Bugs</A><BR>
+<A HREF="#5.">5.   Future Development</A><BR>
+</UL>
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="1."><H1>1. Introduction</H1></A>
+
+ScriptBasic debugger <font size="3"><tt>dbg</tt></font> allows programmers to debug BASIC programs. The debugger provides a console interface that can be used to execute a program line, by line, to a specified line, set break points and while in debug mode examine variables.
+
+The debugger can also be used to debug CGI programs utilizing the Eszter SB Application Engine.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="2."><H1>2. Installing the Preprocessor dbg</H1></A>
+
+Installing the preprocessor is usually not needed as this is automatically installed during ScriptBasic installation. In the following sections I describe how to install it in case something is not working or you want to set up some files differently.
+
+The debugger is implemented as an internal preprocessor. This means that the code of the preprocessor is in a <font size="3"><tt>.dll</tt></font> file under Windows and <font size="3"><tt>.so</tt></font> file under UNIX. Internal preprocessors have to be configured to be invoked by the interpreter.
+
+To do this the file <font size="3"><tt>scriba.conf.lsp</tt></font> has to be modified and recompiled using the program <font size="3"><tt>cftc</tt></font> in case the default configuration does not fit you.
+
+The preprocessors in the configuration file are configured under the key <font size="3"><tt>preproc</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+preproc (
+  internal (
+    dbg "E:\\ScriptBasic\\modules\\dbg.dll"
+    )
+  )
+</PRE></FONT>
+
+This is the configuration file fragment on the development station. This names the preprocessor the name <font size="3"><tt>dbg</tt></font> and specifies the exact location. You can name the debugger different though this would not be wise. In case you rename the debugger you have to invoke it with the option `<font size="3"><tt>-I newname</tt></font>'.
+
+The debugger requires no other configuration.
+
+
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3."><H1>3. Using the Debugger</H1></A>
+
+This chapter uses an example program to debug. While we debug the code the sections go through the available commands showing the use by example. Thus the recommended reading is going through the sections one after the other.
+ <P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.1."><H2>3.1. Starting Program Debug from Command Line</H2></A>
+
+To start a program in debug mode you should start the program on the command line with the option `<font size="3"><tt>-i dbg</tt></font>'. This will load the debugger module into the interpreter before starting to execute the program, and after successful compilation of the code into internal format the execution stops and waits for user intervention.
+
+For example you can say:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+scriba -i debugtest.bas
+</PRE></FONT>
+
+to start the sample program `<font size="3"><tt>debugtest.bas</tt></font>' in debug mode. ScriptBasic compiles the program into byte-code and gives you a prompt:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+(The <font size="3"><tt>_</tt></font> character shows the place of the blinking cursor.)
+
+The debugger has already listed some of the code around the actual program line. The <font size="3"><tt>&gt;</tt></font> character precedes the line where the execution of the program is waiting.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.2."><H2>3.2. Single Stepping</H2></A>
+
+After you have started the program the most frequent thing you will do is single-step. Single step means executing one line of the BASIC program at a time. To do this press <font size="3"><tt>s</tt></font> and <font size="3"><tt>ENTER</tt></font>. Because this is the command you will issue most frequently it is enough just to press <font size="3"><tt>ENTER</tt></font>.
+
+Now what you see is (also recalling the lines that were already presented in the previous section):
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#s
+hello
+
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+You can see that the program has written to the console <font size="3"><tt>hello</tt></font> that actually came from the BASIC program and a new listing. Notice that the actual line now is the second line and the character <font size="3"><tt>&gt;</tt></font> points this line.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.3."><H2>3.3. Listing Lines</H2></A>
+
+As you could see the debugger lists some of the lines for you around the actual execution point. To be precise the debugger automatically displays five lines before executing any line: two lines before the actual line, the actual line and two lines after. This slightly altered for the first and the last two lines.
+
+Each line contains a serial number. This number identifies the line for the debugger and when you issue a command that should specify a certain line you can use this number. For example issuing the command <font size="3"><tt>r 22</tt></font> will run until the line denoted by the serial number 22 is ready for execution.
+
+This serial number is not necessarily the line number in the source file. This is the serial number of the line inside the program after all <font size="3"><tt>#include</tt></font> and <font size="3"><tt>#import</tt></font> statements were performed.
+
+Sometimes you may want to list other lines. To do this simply issue the command <font size="3"><tt>l</tt></font>. (This is lower case <font size="3"><tt>l</tt></font>, upper case <font size="3"><tt>L</tt></font> lists local variables.)
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l
+
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+As you can see you got the same listing. This seems to be useless, unless you have examined several variables and the original listing was scrolled off and you need another peek at the current lines.
+
+However the command <font size="3"><tt>l</tt></font> is more useful than just this. You can issue an argument to the command specifying the start and the end lines for the listing.
+
+For example:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l 2-7
+
+
+-----------------------------------------------------
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+The command <font size="3"><tt>l n-m</tt></font> lists the lines from line <font size="3"><tt>n</tt></font> to line <font size="3"><tt>m</tt></font>. If you omit the start number then the listing will start at the first line. If you omit the end number the listing will go to the end of the program. If you omit both numbers the command will list all the program lines, for example:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l -
+
+
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+  008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+  012. end sub
+  013.
+  014. MyFunction a
+  015.
+  016. a = a + 2
+  017.
+  018. MyFunction a
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+@examining Variables
+
+Stepping forward and examining where the program is actually executing is useful, but not enough. You can also examine the actual content of variables. To do this the command <font size="3"><tt>?</tt></font> can be used. Type <font size="3"><tt>? A</tt></font> at the prompt!
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#? a
+undef
+#_
+</PRE></FONT>
+
+Step one step ahead again and repeat the command!
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#s
+
+-----------------------------------------------------
+  002. a = 3
+  003.
+ &gt;004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+
+-----------------------------------------------------
+#? a
+3
+#_
+</PRE></FONT>
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.4."><H2>3.4. Stepping over Function or Subroutine</H2></A>
+
+Up to now we used the command <font size="3"><tt>s</tt></font> to advance the execution of the program. But there is a similar command <font size="3"><tt>S</tt></font>. Step ahead one step until you get to the function call calling <font size="3"><tt>MyFunction</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#s
+
+-----------------------------------------------------
+  012. end sub
+  013.
+ &gt;014. MyFunction a
+  015.
+  016. a = a + 2
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+Now if you issue the debugger command <font size="3"><tt>s</tt></font> then you get into the function and you can debug the function itself. But for now assume that you are quite confident with the function fully debugged and you want to treat the function call if it was a single instruction. Issue the command <font size="3"><tt>S</tt></font>!
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#S
+5 34 23 1 * * *
+-----------------------------------------------------
+  014. MyFunction a
+  015.
+ &gt;016. a = a + 2
+  017.
+  018. MyFunction a
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+You can see the printouts that were recursively generated by the function.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.5."><H2>3.5. Stopping the program</H2></A>
+
+As you saw in the previous chapter the printout you realize that the numbers <font size="3"><tt>34</tt></font> and <font size="3"><tt>23</tt></font> are not OK. You wish you typed <font size="3"><tt>s</tt></font> to step into the function instead of stepping over.
+
+No problem. Stop debugging and restart the debugger! To do this issue the command <font size="3"><tt>q</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#q
+Ok... you have said that... quitting...
+(0): error &amp;H37:The preprocessor said to abort program compilation or execution.
+#_
+</PRE></FONT>
+
+This generates a special error that causes the interpreter to finish execution.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.6."><H2>3.6. Running to Line</H2></A>
+
+Start the debugger again and without debugging let the program run to the line where the function call starts. To do this the command <font size="3"><tt>r</tt></font> should be used.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+E:\MyProjects\sb\source\examples&gt;scriba -i dbg debugtest.bas
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#r 14
+hello
+
+-----------------------------------------------------
+  012. end sub
+  013.
+ &gt;014. MyFunction a
+  015.
+  016. a = a + 2
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+The command <font size="3"><tt>r</tt></font> has one argument, the number of the line to run to. If the argument is missing the program will run until it finishes or until a breakpoint is found.
+
+Now step into the function and step until the first number is printed.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#s
+
+-----------------------------------------------------
+  002. a = 3
+  003.
+ &gt;004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+
+-----------------------------------------------------
+#s
+
+-----------------------------------------------------
+  005. local a,b,c
+  006.
+ &gt;007. b = t + 2
+  008. print b
+  009. print " ",t
+
+-----------------------------------------------------
+#s
+
+-----------------------------------------------------
+  006.
+  007. b = t + 2
+ &gt;008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+
+-----------------------------------------------------
+#s
+5
+-----------------------------------------------------
+  007. b = t + 2
+  008. print b
+ &gt;009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+
+-----------------------------------------------------
+</PRE></FONT>
+
+Now we want to advance program execution to the line 11 so we issue the command <font size="3"><tt>r 11</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#r 11
+ 34 23 1
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+You get the numbers printed again, but where are the <font size="3"><tt>*</tt></font>? When <font size="3"><tt>MyFunction t-1</tt></font> was called it printed the starts didn't it? The answer is that is did not.
+
+Running to line 11 started to execute the program and stopped the execution as soon the line 11 the first time was about to be executed. Our function called itself with the argument <font size="3"><tt>2</tt></font> and then even getting deeper with argument <font size="3"><tt>1</tt></font> before it did not call itself any deeper and execution stopped at line 11.
+
+Quit the program again, start debugging again and first run to line 9, and then issue the command <font size="3"><tt>R 11</tt></font>:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#q
+Ok... you have said that... quitting...
+(0): error &amp;H37:The preprocessor said to abort program compilation or execution.
+
+
+E:\MyProjects\sb\source\examples&gt;scriba -i dbg debugtest.bas
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+
+-----------------------------------------------------
+#r 9
+hello
+5
+-----------------------------------------------------
+  007. b = t + 2
+  008. print b
+ &gt;009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+
+-----------------------------------------------------
+#R 11
+ 34 23 1 * *
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+This time the program did not stop in the recursive function call.
+
+The command <font size="3"><tt>R</tt></font> is similar to command <font size="3"><tt>r</tt></font>, but it does not stop at the line in recursive functions.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.7."><H2>3.7. Walking Along the Stack</H2></A>
+
+Examine the variable <font size="3"><tt>a</tt></font> again.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#R 11
+ 34 23 1 * *
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#? a
+undef
+#_
+</PRE></FONT>
+
+This is <font size="3"><tt>undef</tt></font> because now we examine the local variable. Issue the command <font size="3"><tt>u</tt></font> and examine the variable again.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#u
+done
+#?a
+3
+#_
+</PRE></FONT>
+
+Issuing the command <font size="3"><tt>u</tt></font> we stepped one level up in the call stack. At that point the variable <font size="3"><tt>a</tt></font> is global and has value. That is actually a different variable that happens to have the same name.
+
+Issue the command <font size="3"><tt>l</tt></font> to see where we are.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l
+
+-----------------------------------------------------
+  012. end sub
+  013.
+ &gt;014. MyFunction a
+  015.
+  016. a = a + 2
+
+-----------------------------------------------------
+#
+</PRE></FONT>
+
+To get one level deeper in the stack issue the command <font size="3"><tt>d</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#d
+done
+#l
+
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+If you stepped several levels up in the stack you should issue that many commands <font size="3"><tt>d</tt></font> or just one <font size="3"><tt>D</tt></font> to go to the bottom of the stack.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.8."><H2>3.8. Listing Variables</H2></A>
+
+Using the command <font size="3"><tt>?</tt></font> we could examine the value of a variable. There are two other commands to examine variables. These are: <font size="3"><tt>L</tt></font> and <font size="3"><tt>G</tt></font>. These commands list the <font size="3"><tt>L</tt></font>ocal and the <font size="3"><tt>G</tt></font>lobal variables. Try it!
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#L
+main::t=-&gt;3
+main::a=undef
+main::b=5
+main::c=undef
+#G
+main::a=3
+#_
+</PRE></FONT>
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.9."><H2>3.9. Stepping Out of Function</H2></A>
+
+Now that we have debugged the function enough we do not want to step any further inside the function, but go ahead and debug the rest of the main program. You could in our example issue <font size="3"><tt>r 14</tt></font>, or better, well ... is it <font size="3"><tt>r 16</tt></font>? You have to list the lines, step in the stack up, find the next executable line and issue the command <font size="3"><tt>r</tt></font>.
+
+Instead of that just issue the command <font size="3"><tt>o</tt></font>, to step out of the current function.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#o
+ *
+-----------------------------------------------------
+  014. MyFunction a
+  015.
+ &gt;016. a = a + 2
+  017.
+  018. MyFunction a
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+As you see it still printed a character and stopped at the line 16.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.10."><H2>3.10. Setting Break Points</H2></A>
+
+In case you have a complex program and you want to debug only a certain part of it you need break points.
+
+The command <font size="3"><tt>b</tt></font> sets a so called breakpoint at the line for which the line serial number is given. Issue the commands:
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#b8
+done
+#b11
+done
+#l -
+
+
+-----------------------------------------------------
+  001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+* 008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+* 011. print " *"
+  012. end sub
+  013.
+  014. MyFunction a
+  015.
+ &gt;016. a = a + 2
+  017.
+  018. MyFunction a
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+As you can see in the listing the lines are preceded by a <font size="3"><tt>*</tt></font> character. When the program is executed using the command <font size="3"><tt>r</tt></font> (or even <font size="3"><tt>R</tt></font>) the execution will stop when it reaches one of the break points.
+
+Because many times programmers want to set a breakpoint on the actual line, if you issue the command <font size="3"><tt>b</tt></font> without argument it will set the breakpoint on the actual line.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#R
+
+-----------------------------------------------------
+  006.
+  007. b = t + 2
+*&gt;008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+To remove the breakpoints you should issue the command <font size="3"><tt>B</tt></font>. The command <font size="3"><tt>B n</tt></font> removes the breakpoint from the line <font size="3"><tt>n</tt></font>. The command <font size="3"><tt>b n-m</tt></font> removes all breakpoints that are on the lines from <font size="3"><tt>n</tt></font> to line <font size="3"><tt>m</tt></font> including the line <font size="3"><tt>n</tt></font> and line <font size="3"><tt>m</tt></font>. Both <font size="3"><tt>n</tt></font> and <font size="3"><tt>m</tt></font> are optional. For example <font size="3"><tt>B -</tt></font> removes all breakpoints.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.11."><H2>3.11. Getting Help</H2></A>
+
+At any time when the debugger waits for your input the command <font size="3"><tt>h</tt></font> prints a help screen.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#h
+h help
+s step one line, or just press return on the line
+S step one line, do not step into functions or subs
+o step until getting out of the current function
+  (if you stepped into but changed your mind)
+? var  print the value of a variable
+u step one level up in the stack
+d step one level down in the stack (for variable printing)
+D step down in the stack to current execution depth
+G list all global variables
+L list all local variables
+l [n-m] list the source lines
+r [n] run to line n
+R [n] run to line n but do not stop in recursive function call
+b [n] set breakpoint on the line n or the current line
+B [n-m] remove breakpoints from lines
+q quit the program
+#_
+</PRE></FONT>
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="3.12."><H2>3.12. Debugging CGI programs</H2></A>
+
+To debug a CGI program you have to execute it in the Eszter SB Application Engine. The Eszter SB Application Engine is a single process, multi-thread httpd daemon that runs ScriptBasic programs inside the process as separate threads. Yoi can install the engine as Windows NT Service, UNIX daemon or start just as a command line tool.
+
+More information how to start the Eszter SB Application Engine read the manual of the program.
+
+When the engine is started from the command line it acts like a normal command line program. Although the BASIC command <font size="3"><tt>PRINT</tt></font> is redirected to send HTML output to the browser, and the input functions read the http POST data, the debugger, if started still prints to the console screen and reads the keyboard.
+
+To invoke the debugger, however you can not use the command line option `<font size="3"><tt>-i dbg</tt></font>' because in this case the command line is for the Eszter SB Application Engine and not for the individual BASIC program thread. Instead you have to modify the code of your BASIC program to have the first line (or the second line following @code{#! /usr/bin/scriba) to be
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+use dbg
+</PRE></FONT>
+
+This will invoke the debugger as soon as the file is read y the application engine.
+
+To make sure that the engine is reading the source instead of the cache file, in which case the preprocessors defined by the statement <font size="3"><tt>use</tt></font> are ignored configure the ScriptBasic interpreter with a fake cache directory that does not exist.
+
+Start the engine from the command line 
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+sbhttpd -start
+</PRE></FONT>
+
+and open a browser with the URL that refers to the program you want to debug. Do not forget to specify `<font size="3"><tt>-start</tt></font>' under Windows NT! The engine will stop and wait on the console with the debugger cursor.
+
+At this point you can go and debug your program.
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="4."><H1>4. Known Bugs</H1></A>
+
+<UL>
+<LI> The preprocessor is not capable displaying values of arrays.
+</UL>
+<P><a href="#contents">[Contents]</A><BR>
+<P>
+<A name="5."><H1>5. Future Development</H1></A>
+
+This debugger is the very first debugger that was developed as soon as the internal preprocessor interface was developed. Later versions will feature graphical interface, networked remote debugging and more comfort.
+
+

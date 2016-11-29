@@ -1,0 +1,38 @@
+<HEAD>
+<TITLE>Using the module BDB: Introduction</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Introduction">
+<META NAME="keywords" CONTENT="Using the module BDB: Introduction">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Introduction</H1>
+[&lt;&lt;&lt;] <A HREF="mod_bdb_2.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+This document describes how to install and use the module BDB developed to help programmers writing database-handling programs in ScriptBasic. The module BDB is based on the Berkeley Data Base from Sleepy Cat Software Inc.
+<P>
+There are separate documents that describe the language (Users’ Guide), the major architecture of the source code (Source Guide).
+<P>
+This document describes the version 2.0 of the module.
+<P>
+The Berkeley Database (bdb) is a set of database handling routines. The program using the bdb directly calls these routines. There is no SQL server or a database daemon. In this sense this is a library collection that can handle simple database structures.
+<P>
+Although it is cumbersome to write complex database application using the Berkeley database lacking SQL interface it pays back on performance.
+<P>
+The Berkeley Database is available on Windows NT as well as on UNIX. It supports transaction handling and is it capable handling really huge databases. Therefore it is an ideal choice for several types of application where there is no need to separate the application from the database.
+<P>
+The bdb module developed for ScriptBasic provides an interface to a subset of the Berkeley Database functions. Using the module the BASIC program can use database handling functions, and transactions. On the other hand BASIC programs can not directly use the shared memory management functions, or locking (only through transactions). Application programmers needing these functions should rather consider developing their own ScriptBasic module using the language C delivering their application specific functions using the underlying Berkeley Database functions.
+<P>
+The functions available to BASIC programmers allow database creation, inserting, deleting, updating, searching data element with single or duplicated keys, start, commit and abort transactions. Some functions are simplified. The BASIC interface does not resemble to the C API of the Berkeley Database. Rather it is a BASIC language database-handling interface that happens to use the Berkeley Database.<HR>
+[&lt;&lt;&lt;] <A HREF="mod_bdb_2.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

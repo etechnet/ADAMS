@@ -1,0 +1,24 @@
+
+
+
+all : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\curses.lib T:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\curses.dll T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\curses.lib : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\s_interface.obj 
+	lib /nologo /OUT:T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\curses.lib T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\s_interface.obj  
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\curses.dll : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\interface.obj 
+	cl /LD /nologo /FeT:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\curses.dll T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\interface.obj 
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoT:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\s_interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoT:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\curses\s_interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi : manual.texi.jam
+	perl T:\MyProjects\ScriptBasic\source\jamal.pl manual.texi.jam T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+	perl T:\MyProjects\ScriptBasic\source\t2h.pl T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+	hhc T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.hhp & set ERRORLEVEL=0
+
+

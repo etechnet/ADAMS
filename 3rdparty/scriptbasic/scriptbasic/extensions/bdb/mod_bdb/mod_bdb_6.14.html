@@ -1,0 +1,35 @@
+<HEAD>
+<TITLE>Using the module BDB: 6.14. CommitTransaction</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: CommitTransaction">
+<META NAME="keywords" CONTENT="Using the module BDB: CommitTransaction">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+<UL><a href="mod_bdb_6.html">6. Berkeley DB Module Functions Reference</A><BR>
+</UL>
+</UL>
+<P>
+<H1>6.14. CommitTransaction</H1>
+<A HREF="mod_bdb_6.13.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.15.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+bdb::CommitTransaction
+</PRE></FONT>
+<P>
+This command commits the transaction started using the command <font size="3"><tt>bdb::BeginTransaction</tt></font>. When this command is executed all the alterations are done on the database that the program performed since the transaction begin and all locks are released, so other programs may get access to the records.<HR>
+<A HREF="mod_bdb_6.13.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.15.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

@@ -1,0 +1,117 @@
+#-----------------------------------------------------------------------
+# Copyright IONA Technologies 2002-2003. All rights reserved.
+# This software is provided "as is".
+#-----------------------------------------------------------------------
+
+DIRNAME  = corbautil
+SRCTREE  = COMMON
+#
+#  INCLUDE FILES
+#  - Path
+#  - Flag compilazione e link
+#
+#
+include $(STS_HOME)/STS/MAKE/make_path.mk
+include $(STS_HOME)/STS/MAKE/make_comp.mk
+#
+# File sorgenti e librerie dell'applicativo
+#
+include $(PATMAK)/orbixcpp.mk
+
+#--------
+# Set the next line to point to this top-level directory
+#--------
+CORBA_UTIL_ROOT=	$(STS_HOME)/STS/COMMON/source/corbautil
+
+#--------
+# Where Java is installed (ignore this if you are not using Java parts
+# of CORBA Utilities)
+#--------
+JAVA_HOME =		/usr
+
+#--------
+# If you do not have IT_PRODUCT_DIR set as an environment variable
+# then add it below, by uncommenting the next line and making sure
+# the specified directory is correct
+#--------
+#IT_PRODUCT_DIR=		/utenti/orbix
+
+#--------
+# If you are using "old/classic" iostreams then uncomment the
+# following lines
+#--------
+#OPT_CXX_FLAGS= /DIT_CLASSIC_IOSTREAMS /DP_USE_OLD_TYPES
+#OPT_CIOS_DIR=	\cios
+
+#--------
+# Uncomment the following lines if you are using ASP 6.1
+#--------
+ifeq ($(STS_PLATFORM), STS_TRU64)
+ORBIX_VERSION =		61
+ART_ROOT_DIR =		$(IT_PRODUCT_DIR)/asp/6.1
+ART_CXX_INCLUDE_DIR =	$(ART_ROOT_DIR)/include
+ART_LIB_DIR =		$(ART_ROOT_DIR)/lib
+ART_IDL_DIR =		$(ART_ROOT_DIR)/idl
+ART_JAR_FILE =		$(ART_ROOT_DIR)/lib/asp-corba.jar
+endif
+
+
+ifeq ($(STS_PLATFORM), STS_HPUX)
+ORBIX_VERSION =		63
+ART_ROOT_DIR =		$(IT_PRODUCT_DIR)/asp/6.3
+ART_CXX_INCLUDE_DIR =	$(ART_ROOT_DIR)/include
+ART_LIB_DIR =		$(ART_ROOT_DIR)/lib
+ART_IDL_DIR =		$(ART_ROOT_DIR)/idl
+ART_JAR_FILE =		$(ART_ROOT_DIR)/lib/asp-corba.jar
+endif
+
+#--------
+# You should not have to change anything after this point
+#--------
+
+
+CORBA_LIBS =		-lit_naming -lit_poa -lit_art -lit_ifc 
+
+#SYS_LIBS =		
+
+#--------
+# IDL compiler
+#--------
+IDL =			$(ART_ROOT_DIR)/bin/idl
+IDLFLAGS=	-N \
+		-base:-cC.cxx \
+		-poa:-cS.cxx \
+		-I$(ART_ROOT_DIR)/idl \
+		-I$(CORBA_UTIL_ROOT)/idl
+
+STUB_H_SUFFIX=	.hh
+SKEL_H_SUFFIX=	S.hh
+STUB_SUFFIX=	C
+SKEL_SUFFIX=	S
+
+
+#--------
+# C++ compiler
+#--------
+CXXFLAGS+= -I. \
+	   -I$(CORBA_UTIL_ROOT)/cxx/gsp \
+	   -I$(CORBA_UTIL_ROOT)/cxx/import_export \
+           -I$(CORBA_UTIL_ROOT)/cxx/PoaUtility \
+	   -I$(CORBA_UTIL_ROOT)/cxx/portability \
+           -I$(CORBA_UTIL_ROOT)/cxx/PolicyListParser \
+	   -I$(ART_CXX_INCLUDE_DIR) -D_REENTRANT  -DP_USE_ORBIX -DORBIX_VERSION=$(ORBIX_VERSION)
+
+#--------
+# Linker
+#--------
+CORBA_LINK_FLAGS=	-Wl,+b,$$LD_LIBRARY_PATH:$(ART_LIB_DIR)
+LINK=		$(CXX)
+
+
+#--------
+# Generic build rules
+#--------
+.SUFFIXES:		.cxx
+
+.cxx.o:
+	$(CXX) -o $*.o $(CXXFLAGS) -c $<

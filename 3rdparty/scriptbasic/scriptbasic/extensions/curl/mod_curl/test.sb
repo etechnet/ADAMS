@@ -1,0 +1,15 @@
+import curl.bas
+ON ERROR GOTO CURL_ERROR
+CURL = curl::init()
+curl::option CURL,"URL","https://lists.balabit.hu/pipermail/scriptbasic/1999-September/000027.html"
+' curl::option CURL,"URL","http://scriptbasic.com/cgi-bin/echo.cgi"
+' curl::option CURL,"FORMADD","NAME","karo","FILE","test.sb","FILENAME","almasretes"
+' curl::option CURL,"HTTPPOST","Kakukk",13,"béka","nonsense"
+Response = curl::perform(CURL)
+print Response,"\n"
+curl::finish CURL
+STOP
+CURL_ERROR:
+PRINT "Some error happened while trying to download the page. The error message is:\n"
+PRINT curl::error(CURL)
+STOP

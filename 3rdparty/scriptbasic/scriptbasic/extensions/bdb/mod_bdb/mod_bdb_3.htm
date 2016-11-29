@@ -1,0 +1,30 @@
+<HEAD>
+<TITLE>Using the module BDB: Module versions, upgrading</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Module versions, upgrading">
+<META NAME="keywords" CONTENT="Using the module BDB: Module versions, upgrading">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Module versions, upgrading</H1>
+<A HREF="mod_bdb_2.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_4.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+The ScriptBasic bdb module v1.0 supported the ScriptBasic interpreter v1.0build18 using the Berkeley DB 3.0.55. The version 2.0 of the module supports ScriptBasic v1.0build19 and or later using the Berkeley DB 3.1.14. There is no module using the version Berkeley DB 3.0.55 supporting ScriptBasic v1.0build19 or later.
+<P>
+The differences between the version 1.0 and 2.0 of the module are transparent for the BASIC programmer. The interface is the same and all behavior should be the same except that the underlying newer version of Berkeley DB has some bugs fixed over the former version.
+<P>
+The bdb module version 2.0 uses the newer Berkeley DB and uses the newer structured configuration handling supported by ScriptBasic v1.0build19 and not supported by earlier versions.
+<P>
+When upgrading ScriptBasic from v1.0build18 to v1.0build19 you have to upgrade the bdb module. This need installation of the new DLL or SO file and tuning the configuration file. You are advised to read the documentation about the configuration of ScriptBasic in the ScriptBasic users guide and then examine the sample configuration file shipped with ScriptBasic v1.0build19. This configuration file includes a sample configuration for the bdb v2.0 module.<HR>
+<A HREF="mod_bdb_2.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_4.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

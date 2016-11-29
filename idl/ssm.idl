@@ -1,0 +1,289 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+
+#ifndef _SSM_IDL
+#define _SSM_IDL
+
+#include <ssm_master_server_h.h>
+#include <common_datatypes.idl>
+
+module net {
+
+module etech {
+
+module SSM {
+
+interface ConfigMonitorServer
+{
+	//Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+	const long eCMS 				= 1;
+	const long eCMS1 				= 1;
+
+
+	boolean KillOrbixProcess(in long flag,in long num_pid);
+
+	boolean refreshConfigProcess(in long flag,out CS_INFO_PROCSeq configProcesslList);
+	boolean refreshConfigBloc(in long flag,out CS_BLOCK_LOGSeq configBloclList); //flag=-1 solo blocchi flag!=0 msg del blocco specificato in flag
+
+	long writeModifyProcess(in string nomeProcesso,in long flag,in CS_INFO_PROC configProcess);
+	long writeModifyLog(in long flag,in CS_BLOCK_LOGSeq configBloclList);
+
+
+	long deleteProcess(in long flag,in string nomeProcesso);
+	long deleteBlockLog(in long flag,in long idBlock);
+	long SystemStart(in long flag);
+	long SystemStop(in long flag);
+	/**
+	 * Esegue lo shutDown del server.
+	 */
+	oneway void shutDown();
+};
+
+interface ProcessMonitorServer
+{
+	//Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+
+	const long eHELP 				= HELP;
+	const long eMACRO 				= MACRO;
+	const long ePS_ORBIX 				= PS_ORBIX;
+	const long ePS_ORBIX_HELP			= PS_ORBIX_HELP;
+	const long eSINGLE_PROCESS 			= SINGLE_PROCESS;
+	const long eALL_PROCESS 			= ALL_PROCESS;
+	const long eMAX_DESCRITTORE_PROCESS_LEN 	= MAX_DESCRITTORE_PROCESS_LEN;
+	const long eMAX_NOME_PROCESSO_LEN 		= MAX_NOME_PROCESSO_LEN;
+	const long eMAX_COLOR_LEN 			= MAX_COLOR_LEN;
+	const long eMAX_TIPO_PROCESSO_LEN 		= MAX_TIPO_PROCESSO_LEN;
+	const long eMAX_MSG_PRROCESSO_LEN 		= MAX_MSG_PRROCESSO_LEN;
+
+	/**
+	 * Il method fa il refresh dei processi del nodo sul quale viene invocato.
+	 * @param procesDetailList ogetto di tipo <ProcesDetailSeq> contenente una sequenza di processi con relative informazioni.
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+	boolean refreshMonitorProcess(out ProcesDetailSeq procesDetailList);
+
+	boolean checkStatus(out ProcesDetailSeq procesDetailList);
+
+	/**
+	 * Il method ritorna il file di help relativo al processo selezionato
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param logProcesso log associato al processo selezionato.
+	 * @param flagDETAIL descrimina il tipo di dettaglio che viene richiesto sul processo
+			flagDETAIL=HELP   ==> dettaglio di help,
+			flagDETAIL=MACRO  ==> dettaglio del Macro Allarme
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+	boolean getDeteilProcess(in long flagDETAIL,in string nomeProcesso,out LogProcessSeq logProcesso);
+
+	/**
+	 * Il method ritorna il file di history log relativo al processo selezionato
+	 * @param flagSINGLE_ALL_PROCESS indicha se prendere l'history log di un singolo processo(SINGLE_PROCESS) o di tutti i processi(ALL_PROCESS)
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param data fiorno del
+	 * @param logProcesso log associato al processo selezionato.
+	 * @return ritorna :	 1 se nell'operazione non si sono verificati errori.
+	 			-1 se ci sono stati problemi
+	 			 2 se il file di log � troppo grande, in questo caso l'utente ha la possibilita di scegliere se vuole comunque
+	 			 	tutto il report o meno(se vuole tutto il report il method deve essere richiamato con la flag flagALLDOCUMENT a true)
+	 */
+	long getHistoryProcess(in long flagWORK,in long flagSINGLE_ALL_PROCESS,in boolean flagALLDOCUMENT,in string nomeProcesso,in long data,out LogProcessSeq logProcesso);
+
+	long resetField(in long field,in long flagTIPORESET,in string nomeProcesso);
+
+
+	/**
+	 * Esegue lo shutDown del server.
+	 */
+	oneway void shutDown();
+};
+
+interface ACQPebMGRServer
+{
+	const long eCAT_NAME_DIM 				= CAT_NAME_DIM;
+	const long ePEB_NAME_DIM 				= PEB_NAME_DIM;
+
+	//Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+
+	long refreshACQPebMGR(in long flag,out ACQ_PEB_MGR acqPebMgr);
+	long writeACQPebMGR(in boolean cleanAll,in ACQ_PEB_MGR acqPebMgr);
+
+	oneway void shutDown();
+
+};
+
+interface GarbageMonitorServer
+{
+	//Alessandra Pau - Telecom Italia S.p.A.
+
+	const long eGB_LENUSER = GB_LENUSER;
+	const long eGB_LENPATH = GB_LENPATH;
+	const long eGB_LENPATH_LOG = GB_LENPATH_LOG;
+	const long eGB_LENFILTER = GB_LENFILTER;
+	const long eGB_LENFREQUENCE = GB_LENFREQUENCE;
+
+	long refreshGarbage(out GARBAGE_INFOSeq GarbageInfoOut);
+	long writeGarbage(in boolean modify, in GARBAGE_INFOSeq GarbageInfoIn);
+
+	oneway void shutDown();
+
+};
+
+interface PsMonitorMasterServer
+{
+	//Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+	const long ePSM = 1;
+	const long eCOMP = 1;
+
+	boolean LaunchPsMonitorMasterServer(out CentralSeq CEN);
+	boolean KillOrbixProcess(in string nameSwitch,in long flag,in long num_pid);
+
+	/**
+	 * Il method fa il refresh dei processi del nodo sul quale viene invocato.
+	 * @param procesDetailList ogetto di tipo <ProcesDetailSeq> contenente una sequenza di processi con relative informazioni.
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+	boolean refreshMonitorProcess(in string nameSwitch,in long flag,out ProcesDetailSeq procesDetailLis);
+
+	/**
+	 * Il method ritorna il file di help relativo al processo selezionato
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param logProcesso log associato al processo selezionato.
+	 * @param flagDETAIL descrimina il tipo di dettaglio che viene richiesto sul processo
+			flagDETAIL=HELP   ==> dettaglio di help,
+			flagDETAIL=MACRO  ==> dettaglio del Macro Allarme
+	 * @return ritorna <true> se nell'operazione di refresh non si sono verificati errori <false> altrimenti.
+	 */
+	boolean getDeteilProcess(in long flagDETAIL,in string nameSwitch,in string nomeProcesso,out LogProcessSeq logProcesso);
+
+	boolean getSystemTime(in string nameSwitch,out LogProcessSeq systemTime);
+
+	/**
+	 * Il method ritorna il file di history log relativo al processo selezionato
+	 * @param flagSINGLE_ALL_PROCESS indicha se prendere l'history log di un singolo processo(SINGLE_PROCESS) o di tutti i processi(ALL_PROCESS)
+	 * @param nomeProcesso nome del processo sul quale si vuol vedere il log.
+	 * @param data fiorno del
+	 * @param logProcesso log associato al processo selezionato.
+	 * @return ritorna :	 1 se nell'operazione non si sono verificati errori.
+	 			-1 se ci sono stati problemi
+	 			 2 se il file di log � troppo grande, in questo caso l'utente ha la possibilita di scegliere se vuole comunque
+	 			 	tutto il report o meno(se vuole tutto il report il method deve essere richiamato con la flag flagALLDOCUMENT a true)
+	 */
+	long getHistoryProcess(in long flagWORK,in long flagSINGLE_ALL_PROCESS,in boolean flagALLDOCUMENT,in string nameSwitch,in string nomeProcesso,in long data,out LogProcessSeq logProcesso);
+
+	long resetField(in string nameSwitch,in long field,in long flagTIPORESET,in string nomeProcesso);
+
+	boolean refreshConfigProcess(in string nameSwitch,in long flag,out CS_INFO_PROCSeq configProcesslList);
+	boolean refreshConfigBloc(in string nameSwitch,in long flag,out CS_BLOCK_LOGSeq configBloclList); //flag=-1 solo blocchi flag!=0 msg del blocco specificato in flag
+
+	long writeModifyProcess(in string nomeProcesso,in string nameSwitch,in long flag,in CS_INFO_PROC configProcess);
+	long writeModifyLog(in string nameSwitch,in long flag,in CS_BLOCK_LOGSeq configBloclList,out CentralSeq switchSeq);
+	long createLogFile(in string nameSwitch,in long flag);
+
+	long deleteProcess(in string nameSwitch,in long flag,in string nomeProcesso);
+	long deleteBlockLog(in string nameSwitch,in long flag,in long idBlock,in long idFep);
+	long SystemStart(in string nameSwitch,in long flag);
+	long SystemStop(in string nameSwitch,in long flag);
+
+	//***** Metodi del processo ACQPEB Mgr +++++++++++++++++++++
+
+	long refreshACQPebMGR(in string nameSwitch,in long flag,out ACQ_PEB_MGR acqPebMgr);
+	long writeACQPebMGR(in string nameSwitch,in boolean cleanAll,in ACQ_PEB_MGR acqPebMgr);
+
+	//***** Metodi del p rocesso GarbageMonitorServer +++++++++++++++++++++
+
+	long refreshGarbage(in string nameSwitch, out GARBAGE_INFOSeq GarbageInfoOut);
+	long writeGarbage(in string nameSwitch, in boolean modify, in GARBAGE_INFOSeq GarbageInfoIn);
+
+	//***** Metodi del processo DBConfigurationServer +++++++++++++++++++++
+
+// 	long putConfigurationDRonFEP(in string nameSwitch,in string nameFile,in long flag,in DRSeq drSequence);
+	long putFilePSWD(in string nameSwitch,in string nameFile,in long flag,in GESTIONE_PSWDSeq pswdSequence);
+	long getFilePSWD(in string nameSwitch,in string nameFile,in long flag,out GESTIONE_PSWDSeq pswdSequence);
+
+oneway void shutDown();
+};
+
+interface DBConfigurationServer
+{
+	//Raffaele Ficcadenti raffaele.ficcadenti@e-tech.net
+
+	const long eDBCS = 3;
+	const long eBLOCK_SIZE = PSWD_BLOCK_SIZE;
+	const string eCHIAVE = PSWD_CHIAVE;
+	const long eDIM_PSWD_NOME_NODO = DIM_PSWD_NOME_NODO;
+	const long eDIM_PSWD_OGGETTO = DIM_PSWD_OGGETTO;
+	const long eDIM_PSWD_LOGIN = DIM_PSWD_LOGIN;
+	const long eDIM_PSWD_PASSWORD = DIM_PSWD_PASSWORD;
+	const long eDIM_PSWD_DATA_SCADENZA = DIM_PSWD_DATA_SCADENZA;
+
+// 	long putConfigurationDRonFEP(in string nameFile,in long flag,in DRSeq drSequence);
+	long renameIndexTimeCFG(in string nameFile);
+
+	long putFilePSWD(in string nameFile,in long flag,in GESTIONE_PSWDSeq pswdSequence);
+	long getFilePSWD(in string nameFile,in long flag,out GESTIONE_PSWDSeq pswdSequence);
+
+	oneway void shutDown();
+};
+
+// SSM Scheduler
+
+	interface ssm_scheduler_server
+	{
+		oneway void adamsConfigurationChanged();
+		oneway void processConfigurationChanged();
+		oneway void iniFileChanged();
+
+		boolean dummy();
+	};
+
+// SSM Logger
+
+	interface ssm_logger_server
+	{
+		boolean get_logs(in string process_name);
+	};
+
+
+// SSM Garbage
+
+	interface ssm_garbage_server
+	{
+		boolean dummy();
+	};
+
+// SSM Deployer
+
+	interface ssm_deployer_server
+	{
+		boolean dummy();
+	};
+
+}; // ssm
+
+}; // etech
+
+}; // net
+
+#endif // _SSM_IDL

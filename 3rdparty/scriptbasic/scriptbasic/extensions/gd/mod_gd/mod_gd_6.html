@@ -1,0 +1,70 @@
+<HEAD>
+<TITLE>Using the module GD: 6. Using the module</TITLE>
+
+<META NAME="description" CONTENT="Using the module GD: Using the module">
+<META NAME="keywords" CONTENT="Using the module GD: Using the module">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_gd_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>6. Using the module</H1>
+<A HREF="mod_gd_5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_6.1.html">[&gt;&gt;&gt;]</A>
+<UL>
+<A HREF="mod_gd_6.1.html">6.1. Create</A><BR>
+<A HREF="mod_gd_6.2.html">6.2. CreateFromPng</A><BR>
+<A HREF="mod_gd_6.3.html">6.3. Destroy</A><BR>
+<A HREF="mod_gd_6.4.html">6.4. SavePng</A><BR>
+<A HREF="mod_gd_6.5.html">6.5. Png</A><BR>
+<A HREF="mod_gd_6.6.html">6.6. Color</A><BR>
+<A HREF="mod_gd_6.7.html">6.7. Line</A><BR>
+<A HREF="mod_gd_6.8.html">6.8. Point</A><BR>
+<A HREF="mod_gd_6.9.html">6.9. SizeX</A><BR>
+<A HREF="mod_gd_6.10.html">6.10. SizeY</A><BR>
+<A HREF="mod_gd_6.11.html">6.11. Rectangle</A><BR>
+<A HREF="mod_gd_6.12.html">6.12. FilledRectangle</A><BR>
+<A HREF="mod_gd_6.13.html">6.13. Poly</A><BR>
+<A HREF="mod_gd_6.14.html">6.14. FilledPoly</A><BR>
+<A HREF="mod_gd_6.15.html">6.15. Arc</A><BR>
+<A HREF="mod_gd_6.16.html">6.16. Fill</A><BR>
+<A HREF="mod_gd_6.17.html">6.17. FillToBorder</A><BR>
+<A HREF="mod_gd_6.18.html">6.18. SetBrush</A><BR>
+<A HREF="mod_gd_6.19.html">6.19. SetTile</A><BR>
+<A HREF="mod_gd_6.20.html">6.20. LineStyle</A><BR>
+<A HREF="mod_gd_6.21.html">6.21. GetColorComponent</A><BR>
+<A HREF="mod_gd_6.22.html">6.22. IsXYInside</A><BR>
+<A HREF="mod_gd_6.23.html">6.23. SetFont</A><BR>
+<A HREF="mod_gd_6.24.html">6.24. SetColor</A><BR>
+<A HREF="mod_gd_6.25.html">6.25. SetTransparentColor</A><BR>
+<A HREF="mod_gd_6.26.html">6.26. Print</A><BR>
+<A HREF="mod_gd_6.27.html">6.27. GetRedComponent</A><BR>
+<A HREF="mod_gd_6.28.html">6.28. GetGreenComponent</A><BR>
+<A HREF="mod_gd_6.29.html">6.29. GetBlueComponent</A><BR>
+<A HREF="mod_gd_6.30.html">6.30. Circle</A><BR>
+<A HREF="mod_gd_6.31.html">6.31. Ellipse</A><BR>
+<HR>
+<P>
+
+To use the module the basic program should include the file gd.bas. To do this the program should contain the line
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+include gd.bas
+</PRE></FONT>
+<P>
+somewhere at the start of the code. Note that there are no double quote characters before and after the file name. This tells the interpreter that the include file is located in a module include directory. This include file contains all the declarations that are needed to use the GD module.
+<P>
+The program using the module should call the functions declared in the include file. The binary library file is loaded when the first function call is executed.
+<P>
+The functions and the constants are defined in the following sections. Note that all the constants and functions are declared to belong to the name space gd:: and should be used with the prefix gd::. For example the function Create should be used as gd::Create from outside of the module gd.<HR>
+<A HREF="mod_gd_5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_6.1.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

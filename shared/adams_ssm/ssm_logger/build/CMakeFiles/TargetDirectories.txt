@@ -1,0 +1,2 @@
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/ssm_logger.dir
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/ssm_logger_send.dir

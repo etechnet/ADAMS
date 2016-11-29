@@ -1,0 +1,2 @@
+{#define LdNeededLibraryFiles=-L/usr/lib/mysql -lmysqlclient}
+{#define LibNeededLibraryFiles=}

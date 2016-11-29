@@ -1,0 +1,29 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\dbg.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\dbg.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_dbg.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\dbg.lib : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\s_interface.obj 
+	tlib /a C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\dbg.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\s_interface.obj  user32.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\dbg.dll : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\interface.obj 
+	bcc32 -WD -L"E:\Program Files\Borland\BCC32\Lib" -eC:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\dbg.dll C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\interface.obj user32.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj : dbg_con.c dbg.h 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\dbg_con.obj dbg_con.c
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\interface.obj : interface.c dbg_comm.h dbg.h 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\s_interface.obj : interface.c dbg_comm.h dbg.h 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -DSTATIC_LINK=1 -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\dbg\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_dbg.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_dbg.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_dbg.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_dbg.hhp & set ERRORLEVEL=0
+
+

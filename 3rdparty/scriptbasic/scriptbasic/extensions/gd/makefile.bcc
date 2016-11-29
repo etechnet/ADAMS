@@ -1,0 +1,26 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\gd.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\gd.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\gd.lib : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\s_interface.obj 
+	tlib /a C:\dl\scriba_v2.1-scr\bin\bcc\mod\lib\gd.lib C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\s_interface.obj  libpng.lib bgd.lib zlib.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\gd.dll : C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\interface.obj 
+	bcc32 -WD -L"E:\Program Files\Borland\BCC32\Lib" -eC:\dl\scriba_v2.1-scr\bin\bcc\mod\dll\gd.dll C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\interface.obj libpng.lib bgd.lib zlib.lib
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\interface.obj : interface.c gdfontl.h gdfontt.h gd.h gdfontg.h gdfontmb.h gdfonts.h 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\s_interface.obj : interface.c gdfontl.h gdfontt.h gd.h gdfontg.h gdfontmb.h gdfonts.h 
+	bcc32 -6 -I"E:\Program Files\Borland\BCC32\Include" -L"E:\Program Files\Borland\BCC32\Lib" -DWIN32=1 -DBCC32=1 -w- -DSTATIC_LINK=1 -c -oC:\dl\scriba_v2.1-scr\bin\bcc\mod\obj\gd\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.hhp & set ERRORLEVEL=0
+
+

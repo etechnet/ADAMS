@@ -1,0 +1,96 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2471940458/fast"
+gmake[1]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2471940458.dir/build.make CMakeFiles/cmTryCompileExec2471940458.dir/build
+gmake[2]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2471940458.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++     -o CMakeFiles/cmTryCompileExec2471940458.dir/CheckSymbolExists.cxx.o -c /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+gmake[2]: *** [CMakeFiles/cmTryCompileExec2471940458.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[2]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec2471940458/fast] Error 2
+gmake[1]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+
+File /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3785586095/fast"
+gmake[1]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3785586095.dir/build.make CMakeFiles/cmTryCompileExec3785586095.dir/build
+gmake[2]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3785586095.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++     -o CMakeFiles/cmTryCompileExec3785586095.dir/CheckSymbolExists.cxx.o -c /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+gmake[2]: *** [CMakeFiles/cmTryCompileExec3785586095.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[2]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec3785586095/fast] Error 2
+gmake[1]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+
+File /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec839687946/fast"
+gmake[1]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec839687946.dir/build.make CMakeFiles/cmTryCompileExec839687946.dir/build
+gmake[2]: Entering directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec839687946.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++     -o CMakeFiles/cmTryCompileExec839687946.dir/CheckSymbolExists.cxx.o -c /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+gmake[2]: *** [CMakeFiles/cmTryCompileExec839687946.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[2]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec839687946/fast] Error 2
+gmake[1]: Leaving directory `/home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp'
+
+File /home/pbetti/adams/shared/adams_ssm/ssm_logger/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

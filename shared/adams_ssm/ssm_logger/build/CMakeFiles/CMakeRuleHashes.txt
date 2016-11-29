@@ -1,0 +1,8 @@
+# Hashes of file build rules.
+307f15175637b2f0c1494cc4cbeee021 /home/pbetti/adams/xml/net.etech.adams.ssm_logger.xml
+c4a75dc2bc1b24fad1dc715ef598a12f moc_ssm_logger.cxx
+fb5d2b422d4de9d32583f15d8fb2a0f5 ssmC.cpp
+f1423d42c34f9a33daa8c8726eafd15f ssm_logger_if.cpp
+c251494e947c1e52a958b72cf59b50e6 ssm_logger_if.moc
+aa5fa51395aa1683572c32fb1b3934b9 ssm_loggeradaptor.cpp
+7f77ac9df592b1b60707016556c64b5b ssm_loggeradaptor.moc

@@ -1,0 +1,50 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.9. Stepping Out of Function</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Stepping Out of Function">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Stepping Out of Function">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.9. Stepping Out of Function</H1>
+<A HREF="mod_dbg_3.8.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.10.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+Now that we have debugged the function enough we do not want to step any further inside the function, but go ahead and debug the rest of the main program. You could in our example issue <font size="3"><tt>r 14</tt></font>, or better, well ... is it <font size="3"><tt>r 16</tt></font>? You have to list the lines, step in the stack up, find the next executable line and issue the command <font size="3"><tt>r</tt></font>.
+
+Instead of that just issue the command <font size="3"><tt>o</tt></font>, to step out of the current function.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#o
+ *
+-----------------------------------------------------
+  014. MyFunction a
+  015.
+ &gt;016. a = a + 2
+  017.
+  018. MyFunction a
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+As you see it still printed a character and stopped at the line 16.
+<HR>
+<A HREF="mod_dbg_3.8.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.10.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

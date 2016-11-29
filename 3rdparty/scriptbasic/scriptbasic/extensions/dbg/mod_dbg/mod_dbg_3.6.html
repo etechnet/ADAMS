@@ -1,0 +1,175 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.6. Running to Line</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Running to Line">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Running to Line">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.6. Running to Line</H1>
+<A HREF="mod_dbg_3.5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.7.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+Start the debugger again and without debugging let the program run to the line where the function call starts. To do this the command <font size="3"><tt>r</tt></font> should be used.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+E:\MyProjects\sb\source\examples&gt;scriba -i dbg debugtest.bas
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+<P>
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#r 14
+hello
+<P>
+-----------------------------------------------------
+  012. end sub
+  013.
+ &gt;014. MyFunction a
+  015.
+  016. a = a + 2
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+The command <font size="3"><tt>r</tt></font> has one argument, the number of the line to run to. If the argument is missing the program will run until it finishes or until a breakpoint is found.
+<P>
+Now step into the function and step until the first number is printed.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#s
+<P>
+-----------------------------------------------------
+  002. a = 3
+  003.
+ &gt;004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+<P>
+-----------------------------------------------------
+#s
+<P>
+-----------------------------------------------------
+  005. local a,b,c
+  006.
+ &gt;007. b = t + 2
+  008. print b
+  009. print " ",t
+<P>
+-----------------------------------------------------
+#s
+<P>
+-----------------------------------------------------
+  006.
+  007. b = t + 2
+ &gt;008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+<P>
+-----------------------------------------------------
+#s
+5
+-----------------------------------------------------
+  007. b = t + 2
+  008. print b
+ &gt;009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+<P>
+-----------------------------------------------------
+</PRE></FONT>
+<P>
+Now we want to advance program execution to the line 11 so we issue the command <font size="3"><tt>r 11</tt></font>.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#r 11
+ 34 23 1
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+You get the numbers printed again, but where are the <font size="3"><tt>*</tt></font>? When <font size="3"><tt>MyFunction t-1</tt></font> was called it printed the starts didn't it? The answer is that is did not.
+<P>
+Running to line 11 started to execute the program and stopped the execution as soon the line 11 the first time was about to be executed. Our function called itself with the argument <font size="3"><tt>2</tt></font> and then even getting deeper with argument <font size="3"><tt>1</tt></font> before it did not call itself any deeper and execution stopped at line 11.
+<P>
+Quit the program again, start debugging again and first run to line 9, and then issue the command <font size="3"><tt>R 11</tt></font>:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#q
+Ok... you have said that... quitting...
+(0): error &amp;H37:The preprocessor said to abort program compilation or execution.
+<P>
+
+E:\MyProjects\sb\source\examples&gt;scriba -i dbg debugtest.bas
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+<P>
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#r 9
+hello
+5
+-----------------------------------------------------
+  007. b = t + 2
+  008. print b
+ &gt;009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+<P>
+-----------------------------------------------------
+#R 11
+ 34 23 1 * *
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+This time the program did not stop in the recursive function call.
+<P>
+The command <font size="3"><tt>R</tt></font> is similar to command <font size="3"><tt>r</tt></font>, but it does not stop at the line in recursive functions.<HR>
+<A HREF="mod_dbg_3.5.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.7.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

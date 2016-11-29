@@ -1,0 +1,203 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+
+#ifndef _MDM_IDL
+#define _MDM_IDL
+
+#include <common_datatypes.idl>
+
+module net {
+
+module etech {
+
+module MDM {
+
+interface mdm_agent_server
+{
+	boolean startMDMAgent(in STRUCT_PARAMS UserInput, in ADAMS_COMPLETE_CONFIG AdamsConf);
+	long getProgressPercentage(out BtreeID Btree_id,out BtreeSeq BtreeData);
+	oneway void shutDown();
+};
+
+interface mdm_server_server
+{
+	// Copia valori define per export a client java...
+	const long eSHORT_DESC_LEN = 			SHORT_DESC_LEN;
+	const long eLONG_DESC_LEN = 			LONG_DESC_LEN;
+	const long ePIXMAP_FILENAME_LEN = 		PIXMAP_FILENAME_LEN;
+	const long eOPTION_LABEL_LEN = 			OPTION_LABEL_LEN;
+	const long eMAX_OPTIONS = 			MAX_OPTIONS;
+	const long eVALUE_RANGE_LEN = 			VALUE_RANGE_LEN;
+	const long eMAX_AGGREGATE_RESTR = 		MAX_AGGREGATE_RESTR;
+	const long eMAX_EXCEPTIONS = 			MAX_EXCEPTIONS;
+	const long eFORMULA_MAX_LEN = 			FORMULA_MAX_LEN;
+	const long eNEXTLEVEL_RELATIONS = 		NEXTLEVEL_RELATIONS;
+	const long eMAX_RESTR_LEVELS = 			MAX_RESTR_LEVELS;
+	const long eMAX_RESTRICTIONS = 			MAX_RESTRICTIONS;
+	const long eMAX_FEP = 				MAX_FEP;
+	const long eMAX_N_VALUE = 			MAX_N_VALUE;
+	const long eASCII_REST_LEN = 			ASCII_REST_LEN;
+	const long eMAX_RELATION = 			MAX_RELATION;
+	const long eVALSHIFTER_MAX = 			VALSHIFTER_MAX;
+	const long eVALSHIFTER_LEN = 			VALSHIFTER_LEN;
+	const long eCNT_PLUGINNAME_LEN = 		CNT_PLUGINNAME_LEN;
+	const long eCNT_PATH_LEN = 			CNT_PATH_LEN;
+	const long eCNT_TAG_LEN = 			CNT_TAG_LEN;
+	const long eCNT_DESC_LEN = 			CNT_DESC_LEN;
+	const long eMAX_INT_COUNTERS =			MAX_INT_COUNTERS;
+	const long eMAX_DBL_COUNTERS =			MAX_DBL_COUNTERS;
+	const long eCNT_NUM = 				CNT_NUM;
+	const long eUSR_LOGIN_LEN = 			USR_LOGIN_LEN;
+	const long eUSR_PASSWD_LEN = 			USR_PASSWD_LEN;
+	const long eMAX_ENABLE_CONFIGS = 		MAX_ENABLE_CONFIGS;
+	const long eMAX_CONFIG_FILENAME = 		MAX_CONFIG_FILENAME;
+	const long eDR_FIELDSDESCRIPTIONLENGHT = 		DR_FIELDSDESCRIPTIONLENGHT;
+	const long eDR_PLUGINNAME_LEN = 		DR_PLUGINNAME_LEN;
+	const long eDR_DATE_LEN = 			DR_DATE_LEN;
+	const long eDR_PATH_LEN = 			DR_PATH_LEN;
+	const long eGLB_PATH_LEN = 			GLB_PATH_LEN;
+	const long eGLB_INFO_LEN = 			GLB_INFO_LEN;
+	const long eTE_SUFFIX_LEN = 			TE_SUFFIX_LEN;
+	const long eMAX_KEY_LENGTH = 			MAX_KEY_LENGTH;
+	const long ePLR_PLUGINNAME_LEN = 		PLR_PLUGINNAME_LEN;
+	const long eSCRIPT_VARNAME_LEN = 		SCRIPT_VARNAME_LEN;
+	const long eSCRIPT_TEXT_LEN = 			SCRIPT_TEXT_LEN;
+	const long eSCRIPT_MAX_VAR = 			SCRIPT_MAX_VAR;
+	const long eSCRIPT_MAX_TEXT = 			SCRIPT_MAX_TEXT;
+	const long eJQ_NODO_FEP_SIZE = 			JQ_NODO_FEP_SIZE;
+	const long eJQ_DIR_DEST_SIZE = 			JQ_DIR_DEST_SIZE;
+	const long eJQ_DESC_SIZE = 			JQ_DESC_SIZE;
+	const long eJQ_USR_STR_SIZE = 			JQ_USR_STR_SIZE;
+	const long eMAX_ANALYSIS_REPORTS = 		MAX_ANALYSIS_REPORTS;
+	const long eMAX_TE_SCRIPTS = 			MAX_TE_SCRIPTS;
+	const long eREPO_LABEL_LEN = 			REPO_LABEL_LEN;
+	const long eREPO_USER_LEN = 			REPO_USER_LEN;
+	const long eSHORT_PLUGIN_NAME = 		SHORT_PLUGIN_NAME;
+	const long eHELPER_DESC_LEN = 			HELPER_DESC_LEN;
+	const long eERROR_TEXT_LEN = 			ERROR_TEXT_LEN;
+	const long eJOB_USR_LOGIN_LEN =			JOB_USR_LOGIN_LEN;
+	const long eJOB_USR_PASSWD_LEN =		JOB_USR_PASSWD_LEN;
+	const long eELAB_DATE_STR_LEN =			ELAB_DATE_STR_LEN;
+	const long eMAX_DIMENSION =			MAX_DIMENSION;
+	const long eCORBA_NCEN =			CORBA_NCEN;
+	const long eMAX_PIVOT_KEYS = 			MAX_PIVOT_KEYS;
+	const long eIP_STRING_LEN = 			IP_STRING_LEN;
+	const long eMAX_ALARMS =			MAX_ALARMS;
+	const long eMAX_ALARM_GENERATOR = 		MAX_ALARM_GENERATOR;
+	const long eMAX_THRESHOLD_GENERATOR = 		MAX_THRESHOLD_GENERATOR;
+	const long eRELATION_FREEFORMAT_ID =		RELATION_FREEFORMAT_ID;
+	const long eTTM_FLAG_LEN = TTM_FLAG_LEN;
+	const long eTTM_OPERATOR_LEN = TTM_OPERATOR_LEN;
+	const long eTTM_TYPE_LEN = TTM_TYPE_LEN;
+	const long eTTM_TRAFFIC_LEN = TTM_TRAFFIC_LEN;
+	const long eTTM_CODE_LEN = TTM_CODE_LEN;
+	const long eTTM_FLDEST_LEN = TTM_FLDEST_LEN;
+	const long eTTM_AC_LEN = TTM_AC_LEN;
+	const long eTTM_IAG_LEN = TTM_IAG_LEN;
+	const long eTTM_NODE_LEN = TTM_NODE_LEN;
+	const long eTTM_CITY_LEN = TTM_CITY_LEN;
+	const long eTTM_ALARMON_LEN = TTM_ALARMON_LEN;
+	const long eTTM_IDALARM_LEN = TTM_IDALARM_LEN;
+	const long eTTM_ANOMALY_LEN = TTM_ANOMALY_LEN;
+	const long eTTM_ORIGIN_LEN = TTM_ORIGIN_LEN;
+	const long eTTM_ANOMALY_C_LEN = TTM_ANOMALY_C_LEN;
+	const long eTTM_ORIGIN_C_LEN = TTM_ORIGIN_C_LEN;
+	const long eTTM_DATE_LEN = TTM_DATE_LEN;
+	const long eTTM_FLAGGEN_LEN = TTM_FLAGGEN_LEN;
+	const long eTTM_LOGIN_LEN = TTM_LOGIN_LEN;
+	const long eTTM_PASSWD_LEN = TTM_PASSWD_LEN;
+	const long eNUM_TYPE_ANOMALIES = NUM_TYPE_ANOMALIES;
+	const long eTTM_SELECT_LEN = TTM_SELECT_LEN;
+	const long eMAX_GROUP_LABEL_LEN = MAX_GROUP_LABEL_LEN;
+	const long eMAX_GROUP_ICON_URL_LEN = MAX_GROUP_ICON_URL_LEN;
+	const long eMAX_VAL_DESCR_LEN = MAX_VAL_DESCR_LEN;
+	const long eMAX_VAL_VALUE_LEN = MAX_VAL_VALUE_LEN;
+	const long eMAX_EVENT_NAME_LEN = MAX_EVENT_NAME_LEN;
+	const long eMAX_ELEMENT_CODE_LEN = MAX_ELEMENT_CODE_LEN;
+	const long eNODE_DESC_LEN = NODE_DESC_LEN;
+	//
+
+	boolean runMDMServerBlocking(in STRUCT_PARAMS UserInput,out string Url);
+	boolean runMDMServerNonBlocking(in STRUCT_PARAMS UserInput);
+	boolean getRunningStatus(out INVOKE_STATUS invokeStatus, out boolean query_completed);
+	boolean getUsersList(out JobUserSeq USER);
+	boolean startMDMServer(out ADAMS_COMPLETE_CONFIG AdamsConf, out FEPSeq CEN, in string configName);
+	boolean getHelperValues(in string configName, in string tag, in STRUCT_PARAMS params, out HelperSeq  DESC );
+	boolean directoryListing(in string altPath, out DirEntrySeq dirList);			/* Torna una dir list*/
+	boolean readUsers(in string loginid, out AdamsUserSeq users, in boolean allusr);	/* Valorizza una sequenza di utenti abilitati*/
+	boolean writeUsers(in AdamsUserSeq users);						/* Salva una sequenza di utenti abilitati*/
+	boolean verifyUserLogin(in string name, in string password);				/* verifica username e password (clear text) */
+	boolean verifyScript(in SCRIPT_VALIDATE scriptData, out ERROR_TEXT errorText);		/* Effettua la verifica di una script */
+	oneway void shutDown();
+	boolean getPivotData(in string name, in long startLine, in long maxLines, inout PIVOTREQ pvreq,
+	                     out long totalRows, out PivotDataNodeSeq pivot, out IDListSeq IDCounters);		/* Ritorna i dati di un'analisi pivot */
+	boolean getExportReport(in string name, out ExportDataSeq exportData);        		/* Ritorna i dati in forma matriciale per export su client */
+};
+
+interface mdm_server_factory_server
+{
+	exception LaunchFailure { string reason; };
+
+	mdm_server_server get_server() raises (LaunchFailure);
+	void put_ior(in mdm_server_server cfs);
+};
+
+interface mdm_agent_factory_server
+{
+	exception LaunchFailure { string reason; };
+
+	mdm_agent_server get_server(in boolean inretry) raises (LaunchFailure);
+	void put_ior(in mdm_agent_server cfs);
+};
+
+interface mdm_server_job_server
+{
+	const long eJOB_USR_LOGIN_LEN = 			JOB_USR_LOGIN_LEN;
+	const long eJOB_USR_PASSWD_LEN = 			JOB_USR_PASSWD_LEN;
+
+	boolean getUsersList(out JobUserSeq USER);
+	boolean putUsersList(in JobUserSeq USER);
+	boolean getAllJobs(out JOBSeq JOBS ,  in STRUCT_USER InfoUser);
+	boolean insertJob(in STRUCT_PARAMS query, in STRUCT_JOB InfoJOB);
+	boolean modifyJob(in STRUCT_JOB InfoJOB);
+	boolean getJob(out STRUCT_PARAMS query ,  in STRUCT_USER InfoUser);
+	boolean removeJob(in STRUCT_USER InfoUser);
+	boolean removeAllJobs(in STRUCT_USER InfoUser);
+
+};
+
+interface mdm_job_scheduler_server
+{
+	boolean dummy();
+};
+
+
+}; // MDM
+
+}; // etech
+
+}; // net
+
+#endif // _MDM_IDL

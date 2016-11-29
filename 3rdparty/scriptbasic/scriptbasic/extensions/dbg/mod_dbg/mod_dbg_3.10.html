@@ -1,0 +1,85 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.10. Setting Break Points</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Setting Break Points">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Setting Break Points">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.10. Setting Break Points</H1>
+<A HREF="mod_dbg_3.9.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.11.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+In case you have a complex program and you want to debug only a certain part of it you need break points.
+<P>
+The command <font size="3"><tt>b</tt></font> sets a so called breakpoint at the line for which the line serial number is given. Issue the commands:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#b8
+done
+#b11
+done
+#l -
+<P>
+
+-----------------------------------------------------
+  001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+* 008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+* 011. print " *"
+  012. end sub
+  013.
+  014. MyFunction a
+  015.
+ &gt;016. a = a + 2
+  017.
+  018. MyFunction a
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+As you can see in the listing the lines are preceded by a <font size="3"><tt>*</tt></font> character. When the program is executed using the command <font size="3"><tt>r</tt></font> (or even <font size="3"><tt>R</tt></font>) the execution will stop when it reaches one of the break points.
+<P>
+Because many times programmers want to set a breakpoint on the actual line, if you issue the command <font size="3"><tt>b</tt></font> without argument it will set the breakpoint on the actual line.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#R
+<P>
+-----------------------------------------------------
+  006.
+  007. b = t + 2
+*&gt;008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+To remove the breakpoints you should issue the command <font size="3"><tt>B</tt></font>. The command <font size="3"><tt>B n</tt></font> removes the breakpoint from the line <font size="3"><tt>n</tt></font>. The command <font size="3"><tt>b n-m</tt></font> removes all breakpoints that are on the lines from <font size="3"><tt>n</tt></font> to line <font size="3"><tt>m</tt></font> including the line <font size="3"><tt>n</tt></font> and line <font size="3"><tt>m</tt></font>. Both <font size="3"><tt>n</tt></font> and <font size="3"><tt>m</tt></font> are optional. For example <font size="3"><tt>B -</tt></font> removes all breakpoints.<HR>
+<A HREF="mod_dbg_3.9.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.11.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

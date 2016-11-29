@@ -1,0 +1,129 @@
+<HEAD>
+<TITLE>Documentation of the module nt: 7. Display a message box</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Display a message box">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Display a message box">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_nt_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>7. Display a message box</H1>
+<A HREF="mod_nt_6.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_8.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+i = nt::MsgBox("Text","Caption" [,"buttons","style",defbutton])
+</PRE></FONT>
+<P>
+This function displays a Windows message box on the screen and waits for the user to press
+one of the buttons of the message box. The function should get two mandatory and three
+optional arguments.
+<P>
+The arguments:
+<P>
+<UL>
+<LI> <font size="3"><tt>"Text"</tt></font> the first argument to the function is the text that appears on the text box.
+<LI> <font size="3"><tt>"Caption"</tt></font> the second argument to the function is the caption of the message
+      box. This text appears in the top of the box.
+<P>
+<LI> <font size="3"><tt>"buttons"</tt></font> This optional string specifies what buttons to diplay on the message box. If this
+      argument is missing a single OK button will appear on the box. The valid strings for this argument
+      are
+  <UL>
+  <LI> <font size="3"><tt>"ARI"</tt></font> Abort/Retry/Ignore
+  <LI> <font size="3"><tt>"OK"</tt></font> OK
+  <LI> <font size="3"><tt>"O"</tt></font> OK
+  <LI> <font size="3"><tt>"OC"</tt></font> OK/Cancel
+  <LI> <font size="3"><tt>"RC"</tt></font> Retry/Cancel
+  <LI> <font size="3"><tt>"YN"</tt></font> Yes/No
+  <LI> <font size="3"><tt>"YNC"</tt></font> Yes/No/Cancel
+  </UL>
+  You can also write the string in a long form for better readability:
+  <UL>
+  <LI> <font size="3"><tt>"AbortRetryIgnore"</tt></font>
+  <LI> <font size="3"><tt>"Ok"</tt></font>
+  <LI> <font size="3"><tt>"OkCancel"</tt></font>
+  <LI> <font size="3"><tt>"RetryCancel"</tt></font>
+  <LI> <font size="3"><tt>"YesNo"</tt></font>
+  <LI> <font size="3"><tt>"YesNoCancel"</tt></font>
+  </UL>
+<LI> <font size="3"><tt>"style"</tt></font> this optional argument specifies what type of icon should appear on the message box
+      left to the text. There are four icons available:
+  <UL>
+  <LI> <font size="3"><tt>"Exclamation"</tt></font>
+  <LI> <font size="3"><tt>"Ex"</tt></font>
+  <LI> <font size="3"><tt>"Warning"</tt></font>
+  <LI> <font size="3"><tt>"W"</tt></font> An exclamation-point icon appears in the message box.
+  <LI> <font size="3"><tt>"Information"</tt></font>
+  <LI> <font size="3"><tt>"Info"</tt></font>
+  <LI> <font size="3"><tt>"I"</tt></font>
+  <LI> <font size="3"><tt>"Asterix"</tt></font>
+  <LI> <font size="3"><tt>"A"</tt></font>
+  <LI> <font size="3"><tt>"*"</tt></font> An icon consisting of a lowercase letter i in a circle appears in the message box.
+  <LI> <font size="3"><tt>"Question"</tt></font>
+  <LI> <font size="3"><tt>"Q"</tt></font>
+  <LI> <font size="3"><tt>"?"</tt></font> A question-mark icon appears in the message box.
+  <LI> <font size="3"><tt>"Stop"</tt></font>
+  <LI> <font size="3"><tt>"S"</tt></font>
+  <LI> <font size="3"><tt>"Error"</tt></font>
+  <LI> <font size="3"><tt>"E"</tt></font>
+  <LI> <font size="3"><tt>"Hand"</tt></font>
+  <LI> <font size="3"><tt>"H"</tt></font> A stop-sign icon appears in the message box.
+  </UL>
+  If this argument is missing or <font size="3"><tt>undef</tt></font> no icon appears left to the text.
+<LI> <font size="3"><tt>defbutton</tt></font> should be an integer value between 1 to 4, or at most the number of the
+      buttons on the actual message box. This argument specifies , which button is the default
+      button on the form. The default button is selected as default and in case the user pressed
+      the Enter key instead of clickong on one of the buttons the default button is pressed.
+</UL>
+<P>
+The <B>return value</B> of the function is a one character string containing one of the characters
+<font size="3"><tt>A, C, I, N, O, R, Y</tt></font> for the pressed buttons respectively: Abort, Cancel, Ignore, No, OK, Retry, Yes.
+<P>
+The parameters <font size="3"><tt>"buttons"</tt></font> and <font size="3"><tt>"style"</tt></font> are not case sensitive. The return value is uppercase
+character.
+<P>
+The following example tests all the possible message boxes:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+import nt.bas
+<P>
+nt::MsgBox """This program test the various text boxes.
+<P>
+In the coming message boxes press the various keys as requested by the text
+and check on the console window that the program reported the correct
+button you pressed. (Only initials are printed.)
+""","Initial MsgBox"
+<P>
+splita " |ARI|O|RC|YN|YNC" BY "|" TO buttons
+splita " |W|I|Q|S" BY "|" TO marks
+<P>
+for j=lbound(marks) to ubound(marks)
+<P>
+for i=lbound(buttons) to ubound(buttons)
+<P>
+for d=1 to len(buttons[i])
+print i," ",buttons[i]," ",j," ",marks[j]," ",d,"\n"
+R = nt::MsgBox(buttons[i],marks[j],buttons[i],marks[j],d)
+print R
+print
+<P>
+next d
+next i
+next j
+</PRE></FONT><HR>
+<A HREF="mod_nt_6.html">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_8.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

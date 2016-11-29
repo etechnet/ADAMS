@@ -1,0 +1,124 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: Listing Lines</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Listing Lines">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Listing Lines">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Listing Lines</H1>
+<A HREF="mod_dbg_3.2.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.4.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+As you could see the debugger lists some of the lines for you around the actual execution point. To be precise the debugger automatically displays five lines before executing any line: two lines before the actual line, the actual line and two lines after. This slightly altered for the first and the last two lines.
+<P>
+Each line contains a serial number. This number identifies the line for the debugger and when you issue a command that should specify a certain line you can use this number. For example issuing the command <font size="3"><tt>r 22</tt></font> will run until the line denoted by the serial number 22 is ready for execution.
+<P>
+This serial number is not necessarily the line number in the source file. This is the serial number of the line inside the program after all <font size="3"><tt>#include</tt></font> and <font size="3"><tt>#import</tt></font> statements were performed.
+<P>
+Sometimes you may want to list other lines. To do this simply issue the command <font size="3"><tt>l</tt></font>. (This is lower case <font size="3"><tt>l</tt></font>, upper case <font size="3"><tt>L</tt></font> lists local variables.)
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l
+<P>
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+As you can see you got the same listing. This seems to be useless, unless you have examined several variables and the original listing was scrolled off and you need another peek at the current lines.
+<P>
+However the command <font size="3"><tt>l</tt></font> is more useful than just this. You can issue an argument to the command specifying the start and the end lines for the listing.
+<P>
+For example:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l 2-7
+<P>
+
+-----------------------------------------------------
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+The command <font size="3"><tt>l n-m</tt></font> lists the lines from line <font size="3"><tt>n</tt></font> to line <font size="3"><tt>m</tt></font>. If you omit the start number then the listing will start at the first line. If you omit the end number the listing will go to the end of the program. If you omit both numbers the command will list all the program lines, for example:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l -
+<P>
+
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+  007. b = t + 2
+  008. print b
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+  011. print " *"
+  012. end sub
+  013.
+  014. MyFunction a
+  015.
+  016. a = a + 2
+  017.
+  018. MyFunction a
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+@examining Variables
+<P>
+Stepping forward and examining where the program is actually executing is useful, but not enough. You can also examine the actual content of variables. To do this the command <font size="3"><tt>?</tt></font> can be used. Type <font size="3"><tt>? A</tt></font> at the prompt!
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#? a
+undef
+#_
+</PRE></FONT>
+<P>
+Step one step ahead again and repeat the command!
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#s
+<P>
+-----------------------------------------------------
+  002. a = 3
+  003.
+ &gt;004. sub MyFunction(t)
+  005. local a,b,c
+  006.
+<P>
+-----------------------------------------------------
+#? a
+3
+#_
+</PRE></FONT><HR>
+<A HREF="mod_dbg_3.2.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.4.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

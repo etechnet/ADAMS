@@ -1,0 +1,132 @@
+#-----------------------------------------------------------------------
+# Copyright 2008 Ciaran McHale.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# 	The above copyright notice and this permission notice shall be
+# 	included in all copies or substantial portions of the Software.
+#
+# 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# 	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# 	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# 	NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# 	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# 	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# 	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# 	OTHER DEALINGS IN THE SOFTWARE.
+#-----------------------------------------------------------------------
+DIRNAME  = corbautil
+SRCTREE  = COMMON
+#
+#  INCLUDE FILES
+#  - Path
+#  - Flag compilazione e link
+#
+#
+include $(STS_HOME)/STS/MAKE/make_path.mk
+include $(STS_HOME)/STS/MAKE/make_comp.mk
+#
+# File sorgenti e librerie dell'applicativo
+#
+include $(PATMAK)/orbacus.mk
+
+
+#--------
+# Set the next line to point to this top-level directory
+#--------
+CORBA_UTIL_ROOT=	$(STS_HOME)/STS/COMMON/source/corbautil
+
+#--------
+# Set the next line to indicate the Orbacus version number as 3-digit
+# number. For exampel, "422" denotes version 4.2.2
+#--------
+P_ORBACUS_VERSION =	433
+
+#--------
+# Make sure the following settings are correct for ORBacus C++
+#
+# Set ORBACUS_HOME to the full path to where you have installed ORBacus C++
+# For example, "C:\OOC".
+#
+# Set ORBACUS_DDEBUG to "yes" if ORBacus was compiled with DEBUG=yes
+# Otherwise, set it to a different value, such as "no"
+#
+# Set ORBACUS_OLD_IOSTREAM to "yes" if ORBacus was compiled with
+# OLD_IOSTREAM=yes. Otherwise, set it to a different value, such as "no"
+#--------
+ORBACUS_HOME =		$(ORBACUS_BASE)/OB
+ORBACUS_DEBUG =		yes
+ORBACUS_OLD_IOSTREAM =	no
+
+
+#--------
+# Where Java is installed (ignore this if you are not using Java parts
+# of CORBA Utilities)
+#--------
+# JAVA_HOME =		C:\j2sdk1.4.1
+
+#--------
+# Make sure the following settings are correct for ORBacus Java
+#
+# Set OB_JAR to the full path for the "OB.jar" file
+#--------
+OB_JAR =		$(ORBACUS_BASE)/JOB/lib/OB.jar
+
+
+#--------
+# You should not have to change anything after this point
+#--------
+# CXX=		cl
+#
+# !if "$(ORBACUS_OLD_IOSTREAM)" == "yes"
+# OPT_P_USE_OLD_TYPES=	/DP_USE_OLD_TYPES
+# !else
+# OPT_P_USE_OLD_TYPES=
+# !endif
+#
+# !if "$(ORBACUS_DEBUG)" == "yes"
+#
+# OPT_CXX_FLAGS=		/MDd $(OPT_P_USE_OLD_TYPES)
+#
+# !else
+#
+# OPT_CXX_FLAGS=		/MD $(OPT_P_USE_OLD_TYPES)
+#
+# !endif
+
+
+#--------
+# C++ compiler
+#--------
+CXXFLAGS+= -I. \
+	   -I$(CORBA_UTIL_ROOT)/cxx/gsp \
+	   -I$(CORBA_UTIL_ROOT)/cxx/import_export \
+	   -I$(CORBA_UTIL_ROOT)/cxx/PoaUtility \
+	   -I$(CORBA_UTIL_ROOT)/cxx/PolicyListParser \
+	   -I$(CORBA_UTIL_ROOT)/cxx/portability \
+	   -I$(ORBACUS_HOME)/include \
+	   -D_REENTRANT \
+	   -DP_USE_ORBACUS \
+	   -DP_ORBACUS_VERSION=$(P_ORBACUS_VERSION) \
+	   -DP_USE_POSIX_THREADS
+
+#--------
+# Linker
+#--------
+# CORBA_LINK_FLAGS=	-Wl,+b,$$LD_LIBRARY_PATH:$(ART_LIB_DIR)
+# LINK=		$(CXX)
+
+
+#--------
+# Generic build rules
+#--------
+.SUFFIXES:		.cxx
+
+.cxx.o:
+	$(CXX) -o $*.o $(CXXFLAGS) -c $<

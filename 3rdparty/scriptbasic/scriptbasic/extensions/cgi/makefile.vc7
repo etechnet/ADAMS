@@ -1,0 +1,27 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cgi.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cgi.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_cgi.texi
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cgi.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\cgi.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\s_interface.obj  
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cgi.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\cgi.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\interface.obj 
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj : cgi.c cgi.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\cgi.obj cgi.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\interface.obj : interface.c cgi.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\s_interface.obj : interface.c cgi.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\cgi\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_cgi.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_cgi.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_cgi.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_cgi.hhp & set ERRORLEVEL=0
+
+

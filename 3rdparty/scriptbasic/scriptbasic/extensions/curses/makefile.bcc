@@ -1,0 +1,24 @@
+
+
+
+all : T:\MyProjects\ScriptBasic\source\bin\bcc\mod\lib\curses.lib T:\MyProjects\ScriptBasic\source\bin\bcc\mod\dll\curses.dll T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+
+
+T:\MyProjects\ScriptBasic\source\bin\bcc\mod\lib\curses.lib : T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\s_interface.obj 
+	tlib /a T:\MyProjects\ScriptBasic\source\bin\bcc\mod\lib\curses.lib T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\s_interface.obj  
+
+T:\MyProjects\ScriptBasic\source\bin\bcc\mod\dll\curses.dll : T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\interface.obj 
+	"H:\PROGRA~1\Borland\CBUILD~1\bin\bcc32.exe" -WD -L"H:\PROGRA~1\Borland\CBUILD~1\Lib" -eT:\MyProjects\ScriptBasic\source\bin\bcc\mod\dll\curses.dll T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\interface.obj 
+
+T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\interface.obj : interface.c 
+	"H:\PROGRA~1\Borland\CBUILD~1\bin\bcc32.exe" -6 -I"H:\PROGRA~1\Borland\CBUILD~1\Include" -L"H:\PROGRA~1\Borland\CBUILD~1\Lib" -DWIN32=1 -DBCC32=1 -w- -c -oT:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\s_interface.obj : interface.c 
+	"H:\PROGRA~1\Borland\CBUILD~1\bin\bcc32.exe" -6 -I"H:\PROGRA~1\Borland\CBUILD~1\Include" -L"H:\PROGRA~1\Borland\CBUILD~1\Lib" -DWIN32=1 -DBCC32=1 -w- -DSTATIC_LINK=1 -c -oT:\MyProjects\ScriptBasic\source\bin\bcc\mod\obj\curses\s_interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi : manual.texi.jam
+	perl T:\MyProjects\ScriptBasic\source\jamal.pl manual.texi.jam T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+	perl T:\MyProjects\ScriptBasic\source\t2h.pl T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.texi
+	hhc T:\MyProjects\ScriptBasic\source\bin\texi\mod_curses.hhp & set ERRORLEVEL=0
+
+

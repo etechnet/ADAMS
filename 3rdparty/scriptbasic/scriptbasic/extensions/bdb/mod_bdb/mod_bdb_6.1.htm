@@ -1,0 +1,64 @@
+<HEAD>
+<TITLE>Using the module BDB: Open</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Open">
+<META NAME="keywords" CONTENT="Using the module BDB: Open">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Open</H1>
+<A HREF="mod_bdb_6.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.2.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+DB = bdb::Open(DataBase,type,flags,unixmode)
+</PRE></FONT>
+<P>
+This function opens a database and returns a handle to it. This handle is a string of four or eight bytes on 32bit and 64bit machines. The actual value of this string contains the bytes of the pointer to the opened database structure that the Berkeley subsystem returns. Pass this variable as argument to subsequent database handling functions and better do not play around with it. Altering it will almost certainly result process failure or more serious damage. You can copy this value from one variable to another, pass it to user defined functions.
+<P>
+Do not depend on the actual value of the handle as later versions of the module may alter the way it handles the database handles.
+<P>
+The argument <font size="3"><tt>DataBase</tt></font> should be a string specifying the name of the database file. This is either an absolute file name, or a relative file name. The actual location of the database file depends on the configuration of the underlying Berkeley DB system.
+<P>
+The argument type specifies the type of the database. This can be one of the followings:
+<P>
+<UL>
+<LI> <font size="3"><tt>Bdb::Btree</tt></font>
+<LI> <font size="3"><tt>Bdb::Hash</tt></font>
+<LI> <font size="3"><tt>Bdb::Recno</tt></font>
+<LI> <font size="3"><tt>Bdb::Queue</tt></font>
+<LI> <font size="3"><tt>Bdb::Unknown</tt></font>
+</UL>
+<P>
+You most probably want to use <font size="3"><tt>Bdb::Btree</tt></font>. The constant <font size="3"><tt>Bdb::Unknown</tt></font> can be used when opening an already existing database file. <font size="3"><tt>Bdb::Btree</tt></font> opens or creates a database using the B-Tree indexing structure. <font size="3"><tt>Bdb::Hash</tt></font> opens or creates a database using Hash indexing structure. <font size="3"><tt>Bdb::Recno</tt></font> opens or creates a "Recno" type database. <font size="3"><tt>Bdb::Queue</tt></font> opens a queue type database.
+<P>
+The argument flags can specify certain parameters how to open the database file. This value can be zero or some of the following constants defined in <font size="3"><tt>bdb.bas</tt></font> connected using the numeric operator And:
+<P>
+<UL>
+<LI> <font size="3"><tt>Bdb::Create</tt></font> create the database file if it did not exist.
+<LI> <font size="3"><tt>Bdb::NoMap</tt></font> do not map this file into memory.
+<LI> <font size="3"><tt>Bdb::RdOnly</tt></font> open the database read only.
+<LI> <font size="3"><tt>Bdb::Thread</tt></font> return a database handle, which can be used in multiple threads. Because ScriptBasic interpreter threads do not share Berkeley DB handles you need not use this value.
+<LI> <font size="3"><tt>Bdb::Trunc</tt></font> Logically truncate the database if it exists, i.e., behave as if the database were just created, discarding any previous contents. 
+</UL>
+<P>
+The argument <font size="3"><tt>unixmode</tt></font> specifies the UNIX level file access control bits. On Windows NT it is ignored.
+<P>
+The flags and the Unix mode parameters are optional.
+<P>
+If the database can not be opened for some reason an error is raised that can be captured using the statement <font size="3"><tt>on error goto</tt></font>.
+<P>
+When opening a database the module automatically creates a cursor for that database. If there is a transaction started before calling the function <font size="3"><tt>bdb::open</tt></font> the module automatically creates a new Berkeley DB transaction and creates the cursor under the transaction.
+<P>
+When a transaction is started, committed or aborted all opened database cursors are closed and reopened with a new transaction or without transaction.<HR>
+<A HREF="mod_bdb_6.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.2.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

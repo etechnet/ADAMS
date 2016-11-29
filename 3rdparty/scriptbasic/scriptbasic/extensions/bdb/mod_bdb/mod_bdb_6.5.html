@@ -1,0 +1,41 @@
+<HEAD>
+<TITLE>Using the module BDB: 6.5. First</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: First">
+<META NAME="keywords" CONTENT="Using the module BDB: First">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+<UL><a href="mod_bdb_6.html">6. Berkeley DB Module Functions Reference</A><BR>
+</UL>
+</UL>
+<P>
+<H1>6.5. First</H1>
+<A HREF="mod_bdb_6.4.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.6.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+value = bdb::First(DB,key)
+</PRE></FONT>
+<P>
+Get the first value associated with the <font size="3"><tt>key</tt></font> in the database <font size="3"><tt>DB</tt></font>. The first argument to the function should be a value returned by the function <font size="3"><tt>bdb::open</tt></font>. The second argument is the key value. It can be arbitrary string containing ASCII or binary data.
+<P>
+Use this function to retrieve values from databases where there can be more than one values associated with a given key.
+<P>
+If the argument key is missing the function returns the first value from the database and the database cursor is positioned to the first record. If the key specifies a string, which is not present in the database the function positions the database cursor to the first record that follows the specified key and returns the value of the record.
+<P>
+The functions <font size="3"><tt>bdb::First</tt></font> and <font size="3"><tt>bdb::Get</tt></font> are aliases, they are defined in the `<font size="3"><tt>bdb.bas</tt></font>' module header file to point to the same function. You are encouraged to use the one that fits the actual programming task better in terms of readability.<HR>
+<A HREF="mod_bdb_6.4.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.6.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

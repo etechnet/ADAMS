@@ -1,0 +1,41 @@
+<HEAD>
+<TITLE>Using the module BDB: 6.13. BeginTransaction</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: BeginTransaction">
+<META NAME="keywords" CONTENT="Using the module BDB: BeginTransaction">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+<UL><a href="mod_bdb_6.html">6. Berkeley DB Module Functions Reference</A><BR>
+</UL>
+</UL>
+<P>
+<H1>6.13. BeginTransaction</H1>
+<A HREF="mod_bdb_6.12.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.14.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+bdb::BeginTransaction
+</PRE></FONT>
+<P>
+This command starts a transaction. This transaction lasts until a <font size="3"><tt>CommitTransaction</tt></font>, <font size="3"><tt>EndTrasaction</tt></font>, <font size="3"><tt>AbortTransaction</tt></font> command is executed or the execution of the BASIC program is finished. Any transaction not finished using <font size="3"><tt>CommitTransaction</tt></font> or <font size="3"><tt>EndTransaction</tt></font>is aborted.
+<P>
+Transactions provide database integrity. Operations accessing the database in a transaction get exclusive access to the records they are accessing. When a program reads a record in a transaction the module assumes that the program wants to alter the value of the record later and does not allow any other program to read the value until the transaction is finished.
+<P>
+When a program tries to access a locked record the program execution is suspended until the record is unlocked. If there are more programs waiting for the same record one of them gets access to the record and the others remain waiting.
+<P>
+When a program alters some data in a transaction either all alterations are done in a single transaction or none of the alterations are performed.<HR>
+<A HREF="mod_bdb_6.12.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.14.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

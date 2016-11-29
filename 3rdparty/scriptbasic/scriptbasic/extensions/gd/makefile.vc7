@@ -1,0 +1,26 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\gd.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\gd.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\gd.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\gd.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\s_interface.obj  libpng.lib bgd.lib zlib.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\gd.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\gd.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\interface.obj libpng.lib bgd.lib zlib.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\interface.obj : interface.c gdfontl.h gdfontt.h gd.h gdfontg.h gdfontmb.h gdfonts.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\s_interface.obj : interface.c gdfontl.h gdfontt.h gd.h gdfontg.h gdfontmb.h gdfonts.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\gd\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_gd.hhp & set ERRORLEVEL=0
+
+

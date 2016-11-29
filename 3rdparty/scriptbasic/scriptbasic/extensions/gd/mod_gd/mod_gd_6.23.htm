@@ -1,0 +1,36 @@
+<HEAD>
+<TITLE>Using the module GD: SetFont</TITLE>
+
+<META NAME="description" CONTENT="Using the module GD: SetFont">
+<META NAME="keywords" CONTENT="Using the module GD: SetFont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>SetFont</H1>
+<A HREF="mod_gd_6.22.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_6.24.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+gd::SetFont Image,Type[,direction,[ptsize]]
+</PRE></FONT>
+<P>
+Use this subroutine to set the font to be used for subsequent gd::print subroutine calls. The argument Type can be integer between 1 to 5 or a string. The integer values 1 to 5 indicate the built-in fonts, FontTiny, FontSmall, FontMedium, FontLarge, FontGiant. For these values you have these symbolic constants in the file gd.bas defined.
+<P>
+If the font type is string it has to specify the full path to the True Type Font to be used.
+<P>
+The direction is the angle of the subsequent prints. For built-in fonts it can only be 0 for normal or 270 for upward printing.
+The last parameter specifies the size of the True Type Font in points as a real number.
+<P>
+WARNING:
+Note that the True Type Font handling was developed but was never tested. You can set the font to be True Type, but the next gd::print subroutine will fail raising error.<HR>
+<A HREF="mod_gd_6.22.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_gd_6.24.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

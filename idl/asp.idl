@@ -1,0 +1,370 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+
+#ifndef _ASP_IDL
+#define _ASP_IDL
+
+#include <idlincludes.h>
+#include <common_datatypes.idl>
+
+module net {
+
+module etech {
+
+module ASP {
+
+
+// ADAMS Asp User Management
+interface asp_usermanagement_server
+{
+
+	const long eID_MOD_STSCONFIG 		= ID_MOD_COMMON_ADMIN;		/* costante identificativa del modulo STSConfig */
+	const long eID_MOD_PMON 		= ID_MOD_COMMON_MONITOR;	/* costante identificativa del modulo PrcessMonitor */
+	const long eID_MOD_DTM			= ID_MOD_DTM;
+	const long eID_MOD_DISPATCHER		= ID_MOD_DISPATCHER;
+	const long eID_MOD_ANAGRAFICHE		= ID_MOD_ANAGRAFICHE;
+	const long eID_MOD_ADAMS_CONF		= ID_MOD_ADAMS_CONF;
+
+	const long eMAX_TIME_STAMP		= MAX_TIME_STAMP;
+	const long eMAX_IP_GENERATORE		= MAX_IP_GENERATORE;
+	const long eMAX_HOSTNAME_GENERATORE	= MAX_HOSTNAME_GENERATORE;
+	const long eMAX_IP_CLIENT		= MAX_IP_CLIENT;
+	const long eMAX_HOSTNAME_CLIENT		= MAX_HOSTNAME_CLIENT;
+	const long eMAX_UTENZA_APPLICATIVA	= MAX_UTENZA_APPLICATIVA;
+	const long eMAX_UTENZA_CLIENT		= MAX_UTENZA_CLIENT;
+	const long eMAX_APPLICATIVO_CLIENT	= MAX_APPLICATIVO_CLIENT;
+	const long eMAX_AZIONE			= MAX_AZIONE;
+	const long eMAX_OGGETTO			= MAX_OGGETTO;
+	const long eMAX_PARAMETRI		= MAX_PARAMETRI;
+	const long eMAX_ESITO			= MAX_ESITO;
+
+	const long eMAX_DESC_ROLE		= MAX_DESC_ROLE;
+	const long eMAX_DESC_CLASS		= MAX_DESC_CLASS;
+	const long eMAX_NAME_FUNCTION		= MAX_NAME_FUNCTION;
+	const long eMAX_DESC_FUNCTION		= MAX_DESC_FUNCTION;
+	const long eMAX_VERSION			= MAX_VERSION;
+	const long eMAX_RELEASED_DATA		= MAX_RELEASED_DATA;
+	const long eMAX_AUTHOR			= MAX_AUTHOR;
+	const long eMAX_VENDOR			= MAX_VENDOR;
+	const long eMAX_PROFILE			= MAX_PROFILE;
+	const long eMAX_NAME_PROFILE		= MAX_NAME_PROFILE;
+	const long eMAX_DESC_PROFILE		= MAX_DESC_PROFILE;
+	const long eMAX_LOGIN_LEN		= MAX_LOGIN_LEN;
+	const long eMAX_PASSWORD_LEN		= MAX_PASSWORD_LEN;
+	const long eMAX_NOMEUTENTE_LEN		= MAX_NOMEUTENTE_LEN;
+	const long eMAX_DESC_USER_LEN		= MAX_DESC_USER_LEN;
+
+	const long eOP_INSERT			= OP_INSERT;
+	const long eOP_MODIFY			= OP_MODIFY;
+	const long eOP_DELETE			= OP_DELETE;
+
+	boolean LoginUser(in long idClass,in string login,in string password, in boolean disablePassCheck, in S_APP_LOG AppLog,out long ruolo);
+	//boolean getConfigLib(in long flag,out S_CONFIG_LIB ConfigLib, in S_APP_LOG AppLog);
+	boolean getConfigLib(in long flag,out S_CONFIG_LIB ConfigLib);
+	boolean getUserConfiguration(in long flag,in string login,in long idClass,out S_USER user, in S_APP_LOG AppLog);
+	boolean setUserConfiguration(in long flag,in S_USER user, in S_APP_LOG AppLog);
+	boolean getProfileConfiguration(in long flag,in string profileName,out S_PROFILE profile, in S_APP_LOG AppLog);
+	boolean setProfileConfiguration(in long flag,in S_PROFILE profile, in S_APP_LOG AppLog);
+
+	boolean imd_Role(in long flag,in S_ROLE role,in S_APP_LOG AppLog);
+	boolean imd_Class(in long flag,in S_CLASS modulo,in S_APP_LOG AppLog);
+	boolean imd_Function(in long flag,in S_FUNCTION function,in S_APP_LOG AppLog);
+	boolean imd_Profile(in long flag,in S_PROFILE profile,in S_APP_LOG AppLog);
+	boolean imd_User(in long flag,in S_USER user,in S_APP_LOG AppLog);
+	boolean getNode(out ConfNodeSeq nodeList, in S_APP_LOG AppLog);
+
+};
+
+// ADAMS MDM Server Configuration
+
+interface mdm_configuration_server
+{
+	const long  eID_MOD_MDM			= ID_MOD_MDM;
+
+	boolean getProfileConfigurationMDM(in string profileName,out ADAMS_PROFILE_GRANT profileADAMS,in S_APP_LOG AppLog);
+	boolean setProfileConfigurationMDM(in long flag,in ADAMS_PROFILE_GRANT profileADAMS,in S_APP_LOG AppLog);
+	boolean setConfiguration(in long flag,in S_FUNCTION newConfiguration,in S_APP_LOG AppLog);
+};
+
+
+
+// ADAMS Monitor Server Configuration
+interface MONITORConfiguration
+{
+	const long eID_GET_SAVE_TPL			= ID_GET_SAVE_TPL;			/* costante utilizzata per il Get/Set dei template*/
+	const long eID_MOD_MONITOR			= ID_MOD_MONITOR;			/* costante identificativa del modulo MONITOR */
+	const long eMODULE_USER_GOD			= MODULE_USER_GOD;			/* costante indicante il super utente */
+	const long ePLUGIN_NOT_VALIDATE			= PLUGIN_NOT_VALIDATE;			/* costante indicante un PlugIn non valido */
+	const long ePLUGIN_VALIDATE			= PLUGIN_VALIDATE;			/* costante indicante un PlugIn valido  */
+	const long ePLUGIN_VALIDATE_AND_CONFIGURATED	= PLUGIN_VALIDATE_AND_CONFIGURATED;	/* costante indicante un PlugIn valido e configurato */
+	const long eALL_PLUGIN                          = ALL_PLUGIN;				/* costante utilizzata client per indicare al server di
+												   caricare tutti i PlugIn disponibili */
+	const long eUSER_LIST_CONFIGURATED_PLUGINS	= USER_LIST_CONFIGURATED_PLUGINS;
+	const long eCONFIGURATED_PLUGIN			= CONFIGURATED_PLUGIN;			/* costante indicante un PlugIn configurato */
+
+	/**
+	  * Costanti utilizzate per il dimensionamento delle varie stringhe utilizzate sia dal client e sia dal server.
+	  */
+	const long eMAX_PLUGIN_NAME_LEN			= MAX_PLUGIN_NAME_LEN;
+	const long eMAX_PLUGIN_TAG_LEN			= MAX_PLUGIN_TAG_LEN;
+	const long eMAX_LOGICAL_FUNCTION_LEN		= MAX_LOGICAL_FUNCTION_LEN;
+	const long eMAX_FUNCTION_DESCRIPTION_LEN	= MAX_FUNCTION_DESCRIPTION_LEN;
+	const long eMAX_VERSION_LEN			= MAX_VERSION_LEN;
+	const long eMAX_RELEASE_DATA_LEN		= MAX_RELEASE_DATA_LEN;
+	const long eMAX_VENDOR_LEN			= MAX_VENDOR_LEN;
+	const long eMAX_AUTHOR_LEN			= MAX_AUTHOR_LEN;
+	const long eMAX_SOURCE_DATA_LEN			= MAX_SOURCE_DATA_LEN;
+	const long eMAX_SOURCE_LOCATION_LEN		= MAX_SOURCE_LOCATION_LEN;
+	const long eMAX_DESCRITTORE_LEN			= MAX_DESCRITTORE_LEN;
+	const long eMAX_SUB_FUNCTION_NAME_LEN		= MAX_SUB_FUNCTION_NAME_LEN;
+	const long eMAX_DESC_LEN			= MAX_DESC_LEN;
+	const long eMAX_POL_RANGE_LEN			= MAX_POL_RANGE_LEN;
+	const long eMAX_OUTPUT_BASE_UNIT_LEN		= MAX_OUTPUT_BASE_UNIT_LEN;
+	const long eMAX_MIN_VALUE_LEN			= MAX_MIN_VALUE_LEN;
+	const long eMAX_IMPUT_NAME_LEN			= MAX_IMPUT_NAME_LEN;
+	const long eMAX_ALTERNATIVE_NAME_LEN		= MAX_ALTERNATIVE_NAME_LEN;
+	const long eMAX_STR_LEN				= MAX_STR_LEN;
+	const long eMAX_COLOR_LEN			= MAX_COLOR_LEN;
+	const long eMAX_DESC_SESSION			= MAX_DESC_SESSION;
+	const long eMAX_VALUE_LEN			= MAX_VALUE_LEN;
+	const long eMAX_FONT_NAME_LEN			= MAX_FONT_NAME_LEN;
+
+	/**
+	 * Preleva i grant di uno specifico utente per l'applicativo monitor.
+	 * @param idUser identificativo univuco dell'utente utente,
+	 * @param UserGrant grant relativi all'utente monitor utente,
+	 * @param flag indica se sono richiesti i grant del profilo o del semplice utente,
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean getUserGrant(in string login, in string profilo,in long flag,out MONITOR_USER_GRANT UserGrant,in S_APP_LOG AppLog);
+
+	/**
+	 * Imposta i grant di uno specifico utente per l'applicativo monitor.
+	 * @param idUser identificativo univuco dell'utente utente,
+	 * @param UserGrant grant relativi all'utente monitor utente,
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean setUserGrant(in MONITOR_USER_GRANT UserGrant,in S_APP_LOG AppLog);
+
+	/**
+	 *
+	 */
+	boolean getDispatcherList(out DispatcherDescriptionSeq dispList,in S_APP_LOG AppLog);
+
+	/**
+	 * Legge i PlugIn disponibili e li invia al chiamante.
+	 * @param PlugIn sequenza di PlugIn
+	 * @param profile identificativo univoco del profilo.
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	//boolean getPlugIn(out FunctionDescriptionSeq PlugIn,in string profile,in long idFunction,in string pluginName,in S_APP_LOG AppLog);
+
+	boolean getPlugIn(out FunctionDescriptionWrapp PlugIn,in string profile,in long idFunction,in string pluginName,in S_APP_LOG AppLog);
+
+	/**
+	 * Legge le sessioni disponibili per lo specifico utente  e li invia al chiamante.
+	 * @param SessionList sequenza di sessioni
+	 * @param login identificativo univoco dell'utente.
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean getSession(out SessionSeq SessionList,in string login,in long idFunction,in long flagSession,in S_APP_LOG AppLog);
+
+	/**
+	 * Rimuove una specifica sessione di uno specifico utente.
+	 * @param login identificativo univoco dell'utente.
+	 * @param idSession identificativo univoco della sessione.
+	 */
+	boolean deleteSession(in string login,in long idSession,in S_APP_LOG AppLog);
+
+	/**
+	 * Inserisce le sessioni configurate per lo specifico utente..
+	 * @param SessionList sequenza di sessioni
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean setSession(in Session sessione,in S_APP_LOG AppLog);
+
+	/**
+	 * Tenta di validare i PlugIn presenti nella sequenza PlugIn.
+	 * @param PlugIn sequenza di PlugIn
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	*/
+	boolean validatePlugIn(in FunctionDescriptionSeq PlugIn,in S_APP_LOG AppLog);
+
+	/**
+	 * Tenta di configurare il PlugIn presente nella struttura PlugIn.
+	 * @param PlugIn struttura del PlugIn
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean configurePlugIn(in FunctionDescription PlugIn,in S_APP_LOG AppLog);
+
+	/**
+	 * Ritorna una sequenza di valori rappresentanti l'help per le selezioni utente sul client.
+	 * @param idHelp	sidentificativo univoco della lista di help da caricare,
+	 *			Per ogni tipologia di Help viene agganciato uno specifivo PlugIn dedicato,
+	 * @param HelpList	sequenza di valori di help ritornata al client,
+	 * @return La funzione ritorna true in caso affermativo, false altrimenti.
+	 */
+	boolean getHelpList(in long idHelp,out DescSeq HelpList,in S_APP_LOG AppLog);
+
+	boolean getHelp(in PLUGIN_CONFIG plug_in,out HelpListSeq HelpList,in S_APP_LOG AppLog);
+
+};
+
+
+// ADAMS Image Server Configuration
+
+interface IMAGEServerConfiguration
+{
+	const long eID_MOD_IMAGE		= ID_MOD_IMAGE;				/* costante identificativa del modulo IMAGE */
+	const long eSUPER_USER_MAG 		= SUPER_USER_MAG;
+	const long eMODULE_USER_GOD		= MODULE_USER_GOD;			/* costante indicante il super utente */
+	const long eID_LAYOUT_IP_SCENIC_1	= ID_LAYOUT_IP_SCENIC_1;			/* costante indicante il super utente */
+	const long eID_LAYOUT_IP_SCENIC_2	= ID_LAYOUT_IP_SCENIC_2;			/* costante indicante il super utente */
+	const long eMAX_IMG_EDIT_OTHER		= MAX_IMG_EDIT_OTHER;
+	const long eMAX_IMG_ALARM_MAX		= MAX_IMG_ALARM_MAX;
+	const long eMAX_IMG_VIEW		= MAX_IMG_VIEW;
+	const long eMAX_IMG_EXTERNAL_MODULE	= MAX_IMG_EXTERNAL_MODULE;
+	const long eTYPE_MAP			= TYPE_MAP;
+	const long eTYPE_TAB			= TYPE_TAB;
+
+
+	boolean reloadConfigurationIP(in boolean flag, in S_APP_LOG AppLog);
+	boolean getProfileConfigurationImg(in long idClass, in string profileName,out USER_PROFILE_IMG UserProfileImg,in S_APP_LOG AppLog);
+
+	/*
+		*  Output	LayoutSeq Layout	 -->	Lista dei layout.
+		**/
+	boolean getAllLayout(out LayoutWrapp Layout,in S_APP_LOG AppLog);
+
+
+		/*
+		*  Input	USER_PROFILE_IMG UserProfile -->	Profilo utente completo (inserimento/modifica utente)
+		**/
+	boolean setUserConfigurationImg(in USER_PROFILE_IMG UserProfileImg,in S_APP_LOG AppLog);
+
+		/*
+		*  Input	LAYOUT newLayout 	 -->	Layout completo (inserimento/modifica utente)
+		**/
+	boolean setLayout(in LAYOUT newLayout,in S_FUNCTION newFunction,in S_APP_LOG AppLog);
+
+		/*
+		*  Input	in long ID_Layout 	 -->	Identificativo univoco dell'layout.
+		**/
+	boolean deleteLayout(in long ID_Function,in S_APP_LOG AppLog);
+
+
+		/*
+		*  prende tutta la configurazione della mappa: Nazioni, Continenti, View, AlarmElement con relativi valori.
+		**/
+	boolean getConfigMap(in long idFunction,out NationSeq nazioni, out ContinentSeq continenti, out ViewSeq view,out AlarmElementSeq AlarmElement,in S_APP_LOG AppLog);
+
+		/*setUserConfigurationImg
+		*  setta AlarmElement con relativi valori.
+		**/
+	boolean setAlarmElement(in AlarmElementSeq AlarmElement,in long idFunction,in S_APP_LOG AppLog);
+
+		/*
+		*  setta tutta la configurazione della mappa: Nazioni, Continenti, View, AlarmElement con relativi valori.
+		**/
+	boolean setConfigMap(in NationSeq nazioni, in ContinentSeq continenti, in ViewSeq view,in AlarmElementSeq AlarmElement,in long idFunction, in S_APP_LOG AppLog);
+
+	boolean getMagCentrali(out MagCentraliSeq mgCentraliSeq,in S_APP_LOG AppLog);
+	boolean setMagCentrali(in MagCentraliSeq mgCentraliSeq,in S_APP_LOG AppLog);
+};
+
+
+// ADAMS Mag Server Configuration
+
+interface MAGServerConfiguration
+{
+	const long  eID_MOD_MAG			= ID_MOD_MAG;
+	const long  eMAX_UTENTE			= MAX_UTENTE;
+	const long  eMAX_DATA_EMAIL		= MAX_DATA_EMAIL;
+	const long  eMAX_DATA_DELETE_EMAIL	= MAX_DATA_DELETE_EMAIL;
+	const long  eMAX_EMAIL_TO		= MAX_EMAIL_TO;
+	const long  eMAX_EMAIL_CC		= MAX_EMAIL_CC;
+	const long  eMAX_EMAIL_FROM		= MAX_EMAIL_FROM;
+	const long  eMAX_EMAIL_SUBJECT		= MAX_EMAIL_SUBJECT;
+	const long  eMAX_EMAIL_ATTACH		= MAX_EMAIL_ATTACH;
+	const long  eMAX_EMAIL_MSG		= MAX_EMAIL_MSG;
+
+	long checkStatus();
+
+	boolean getEMAIL(out E_MAILSeq eMailSeq,in string nome_utente,in long num_giorni,in S_APP_LOG AppLog);
+	boolean writeEMAIL(in E_MAILSeq eMailSeq,in S_APP_LOG AppLog);
+	boolean updateEMAIL(in E_MAILSeq eMailSeq,in S_APP_LOG AppLog);
+	boolean getID_USER(in string nome_utente,out long id_utente,in S_APP_LOG AppLog);
+	boolean getNAME_USER(in long id_utente,out string nome_utente,in S_APP_LOG AppLog);
+
+};
+
+// ASP Server
+
+interface asp_entry : asp_usermanagement_server, mdm_configuration_server
+{
+	/*
+	 * Scrive un LOG generico sulla tabella T_APP_LOG.
+	 */
+	boolean writeAPP_LOG(in S_APP_LOG AppLog);
+
+	/*
+	 * Metodo che ritorna la password per il nodo, la tipologia e l'utente richiesto.
+	 */
+	boolean getPswd(in string nomeNodo, in string typePassword, in string userLogin, out string userPassword);
+
+	boolean dummy();
+};
+
+
+interface asp_entry_old : MONITORConfiguration,IMAGEServerConfiguration,MAGServerConfiguration
+{
+	/*
+	 * Scrive un LOG generico sulla tabella T_APP_LOG.
+	 */
+	boolean writeAPP_LOG(in S_APP_LOG AppLog);
+
+	/*
+	 * Scrive un LOG generico sulla tabella T_MAG_TRACCIAMENTO_LOG.
+	 */
+	boolean writeMAG_LOG(in string SessionID, in S_APP_LOG AppLog);
+
+	/*
+	 * Metodo che ritorna la password per il nodo, la tipologia e l'utente richiesto.
+	 */
+	boolean getPswd(in string nomeNodo, in string typePassword, in string userLogin, out string userPassword);
+
+	/*
+	 * Esegue lo shutDown del server.
+	 */
+	oneway void shutDown();
+
+
+};
+
+}; // ASP
+}; // etech
+}; // net
+
+#endif // _ASP_IDL

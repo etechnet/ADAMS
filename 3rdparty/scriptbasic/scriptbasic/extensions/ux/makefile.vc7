@@ -1,0 +1,24 @@
+
+
+
+all : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\ux.lib T:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\ux.dll T:\MyProjects\ScriptBasic\source\bin\texi\mod_ux.texi
+
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\ux.lib : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\s_interface.obj 
+	lib /nologo /OUT:T:\MyProjects\ScriptBasic\source\bin\vc7\mod\lib\ux.lib T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\s_interface.obj  
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\ux.dll : T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\interface.obj 
+	cl /LD /nologo /FeT:\MyProjects\ScriptBasic\source\bin\vc7\mod\dll\ux.dll T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\interface.obj 
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoT:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\s_interface.obj : interface.c 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoT:\MyProjects\ScriptBasic\source\bin\vc7\mod\obj\ux\s_interface.obj interface.c
+
+T:\MyProjects\ScriptBasic\source\bin\texi\mod_ux.texi : manual.texi.jam
+	perl T:\MyProjects\ScriptBasic\source\jamal.pl manual.texi.jam T:\MyProjects\ScriptBasic\source\bin\texi\mod_ux.texi
+	perl T:\MyProjects\ScriptBasic\source\t2h.pl T:\MyProjects\ScriptBasic\source\bin\texi\mod_ux.texi
+	hhc T:\MyProjects\ScriptBasic\source\bin\texi\mod_ux.hhp & set ERRORLEVEL=0
+
+

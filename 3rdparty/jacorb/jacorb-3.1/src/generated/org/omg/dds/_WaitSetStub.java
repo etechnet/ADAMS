@@ -1,0 +1,365 @@
+package org.omg.dds;
+
+
+/**
+ * Generated from IDL interface "WaitSet".
+ *
+ * @author JacORB IDL compiler V 3.1, 19-Aug-2012
+ * @version generated at 27-set-2013 13.02.34
+ */
+
+public class _WaitSetStub
+	extends org.omg.CORBA.portable.ObjectImpl
+	implements org.omg.dds.WaitSet
+{
+	/** Serial version UID. */
+	private static final long serialVersionUID = 1L;
+	private String[] ids = {"IDL:omg.org/dds/WaitSet:1.0"};
+	public String[] _ids()
+	{
+		return ids;
+	}
+
+	public final static java.lang.Class _opsClass = org.omg.dds.WaitSetOperations.class;
+	public int detach_condition(org.omg.dds.Condition cond)
+	{
+		while(true)
+		{
+			if(! this._is_local())
+			{
+				org.omg.CORBA.portable.InputStream _is = null;
+				org.omg.CORBA.portable.OutputStream _os = null;
+				try
+				{
+					_os = _request( "detach_condition", true);
+					org.omg.dds.ConditionHelper.write(_os,cond);
+					_is = _invoke(_os);
+					int _result = _is.read_long();
+					return _result;
+				}
+				catch( org.omg.CORBA.portable.RemarshalException _rx )
+					{
+						continue;
+					}
+				catch( org.omg.CORBA.portable.ApplicationException _ax )
+				{
+					String _id = _ax.getId();
+					try
+					{
+							_ax.getInputStream().close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+					throw new RuntimeException("Unexpected exception " + _id );
+			}
+			finally
+			{
+				if (_os != null)
+				{
+					try
+					{
+						_os.close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+				}
+				this._releaseReply(_is);
+			}
+		}
+		else
+		{
+			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "detach_condition", _opsClass );
+			if( _so == null )
+				continue;
+			WaitSetOperations _localServant = (WaitSetOperations)_so.servant;
+			int _result;
+			try
+			{
+				_result = _localServant.detach_condition(cond);
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).normalCompletion();
+				return _result;
+			}
+			catch (RuntimeException re) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(re);
+				throw re;
+			}
+			catch (java.lang.Error err) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(err);
+				throw err;
+			}
+			finally
+			{
+				_servant_postinvoke(_so);
+			}
+		}
+
+		}
+
+	}
+
+	public int _wait(org.omg.dds.ConditionSeqHolder active_conditions, org.omg.dds.Duration_t timeout)
+	{
+		while(true)
+		{
+			if(! this._is_local())
+			{
+				org.omg.CORBA.portable.InputStream _is = null;
+				org.omg.CORBA.portable.OutputStream _os = null;
+				try
+				{
+					_os = _request( "wait", true);
+					org.omg.dds.Duration_tHelper.write(_os,timeout);
+					_is = _invoke(_os);
+					int _result = _is.read_long();
+					active_conditions.value = org.omg.dds.ConditionSeqHelper.read(_is);
+					return _result;
+				}
+				catch( org.omg.CORBA.portable.RemarshalException _rx )
+					{
+						continue;
+					}
+				catch( org.omg.CORBA.portable.ApplicationException _ax )
+				{
+					String _id = _ax.getId();
+					try
+					{
+							_ax.getInputStream().close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+					throw new RuntimeException("Unexpected exception " + _id );
+			}
+			finally
+			{
+				if (_os != null)
+				{
+					try
+					{
+						_os.close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+				}
+				this._releaseReply(_is);
+			}
+		}
+		else
+		{
+			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "wait", _opsClass );
+			if( _so == null )
+				continue;
+			WaitSetOperations _localServant = (WaitSetOperations)_so.servant;
+			int _result;
+			try
+			{
+				_result = _localServant._wait(active_conditions,timeout);
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).normalCompletion();
+				return _result;
+			}
+			catch (RuntimeException re) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(re);
+				throw re;
+			}
+			catch (java.lang.Error err) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(err);
+				throw err;
+			}
+			finally
+			{
+				_servant_postinvoke(_so);
+			}
+		}
+
+		}
+
+	}
+
+	public int get_conditions(org.omg.dds.ConditionSeqHolder attached_conditions)
+	{
+		while(true)
+		{
+			if(! this._is_local())
+			{
+				org.omg.CORBA.portable.InputStream _is = null;
+				org.omg.CORBA.portable.OutputStream _os = null;
+				try
+				{
+					_os = _request( "get_conditions", true);
+					_is = _invoke(_os);
+					int _result = _is.read_long();
+					attached_conditions.value = org.omg.dds.ConditionSeqHelper.read(_is);
+					return _result;
+				}
+				catch( org.omg.CORBA.portable.RemarshalException _rx )
+					{
+						continue;
+					}
+				catch( org.omg.CORBA.portable.ApplicationException _ax )
+				{
+					String _id = _ax.getId();
+					try
+					{
+							_ax.getInputStream().close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+					throw new RuntimeException("Unexpected exception " + _id );
+			}
+			finally
+			{
+				if (_os != null)
+				{
+					try
+					{
+						_os.close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+				}
+				this._releaseReply(_is);
+			}
+		}
+		else
+		{
+			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "get_conditions", _opsClass );
+			if( _so == null )
+				continue;
+			WaitSetOperations _localServant = (WaitSetOperations)_so.servant;
+			int _result;
+			try
+			{
+				_result = _localServant.get_conditions(attached_conditions);
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).normalCompletion();
+				return _result;
+			}
+			catch (RuntimeException re) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(re);
+				throw re;
+			}
+			catch (java.lang.Error err) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(err);
+				throw err;
+			}
+			finally
+			{
+				_servant_postinvoke(_so);
+			}
+		}
+
+		}
+
+	}
+
+	public int attach_condition(org.omg.dds.Condition cond)
+	{
+		while(true)
+		{
+			if(! this._is_local())
+			{
+				org.omg.CORBA.portable.InputStream _is = null;
+				org.omg.CORBA.portable.OutputStream _os = null;
+				try
+				{
+					_os = _request( "attach_condition", true);
+					org.omg.dds.ConditionHelper.write(_os,cond);
+					_is = _invoke(_os);
+					int _result = _is.read_long();
+					return _result;
+				}
+				catch( org.omg.CORBA.portable.RemarshalException _rx )
+					{
+						continue;
+					}
+				catch( org.omg.CORBA.portable.ApplicationException _ax )
+				{
+					String _id = _ax.getId();
+					try
+					{
+							_ax.getInputStream().close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+					throw new RuntimeException("Unexpected exception " + _id );
+			}
+			finally
+			{
+				if (_os != null)
+				{
+					try
+					{
+						_os.close();
+					}
+					catch (java.io.IOException e)
+					{
+						throw new RuntimeException("Unexpected exception " + e.toString() );
+					}
+				}
+				this._releaseReply(_is);
+			}
+		}
+		else
+		{
+			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "attach_condition", _opsClass );
+			if( _so == null )
+				continue;
+			WaitSetOperations _localServant = (WaitSetOperations)_so.servant;
+			int _result;
+			try
+			{
+				_result = _localServant.attach_condition(cond);
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).normalCompletion();
+				return _result;
+			}
+			catch (RuntimeException re) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(re);
+				throw re;
+			}
+			catch (java.lang.Error err) 
+			{
+				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
+					((org.omg.CORBA.portable.ServantObjectExt)_so).exceptionalCompletion(err);
+				throw err;
+			}
+			finally
+			{
+				_servant_postinvoke(_so);
+			}
+		}
+
+		}
+
+	}
+
+}

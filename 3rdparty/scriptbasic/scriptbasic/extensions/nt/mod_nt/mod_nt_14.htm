@@ -1,0 +1,47 @@
+<HEAD>
+<TITLE>Documentation of the module nt: Create a hard link on a file or directory</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Create a hard link on a file or directory">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Create a hard link on a file or directory">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Create a hard link on a file or directory</H1>
+<A HREF="mod_nt_13.htm">[&lt;&lt;&lt;]</A> [&gt;&gt;&gt;]
+<P>
+
+This function function establishes an NTFS hard link between an existing file/directory
+and a new file/directory. An NTFS hard link is similar to a POSIX hard link.
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+nt::HardLink "existing file","new filename"
+</PRE></FONT>
+<P>
+Any directory entry for a file, is a hard link to the associated file. Additional hard links, 
+created with the HardLink function, allow you to have multiple directory entries for a file, 
+that is, multiple hard links to the same file. These may be different names in 
+the same directory, or they may be the same (or different) names in different directories.
+However, all hard links to a file must be on the same volume.
+<P>
+Because hard links are just directory entries for a file, whenever an application modifies 
+a file through any hard link, all applications using any other hard link 
+to the file see the changes. Also, all of the directory entries are updated if the file changes. 
+For example, if the file's size changes, all of the hard links to the file will show the new size.
+<P>
+When creating hard link to a directory the situation is a bit different. In these cases the original
+directory entry and the created links are not equivalent. If you delete the link then the original
+directory and its content remains untouched. However if you delete the directory any link to that
+directory becomes unusable.
+<P>
+ <HR>
+<A HREF="mod_nt_13.htm">[&lt;&lt;&lt;]</A> [&gt;&gt;&gt;]
+</FONT>
+</BODY>
+
+</HTML>

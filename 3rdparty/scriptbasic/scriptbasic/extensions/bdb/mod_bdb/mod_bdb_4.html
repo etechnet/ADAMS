@@ -1,0 +1,209 @@
+<HEAD>
+<TITLE>Using the module BDB: 4. Installing the module</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Installing the module">
+<META NAME="keywords" CONTENT="Using the module BDB: Installing the module">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_bdb_toc.html">[Contents]</A><BR>
+</UL>
+<P>
+<H1>4. Installing the module</H1>
+<A HREF="mod_bdb_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_5.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+The module comes in source form or as compiled binary. Binary is usually available for the Win32 platforms and for Linux in Debian and RedHat packages only. The compilation of the source code is simple. Compile the source files to a <font size="3"><tt>.dll</tt></font> or to <font size="3"><tt>.so</tt></font> shared library. To help compile the module under Win32 the Visual C++ workspace and project files are delivered in the source distribution. To successfully link the application you need the static library version of the Berkeley DB system. The Windows NT version linkable using the Microsoft Visual C++ linker can be downloaded from the ScriptBasic web site in a separate ZIP file along with the library files of the other modules.
+<P>
+The library file is called `<font size="3"><tt>libdb30s.lib</tt></font>'. If for some reason you miss this file or perhaps you want to try (at your own risk) a newer version of the Berkeley DB than provided with the source you should download the Berkeley source distribution from Sleepy Cat Software. They usually provide Visual C++ v5.0 workspace and project files.
+<P>
+To use Visual C++ v6.0 you have to start the integrated environment and open the workspace. The Visual C++ development environment automatically converts the workspace and the projects. Note that you should not try to start Visual C++ v6.0 clicking on a v5.0 workspace file. In that case Visual C++ starts to convert the workspace and then crashes. So start the development environment from the start menu and use the menu "file/open workspace".
+<P>
+If you do not have the project file for the module, create a project file that creates a Win32 <font size="3"><tt>dll</tt></font>. Specify <font size="3"><tt>/nodefaultlib:"LIBCMT"</tt></font> in the project link options.
+<P>
+The source distribution of the Windows version compiles the module when ScriptBasic is built. Note that this `<font size="3"><tt>Makefile.nt</tt></font>' is generated from `<font size="3"><tt>Makefile.nt.jam</tt></font>' during executing the command file `<font size="3"><tt>precompile</tt></font>'.
+<P>
+
+On UNIX systems you have to download the Berkeley DB from its original location. Note that the module uses a specific version and may not work with further versions. However we will try to follow the version updates of the DB system.
+<P>
+Before starting to compile the module you have to configure and compile the Berkeley DB library file that results the files <font size="3"><tt>db.h</tt></font> and <font size="3"><tt>libdb.a</tt></font> (among other files, but we specifically need these two files). These are usually created in the directory <font size="3"><tt>~/db-3.0.55/build_unix/</tt></font>. Copy these files into the ScriptBasic source directory <font size="3"><tt>~/scriba/source/extensions/berkeley_db/</tt></font>.
+<P>
+After you have successfully performed these operations compile and install the module typing <font size="3"><tt>make install</tt></font>.
+<P>
+The compiled module contains a dynamic load binary file and a basic include file named `<font size="3"><tt>bdb.bas</tt></font>'. If your configuration is different from the default the include file `<font size="3"><tt>bdb.bas</tt></font>' should be placed in a module include directory file configured in the configuration file. The configuration file usually named <font size="3"><tt>scriba.conf.unix.lsp</tt></font> should include a line
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+<P>
+
+include "/etc/scriba/include/"
+</PRE></FONT>
+<P>
+
+defining the include files location for the modules and other generally used include files. The actual directory can be different.
+<P>
+The binary part of the module should be placed in another directory specified in the configuration file, like
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+<P>
+
+module "/usr/scriba/modules/"
+</PRE></FONT>
+<P>
+
+There can be more than one <font size="3"><tt>include</tt></font> and module statements in the configuration file. In that case the interpreter searches the directories in the order they are specified until the include file or the module is found.
+<P>
+Before starting any program using the module <font size="3"><tt>bdb</tt></font> you almost certainly have to edit the ScriptBasic configuration file. The keys in the configuration file included in the <font size="3"><tt>bdb</tt></font> configuration group control the initialization and use of the underlying Berkeley Database module.
+<P>
+We describe the keys here briefly in a manner that allows most implementations to start using the database from ScriptBasic programs. However at some cases we refer to the original documentation, deep understanding of the behavior of the software can be gained reading the original documentation.
+<P>
+The configuration keys the module supports:
+<P>
+
+<P>
+<UL>
+<LI> <font size="3"><tt>dir</tt></font>
+This key is a group that contains sub-keys and their values. These sub-keys define the directories that the Berkeley DB use as default directory for certain operations.
+<P>
+<LI>
+<P>
+<font size="3"><tt>home</tt></font>
+This key defines the database home directory. This string is passed to the <font size="3"><tt>db_appinit</tt></font> function as argument <font size="3"><tt>db_home</tt></font>. If this value is specified the databases will be located in this directory. Use of this configuration parameter gives you flexibility to move your actual database files. CGI scripts may also gain some level of security not containing the actual path of the database files.
+<P>
+
+<LI>
+<P>
+ <font size="3"><tt>data</tt></font>
+This key defines where the Berkeley DB stored the database files.
+<P>
+<LI> 
+<P>
+<font size="3"><tt>log</tt></font>
+This key defines where the Berkeley DB stores the database log files.
+<P>
+<LI>
+<P>
+<font size="3"><tt>temp</tt></font>
+This key defines where the Berkeley DB stores the temporary files.
+<P>
+<LI> 
+<P>
+<font size="3"><tt>limits</tt></font>
+This key is a group that contains sub-key and their values. These sub-keys define the limits that the system manager sets for the local installation of the Berkeley DB.
+<P>
+Note that although these values are numeric they should be specified between <font size="3"><tt>"</tt></font> characters as string. This is because ScriptBasic v1.0build19 does not deliver support function for the external modules to access numeric configuration parameters. (n.b. older versions of ScriptBasic did not support numeric configuration parameters at all.)
+<P>
+
+<LI> 
+<P>
+<font size="3"><tt>lg_max</tt></font>
+The maximum size of a single file in the log, in bytes. This value is passed to the log subsystem in the variable dbenv.lg_max.
+<P>
+
+<LI>
+<P>
+ <font size="3"><tt>mp_mmapsize</tt></font>
+Files that are opened read-only in the pool (and that satisfy a few other criteria) are, by default, mapped into the process address space instead of being copied into the local cache. This can result in better-than-usual performance, as available virtual memory is normally much larger than the local cache, and page faults are faster than page copying on many systems. However, in the presence of limited virtual memory it can cause resource starvation, and in the presence of large databases, it can result in immense process sizes. If <font size="3"><tt>mp_mmapsize</tt></font> is non-zero, it specifies the maximum file size, in bytes, for a file to be mapped into the process address space. By default, it is set to 10Mb.
+<P>
+<LI> 
+<P>
+<font size="3"><tt>mp_size</tt></font>
+The suggested size of the shared memory buffer pool, i.e., the cache, in bytes. This should be the size of the normal working data set of the application, with some small amount of additional memory for unusual situations. (Note, the working set is not the same as the number of simultaneously referenced pages, and should be quite a bit larger!) The default cache size is 128K bytes, and may not be specified as less than 20K bytes. 
+<P>
+<LI> 
+<P>
+<font size="3"><tt>tx_max</tt></font>
+The maximum number of simultaneous transactions that are supported. This bounds the size of backing files and is used to derive limits for the size of the lock region and log files. When there are more than <font size="3"><tt>tx_max</tt></font> concurrent transactions, calls to <font size="3"><tt>txn_begin</tt></font> may cause backing files to grow. If <font size="3"><tt>tx_max</tt></font> is <font size="3"><tt>0</tt></font>, a default value is used.
+<P>
+The bdb module provides a very simple interface to the BASIC programmer. There is only a single transaction allowed at a time and there is no support for transaction hierarchy. However the single transaction at the level of the BASIC program is supported creating a unique Berkeley DB transaction for each opened table.
+<P>
+<LI>
+<P>
+<font size="3"><tt>lk_max</tt></font>
+The maximum number of locks to be held or requested in the table. This value is used by the Berkeley DB function <font size="3"><tt>lock_open</tt></font> to estimate how much space to allocate for various lock-table data structures. If <font size="3"><tt>lk_max</tt></font> is 0, a default value is used. 
+<P>
+The following keys define the behavior of the deadlock detector. If any of these keys are used the deadlock detector runs when a conflict occurs and this key defines which transaction should be aborted.
+<P>
+<LI> 
+<P>
+<font size="3"><tt>lockstrategy</tt></font>
+This configuration key defines what lock strategy the Berkeley DB should use. The value can be one of the keywords: default, oldest, random, youngest.
+<P>
+<LI>
+<P>
+ <font size="3"><tt>flags</tt></font>
+This key is a group that contains sub-key and their values. These sub-keys define certain flags for the operation of the Berkeley DB. Any of the keys may exist in the configuration having the value yes or having any other value. A missing key has the same effect as having the key with any value other than yes.
+<P>
+In the following lines we list the configuration keys and their respective Berkeley DB constants that are used to pass to the function <font size="3"><tt>DBENV-&gt;open</tt></font>.
+<P>
+<UL>
+<LI>
+<P>
+ <font size="3"><tt>create</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_CREATE</tt></font>
+<LI>
+<P>
+ <font size="3"><tt>init_cdb</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_INIT_CDB</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>init_lock</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_INIT_LOCK</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>init_log</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_INIT_LOG</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>init_mpool</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_INIT_MPOOL</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>init_txn</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_INIT_TXN</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>private</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_PRIVATE</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>nommap</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_NOMMAP</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>recover</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_RECOVER</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>recover_fatal</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_RECOVER_FATAL</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>thread</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_THREAD</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>txn_nosync</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_TXN_NOSYNC</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>use_environ</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_USE_ENVIRON</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>use_environ_root</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_USE_ENVIRON_ROOT</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>lockdown</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_LOCKDOWN</tt></font>
+<LI> 
+<P>
+<font size="3"><tt>system_mem</tt></font> <font size="3"><tt>--&gt;</tt></font> <font size="3"><tt>DB_SYSTEM_MEM</tt></font>
+</UL>
+  
+<LI> 
+<P>
+<font size="3"><tt>mode</tt></font>
+This configuration value may specify the access value of the created databases under UNIX when the mode value is not specified in the command <font size="3"><tt>bdb::open</tt></font>. If not specified the value zero is used. Because this mode value grants no access to anyone the underlying Berkeley Database ignores the value and uses the default file mode instead.
+</UL>
+<P>
+
+To specify the value you have to specify the access value as decimal number between <font size="3"><tt>"</tt></font> double-quote characters.<HR>
+<A HREF="mod_bdb_3.html">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_5.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

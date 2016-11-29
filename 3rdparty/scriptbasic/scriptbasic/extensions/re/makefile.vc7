@@ -1,0 +1,39 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\re.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\re.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_re.texi
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\re.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\s_interface.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\re.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\s_interface.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj  
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\re.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\interface.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\re.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\interface.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj 
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\interface.obj : interface.c regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\s_interface.obj : interface.c regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj : regcomp.c cclass.h utils.h cname.h regex2.h regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regcomp.obj regcomp.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj : regerror.c utils.h regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regerror.obj regerror.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj : regexec.c utils.h regex2.h regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regexec.obj regexec.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj : regex_test.c regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regex_test.obj regex_test.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj : regfree.c utils.h regex2.h regex.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\re\regfree.obj regfree.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_re.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_re.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_re.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_re.hhp & set ERRORLEVEL=0
+
+

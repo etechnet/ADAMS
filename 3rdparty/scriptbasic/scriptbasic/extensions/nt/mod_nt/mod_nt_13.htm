@@ -1,0 +1,35 @@
+<HEAD>
+<TITLE>Documentation of the module nt: Continue a paused Windows NT service</TITLE>
+
+<META NAME="description" CONTENT="Documentation of the module nt: Continue a paused Windows NT service">
+<META NAME="keywords" CONTENT="Documentation of the module nt: Continue a paused Windows NT service">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Continue a paused Windows NT service</H1>
+<A HREF="mod_nt_12.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_14.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+This function asks a Windows NT service to continue after it was paused
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+nt::ContinueService "Service name"
+</PRE></FONT>
+<P>
+The argument for this subroutine call is the name of the service to start. This is the
+name that was used to create the service and you can read this name when you start the
+graphical service control manager application.
+<P>
+The subroutine returns <font size="3"><tt>undef</tt></font> value. If the service can not be continued the function
+raises error.<HR>
+<A HREF="mod_nt_12.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_nt_14.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

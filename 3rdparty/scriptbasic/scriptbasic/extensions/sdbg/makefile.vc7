@@ -1,0 +1,29 @@
+
+
+
+all : C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\sdbg.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\sdbg.dll C:\dl\scriba_v2.1-scr\bin\texi\mod_sdbg.texi
+
+
+
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\sdbg.lib : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\s_interface.obj 
+	lib /nologo /OUT:C:\dl\scriba_v2.1-scr\bin\vc7\mod\lib\sdbg.lib C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\s_interface.obj  user32.lib ws2_32.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\sdbg.dll : C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\interface.obj 
+	cl /LD /nologo /FeC:\dl\scriba_v2.1-scr\bin\vc7\mod\dll\sdbg.dll C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\interface.obj user32.lib ws2_32.lib
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj : sdbg_con.c sdbg.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\sdbg_con.obj sdbg_con.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\interface.obj : interface.c sdbg_comm.h sdbg.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\s_interface.obj : interface.c sdbg_comm.h sdbg.h 
+	cl /Ox /GA6s /DWIN32 /MT /nologo /W0 -DSTATIC_LINK=1 /c /FoC:\dl\scriba_v2.1-scr\bin\vc7\mod\obj\sdbg\s_interface.obj interface.c
+
+C:\dl\scriba_v2.1-scr\bin\texi\mod_sdbg.texi : manual.texi.jam
+	perl C:\dl\scriba_v2.1-scr\jamal.pl manual.texi.jam C:\dl\scriba_v2.1-scr\bin\texi\mod_sdbg.texi
+	perl C:\dl\scriba_v2.1-scr\t2h.pl C:\dl\scriba_v2.1-scr\bin\texi\mod_sdbg.texi
+	hhc C:\dl\scriba_v2.1-scr\bin\texi\mod_sdbg.hhp & set ERRORLEVEL=0
+
+

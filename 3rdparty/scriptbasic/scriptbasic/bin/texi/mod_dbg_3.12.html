@@ -1,0 +1,56 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.12. Debugging CGI programs</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Debugging CGI programs">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Debugging CGI programs">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.12. Debugging CGI programs</H1>
+<A HREF="mod_dbg_3.11.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_4.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+To debug a CGI program you have to execute it in the Eszter SB Application Engine. The Eszter SB Application Engine is a single process, multi-thread httpd daemon that runs ScriptBasic programs inside the process as separate threads. Yoi can install the engine as Windows NT Service, UNIX daemon or start just as a command line tool.
+
+More information how to start the Eszter SB Application Engine read the manual of the program.
+
+When the engine is started from the command line it acts like a normal command line program. Although the BASIC command <font size="3"><tt>PRINT</tt></font> is redirected to send HTML output to the browser, and the input functions read the http POST data, the debugger, if started still prints to the console screen and reads the keyboard.
+
+To invoke the debugger, however you can not use the command line option `<font size="3"><tt>-i dbg</tt></font>' because in this case the command line is for the Eszter SB Application Engine and not for the individual BASIC program thread. Instead you have to modify the code of your BASIC program to have the first line (or the second line following @code{#! /usr/bin/scriba) to be
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+use dbg
+</PRE></FONT>
+
+This will invoke the debugger as soon as the file is read y the application engine.
+
+To make sure that the engine is reading the source instead of the cache file, in which case the preprocessors defined by the statement <font size="3"><tt>use</tt></font> are ignored configure the ScriptBasic interpreter with a fake cache directory that does not exist.
+
+Start the engine from the command line 
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+sbhttpd -start
+</PRE></FONT>
+
+and open a browser with the URL that refers to the program you want to debug. Do not forget to specify `<font size="3"><tt>-start</tt></font>' under Windows NT! The engine will stop and wait on the console with the debugger cursor.
+
+At this point you can go and debug your program.
+<HR>
+<A HREF="mod_dbg_3.11.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_4.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

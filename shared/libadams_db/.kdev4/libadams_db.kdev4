@@ -1,0 +1,11 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
+
+[MakeBuilder]
+Number Of Jobs=4
+
+[Project]
+VersionControlSupport=kdevgit
+
+[SourceFileTemplates]
+LastUsedTemplate=/home/pbetti/.kde4/share/apps/kdevfiletemplates/template_descriptions/cpp_basic.desktop

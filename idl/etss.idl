@@ -1,0 +1,133 @@
+/*
+#
+#                $$$$$$$$                   $$
+#                   $$                      $$
+#  $$$$$$           $$   $$$$$$    $$$$$$$  $$$$$$$
+# $$    $$  $$$$$$  $$  $$    $$  $$        $$    $$
+# $$$$$$$$          $$  $$$$$$$$  $$        $$    $$
+# $$                $$  $$        $$        $$    $$
+#  $$$$$$$          $$   $$$$$$$   $$$$$$$  $$    $$
+#
+#  MODULE DESCRIPTION:
+#  <enter module description here>
+#
+#  AUTHORS:
+#  Author Name <author.name@e-tech.net>
+#
+#  LICENSE: See "Licensing/License.txt" under ADAMS top-level source directory
+#
+#  HISTORY:
+#  -[Date]- -[Who]------------- -[What]---------------------------------------
+#  00.00.00 Author Name         Creation date
+#--
+#
+*/
+#ifndef _ETSS_IDL
+#define _ETSS_IDL
+
+#include <common_datatypes.idl>
+
+
+module net {
+
+module etech {
+
+module ETSS {
+
+interface etss_server_trapper_server
+{
+	oneway void wakeup();
+	oneway void shutDown();
+
+		// ** checkPid: ritorna il PID del server in running
+		// Output:	sequenza di DATA_CENTRALI
+		//
+	long checkPid();
+
+		// ** getNodes: ritorna la configurazione delle centrali
+		// Output:	sequenza di DATA_CENTRALI
+		//
+	boolean getNodes(out FepImageSeq nodes);
+};
+
+interface etss_server_server
+{
+	oneway void shutDown();
+		// ** alarmStatusRefresh: ritorna lo stato degli allarmi dopo il refresh periodico
+		// Input:	none
+		// Output:	sequenza di ALARM_INFO contenente una lista di allarmi _di cui è variato lo stato_
+		//
+	boolean alarmStatusRefresh(out AlarmInfoSeq alarmInfo, in ALARM_PARAMS relation_list);
+
+		// ** globalAlarmStatus: ritorna lo stato degli allarmi per _tutti_ gli elementi configurati
+		// Input:	none
+		// Output:	sequenza di ALARM_INFO contenente la lista allarmi
+		//
+	boolean globalAlarmStatus(out AlarmInfoSeq alarmInfo);
+
+		// ** setBooking: effettua le operazioni necessarie a porre in stato book l'elemento richiesto
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		bookStatus		(stato book [on/off])
+		// Output:	none
+		//
+	boolean setBooking(in long elementType, in string elementCode, in boolean bookStatus);
+
+		// ** setTicketed: effettua le operazioni necessarie a porre in ticket emesso l'elemento richiesto
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		ticketStatus		(stato ticket [on/off])
+		// Output:	none
+		//
+	boolean setTicketed(in long elementType, in string elementCode, in TTMRECORDIMAGE ttmr, in long anom_index);
+
+		// ** authTTM: effettua l'autenticazione dell'utente e la precompilazione del cartellino
+		// Input:	elementType		(tipo elemento)
+		//		elementCode		(codice)
+		//		ticketStatus		(stato ticket [on/off])
+		// Output:	none
+		//
+	boolean authTTM(in USERLOGIN user, out TtmSelectSeq ttms);
+
+
+		// ** alarmDetailRequest: ritorna lo stato degli allarmi dopo il refresh periodico
+		// Input:	request: struttura contenente una sequenza di link alle informazioni nel db
+		// Output:	sequenza di DETAIL_INFO
+		//
+	boolean alarmDetailRequest(in DETAIL_REQUEST request, out DetailInfoSeq details);
+
+		// ** getNodes: ritorna la configurazione delle centrali
+		// Output:	sequenza di DATA_CENTRALI
+		//
+	boolean getNodes(out FepImageSeq nodes);
+};
+
+interface etss_agent_server
+{
+	boolean runDataServer(in ADAMS_COMPLETE_CONFIG Conf, in ALARM_PARAMS alarm_agent_params);
+	long getProgressPercentage(out BtreeID Btree_id, out BtreeSeq BtreeData);
+	oneway void resetReader();
+	oneway void shutDown();
+};
+
+interface etss_server_threshold_server
+{
+	oneway void wakeup();
+	oneway void shutDown();
+};
+
+interface etss_agent_threshold_server
+{
+	boolean runDataServer(in ADAMS_COMPLETE_CONFIG Conf, in ALARM_PARAMS alarm_agent_params);
+	long getProgressPercentage(out BtreeID Btree_id, out BtreeSeq BtreeData);
+	oneway void resetReader();
+	oneway void shutDown();
+};
+
+}; // ETSS
+
+}; // etech
+
+}; // net
+
+#endif // _ETSS_IDL

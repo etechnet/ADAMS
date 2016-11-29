@@ -1,0 +1,64 @@
+<HEAD>
+<TITLE>Using the module BDB: Trouble shooting installation</TITLE>
+
+<META NAME="description" CONTENT="Using the module BDB: Trouble shooting installation">
+<META NAME="keywords" CONTENT="Using the module BDB: Trouble shooting installation">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY>
+<FONT FACE="Verdana" Size="2">
+
+<H1>Trouble shooting installation</H1>
+<A HREF="mod_bdb_4.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.htm">[&gt;&gt;&gt;]</A>
+<P>
+
+There are some typical errors that we have committed during test installations. Here we list these mistakes together with the solution.
+<P>
+After successful compilation and installation the test program resulted Module Specific error:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+<P>
+
+# scriba testbdbtransaction.bas
+(0): error 0x80000002:Extension specific error
+</PRE></FONT>
+<P>
+
+The reason for this failure is that the example program tries to test the transactional behavior of the module <font size="3"><tt>bdb</tt></font>. The transaction handling is not automatically started. In order to have transaction support you have to insert the lines:
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+<P>
+
+flags (
+    init_lock yes
+    init_log yes
+    init_mpool yes
+    init_txn yes
+    )
+</PRE></FONT>
+<P>
+
+<P>
+into the ScriptBasic configuration file and compile the configuration file to binary format.
+<P>
+After we have inserted these lines into the configuration file we still got the same error. The reason was that the transactional lock and log files were not yet present. In order to create these you have to tell the Berkeley Database to automatically create the files if they are not present to reach this you have to insert the line
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+<P>
+
+flags (
+    create yes
+    )
+</PRE></FONT>
+<P>
+
+into the configuration file. This is needed even if the flag <font size="3"><tt>bdb::Create</tt></font> was used in the <font size="3"><tt>bdb::Open</tt></font> statement. The flag says to create the database file itself, but does not order the Berkeley Database to automatically create the log and lock files for the transactions.<HR>
+<A HREF="mod_bdb_4.htm">[&lt;&lt;&lt;]</A> <A HREF="mod_bdb_6.htm">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

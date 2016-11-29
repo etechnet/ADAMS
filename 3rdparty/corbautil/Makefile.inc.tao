@@ -1,0 +1,57 @@
+#-----------------------------------------------------------------------
+DIRNAME  = corbautil
+SRCTREE  = COMMON
+#
+#  INCLUDE FILES
+#  - Path
+#  - Flag compilazione e link
+#
+#
+include $(STS_HOME)/STS/MAKE/make_path.mk
+include $(STS_HOME)/STS/MAKE/make_comp.mk
+#
+# File sorgenti e librerie dell'applicativo
+#
+include $(PATMAK)/TAO.mk
+
+
+#--------
+# Set the next line to point to this top-level directory
+#--------
+CORBA_UTIL_ROOT=	$(STS_HOME)/STS/COMMON/source/corbautil
+
+#--------
+# Make sure the following settings are correct for TAO C++
+#
+# Set TAO_HOME to the full path to where you have installed TAO
+# For example, "C:\ACE_wrappers".
+#
+# Set TAO_DEBUG to "yes" if TAO was compiled with DEBUG=yes
+# Otherwise, set it to a different value, such as "no"
+#
+#--------
+TAO_HOME =		$(TAO_ROOT)
+TAO_DEBUG =		yes
+
+#--------
+# C++ compiler
+#--------
+CXXFLAGS+= -I. \
+	   -I$(CORBA_UTIL_ROOT)/cxx/gsp \
+	   -I$(CORBA_UTIL_ROOT)/cxx/import_export \
+	   -I$(CORBA_UTIL_ROOT)/cxx/PoaUtility \
+	   -I$(CORBA_UTIL_ROOT)/cxx/PolicyListParser \
+	   -I$(CORBA_UTIL_ROOT)/cxx/portability \
+	   -I$(TAO_HOME) \
+	   -I$(TAO_HOME)/include \
+	   -D_REENTRANT \
+	   -DP_USE_TAO \
+	   -DP_USE_POSIX_THREADS
+
+#--------
+# Generic build rules
+#--------
+.SUFFIXES:		.cxx
+
+.cxx.o:
+	$(CXX) -o $*.o $(CXXFLAGS) -c $<

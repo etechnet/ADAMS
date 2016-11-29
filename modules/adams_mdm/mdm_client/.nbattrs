@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<attributes version="1.0">
+   <fileobject name="NTM_PrintWebPivot_old.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_PrintWebPivot"/>
+   </fileobject>
+   <fileobject name="NTM_JD_InitPivot.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_JD_InitPivot"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JD_InitPivot"/>
+   </fileobject>
+   <fileobject name="jmatrix_noidm.html-PRODUZIONE">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JP_CellSummary.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_CellSummary"/>
+   </fileobject>
+   <fileobject name="NTM_JD_wait.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_JD_wait"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JD_wait"/>
+   </fileobject>
+   <fileobject name="NTM_JF_Pivot.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTM_JF_Pivot"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTM_JF_Pivot.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JF_Pivot"/>
+      <attr name="class_dependency_javax.swing.table.DefaultTableCellRenderer" stringvalue="NTM_JF_Pivot.PrecisionCellRenderer"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectAnalisys_collaudo.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectAnalisys"/>
+   </fileobject>
+   <fileobject name="jmatrix_sts.html-COLLAUDO">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JP_Summary.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_Summary"/>
+   </fileobject>
+   <fileobject name="SampleTreeCellRenderer.java">
+      <attr name="class_dependency_javax.swing.JLabel" stringvalue="SampleTreeCellRenderer"/>
+      <attr name="class_dependency_javax.swing.tree.TreeCellRenderer" stringvalue="SampleTreeCellRenderer"/>
+   </fileobject>
+   <fileobject name="NTM_JF_TE_Search.java">
+      <attr name="template" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="da_cancellare.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="da_cancellare;JDialog"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="JPanel;da_cancellare"/>
+   </fileobject>
+   <fileobject name="Ntmclient.java">
+      <attr name="class_dependency_javax.swing.JApplet" stringvalue="Ntmclient"/>
+   </fileobject>
+   <fileobject name="getConfigFiltro.java">
+      <attr name="class_dependency_java.applet.Applet" stringvalue="getConfigFiltro"/>
+   </fileobject>
+   <fileobject name="TableSorter.java">
+      <attr name="class_dependency_java.awt.event.MouseAdapter" stringvalue="TableSorter.MouseHandler"/>
+      <attr name="class_dependency_java.lang.Comparable" stringvalue="TableSorter.Row"/>
+      <attr name="class_dependency_javax.swing.event.TableModelListener" stringvalue="TableSorter.TableModelHandler"/>
+      <attr name="class_dependency_javax.swing.table.TableCellRenderer" stringvalue="TableSorter.SortableHeaderRenderer"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="TableSorter"/>
+      <attr name="class_dependency_javax.swing.table.DefaultTableCellRenderer" stringvalue="TableSorter.PrecisionCellRenderer"/>
+      <attr name="class_dependency_javax.swing.Icon" stringvalue="TableSorter.Arrow"/>
+   </fileobject>
+   <fileobject name="NTM_JD_Request.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_JD_Request;NTM_JD_RelationBuild"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTM_JD_Request.MyTableModel;NTM_JD_RelationBuild.MyTableModel"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JD_Request"/>
+   </fileobject>
+   <fileobject name="HttpImpl.java">
+      <attr name="class_dependency_java.net.HttpURLConnection" stringvalue="HttpImpl"/>
+   </fileobject>
+   <fileobject name="NTM_JF_TE_search.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTM_JF_TE_search;JFrame"/>
+   </fileobject>
+   <fileobject name="jmatrix.html-COLLAUDO">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectReport.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectReport"/>
+   </fileobject>
+   <fileobject name="NTM_JP_RestrictionList.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_RestrictionList"/>
+   </fileobject>
+   <fileobject name="NTM_PrintWebPivot.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_PrintWebPivot"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_PrintWebPivot"/>
+   </fileobject>
+   <fileobject name="SimpleRunner.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="SimpleRunner"/>
+   </fileobject>
+   <fileobject name="BufferRestrizioni.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="BufferRestrizioni"/>
+   </fileobject>
+   <fileobject name="jP_ExpressionParser.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="jP_ExpressionParser"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="jP_ExpressionParser;JPanel"/>
+   </fileobject>
+   <fileobject name="DOMTreeModel.java">
+      <attr name="class_dependency_javax.swing.tree.TreeModel" stringvalue="DOMTreeModel"/>
+   </fileobject>
+   <fileobject name="JF_MathExpression.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="JF_MathExpression"/>
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="JF_MathExpression"/>
+   </fileobject>
+   <fileobject name="JListIcon.java">
+      <attr name="class_dependency_javax.swing.ListCellRenderer" stringvalue="JListIcon.MyCellRenderer"/>
+      <attr name="class_dependency_javax.swing.JList" stringvalue="JListIcon"/>
+      <attr name="class_dependency_javax.swing.JRadioButton" stringvalue="JListIcon.MyCellRenderer"/>
+   </fileobject>
+   <fileobject name="JTextFieldFilter.java">
+      <attr name="class_dependency_javax.swing.text.PlainDocument" stringvalue="JTextFieldFilter"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectSort.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectSort"/>
+   </fileobject>
+   <fileobject name="NTM_JP_Jobs.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_Jobs"/>
+   </fileobject>
+   <fileobject name="NTM_JF_Frame.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTM_JF_Frame"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JF_Frame"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectAnalisys.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectAnalisys"/>
+   </fileobject>
+   <fileobject name="NTMC_JP_Relations_DA-cancellare.java">
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTMC_JP_Relations.MyTableModel"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTMC_JP_Relations"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectRelations.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectRelations"/>
+   </fileobject>
+   <fileobject name="JF_Search.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="JF_Search"/>
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="JF_Search"/>
+      <attr name="class_dependency_javax.swing.Icon" stringvalue="JF_Search.Arrow"/>
+   </fileobject>
+   <fileobject name="createDocNtm_exe">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectRestrictions.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JP_SelectRestrictions"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectRestrictions"/>
+   </fileobject>
+   <fileobject name="jmatrix.html-PRODUZIONE">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JD_FontChooser.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="MON_JD_FontChooser;NTM_JD_FontChooser"/>
+   </fileobject>
+   <fileobject name="HelpDescVector.java">
+      <attr name="class_dependency_java.util.Vector" stringvalue="HelpDescVector"/>
+   </fileobject>
+   <fileobject name="Makefile">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="jmatrix_noidm.html-COLLAUDO">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+   <fileobject name="NTM_JD_RelationBuild.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_JD_RelationBuild;JDialog"/>
+      <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="NTM_JD_RelationBuild.MyTableModel"/>
+   </fileobject>
+   <fileobject name="NTM_JP_Centrali.java">
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JP_Centrali"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_Centrali"/>
+   </fileobject>
+   <fileobject name="AppletAspetto3.java">
+      <attr name="class_dependency_javax.swing.JApplet" stringvalue="AppletAspetto3"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="AppletAspetto3"/>
+   </fileobject>
+   <fileobject name="dacancellare.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="JPanel;dacancellare"/>
+   </fileobject>
+   <fileobject name="NTM_JP_SelectLevel.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_SelectLevel"/>
+   </fileobject>
+   <fileobject name="NTM_JP_Calendar.java">
+      <attr name="class_dependency_java.awt.event.ActionListener" stringvalue="NTM_JP_Calendar"/>
+      <attr name="class_dependency_javax.swing.JButton" stringvalue="MyJButton"/>
+      <attr name="class_dependency_java.awt.event.MouseListener" stringvalue="NTM_JP_Calendar"/>
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="NTM_JP_Calendar"/>
+   </fileobject>
+   <fileobject name="NTM_JD_ChangePWD.java">
+      <attr name="class_dependency_javax.swing.JDialog" stringvalue="NTM_JD_ChangePWD"/>
+   </fileobject>
+   <fileobject name="paintTrafficElement.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="paintTrafficElement"/>
+   </fileobject>
+   <fileobject name="NTM_JF_LoginStart_1.java">
+      <attr name="class_dependency_javax.swing.JFrame" stringvalue="NTM_JF_LoginStart_1"/>
+      <attr name="class_dependency_java.lang.Runnable" stringvalue="NTM_JF_LoginStart_1"/>
+   </fileobject>
+   <fileobject name="jmatrix_sts.html-PRODUZIONE">
+      <attr name="org.netbeans.modules.text.IsTextFile" boolvalue="true"/>
+   </fileobject>
+</attributes>

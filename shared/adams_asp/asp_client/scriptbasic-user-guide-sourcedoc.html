@@ -1,0 +1,2499 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ScriptBasic Users Guide</title>
+</head>
+<body lang="" bgcolor="#ffffff" text="#000000" link="#0000ff"
+ vlink="#800080" alink="#ff0000">
+<font face="Verdana" size="2"></font>
+<h1><font face="Verdana" size="2">NTMBasic Users Guide</font></h1>
+<h3><font face="Verdana" size="2">by Piergiorgio Betti</font></h3>
+<font face="Verdana" size="2"><a name="contents">
+<h2>Table of Contents</h2>
+</a></font>
+<ul>
+  <font face="Verdana" size="2"><a href="#1.">1.   Introduction</a><br>
+  <a href="#2.">2.   Command reference</a><br>
+  </font>
+  <ul>
+    <font face="Verdana" size="2"><a href="#2.1.">2.1.   ABS</a><br>
+    <a href="#2.2.">2.2.   ACOS</a><br>
+    <a href="#2.3.">2.3.   ADDDAY</a><br>
+    <a href="#2.4.">2.4.   ADDHOUR</a><br>
+    <a href="#2.5.">2.5.   ADDMINUTE</a><br>
+    <a href="#2.6.">2.6.   ADDMONTH</a><br>
+    <a href="#2.7.">2.7.   ADDRESS( myFunc() )</a><br>
+    <a href="#2.8.">2.8.   ADDSECOND</a><br>
+    <a href="#2.9.">2.9.   ADDWEEK</a><br>
+    <a href="#2.10.">2.10.   ADDYEAR</a><br>
+    <a href="#2.11.">2.11.   ASC(string)</a><br>
+    <a href="#2.12.">2.12.   ASIN</a><br>
+    <a href="#2.13.">2.13.   BINMODE [ # fn ] | input | output</a><br>
+    <a href="#2.14.">2.14.   CALL subroutine</a><br>
+    <a href="#2.15.">2.15.   CHDIR directory</a><br>
+    <a href="#2.16.">2.16.   CHOMP()</a><br>
+    <a href="#2.17.">2.17.   CHR(code)</a><br>
+    <a href="#2.18.">2.18.   CLOSE</a><br>
+    <a href="#2.19.">2.19.   CLOSE DIRECTORY [#] dn</a><br>
+    <a href="#2.20.">2.20.   COMMAND()</a><br>
+    <a href="#2.21.">2.21.   Concatenate operator &amp;amp;</a><br>
+    <a href="#2.22.">2.22.   COS</a><br>
+    <a href="#2.23.">2.23.   CRYPT(string,salt)</a><br>
+    <a href="#2.2.">2.2.   CURDIR()</a><br>
+    <a href="#2.25.">2.25.   DAY</a><br>
+    <a href="#2.26.">2.26.   DECLARE COMMAND function ALIAS cfun LIB library</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.26.1.">2.26.1.   DECLARECOMMAND
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.27.">2.27.   DECLARE SUB
+function ALIAS cfun LIB library</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.27.1.">2.27.1.   DECLARESUB
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.28.">2.28.   DELETE file/directory_name</a><br>
+    <a href="#2.29.">2.29.   DELTREE file/directory_name</a><br>
+    <a href="#2.30.">2.30.   DO</a><br>
+    <a href="#2.31.">2.31.   DO UNTIL condition</a><br>
+    <a href="#2.32.">2.32.   DO WHILE condition</a><br>
+    <a href="#2.33.">2.33.   END</a><br>
+    <a href="#2.34.">2.34.   ENVIRON("envsymbol") or ENVIRON(n)</a><br>
+    <a href="#2.35.">2.35.   EOD(dn)</a><br>
+    <a href="#2.36.">2.36.   EOF</a><br>
+    <a href="#2.37.">2.37.   ERROR() or ERROR n</a><br>
+    <a href="#2.38.">2.38.   EVEN</a><br>
+    <a href="#2.39.">2.39.   EXECUTE("executable_program", time_out,pid_v)</a><br>
+    <a href="#2.40.">2.40.   EXIT FUNCTION</a><br>
+    <a href="#2.41.">2.41.   EXIT SUB</a><br>
+    <a href="#2.42.">2.42.   EXP</a><br>
+    <a href="#2.43.">2.43.   FALSE</a><br>
+    <a href="#2.44.">2.44.   FILEACCESSTIME(file_name)</a><br>
+    <a href="#2.45.">2.45.   FILECOPY filename,filename</a><br>
+    <a href="#2.46.">2.46.   FILECREATETIME(file_name)</a><br>
+    <a href="#2.47.">2.47.   FILEEXISTS(file_name)</a><br>
+    <a href="#2.48.">2.48.   FILELEN(file_name)</a><br>
+    <a href="#2.49.">2.49.   FILEMODIFYTIME(file_name)</a><br>
+    <a href="#2.50.">2.50.   FIX</a><br>
+    <a href="#2.51.">2.51.   LOCK # fn, mode</a><br>
+    <a href="#2.52.">2.52.   FOR var=exp_start TO exp_stop [ STEP exp_step
+]</a><br>
+    <a href="#2.53.">2.53.   FORK()</a><br>
+    <a href="#2.54.">2.54.   FORMAT()</a><br>
+    <a href="#2.55.">2.55.   FORMATDATE</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.55.1.">2.55.1.   FORMATDATE
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.56.">2.56.   FILEOWNER(FileName)</a><br>
+    <a href="#2.57.">2.57.   FRAC</a><br>
+    <a href="#2.58.">2.58.   FREEFILE()</a><br>
+    <a href="#2.59.">2.59.   FUNCTION fun()</a><br>
+    <a href="#2.60.">2.60.   GMTIME</a><br>
+    <a href="#2.61.">2.61.   GMTOLOCALTIME</a><br>
+    <a href="#2.62.">2.62.   GOSUB label</a><br>
+    <a href="#2.63.">2.63.   GOTO label</a><br>
+    <a href="#2.64.">2.64.   HEX(n)</a><br>
+    <a href="#2.65.">2.65.   HOSTNAME()</a><br>
+    <a href="#2.66.">2.66.   HOUR</a><br>
+    <a href="#2.67.">2.67.   ICALL n,v1,v2, ... ,vn</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.67.1.">2.67.1.   ICALL
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.68.">2.68.   IF condition
+THEN</a><br>
+    <a href="#2.69.">2.69.   INPUT(n,fn)</a><br>
+    <a href="#2.70.">2.70.   INSTR(base_string,search_string [ ,position
+] )</a><br>
+    <a href="#2.71.">2.71.   INSTRREV(base_string,search_string [ ,position
+] )</a><br>
+    <a href="#2.72.">2.72.   INT</a><br>
+    <a href="#2.73.">2.73.   ISDIR(file_name)</a><br>
+    <a href="#2.74.">2.74.   ISREG(file_name)</a><br>
+    <a href="#2.75.">2.75.   JOIN(joiner,str1,str2,...)</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.75.1.">2.75.1.   JOIN Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.76.">2.76.   JOKER(n)</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.76.1.">2.76.1.   JOKER
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.77.">2.77.   KILL(pid)</a><br>
+    <a href="#2.78.">2.78.   LBOUND</a><br>
+    <a href="#2.79.">2.79.   LCASE()</a><br>
+    <a href="#2.80.">2.80.   LEFT(string,len)</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.80.1.">2.80.1.   LEFT Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.81.">2.81.   LEN()</a><br>
+    <a href="#2.82.">2.82.   v = expression</a><br>
+    <a href="#2.83.">2.83.   v &amp;= expression</a><br>
+    <a href="#2.84.">2.84.   v /= expression</a><br>
+    <a href="#2.85.">2.85.   v \= expression</a><br>
+    <a href="#2.86.">2.86.   v -= expression</a><br>
+    <a href="#2.87.">2.87.   v += expression</a><br>
+    <a href="#2.88.">2.88.   v *= expression</a><br>
+    <a href="#2.89.">2.89.   string LIKE pattern</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.89.1.">2.89.1.   LIKE Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.90.">2.90.   LINE INPUT</a><br>
+    <a href="#2.91.">2.91.   LOC()</a><br>
+    <a href="#2.92.">2.92.   LOCATLTOGMTIME</a><br>
+    <a href="#2.93.">2.93.   LOCK REGION # fn FROM start TO end FOR mode</a><br>
+    <a href="#2.94.">2.94.   LOF()</a><br>
+    <a href="#2.95.">2.95.   LOG</a><br>
+    <a href="#2.96.">2.96.   LOG10</a><br>
+    <a href="#2.97.">2.97.   LTRIM()</a><br>
+    <a href="#2.98.">2.98.   MID(string,start [ ,len ])</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.98.1.">2.98.1.   MID Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.99.">2.99.   MINUTE</a><br>
+    <a href="#2.100.">2.100.   MKDIR firectory_name</a><br>
+    <a href="#2.101.">2.101.   MONTH</a><br>
+    <a href="#2.102.">2.102.   NAME filename,filename</a><br>
+    <a href="#2.103.">2.103.   NEXTFILE(dn)</a><br>
+    <a href="#2.104.">2.104.   NOW</a><br>
+    <a href="#2.105.">2.105.   OCT(n)</a><br>
+    <a href="#2.106.">2.106.   ODD</a><br>
+    <a href="#2.107.">2.107.   ON ERROR GOTO [ label | 0 ]</a><br>
+    <a href="#2.108.">2.108.   ON ERROR RESUME [ label | next ]</a><br>
+    <a href="#2.109.">2.109.   OPEN file_name FOR mode AS [ # ] i [ LEN=record_length
+]</a><br>
+    <a href="#2.110.">2.110.   OPEN DIRECTORY dir_name PATTERN pattern
+OPTION option AS dn</a><br>
+    <a href="#2.111.">2.111.   OPTION symbol value</a><br>
+    <a href="#2.112.">2.112.   OPTION("symbol")</a><br>
+    <a href="#2.113.">2.113.   pack("format",v1,v2,...,vn)</a><br>
+    <a href="#2.114.">2.114.   PI</a><br>
+    <a href="#2.115.">2.115.   POW10</a><br>
+    <a href="#2.116.">2.116.   PRINT [ # fn , ] print_list</a><br>
+    <a href="#2.117.">2.117.   RANDOMIZE</a><br>
+    <a href="#2.118.">2.118.   ref v1 = v2</a><br>
+    <a href="#2.119.">2.119.   REPEAT</a><br>
+    <a href="#2.120.">2.120.   REPLACE(base_string,search_string,replace_string
+[,number_of_replaces] [,position])</a><br>
+    <a href="#2.121.">2.121.   RESET</a><br>
+    <a href="#2.122.">2.122.   RESET DIRECTORY [#] dn</a><br>
+    <a href="#2.123.">2.123.   RESUME [ label | next ]</a><br>
+    <a href="#2.12.">2.12.   RETURN</a><br>
+    <a href="#2.125.">2.125.   REWIND [ # ]fn</a><br>
+    <a href="#2.126.">2.126.   RIGHT(string,len)</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.126.1.">2.126.1.   RIGHT
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.127.">2.127.   RND</a><br>
+    <a href="#2.128.">2.128.   ROUND</a><br>
+    <a href="#2.129.">2.129.   RTRIM()</a><br>
+    <a href="#2.130.">2.130.   SEC</a><br>
+    <a href="#2.131.">2.131.   SEEK fn,position</a><br>
+    <a href="#2.132.">2.132.   SET FILE filename parameter=value</a><br>
+    <a href="#2.133.">2.133.   SET JOKER "c" TO "abcdefgh..."</a><br>
+    <a href="#2.134.">2.134.   SET WILD "c" TO "abcdefgh..."</a><br>
+    <a href="#2.135.">2.135.   SIN</a><br>
+    <a href="#2.136.">2.136.   SLEEP(n)</a><br>
+    <a href="#2.137.">2.137.   SPACE(n)</a><br>
+    <a href="#2.138.">2.138.   SPLIT string BY string TO var_1,var_2,var_3,...,var_n</a><br>
+    <a href="#2.139.">2.139.   SPLITA string BY string TO array</a><br>
+    <a href="#2.140.">2.140.   SQR</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.140.1.">2.140.1.   SQR
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.141.">2.141.   STOP</a><br>
+    <a href="#2.142.">2.142.   STR(n)</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.142.1.">2.142.1.   STR
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.143.">2.143.   STRING(n,code)</a><br>
+    <a href="#2.144.">2.144.   STRREVERSE(string)</a><br>
+    <a href="#2.145.">2.145.   SUB fun()</a><br>
+    <a href="#2.146.">2.146.   SYSTEM(executable_program)</a><br>
+    <a href="#2.147.">2.147.   TEXTMODE [ # fn] | input | output</a><br>
+    <a href="#2.148.">2.148.   TIMEVALUE</a><br>
+    <a href="#2.149.">2.149.   TRIM()</a><br>
+    <a href="#2.150.">2.150.   TRUE</a><br>
+    <a href="#2.151.">2.151.   TRUNCATE fn,new_length</a><br>
+    <a href="#2.152.">2.152.   UCASE()</a><br>
+    <a href="#2.153.">2.153.   UNDEF variable</a><br>
+    </font>
+    <ul>
+      <font face="Verdana" size="2"><a href="#2.153.1.">2.153.1.   UNDEF
+Details</a><br>
+      </font>
+    </ul>
+    <font face="Verdana" size="2"><a href="#2.154.">2.154.   UNPACK string
+BY format TO v1,v2,...,vn</a><br>
+    <a href="#2.155.">2.155.   VAL</a><br>
+    <a href="#2.156.">2.156.   WEEKDAY</a><br>
+    <a href="#2.157.">2.157.   WHILE condition</a><br>
+    <a href="#2.158.">2.158.   YEAR</a><br>
+    <a href="#2.159.">2.159.   YEARDAY</a><br>
+    </font>
+  </ul>
+</ul>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="1.">
+<h1>1. Introduction</h1>
+</a>NTMBasic is a basic interpreter tailored for the embedded usage into the
+architecture of the Network Traffic Matrix analysis tool. NTMBasic is the C++
+embedding/extension of ScriptBasic. What is ScriptBasic ?<br>
+ScriptBasic is
+a BASIC language interpreter with several features that makes it unique.
+First of all ScriptBasic itself is <b>free</b> and is supported by the <b>GNU
+LGPL licence</b>. Note that the GNU LGPL licence applies only to ScriptBasic
+itself, while the modules interfacing 3rd party software may apply different
+licences. For example the NTMBasic Application Interface is NOT LGPL! It
+runs on <b>Linux, Tru64 UNIX</b> and probably on many other platforms. ScriptBasic
+the ideal tool to write small scripts that gurus write in Perl. But this
+is not the only situation to consider ScriptBasic. ScriptBasic can be a valuable
+tool for experts as well as a language interpreter ready to be built into
+their application. Read the list of ScriptBasic features and decide how you
+can use it.</font></p>
+<p></p>
+<ul>
+  <li><font face="Verdana" size="2"><b>IT IS BASIC.</b> No question, this
+is the MOST important feature of ScriptBasic. There are a lot of people who
+can program BASIC and only BASIC. There are many people, who can not really
+program. Those who do not really know what programming is, and still: they
+write their five-liners in BASIC to solve their simple problems. They never
+write Perl, Tcl, Java or C. Therefore it is BASIC.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"><b>SCRIPTING</b> language. There are
+no data types in the language. You can store real numbers, integer numbers
+and strings in any variable. You can mix them and conversion is done automatically.
+    </font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"><b>PORTABLE</b> Available in C source
+and can be compiled on UNIXes as well as on Windows NT.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"><b>4E LANGUAGE</b>, which means easy
+to extend, easy to embed. ScriptBasic was developed to provide clean and
+clear interfaces around it, and inside it. It is easy to embed the language
+to an application and use it as a macro language just like TCL. It is also
+easy to implement new built-in function and new commands. You can develop
+dynamically loaded libraries that ScriptBasic may load at run time. The language
+source is clean, well documented and development guides are on the way.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"><b>COMPILED CODE</b> ScriptBasic creates
+intermediate compiled code, which is interpreted afterwards. </font>
+    <ul>
+      <p></p>
+      <p></p>
+      <li><font face="Verdana" size="2"> Syntax analysis is done at first
+and only syntactically perfect programs start to run. </font></li>
+      <li><font face="Verdana" size="2"> The compiled code is put into a
+continuous memory space and compiled code can be saved and loaded again to
+run without recompilation. This is vital for CGI scripts and is not available
+for most scripting programming languages. </font></li>
+      <li><font face="Verdana" size="2"> Compiled code is binary, not readable.
+Therefore you can develop and distribute programs and getting some help to
+protect your intellectual property. You need not give the source code. </font></li>
+    </ul>
+  </li>
+  <li><font face="Verdana" size="2"><b>MULTI THREAD</b> aware. Although the
+current implementation is not multi thread, all the code was designed to
+be thread safe. You can embed the code into systems that run multiple interpreters
+in the same process. On the other hand the interpreter can run the same code
+in multiple threads and was designed to be capable handling call-back functions,
+and multithread programs in the future. </font></li>
+</ul>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.">
+<h1>2. Command reference</h1>
+</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.1.">
+<h2>2.1. ABS</h2>
+</a>Returns the absolute value of the argument. If the argument is a string
+then it first converts it to double or long. The return value is double or
+long depending on the argument.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>ABS(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.2.">
+<h2>2.2. ACOS</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the arcus cosine of the argument,
+which is the inverse of the function <a href="#2.22.">COS</a>. If the argument
+is not between (-1.0,+1.0) the return value is <font size="3"><tt>undef</tt></font>.
+</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>ACOS(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.3.">
+<h2>2.3. ADDDAY</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the day by the second argument and returns the time value for the  same hour
+and minute but some days later or sooner in case the second argument is negative.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.4.">
+<h2>2.4. ADDHOUR</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the hours by the second argument and returns the time value for the  same
+minute and seconds but some hours later or sooner in case the second argument
+is negative.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.5.">
+<h2>2.5. ADDMINUTE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the minutes by the second argument and returns the time value for the  same
+seconds but some minutes later or sooner in case the second argument is negative.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.6.">
+<h2>2.6. ADDMONTH</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the month by the second argument and returns the time value for the  same
+day, hour and minute but some months later or sooner in case the second argument
+is negative.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.7.">
+<h2>2.7. ADDRESS( myFunc() )</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the entry point of a function or
+subroutine. The returned value is to be used solely in a corresponding <a
+ href="#2.67.">ICALL</a>. Faking aroud with the value may crash the interpreter.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.8.">
+<h2>2.8. ADDSECOND</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the seconds by the second argument and returns the time value.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.9.">
+<h2>2.9. ADDWEEK</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the week by the second argument and returns the time value for the  same
+hour and minute but some weeks later or sooner in case the second argument
+is negative.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.10.">
+<h2>2.10. ADDYEAR</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function takes two argument. The first
+argument is a time value, the second is an integer value. The function increments
+the year by the second argument and returns the time value for the  same
+month, day, hour and minute but some years later or sooner in case the second
+argument is negative.</font></p>
+<p><font face="Verdana" size="2">This is a bit more complex than just adding
+365*2*60*60 to the value, becuase leap-year calculation has to be done.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.11.">
+<h2>2.11. ASC(string)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Returns the ASCII code of the first character
+of the argument string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.12.">
+<h2>2.12. ASIN</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the arcus sine of the argument,
+which is the inverse of the function <a href="#2.135.">SIN</a>. If the argument
+is not between (-1.0,+1.0) the return value is <font size="3"><tt>undef</tt></font>.
+</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>ASIN(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.13.">
+<h2>2.13. BINMODE [ # fn ] | input | output</h2>
+</a>Set an opened file handling to binary mode.</font></p>
+<p><font face="Verdana" size="2">The argument is either a file number with
+which the file was opened or one of keywords<font size="3"><tt>input</tt></font>
+and <font size="3"><tt>output</tt></font>. In the latter case the standard
+input or output is set.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.147.">TEXTMODE</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.14.">
+<h2>2.14. CALL subroutine</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Call a subroutine.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.15.">
+<h2>2.15. CHDIR directory</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Change the current working directory.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.16.">
+<h2>2.16. CHOMP()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Remove the trailing new line from the space.
+If the last character of the string is not new line then the original stringis
+returned. This function is useful to remove the trailing new line character
+when reading a line from a file using the command <a href="#2.90.">LINEINPUT</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.17.">
+<h2>2.17. CHR(code)</h2>
+</a>Return a one character string containing a character of ASCII code <font
+ size="3"><tt>code</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.18.">
+<h2>2.18. CLOSE</h2>
+</a>Close a previously successfully opened file. If the file number is not
+associated with a successfully opened file then error is raised.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.19.">
+<h2>2.19. CLOSE DIRECTORY [#] dn</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Close an opened directory and release all
+memory that was used by the file list.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#">OPENDIR</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.20.">
+<h2>2.20. COMMAND()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the command line string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.21.">
+<h2>2.21. Concatenate operator &amp;amp;</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This operator concatenates two strings.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.22.">
+<h2>2.22. COS</h2>
+</a>Calculates the cosine of the argument.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>COS(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.23.">
+<h2>2.23. CRYPT(string,salt)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the encoded DES digest
+of the string using the salt as it is used to encrypt passwords under UNIX.
+</font></p>
+<p><font face="Verdana" size="2">Note that only the first 8 characters of
+the string are taken into account.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.2.">
+<h2>2.2. CURDIR()</h2>
+</a>=displax CURDIR() Return the current directory.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.25.">
+<h2>2.25. DAY</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the day (1 to 31) value of that time. If the argument is missing
+it uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.26.">
+<h2>2.26. DECLARE COMMAND function ALIAS cfun LIB library</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Declare a command implemented in an external
+library. Note that library and the command implemented in it should be specifically
+written for ScriptBasic. This command is not able to declare and call just
+any library function.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.26.1.">
+<h3>2.26.1. DECLARECOMMAND Details</h3>
+</a></font></p>
+<p><font face="Verdana" size="2">DEVELOPER DETAILS!</font></p>
+<p><font face="Verdana" size="2">This command is used to start an external
+command defined in a dynamic load library.</font></p>
+<p><font face="Verdana" size="2">The major difference between an external
+function and an external command is that arguments are passed after they
+are evaluated to external functions, while arguments are not evaluated for
+external commands.</font></p>
+<p><font face="Verdana" size="2">External commands are a bit more tedious
+to implement. On the other hand external commands have more freedom handling
+their arguments. A command is allowed to evaluate or not to evaluate some
+of its arguments. It can examine the structure of the expression passed as
+argument and evaluate it partially at its wish.</font></p>
+<p><font face="Verdana" size="2">External commands are called the same way
+as user defined functions or external functions.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.27.">
+<h2>2.27. DECLARE SUB function ALIAS cfun LIB library</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Declare a function implemented in an external
+library. Note that library and the function implemented in it should be specifically
+written for ScriptBasic. This command is not able to declare and call just
+any library function.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.27.1.">
+<h3>2.27.1. DECLARESUB Details</h3>
+</a></font></p>
+<p><font face="Verdana" size="2">DEVELOPER DETAILS!</font></p>
+<p><font face="Verdana" size="2">This command is used to start an external
+function defined in a dynamic load library.</font></p>
+<p><font face="Verdana" size="2">The dynamically loaded modules are implemented
+in ScriptBasic via an ordinary command that has the syntax:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>'declare' 'sub' * function 'alias' string 'lib' string nl<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">For the compiler it generates a user defined
+function, which is defined on the line that contains the declare statement.
+The execution system will call itself recursively to execute lines starting
+at the line where the declare statement is. The command implemented in this
+file is executed and unlike the <font size="3"><tt>FUNCTION</tt></font> or
+<font size="3"><tt>SUB</tt></font> it immediately tells the execution system
+to return after the line was executed.</font></p>
+<p><font face="Verdana" size="2">This command first checks if the line was
+already executed. On the first execution it loads the module and gets the
+address of the function named in the alias string. This entry point is stored
+in a<font size="3"><tt>struct</tt></font> and next time the function is called
+by the basic pointer it does not need to search for the function and for
+the module. If a function of an already loaded module is called the program
+does not reload the module. The program maintains a linked list with the
+names of the loaded modules and loads modules only when they are first referenced.
+</font></p>
+<p><font face="Verdana" size="2">The modules are loaded using the operating
+system dll loading function <font size="3"><tt>dlopen</tt></font> or <font
+ size="3"><tt>LoadLibrary</tt></font>. These functions search several locations
+for libraries in case the library is specified without absolute path name.
+The module loader can be fouled if the same library is defined with full
+path and with single name in the basic code.</font></p>
+<p><font face="Verdana" size="2">For example, if the commands</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>declare sub fun2 alias "mefun" lib "libobas"<br>declare sub fun3 alias "youfun" lib "libobas"<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">refer to the same module, the code implemented
+here that they are different libraries.</font></p>
+<p><font face="Verdana" size="2">When the module is loaded the code tries
+to get the function named <font size="3"><tt>versmodu</tt></font> and calls
+it. This function gets three arguments. The first argument is the interface
+version that ScriptBasic supports for the external modules.  The second argument
+is a pointer to a ZCHAR terminated string that contains the variation of
+the calling interpreter. The third argument is a pointer to a NULL initialized
+<font size="3"><tt>void *</tt></font> pointer, which is the module pointer.
+This pointer is stored by ScriptBasic, and it is guaranteed not be modified.
+The modules can store "global" variable information using this pointer. Usually
+this pointer is not used in this function, especially because there are no
+"safe" memory allocation functions available at this point of execution.</font></p>
+<p><font face="Verdana" size="2">The module should examine the version it
+gets and should decide if that interface version is OK for the module. If
+the interface version is not known the function should return 0 and ScriptBasic
+will interpret this value as a failure to load the module. If the module
+does not know if the interface version is good or not it can return the interface
+version that it can handle. ScriptBasic will examine the version and in case
+it can not handle the version it will generate an error.</font></p>
+<p><font face="Verdana" size="2">This methodology will allow either ScriptBasic
+to revert its functionality to earlier interface versions in case the higher
+version interface not only extends the lower version but is incompatible with
+the former version. On the other hand a module designed for a higher version
+may be loaded and executed by a lower version of ScriptBasic in case the
+module is ready to use the lower interface version.</font></p>
+<p><font face="Verdana" size="2">If the function <font size="3"><tt>versmodu</tt></font>
+can not be found in the DLL then ScriptBasic assumes that the module is ready
+to accept the current interface version. However such a module should not
+generally be written.</font></p>
+<p><font face="Verdana" size="2">Note that the version we are talking about
+here is neither the version of ScriptBasic nor the version of the module.
+This is the version of the interface between the module and ScriptBasic.</font></p>
+<p><font face="Verdana" size="2">After the version negotiation has been successfully
+done ScriptBasic tries to get the address of the function named <font
+ size="3"><tt>bootmodu</tt></font>. If this function exists is is started.
+This function can perform all the initializations needed for the module.
+This function gets all the parameters that a ususal module implemented function
+except that there are no parameters and the function should not try to set
+a result value, because both of these arguments are NULL.</font></p>
+<p><font face="Verdana" size="2">A module function (inclding <font
+ size="3"><tt>bootmodu</tt></font>) is called with four arguments. The four
+arguments are four pointers.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>int my_module_function(pSupportTable pSt,<br>                       void **ppModuleInternal,<br>                       pFixSizeMemoryObject pParameters,   // NULL for bootmodu<br>                       pFixSizeMemoryObject *pReturnValue) // NULL for bootmodu<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The parameter <font size="3"><tt>pSt</tt></font>
+points to a <font size="3"><tt>struct</tt></font> that holds the function
+pointers that the function can call to reach ScriptBasic functionality. These
+functions are needed to access the arguments and to return a value.</font></p>
+<p><font face="Verdana" size="2">The parameter <font size="3"><tt>ppModuleInternal</tt></font>
+is a pointer poiniting to a NULL initialized pointer. This pointer belongs
+to the module. ScriptBasic guarantees that the value is not modified during
+the execution (unless the module itself modifies it). This pointer can be
+used to remember the address space allocated by the module for itself. To
+store permanent values to remember the state of the module you can either
+use static variables or this pointer. However using this pointer and allocating
+memory to store the values is the preferred method. The reason for preferring
+this method is that global variables are global in the whole process. On
+the other hand ScriptBasic may run in several threads in a single process
+executing several different basic programs. This <font size="3"><tt>ppModuleInternal</tt></font>
+pointer will be unique for each thread.</font></p>
+<p><font face="Verdana" size="2">Here is the point to discuss a bit the role
+of <font size="3"><tt>bootmodu</tt></font>. Why not to use <font
+ size="3"><tt>DllMain</tt></font> under Windows NT? The reason is in the
+posibility of threaded execution. <font size="3"><tt>DllMain</tt></font>
+is executed whent he process loads the dll. <font size="3"><tt>bootmodu</tt></font>
+is executed when the basic executor loads the module. If there are more threads
+running then <font size="3"><tt>DllMain</tt></font> is not started again.
+Use <font size="3"><tt>DllMain</tt></font> or a similar function under UNIX
+if you want to initialize some process level data. Use <font size="3"><tt>bootmodu</tt></font>
+to initialize basic program specific data.</font></p>
+<p><font face="Verdana" size="2">The parameter <font size="3"><tt>pParameters</tt></font>
+is a ScriptBasic array containg the values of the arguments. There is no
+run-time checking about the number of arguments. This is up to the module
+function.</font></p>
+<p><font face="Verdana" size="2">The last parameter is a pointer to a ScriptBasic
+variable. The initial value of the pointed pointer is NULL, meaning <font
+ size="3"><tt>undef</tt></font> return value. The final return value should
+be allocated using the macros defined in<font size="3"><tt>basext.h</tt></font>
+and this pointer should be set to point to the value. Note however that <font
+ size="3"><tt>bootmodu</tt></font> and <font size="3"><tt>finimodu</tt></font>
+should not to try to dereference this variable, because for both of them
+the value is NULL.</font></p>
+<p><font face="Verdana" size="2">For further information on how to write
+module extension functions read the on-line documentation of<font
+ size="3"><tt>basext.c</tt></font> in this source documentation.</font></p>
+<p><font face="Verdana" size="2">A module is unloaded when the basic program
+execution is finished. There is no basic code to unload a module. (Why?)</font></p>
+<p><font face="Verdana" size="2">Before the module is unloaded calling one
+of the operating system functions <font size="3"><tt>dlclose</tt></font>
+or <font size="3"><tt>FreeLibrary</tt></font>the program calls the module
+function <font size="3"><tt>finimodu</tt></font> if it exists. This function
+gets all the four pointers (the last two are NULLs) and it can perform all
+the tasks that the module has to do clean up.</font></p>
+<p><font face="Verdana" size="2">Note however that the module need not release
+the memory it allocated using the <font size="3"><tt>besALLOCATE</tt></font>
+macro defined in the file <font size="3"><tt>basext.h</tt></font> (which
+is generated using <font size="3"><tt>headerer.pl</tt></font> from <font
+ size="3"><tt>basext.c</tt></font>). The memory is going to be released afterwards
+by ScriptBasic.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.28.">
+<h2>2.28. DELETE file/directory_name</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Delete a file or an <b>empty</b>&gt; directory.
+See <a href="#2.29.">DELTREE</a> for a more powerful and dangerous delete.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.29.">
+<h2>2.29. DELTREE file/directory_name</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Delete a file or a directory. If a directory
+is to be deleted all files and subdirectories are also deleted.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.30.">
+<h2>2.30. DO</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Implements a tail checking loop that repeats
+commands so long as long the condition is either <font size="3"><tt>TRUE</tt></font>
+(<font size="3"><tt>do/while</tt></font>) or <font size="3"><tt>FALSE</tt></font>
+(<font size="3"><tt>do/until</tt></font>)</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>do<br> ...<br> commands to repeat<br> ...<br>loop while expression<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">or</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>do<br> ...<br> commands to repeat<br> ...<br>loop until expression<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.31.">
+<h2>2.31. DO UNTIL condition</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Implements front checking looping construct
+repeating so long as long the condition is <font size="3"><tt>FALSE</tt></font>
+<font size="3" color="BLUE">
+<pre>do until expression<br> ...<br> commands to repeat<br> ...<br>loop<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.32.">
+<h2>2.32. DO WHILE condition</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Same as <a href="#2.157.">WHILE</a> with
+a different syntax to be compatible with different BASIC implementations.
+</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>do while<br> ...<br>loop<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.33.">
+<h2>2.33. END</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">End of the program. Stops program execution.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.34.">
+<h2>2.34. ENVIRON("envsymbol") or ENVIRON(n)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the string value of the environmental
+variable for which the name is given as string argument. If the argument
+is a number <font size="3"><tt>n</tt></font> then the value of the n-th environmental
+variable is returned.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.35.">
+<h2>2.35. EOD(dn)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Checks if there is still some file names
+in the directory opened for reading using the directory number <font
+ size="3"><tt>dn</tt></font>.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.103.">NEXTFILE</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.36.">
+<h2>2.36. EOF</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one parameter, an
+opened file number. The return value is true if and only if the reading has
+reached the end of the file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.37.">
+<h2>2.37. ERROR() or ERROR n</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Get the code of the last error that happened
+when used as a function or cause the error with code <font size="3"><tt>n</tt></font>
+when used as a command.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.38.">
+<h2>2.38. EVEN</h2>
+</a>Return <font size="3"><tt>true</tt></font> if the argument is an even
+number. <font size="3"><tt>even(undef)</tt></font> is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.39.">
+<h2>2.39. EXECUTE("executable_program", time_out,pid_v)</h2>
+</a>Run a program and wait <font size="3"><tt>time_out</tt></font> seconds
+for it to return. The variable <font size="3"><tt>pid_v</tt></font>will hold
+the pid of the new process. The function returns the process exit code. If
+the process runs longer than <font size="3"><tt>time_out</tt></font> seconds
+the variable <font size="3"><tt>pid_v</tt></font> is set and error happens.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.40.">
+<h2>2.40. EXIT FUNCTION</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Exit from a function.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.41.">
+<h2>2.41. EXIT SUB</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Exit from a subroutine.</font></p>
+<p><font face="Verdana" size="2">Same as <a href="#">EXITFUNC</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.42.">
+<h2>2.42. EXP</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the x-th exponent of e.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>EXP(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.43.">
+<h2>2.43. FALSE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This built-in contant is implemented as
+an argument less function. Returns the value <font size="3"><tt>false</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.44.">
+<h2>2.44. FILEACCESSTIME(file_name)</h2>
+</a>Get the time the file was accessed last time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.45.">
+<h2>2.45. FILECOPY filename,filename</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Copy a file. The first file is the existing
+one, the second is the name of the new file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.46.">
+<h2>2.46. FILECREATETIME(file_name)</h2>
+</a>Get the time the file was modified last time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.47.">
+<h2>2.47. FILEEXISTS(file_name)</h2>
+</a>Returns true if the named file exists.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.48.">
+<h2>2.48. FILELEN(file_name)</h2>
+</a>Get the length of a named file. If the length of the file can not be
+determined  (for example the file does not exists, or the process running
+the code does not have permission to read the file) then the return value
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.49.">
+<h2>2.49. FILEMODIFYTIME(file_name)</h2>
+</a>Get the time the file was modified last time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.50.">
+<h2>2.50. FIX</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the integral part
+of the argument. If the argument is <font size="3"><tt>undef</tt></font>
+then the return value is <font size="3"><tt>undef</tt></font>. Otherwise
+the return value is always long.</font></p>
+<p></p>
+<p><font face="Verdana" size="2">The difference between <font size="3"><tt>int</tt></font>
+and <font size="3"><tt>fix</tt></font> is that <font size="3"><tt>int</tt></font>
+truncates down while <font size="3"><tt>fix</tt></font> truncates torward
+zero. The two functions are identical for positive numbers. In case of negative
+arguments<font size="3"><tt>int</tt></font> will give a smaller number if
+the argument is not integer. For example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>  int(-3.3) = -4<br>  fix(-3.3) = -3<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">See <a href="#2.72.">INT</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.51.">
+<h2>2.51. LOCK # fn, mode</h2>
+</a>Lock a file or release a lock on a file. The <font size="3"><tt>mode</tt></font>
+parameter can be <font size="3"><tt>read</tt></font>, <font size="3"><tt>write</tt></font>
+or <font size="3"><tt>release</tt></font>. There can be more than one simultaneous
+read lock on a file but there can be only one write lock.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.52.">
+<h2>2.52. FOR var=exp_start TO exp_stop [ STEP exp_step ]</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Implements a FOR loop. The variable <font
+ size="3"><tt>var</tt></font> gets the value of the start expression <font
+ size="3"><tt>exp_start</tt></font>, and after each execution of the loop
+body it is incremented ir decremented by the value <font size="3"><tt>exp_step</tt></font>
+until it reaches the stop value <font size="3"><tt>exp_stop</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>FOR var=expression TO expression [ STEP expression ]<br> ...<br> commands to repeat<br> ...<br>next<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.53.">
+<h2>2.53. FORK()</h2>
+</a><b>NOT IMPLEMENTED</b>Not implemented yet. Cygwin has an implementation,
+but we need a better one for NT. Until then we do not support it on UNIX
+as an intrinsic, because we support all functions and commands portable on
+UNIX and NT.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.54.">
+<h2>2.54. FORMAT()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Not implemented.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.55.">
+<h2>2.55. FORMATDATE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>FormatDate("format",time)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">Formats a time value (or date) according
+to the format string. The format  string may contain place holders. The first
+argument is the format string the seconmd argument is the time value to convert.
+If the second argument is missing or <font size="3"><tt>undef</tt></font>
+then the local time is converted.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.55.1.">
+<h3>2.55.1. FORMATDATE Details</h3>
+</a>This function uses the first argument as a formatting string. This string
+may contain the following character strings:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>     YEAR         four digit year<br>     YY           two digit year<br>     MON          three letter abbreviation of the month name<br>     MM           month<br>     0M           month with leading zero if needed<br>     *MONTH-NAME* name of the month<br>     DD           day of the month<br>     0D           day of the month with leading zero if needed<br>     WD           week day on a single digit starting with sunday=0<br>     WEEKDAY-NAME the name of the weekday<br>     WDN          three letter abbreviation fo the week day name<br>     HH           hours (2 hours notation)<br>     0H           hours with leading zero if needed (2 hours notation)<br>     hh           hours (12 hours notation)<br>     0h           hours with leading zero if needed (12 hours notation)<br>     mm           minutes<br>     0m           minutes with leading zero if needed<br>     am<br>     pm   is am or pm<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.56.">
+<h2>2.56. FILEOWNER(FileName)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the name of the ownerof
+a file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.57.">
+<h2>2.57. FRAC</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">The fractional part of the argument. This
+function always returns a double except that<font size="3"><tt>frac(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2">Negative arguments return negative value
+(or zero if the argument is a negative integer), positive arguments result
+positive values (or zero if the argument is integer).</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.58.">
+<h2>2.58. FREEFILE()</h2>
+</a>This function returns a free file number which is currently not associated
+with any opened file. If there is no such file number it returns <font
+ size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.59.">
+<h2>2.59. FUNCTION fun()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Declare a function with possible arguments,
+local variables and local error handling. Function value is returned assigned
+to the function name.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>FUNCTION fun(a,b,c)<br>...<br>fun = returnvalue<br>...<br>END FUNCTION<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.60.">
+<h2>2.60. GMTIME</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the GMT time expressed
+as seconds since January 1, 1970,. 00:00am.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.61.">
+<h2>2.61. GMTOLOCALTIME</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function converts a GMT time value
+to local time value.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.62.">
+<h2>2.62. GOSUB label</h2>
+</a>=H Gosub commands</font></p>
+<p><font face="Verdana" size="2">Call a local subroutine. This is the good
+old way implementation of the BASIC <font size="3"><tt>GOSUB</tt></font>command.
+See also <a href="#2.12.">RETURN</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.63.">
+<h2>2.63. GOTO label</h2>
+</a>Go to a label and continue program execution at that label. Labels are
+local within functions and subroutines. You can not jump into a sub or jump
+out of it.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.64.">
+<h2>2.64. HEX(n)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Take the argument as a long value and convert
+it to a string that represents the value in hexadecimal form. The hexadecimal
+form will contain upper case alpha character if there is any alpha character
+in the hexadecimal representation of the number.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.65.">
+<h2>2.65. HOSTNAME()</h2>
+</a>Return the local host name.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.66.">
+<h2>2.66. HOUR</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the hour value of that time. If the argument is missing it
+uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.67.">
+<h2>2.67. ICALL n,v1,v2, ... ,vn</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">ICALL is implicit call. The first argument
+of an <font size="3"><tt>ICALL</tt></font> command or <font size="3"><tt>ICALL</tt></font>
+function should be the integer value returned by the function <a
+ href="#2.7.">ADDRESS</a> as the address of a user defined function.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.67.1.">
+<h3>2.67.1. ICALL Details</h3>
+</a></font></p>
+<p><font face="Verdana" size="2">Whenever you call a function or subroutine
+you have to know the name of  the subroutine or function. In some situation
+programmers want to call a function  without knowing the name of the function.
+For ex-ample you want to write a  sorting subroutine that sorts general elements
+and the caller should provide a subroutine that makes  the comparison. This
+way the sorting algorithm can be implemented only once and need  not be rewritten
+each time a new type of data is to be sorted. The sorting subroutine gets
+the comparing function as an argument and calls the function indirectly.
+ScriptBasic can not pass  functions as arguments to other functions, but
+it can pass integer numbers. The function <a href="#2.7.">ADDRESS</a> can
+be used to convert a function into integer. The result of the  built-in function
+<a href="#2.7.">ADDRESS</a> is an integer number, which is associated inside
+the  basic code with the function. You can pass this value to  the <font
+ size="3"><tt>ICALL</tt></font> command or function as first argument. The
+icall command is the command  for indirect subroutine call. The call</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>icall Address(MySubroutine()),arg1,arg2,arg3<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">is equivalent to</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>call MySubroutine( arg1,arg2,arg3)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">If you call a function that has return value
+use can use the icall function instead of the icall state-ment:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>A = icall(Address(MyFunction()),arg1,arg2,arg3)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">is equivalent to</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>A = MyFunction(arg1,arg2,arg3)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The real usage of the function Address and
+icall can be seen in the following example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE"></font></font></p>
+<pre><font face="Verdana" size="2"><font size="3" color="BLUE">sub MySort(sfun,q)<br>local ThereWasNoChange,SwapVar<br>repeat<br> ThereWasNoChange = 1<br> for i=lbound(q) to ubound(q)-1<br></font></font><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">  if  icall(sfun,q[i],q[i+1]) &gt; 0 then<br>   ThereWasNoChange = 0<br>   SwapVar = q[i]<br>   q[i] = q[i+1]<br>   q[i+1] = SwapVar<br>  endif<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE"> next i<br>until ThereWasNoChange<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">end sub<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">function IntegerCompare(a,b)<br>  if a &lt; b then<br>   cmp = -1<br>  elseif a = b then<br>   cmp = 0<br>  else<br>   cmp = 1<br>  endif<br>end function<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">h[0] = 2<br>h[1] = 7<br>h[2] = 1<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">MySort address(IntegerCompare()) , h<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">for i=lbound(h) to ubound(h)<br> print h[i],"\n"<br>next i<br></font></font></p></pre>
+<p><font face="Verdana" size="2">Note that the argument of the function Address
+is a function call. ScriptBasic allows variables  and func-tions to share
+the same name. Address is a built-in function just as any other  built in
+function, and therefore the expression</font></p>
+<p><font face="Verdana" size="2">Address(MySub) <b>THIS IS WRONG!</b>&gt;
+</font></p>
+<p><font face="Verdana" size="2">Is syntactically correct. The only problem
+is that it tries to calculate  the address of the variable MySub, which it
+can not and results a run-time error. Instead you have to write</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>Address( MySub() )<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">using the parentheses. In this situation
+the function or subroutine <font size="3"><tt>MySub()</tt></font> will not
+be invoked. The parentheses tell the compiler that  this is a function and
+not a variable.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.68.">
+<h2>2.68. IF condition THEN</h2>
+</a>Conditional execution. There are two different ways to use this commandsingle
+line <font size="3"><tt>IF</tt></font> and multi line <font size="3"><tt>IF</tt></font>.
+</font></p>
+<p><font face="Verdana" size="2">A single line <font size="3"><tt>IF</tt></font>
+has the form</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>IF condition THEN command<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">There is no way to specify any <font
+ size="3"><tt>ELSE</tt></font> command. If you need <font size="3"><tt>ELSE</tt></font>
+command you have  use multi line <font size="3"><tt>IF</tt></font>.</font></p>
+<p><font face="Verdana" size="2">The multi line <font size="3"><tt>IF</tt></font>
+should not contain any command directly after the keyword <font size="3"><tt>THEN</tt></font>.
+It should have the format:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE"></font></font></p>
+<pre><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">IF condition THEN<br> commands<br>[ ELSE IF | ELSEIF | ELSIF | ELIF <br>  commands<br>  ... ]<br>[ ELSE<br>  commands ]<br>END IF | ENDIF<br></font></font></p></pre>
+<p><font face="Verdana" size="2">You can use as many <font size="3"><tt>ELSE
+IF</tt></font> branchges as you like and at most one <font size="3"><tt>ELSE</tt></font>
+branch. The different verbiages are allowed for ease program porting from
+other BASIC dialect. There is no difference between the interpretetion.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.69.">
+<h2>2.69. INPUT(n,fn)</h2>
+</a>Input specified number of characters/bytes from a file.</font></p>
+<p><font face="Verdana" size="2">The first argument of the function is <font
+ size="3"><tt>n</tt></font> the number of character to be read, the second
+argument <font size="3"><tt>fn</tt></font> is the file number. The actual
+number of bytes read can be retrieved using the <font size="3"><tt>LEN</tt></font>
+function of the result string.</font></p>
+<p><font face="Verdana" size="2">Note that some Basic languages allow the
+form<font size="3" color="BLUE">
+<pre>a = INPUT(20,#1)<br></pre>
+</font>however this extra <font size="3"><tt>#</tt></font> is not allowed
+in ScriptBasic.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.70.">
+<h2>2.70. INSTR(base_string,search_string [ ,position ] )</h2>
+</a>This function can be used to search a sub-string in a string.  The first
+argument is the string we are searching in. The second argument is the string
+that we actually want to find in the  first argument. The third optional
+argument is the position where the  search is to be started. If this argu-ment
+is missing the search starts  with the first character position of the string.
+The function returns the position where the sub-string  can be found in the
+first string. If the searched sub-string  is not found in the string then
+the return value is undef.</font></p>
+<p><font face="Verdana" size="2">See <a href="#2.71.">INSTRREV</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.71.">
+<h2>2.71. INSTRREV(base_string,search_string [ ,position ] )</h2>
+</a>This function can be used to search a sub-string in a string in reverse
+order starting from the end of the string. The first argument is the  string
+we are searching in. The second argument is the string that  we actually
+want to find in the first argument. The third optional argument  is the position
+where the search is to be started. If this argument is  missing the search
+starts with the last character position of the string. The function returns
+the position where the sub-string can be found in the  first string. If the
+searched sub-string is not found in the string then the  return value is
+undef.</font></p>
+<p><font face="Verdana" size="2">See <a href="#2.70.">INSTR</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.72.">
+<h2>2.72. INT</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the integral part
+of the argument. If the argument is <font size="3"><tt>undef</tt></font>
+then the return value is <font size="3"><tt>undef</tt></font>. Otherwise
+the return value is allways long.</font></p>
+<p><font face="Verdana" size="2">The difference between <font size="3"><tt>int</tt></font>
+and <font size="3"><tt>fix</tt></font> is that <font size="3"><tt>int</tt></font>
+truncates down while <font size="3"><tt>fix</tt></font> truncates torward
+zero. The two functions are identical for positive numbers. In case of negative
+arguments<font size="3"><tt>int</tt></font> will give a smaller number if
+the argument is not integer. For example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>  int(-3.3) = -4<br>  fix(-3.3) = -3<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">See <a href="#2.50.">FIX</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.73.">
+<h2>2.73. ISDIR(file_name)</h2>
+</a>Returns true if the named file is a directory.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.74.">
+<h2>2.74. ISREG(file_name)</h2>
+</a>Returns if the named file is a regular file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.75.">
+<h2>2.75. JOIN(joiner,str1,str2,...)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Join the argument strings using the first
+argument as a joiner string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.75.1.">
+<h3>2.75.1. JOIN Details</h3>
+</a>This function can be used to join several strings together. The first
+argument of the function is the string used to join the rest  of the arguments.
+The rest of the argument are joined together, but also elements on  an array
+can be joined together. See the example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>for i=1 to 8<br> q[i] = I<br>next<br>print join("|",q)<br>print<br>print join("/",1,2,3,4,5,6,7,8)<br>print<br>print join(" j-s ",q,2,3,4,5,6,7,8)<br>print<br>print join("/",1)<br>print<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>1|2|3|4|5|6|7|8<br>1/2/3/4/5/6/7/8<br>1 j-s 2 j-s 3 j-s 4 j-s 5 j-s 6 j-s 7 j-s 8<br>1<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The first join joins the elements of the
+array. The second join joins the arguments of the  function. The third example
+also joins the arguments although the second argument is an array.  Because
+there are more arguments each of them is treated as single value and are
+joined.  Whenever an array is used in place of a single value, the first
+element of the array is taken.  In this example this is 1. The last join
+is a special one. In this case the join string is not  used, because there
+is only one argument after the join string. Because this argument is not
+an array there are no elements of it to join.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.76.">
+<h2>2.76. JOKER(n)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the actual match for the n-th joker
+character from the last executed <a href="#8.11.14.">LIKE</a> operator.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.76.1.">
+<h3>2.76.1. JOKER Details</h3>
+</a></font></p>
+<p><font face="Verdana" size="2">When a <font size="3"><tt>LIKE</tt></font>
+operator is executed ScriptBasic stores the actual strings that matched the
+joker and wild card characters from the pattern in an array. Using this function
+the programcan access the actual value of the n-th string that was matched
+against the n-th joker or wild card character. For example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>Const nl="\n"<br>if "file.txt" like "*.*" then<br>  print "File=",joker(1)," extension=",joker(2),nl<br>else<br>  print "did not match"<br>endif<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>File=file extension=txt<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.77.">
+<h2>2.77. KILL(pid)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function kills a process given by the
+pid and returns true if the process was successfully killed. Otherwise it
+returns false.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.78.">
+<h2>2.78. LBOUND</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the lowest index of the argument
+array.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.79.">
+<h2>2.79. LCASE()</h2>
+</a>Lowercase a string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.80.">
+<h2>2.80. LEFT(string,len)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Creates the left of a string. The first
+argument is the string. The second argument is the number of characters that
+should be put into the result. If this value is larger than the number of
+characters in the string then all the string is returned.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.98.">MID</a>, <a
+ href="#2.126.">RIGHT</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.80.1.">
+<h3>2.80.1. LEFT Details</h3>
+</a><font size="3"><tt>left(x,y)</tt></font> cuts out a substring of <font
+ size="3"><tt>y</tt></font> characters from the left of the string <font
+ size="3"><tt>x</tt></font>. If the first argument is not defined the result
+is also <font size="3"><tt>undef</tt></font>. Otherwise the first  argument
+is converted to string and the second ar-gument is converted to integer value.
+</font></p>
+<p><font face="Verdana" size="2">If the second argument is not defined or
+has negative value it is treated as numeric zero  and as such the result
+string will be empty string.</font></p>
+<p><font face="Verdana" size="2">For compatibility reasons you can append
+a dollar (<font size="3"><tt>$</tt></font>) sign to the end of the function
+identifier.</font></p>
+<p><font face="Verdana" size="2">Example</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>a$ = _<br>"superqualifragilisticexpialidosys"<br>print "*",left(a$,undef),"*"<br>print "*",left(a$,7),"*"<br>print "*",left(a$,-6),"*"<br>print "*",left(a$,0),"*"<br>print left(undef,"66")<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>**<br>*superqu*<br>**<br>**<br>undef<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.81.">
+<h2>2.81. LEN()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return the length of a string.</font></p>
+<p><font face="Verdana" size="2">Undefined value length is <font
+ size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.82.">
+<h2>2.82. v = expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Assign a value to a variable. You should
+NOT write the keyword <font size="3"><tt>LET</tt></font> before the variable.
+<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.83.">
+<h2>2.83. v &amp;= expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Concatenate a string to a variable. You
+should NOT write the keyword <font size="3"><tt>LET</tt></font> before the
+variable.<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.84.">
+<h2>2.84. v /= expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Divide a variable by an expression. You
+should NOT write the keyword <font size="3"><tt>LET</tt></font> before the
+variable.<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.85.">
+<h2>2.85. v \= expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Integer divide a variable by a value. You
+should NOT write the keyword <font size="3"><tt>LET</tt></font> before the
+variable.<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.86.">
+<h2>2.86. v -= expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Substract a value to a variable. You should
+NOT write the keyword <font size="3"><tt>LET</tt></font> before the variable.
+<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.87.">
+<h2>2.87. v += expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Add a value to a variable. You should NOT
+write the keyword <font size="3"><tt>LET</tt></font> before the variable.
+<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.88.">
+<h2>2.88. v *= expression</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Multiply a variable with a value. You should
+NOT write the keyword <font size="3"><tt>LET</tt></font> before the variable.
+<font size="3"><tt>LET</tt></font> is not a valid keyword in ScriptBasic.
+</font></p>
+<p><font face="Verdana" size="2">The variable can be a global or local variable,
+array element or associative array element.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.89.">
+<h2>2.89. string LIKE pattern</h2>
+</a>Compare a string against a pattern.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>      string LIKE pattern<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The pattern may contain joker characters
+and wild card characters.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.89.1.">
+<h3>2.89.1. LIKE Details</h3>
+</a>Pattern matching in ScriptBasic is similar to the pattern matching that
+you get used to on  the UNIX or Windows NT command line. The operator like
+compares a string to a pattern.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>string like pattern<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">Both string and pattern are expressions
+that should evaluate to a string. If the pattern matches  the string the
+result of the operator is true, otherwise the result is false.</font></p>
+<p><font face="Verdana" size="2">The pattern may contain normal characters,
+wild card characters and joker characters.  The normal characters match themselves.
+The wild card characters match one or more characters from the  set they
+are for. The joker characters match one character from the set they stand
+for. For example:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>Const nl="\n"<br>print "file.txt" like "*.txt",nl<br>print "file0.txt" like "*?.txt",nl<br>print "file.text" like "*.txt",nl<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>-1<br>-1<br>0<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The wild card character <font size="3"><tt>*</tt></font>
+matches a list of characters of any code. The joker character <font
+ size="3"><tt>?</tt></font> matches  a single character of any code. In the
+first print statement the <font size="3"><tt>*</tt></font> character matches
+the string file  and <font size="3"><tt>.txt</tt></font> matches itself at
+the end of the string. In the second example <font size="3"><tt>*</tt></font>
+matches the string file  and the joker <font size="3"><tt>?</tt></font> matches
+the character <font size="3"><tt>0</tt></font>. The wild card character <font
+ size="3"><tt>*</tt></font> is the most general wild card  character because
+it matches one or more of any character. There are other wild card characters.
+The character <font size="3"><tt>#</tt></font> matches one or more digits,
+<font size="3"><tt>$</tt></font> matches one or more alphanumeric characters
+and finally <font size="3"><tt>@</tt></font> matches one or more alpha characters
+(letters).</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>*	all characters<br>#	0123456789<br>$	0123456789abcdefghijklmnopqrstxyvwzABCDEFGHIJKLMNOPQRSTXYVWZ<br>@	abcdefghijklmnopqrstxyvwzABCDEFGHIJKLMNOPQRSTXYVWZ<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">A space in the pattern matches one or more
+white spaces, but the space is not a regular wild card character, because
+it behaves a bit different.</font></p>
+<p><font face="Verdana" size="2">Note that wild card character match ONE
+or more characters and not zero or more as in other systems. Joker  characters
+match exactly one character, and there is only one joker character by default,
+the  character <font size="3"><tt>?</tt></font>, which matches a single character
+of any code.</font></p>
+<p><font face="Verdana" size="2">We can match a string to a pattern, but
+that is little use, unless we can tell what  substring the joker or wildcard
+characters matched. For the purpose the function joker is available. The
+argument  of this function is an integer number, n starting from 1 and the
+result is the substring that the last  pattern matching operator found to
+match the nth joker or wild card character. For example</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>Const nl="\n"<br>if "file.txt" like "*.*" then<br>  print "File=",joker(1)," extension=",joker(2),nl<br>else<br>  print "did not match"<br>endif<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>File=file extension=txt<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">If the pattern did not match the string
+or the argument of the function joker is zero or negative, or is larger  than
+the serial number of the last joker or wild card character the result is
+<font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2">Note that there is no separate function
+for the wild card character substrings and one for the joker characters. The
+function joker serves all of them counting each from left to right. The function
+joker does not count,  nor return the spaces, because programs usually are
+not interested in the number of the spaces that separate  the lexical elements
+matched by the pattern.</font></p>
+<p><font face="Verdana" size="2">Sometimes you want a wild card character
+or joker character to match only itself. For example you want to  match the
+string <font size="3"><tt>"13*52"</tt></font> to the pattern two numbers
+separated by a star. The problem is that the star  character is a wild card
+character and therefore <font size="3"><tt>"#*#"</tt></font> matches any
+string that starts and ends with a digit.  But that may not be a problem.
+A <font size="3"><tt>*</tt></font> character matches one or more characters,
+and therefore <font size="3"><tt>"#*#"</tt></font> will  indeed match <font
+ size="3"><tt>"13*52"</tt></font>. The problem is, when we want to use the
+substrings.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>Const nl="\n"<br>a="13*52" like "#*#"<br>print joker(1)," ",joker(3),nl<br>a="13*52" like "#~*#"<br>print joker(1)," ",joker(2),nl<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>1 52<br>13 52<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The first <font size="3"><tt>#</tt></font>
+character matches one character, the <font size="3"><tt>*</tt></font> character
+matches the substring <font size="3"><tt>"3*"</tt></font> and the  final
+<font size="3"><tt>#</tt></font> matches the number <font size="3"><tt>52</tt></font>.
+</font></p>
+<p></p>
+<p><font face="Verdana" size="2">The solution is the pattern escape character.
+The pattern escape character is the tilde character: <font size="3"><tt>~</tt></font>.
+Any character following the <font size="3"><tt>~</tt></font> character is
+treated as normal character  and is matched only by itself. This is true
+for any normal character, for wild card  characters; joker characters; for
+the space and finally for the tilde character itself. The space character
+following the tilde character matches exactly one space characters.</font></p>
+<p><font face="Verdana" size="2">Pattern matching is not always as simple
+as it seems to be from the previous examples. The pattern <font size="3"><tt>"*.*"</tt></font>
+matches files having extension and <font size="3"><tt>joker(1)</tt></font>
+and <font size="3"><tt>joker(2)</tt></font> can  be used to retrieve the
+file name and the extension. What about the file <font size="3"><tt>sciba_source.tar.gz</tt></font>?
+Will it result</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>File=scriba_source.tar extension=gz<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">or</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>File=scriba_source extension=tar.gz<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The correct result is the second. Wild card
+characters implemented in ScriptBasic are not greedy. They eat up only as
+many characters as they need.</font></p>
+<p><font face="Verdana" size="2">Up to now we were talking about wild card
+characters and the joker character defining what  matches what as final rule
+carved into stone. But these rules are only the default behavior of  these
+characters and the program can alter the set of characters that a joker or
+wild card character matches.</font></p>
+<p><font face="Verdana" size="2">There are 13 characters that can play joker
+or wild card character role in pattern matching. These are:</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>*  #  $  @  ?  &amp;  %  !  +  /  |  &lt;  &gt;<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">When the program starts only the first five
+characters have special meaning the others are normal characters. To change
+the role of a character the program has to execute a set joker or set wild
+command. The syntax of the commands are:</font></p>
+<p><font face="Verdana" size="2">set joker expression to expression set wild
+expression to expression</font></p>
+<p><font face="Verdana" size="2">Both expressions should evaluate to string.
+The first character of the first string should be the joker or wild card
+character and the second string should contain all the characters that the
+joker or wild card character matches. The command set joker alters the behavior
+of the character to be a joker character matching a single character in the
+compared string. The command set wild alters the behavior of the character
+to be a wild card character matching one or more characters in the compared
+string. For ex-ample if you may want the &amp; character to match all hexadecimal
+characters the program has to execute:</font></p>
+<p><font face="Verdana" size="2">set wild "&amp;" to "0123456789abcdefABCDEF"
+</font></p>
+<p><font face="Verdana" size="2">If a character is currently a joker of wild
+card character you can alter it to be a normal character issuing one of the
+commands</font></p>
+<p><font face="Verdana" size="2">set no joker expression set no wild expression
+</font></p>
+<p><font face="Verdana" size="2">where expression should evaluate to a string
+and the first character of the string should give the character to alter
+the behavior of.</font></p>
+<p><font face="Verdana" size="2">The two commands are identical, you may
+always use one or the other; you can use set no joker for a character being
+currently wild card character and vice versa. You can execute the command
+even if the character is currently a normal character in the pattern matching
+game.</font></p>
+<p><font face="Verdana" size="2">Using the commands now we can see that</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.90.">
+<h2>2.90. LINE INPUT</h2>
+</a>Read a line from a file or from the standard input.</font></p>
+<p><font face="Verdana" size="2">The syntax of the command is<font
+ size="3" color="BLUE">
+<pre>LINE INPUT [# i , ] variable<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The parameter <font size="3"><tt>i</tt></font>
+is the file number used in the open statement. If this is not specified the
+standard input is read.</font></p>
+<p><font face="Verdana" size="2">The <font size="3"><tt>variable</tt></font>
+will hold a single line from the file read containing the possible new line
+character terminating the line.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.16.">CHOMP</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.91.">
+<h2>2.91. LOC()</h2>
+</a>Return current file pointer position of the opened file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.92.">
+<h2>2.92. LOCATLTOGMTIME</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function converts a local time value
+to GMT time value.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.93.">
+<h2>2.93. LOCK REGION # fn FROM start TO end FOR mode</h2>
+</a>Lock a region of a file. The region starts with the position <font
+ size="3"><tt>start</tt></font> and ends with the position<font size="3"><tt>end</tt></font>
+including both end positions.</font></p>
+<p><font face="Verdana" size="2">The mode can be <font size="3"><tt>read</tt></font>,
+<font size="3"><tt>write</tt></font> and <font size="3"><tt>release</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.94.">
+<h2>2.94. LOF()</h2>
+</a>Length Of File. Return length of the opened file referenced with the
+file number.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.95.">
+<h2>2.95. LOG</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the natural log of the argument.
+If the argument is zero or less than zero the result is <font size="3"><tt>undef</tt></font>
+</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>LOG(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.96.">
+<h2>2.96. LOG10</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the log of the argument. If the
+argument is zero or less than zero the result is <font size="3"><tt>undef</tt></font>
+</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>LOG10(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.97.">
+<h2>2.97. LTRIM()</h2>
+</a>Remove the space from the left of the string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.98.">
+<h2>2.98. MID(string,start [ ,len ])</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return a subpart of the string. The first
+argument is the string, the second argument is the start position. The third
+argument is the length of the sub-part in terms of characters.  If this argument
+is missing then the subpart lasts to the last character of the argument <font
+ size="3"><tt>string</tt></font>.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.80.">LEFT</a>, <a
+ href="#2.126.">RIGHT</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.98.1.">
+<h3>2.98.1. MID Details</h3>
+</a><font size="3"><tt>mid(x,y,[z])</tt></font> cuts out a sub-string from
+the string <font size="3"><tt>x</tt></font>. If the first argument of the
+function is undefined the result is <font size="3"><tt>undef</tt></font>.
+Otherwise the first argument is converted to string and the second and third
+arguments are converted to numeric value. The third argument is optional.
+</font></p>
+<p><font face="Verdana" size="2">The second argument specifies the start
+position of the resulting  substring in the original string x; and the last
+argument specifies the number of characters to take from the original string
+<font size="3"><tt>x</tt></font>.  If the third argument is missing the substring
+lasts from the start  position to the end of the string. If the second argu-ment
+is  not defined the start of the substring is at the start of the  original
+string. In other words if the second argument is missing  it is the same
+as value 1. If the second argument is zero or negative  it will specify the
+start position counting the  characters from the end of the string.</font></p>
+<p><font face="Verdana" size="2">If the staring position <font size="3"><tt>y</tt></font>
+points beyond the end of the string the result  is empty string. If the length
+of the substring is larger than the number  of characters between the starting
+position and end of the original string then the  result will be the substring
+between the start position and the end of the original string. </font></p>
+<p><font face="Verdana" size="2">If the length of the substring is negative
+the characters before the starting position  are taken. No more than the
+available characters can be taken in this  case either. In other words if
+the length is negative and is larger in  absolute value than the starting
+position the resulting sub-string is the character  between the position
+specified by the second argument and the start of the string.</font></p>
+<p><font face="Verdana" size="2">Note that the order of the characters is
+never changed even if some position or length  parameters are negative.</font></p>
+<p><font face="Verdana" size="2">For compatibility reasons you can append
+a dollar (<font size="3"><tt>$</tt></font>) sign to the end of the function
+identifier.</font></p>
+<p><font face="Verdana" size="2">Example:<font size="3" color="BLUE">
+<pre>a$ = "superqualifragilisticexpialidosys"<br>print mid(a$,undef)<br>print mid(a$,1,5)<br>print mid(a$,undef,6)<br>print mid(a$,6,5)<br>print mid(a$,"-3")<br>print "*",mid(a$,0),"*"<br>print mid(undef,"66")<br>print mid(a$,6,-3)<br>print mid(a$,6,3)<br>print mid(a$,-4,-3)<br>print mid(a$,-4,3)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will print</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>superqualifragilisticexpialidosys<br>super<br>superq<br>quali<br>sys<br>**<br>undef<br>erq<br>qua<br>ido<br>osy<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.99.">
+<h2>2.99. MINUTE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the minute value of that time. If the argument is missing it
+uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.100.">
+<h2>2.100. MKDIR firectory_name</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Create a directory. Note that all directories
+on the path are created  recursively if neccessary.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.101.">
+<h2>2.101. MONTH</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the month (1 to 12) value of that time. If the argument is
+missing it uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.102.">
+<h2>2.102. NAME filename,filename</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Rename a file. The first file is the existing
+one, the second is the new name of the file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.103.">
+<h2>2.103. NEXTFILE(dn)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Retrieve the next file name from an opened
+directory list. If there is no more file names it returns <font size="3"><tt>undef</tt></font>.
+</font></p>
+<p><font face="Verdana" size="2">See also <a href="#">OPENDIR</a> and <a
+ href="#">CLOSEDIR</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.104.">
+<h2>2.104. NOW</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function returns the local time expressed
+as seconds since January 1, 1970,. 00:00am.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.105.">
+<h2>2.105. OCT(n)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Take the argument as a long value and convert
+it to a string that represents the value in octal form.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.106.">
+<h2>2.106. ODD</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return <font size="3"><tt>true</tt></font>
+if the argument is an odd number. <font size="3"><tt>odd(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.107.">
+<h2>2.107. ON ERROR GOTO [ label | 0 ]</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Set the entry point of the error handling
+routine. If the argument is <font size="3"><tt>0</tt></font> then the error
+handling is switched off.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.108.">
+<h2>2.108. ON ERROR RESUME [ label | next ]</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Setting <font size="3"><tt>ON ERROR RESUME</tt></font>
+will try to continue execution on the label or on the next statement when
+ean error occures without any error handling code.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#">ONERRORGOTO</a>, <a
+ href="#20.3.">RESUME</a> and <a href="#20.5.">ERROR</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.109.">
+<h2>2.109. OPEN file_name FOR mode AS [ # ] i [ LEN=record_length ]</h2>
+</a>Open or create and open a file. The syntax of the line is </font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>OPEN file_name FOR mode AS [ # ] i [ LEN=record_length ]<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The parameters:</font></p>
+<ul>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>file_name</tt></font>
+if the name of the file to be opened. If the mode allows the file to be written
+the file is created if it did not existed before. If neede directory is created
+for the file.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>mode</tt></font>
+is the mode the file is opened. It can be:</font>
+    <ul>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>input</tt></font>
+open the file for reading</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>output</tt></font>
+open the file for writing. If the file existed it's content is deleted first.
+        </font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>append</tt></font>
+open a possibly existing file and write after the current content.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>random</tt></font>
+open the file for reading and writing (textual mode)</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>binary</tt></font>
+open the file for reading and writing (binary mode)</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>socket</tt></font>
+open a socket</font></li>
+    </ul>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>#i</tt></font> is
+the file number. After the file has been opened this number has to be used
+in later file handling functions and commands, like <a href="#2.18.">CLOSE</a>
+to refer to the file. The <font size="3"><tt>#</tt></font> character is optional
+and is allowed for compatibility with other BASIC languages. The number can
+be between 1 and 512. This number is quite big for most of the applications
+and provides compatibility with VisualBasic.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>record_length</tt></font>
+is optional and specify the length of a racord in the file. The default record
+length is 1 byte.</font></li>
+</ul>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.110.">
+<h2>2.110. OPEN DIRECTORY dir_name PATTERN pattern OPTION option AS dn</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Open a directory to retrieve the list of
+files.</font></p>
+<p></p>
+<ul>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>dir_name</tt></font>
+is the name of the directory.</font></li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>parttern</tt></font>
+is a wilde card pattern to filter the file list.</font></li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>option</tt></font>
+is an integer value that can be composed AND-ing some of the following values
+    </font>
+    <ul>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbCollectDirectories</tt></font>	Collect
+the directory names as well as file names into the file list.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbCollectDots</tt></font>	Collect
+the virtual . and .. directory names into the list.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbCollectRecursively</tt></font>	Collect
+the files from the directory and from all the directories below.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbCollectFullPath</tt></font>	The
+list will contain the full path to the file names. This means that the file
+names returned by the function NextFile will contain the directory path specified
+in the open directory statement and therefore can be used as argument to
+file handling commands and functions.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbCollectFiles</tt></font>	Collect
+the files. This is the default behavior.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortBySize</tt></font>	The
+files will be sorted by file size.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByCreateTime</tt></font>	The
+files will be sorted by creation time.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByAccessTime</tt></font>	The
+files will be sorted by access time.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByModifyTime</tt></font>	The
+files will be sorted by modify time.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByName</tt></font>	The
+files will be sorted by name. The name used for sorting is the bare file
+name without any path. </font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByPath</tt></font>	The
+files will be sorted by name including the path. The path is the relative
+to the directory, which is currently opened. This sorting option is different
+from the value sbSortByName only when the value sbCollectRecursively is also
+used.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortAscending</tt></font>	Sort
+the file names in ascending order. This is the default behavior.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortDescending</tt></font>	Sort
+the file names in descending order.</font></li>
+      <li><font face="Verdana" size="2"> <font size="3"><tt>SbSortByNone</tt></font>	Do
+not sort. Specify this value if you do not need sorting. In this case directory
+opening can be much faster especially for large directories.</font></li>
+    </ul>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>dn</tt></font> is
+the directory number used in later references to the opened directory.</font></li>
+</ul>
+<p><font face="Verdana" size="2">See also <a href="#">CLOSEDIR</a> and <a
+ href="#2.103.">NEXTFILE</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.111.">
+<h2>2.111. OPTION symbol value</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Set the integer value of an option. The
+option can be any string without the double quote. Option names are case
+insensitive in ScriptBasic.</font></p>
+<p><font face="Verdana" size="2">This command has no other effect than storing
+the integer value in the option symbol table. The commands or extenal modules
+may access the values and may change their behavior accoring to the actual
+values associated with option symbols.</font></p>
+<p><font face="Verdana" size="2">You can retrieve the actual value of an
+option symbol using the function <a href="#">OPTIONF</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.112.">
+<h2>2.112. OPTION("symbol")</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Retrieve the actual value of an option symbol
+as an integer or <font size="3"><tt>undef</tt></font> if the option was not
+set. Unlike in the command <a href="#2.111.">OPTION</a> the argument of
+this function should be double quoted.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.113.">
+<h2>2.113. pack("format",v1,v2,...,vn)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Pack list of arguments into a binary string.
+</font></p>
+<p><font face="Verdana" size="2">The format strings can contain the packing
+control literals. Each of these characters optionally take the next argument
+and convert to the specific binary string format. The result is the concatenated
+sum of these strings.</font></p>
+<p><font face="Verdana" size="2">Some control characters do not take argument,
+but result a constant string by their own.</font></p>
+<p></p>
+<ul>
+  <p></p>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>SZ</tt></font> the
+argument is stored as zero terminated string. If the argument already contains
+zchar that is taken as termnator and the rest of the string is ignored.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>S1</tt></font> the
+argument is stored as a string. One byte length and maximum 255 byte strings.
+If the argument longer than 255 bytes only the first 255 bytes are used,
+and the rest is ignored.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>S2</tt></font> same
+as <font size="3"><tt>S1</tt></font> but with two bytes for the length.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>S3</tt></font> same
+as <font size="3"><tt>S1</tt></font> but with three bytes for the length.
+    </font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>S4</tt></font> same
+as <font size="3"><tt>S1</tt></font> but with four bytes for the length.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>S5..8</tt></font>
+the same as <font size="3"><tt>S1</tt></font> but with 5..8 bytes for the
+length.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>Zn</tt></font> one
+or more zero characters, does not take argument. <font size="3"><tt>n</tt></font>
+can be    1,2,3 ... positive numbers</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>In</tt></font> integer
+number stored on n bytes. Low order byte first. If the number does not  
+ fit into n bytes the higher bytes are chopped. If the number is negative
+the    high overflow bytes are filled with FF.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>C</tt></font> character
+(same as <font size="3"><tt>I1</tt></font>)</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>Un</tt></font> same
+as <font size="3"><tt>In</tt></font> but for unsigned numbers.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>An</tt></font> store
+the argument as string on n bytes. If the argument is longer than    n bytes
+only the first n bytes are stored. If the argument is shorter than    n bytes
+the higher bytes are filled with space.</font>
+    <p></p>
+  </li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>R</tt></font>  a
+real number.</font></li>
+</ul>
+<p><font face="Verdana" size="2">See also <a href="#13.2.">UNPACK</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.114.">
+<h2>2.114. PI</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This built-in contant is implemented as
+an argument less function. Returns the approximate value of the constant
+PI which is the ratio of the circumference of a circle to its diameter.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.115.">
+<h2>2.115. POW10</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the x-th exponent of 10.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>POW10(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.116.">
+<h2>2.116. PRINT [ # fn , ] print_list</h2>
+</a>The command prints the <font size="3"><tt>print_list</tt></font> to an
+opened file given by the file number <font size="3"><tt>fn</tt></font>. If
+<font size="3"><tt>fn</tt></font>is not specified the command prints to the
+standard output.</font></p>
+<p><font face="Verdana" size="2">If there is no <font size="3"><tt>print_list</tt></font>
+specified the command prints a new line.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.117.">
+<h2>2.117. RANDOMIZE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Seed the random number generator. If the
+command is presented without argument the random number generator is seed
+with the actual time. If argument is provided the random number generator
+is seed with the argument following the keyword <font size="3"><tt>RANDOMIZE</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.118.">
+<h2>2.118. ref v1 = v2</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Assing a variable to reference another variable.
+Following this command altering one  of the variables alters both variables.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.119.">
+<h2>2.119. REPEAT</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Implements a tail checking loop that repeats
+the commands so long as long the condition is false.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>repeat<br>  ...<br>  commands to repeat<br>  ...<br>until expression<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.120.">
+<h2>2.120. REPLACE(base_string,search_string,replace_string [,number_of_replaces]
+[,position])</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function replaces one or more occurrences
+of a sub-string in a string.<font size="3"><tt>REPLACE(a,b,c)</tt></font>
+searches the string <font size="3"><tt>a</tt></font> seeking for occurrences
+of sub-string <font size="3"><tt>b</tt></font>  and replaces each of them
+with the string <font size="3"><tt>c</tt></font>.</font></p>
+<p><font face="Verdana" size="2">The fourth and fifth arguments are optional.
+The fourth argument specifies the number of  replaces to be performed. If
+this is missing or is <font size="3"><tt>undef</tt></font> then all occurrences
+of string<font size="3"><tt>b</tt></font> will be replaced. The fifth argument
+may specify the start position of the operation. For example the function
+call </font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>REPLACE("alabama mama", "a","x",3,5)<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">will replace only three occurrences of string
+<font size="3"><tt>"a"</tt></font> starting at position 5. The result is
+<font size="3"><tt>"alabxmx mxma"</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.121.">
+<h2>2.121. RESET</h2>
+</a>Close all files.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.122.">
+<h2>2.122. RESET DIRECTORY [#] dn</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Reset the directory file name list and start
+from the first file name when the next call to <a href="#2.103.">NEXTFILE</a>
+is performed.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#">OPENDIR</a>, <a
+ href="#">CLOSEDIR</a>, <a href="#2.103.">NEXTFILE</a>, <a
+ href="#2.35.">EOD</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.123.">
+<h2>2.123. RESUME [ label | next ]</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Resume the program execution after handling
+the error. <font size="3"><tt>RESUME</tt></font> without argument tries to
+execute the same line again that caused the error. <font size="3"><tt>RESUME
+NEXT</tt></font> tries to continue execution after the line that caused the
+error. <font size="3"><tt>RESUME label</tt></font> tries to continue execution
+at the specified label.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#">ONERRORGOTO</a>, <a
+ href="#">ONERRORRESUME</a> and <a href="#20.5.">ERROR</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.12.">
+<h2>2.12. RETURN</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Return from a subroutine started with <a
+ href="#17.8.">GOSUB</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.125.">
+<h2>2.125. REWIND [ # ]fn</h2>
+</a>Positions the file cursor to the start of the file. This is the same
+as <font size="3"><tt>SEEK fn,0</tt></font> or <font size="3"><tt>SEEK#fn,0</tt></font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.126.">
+<h2>2.126. RIGHT(string,len)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Creates the right of a string. The first
+argument is the string. The second argument is the number of characters that
+should be put into the result. If this value is larger than the number of
+characters in the string then all the string is returned.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.98.">MID</a>, <a
+ href="#2.80.">LEFT</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.126.1.">
+<h3>2.126.1. RIGHT Details</h3>
+</a><font size="3"><tt>RIGHT(x,y)</tt></font> cuts out a substring of <font
+ size="3"><tt>y</tt></font> characters from the right of the string <font
+ size="3"><tt>x</tt></font>. If the first argument is not defined the result
+is also <font size="3"><tt>undef</tt></font>. Otherwise the first argument
+is converted to string and the second argument is converted to integer value.
+</font></p>
+<p><font face="Verdana" size="2">If the second argument is not defined or
+has negative value it is treated as numeric zero  and as such the result
+string will be empty string.</font></p>
+<p><font face="Verdana" size="2">For compatibility reasons you can append
+a dollar (<font size="3"><tt>$</tt></font>) sign to the end of the function
+identifier.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.127.">
+<h2>2.127. RND</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Returns a random number as generated by
+the C function <font size="3"><tt>rand()</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.128.">
+<h2>2.128. ROUND</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function rounds its argument. The first
+argument is the number to round, and the optional second argument specifies
+the number of fractional digits to round to.</font></p>
+<p><font face="Verdana" size="2">If the second argument is missing the function
+rounds to integer value.</font></p>
+<p><font face="Verdana" size="2">The return value is long if the number of
+decimal places to keep is zero, otherwise the return value is double.</font></p>
+<p><font face="Verdana" size="2">Negative value for the number of decimal
+places result rounding to integer value.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>ROUND(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>. Also <font size="3"><tt>ROUND(val,undef)</tt></font>
+is equivalent to <font size="3"><tt>ROUND(value)</tt></font>. See <a
+ href="#2.72.">INT</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.129.">
+<h2>2.129. RTRIM()</h2>
+</a>Remove the space from the right of the string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.130.">
+<h2>2.130. SEC</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the seconds value of that time. If the argument is missing
+it uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.131.">
+<h2>2.131. SEEK fn,position</h2>
+</a>Go to a specified position in a file.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.132.">
+<h2>2.132. SET FILE filename parameter=value</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Set some of the parameters of a file. The
+parameter can be:</font></p>
+<p></p>
+<ul>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>owner</tt></font>
+set the owner of the file. This operation requires <font size="3"><tt>root</tt></font>
+permission on UNIX or<font size="3"><tt>Administrator</tt></font> privileges
+on Windows NT. The value should be the string representation of the UNIX
+user or the Windows NT domain user.</font></li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>createtime</tt></font>
+    </font></li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>modifytime</tt></font>
+    </font></li>
+  <li><font face="Verdana" size="2"> <font size="3"><tt>accesstime</tt></font>
+    </font></li>
+  <li><font face="Verdana" size="2"> Set the time of the file. The value
+should be the file time in seconds since January 1,1970. 00:00GMT.</font></li>
+</ul>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.133.">
+<h2>2.133. SET JOKER "c" TO "abcdefgh..."</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Set a joker character to match certain characters
+when using the <a href="#8.11.14.">LIKE</a> operator. The joker character
+<font size="3"><tt>"c"</tt></font> can be one of the following characters
+</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>*  #  $  @  ?  &amp;  %  !  +  /  |  &lt;  &gt;<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The string after the keyword <font
+ size="3"><tt>TO</tt></font> should contain all the characters that the joker
+character should match. To have the character to match only itself to be
+a normal character say<font size="3" color="BLUE">
+<pre>SET NO JOKER "c"<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">See also <a href="#">SETWILD</a>, <a
+ href="#8.11.14.">LIKE</a> (details), <a href="#2.76.">JOKER</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.134.">
+<h2>2.134. SET WILD "c" TO "abcdefgh..."</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Set a wild character to match certain characters
+when using the <a href="#8.11.14.">LIKE</a> operator. The wild character<font
+ size="3"><tt>"c"</tt></font> can be one of the following characters</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>*  #  $  @  ?  &amp;  %  !  +  /  |  &lt;  &gt;<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">The string after the keyword <font
+ size="3"><tt>TO</tt></font> should contain all the characters that the wild
+card character should match. To have the character to match only itself to
+be a normal character say<font size="3" color="BLUE">
+<pre>SET NO WILD "c"<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">See also <a href="#">SETJOKER</a>, <a
+ href="#8.11.14.">LIKE</a>  (details), <a href="#2.76.">JOKER</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.135.">
+<h2>2.135. SIN</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the sine of the argument.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>SIN(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.136.">
+<h2>2.136. SLEEP(n)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Suspend the execution of the interpreter
+(process or thread) for <font size="3"><tt>n</tt></font> seconds.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.137.">
+<h2>2.137. SPACE(n)</h2>
+</a>Return a string of length <font size="3"><tt>n</tt></font> containing
+spaces.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.138.">
+<h2>2.138. SPLIT string BY string TO var_1,var_2,var_3,...,var_n</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Takes the string and splits into the variables
+using the second string as delimiter.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.139.">
+<h2>2.139. SPLITA string BY string TO array</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Split a string into an array using the second
+string as delimiter. If the string has zero length the array becomes undefined.
+When the delimiter is zero length string each array element will contain
+a single character of the string.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#13.1.">SPLIT</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.140.">
+<h2>2.140. SQR</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Calculates the square root of the argument.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.140.1.">
+<h3>2.140.1. SQR Details</h3>
+</a>If the argument is a string it is converted to numeric value. If the
+argument is negative the result is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2">If the argument is integer and is the square
+of an integer value then the result is integer.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>SQR(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.141.">
+<h2>2.141. STOP</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Stop program execution.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.142.">
+<h2>2.142. STR(n)</h2>
+</a>Converts a number to string. This function is rarely needed, because
+conversion is done automatically.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.142.1.">
+<h3>2.142.1. STR Details</h3>
+</a>Converts a number to string. This function is rarely needed, because
+conversion is done automatically.  However you may need</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre> STRING(13,STR(a))<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">to be sure that the value <font
+ size="3"><tt>a</tt></font> is interpreted as string value.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.143.">
+<h2>2.143. STRING(n,code)</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Create a string of length <font
+ size="3"><tt>n</tt></font> containing characters <font size="3"><tt>code</tt></font>.
+If <font size="3"><tt>code</tt></font> is a string then the first character
+of the string is used to fill the result. Otherwise <font size="3"><tt>code</tt></font>
+is converted to  long and the ASCII code is used.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.144.">
+<h2>2.144. STRREVERSE(string)</h2>
+</a>Return the reversed string (aka. all the characters in the string in
+reverse order).</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.145.">
+<h2>2.145. SUB fun()</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Declare a subroutine with possible arguments,
+local variables and local error handling.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>SUB fun(a,b,c)<br>...<br>...<br>END SUB<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">Note that functions and subroutines are
+not quite different is ScriptBasic. ScriptBasic allows you to return a value
+from a subroutine and to call a function using the command <font
+ size="3"><tt>CALL</tt></font>. It is just a convention to have separatel&eacute;y
+<font size="3"><tt>SUB</tt></font> and <font size="3"><tt>FUNCTION</tt></font>
+declarations.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.146.">
+<h2>2.146. SYSTEM(executable_program)</h2>
+</a>Run a program and return the PID of the new process. Does not wait for
+the termination of the new process.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.147.">
+<h2>2.147. TEXTMODE [ # fn] | input | output</h2>
+</a>Set an opened file handling to text mode. </font></p>
+<p><font face="Verdana" size="2">The argument is either a file number with
+which the file was opened or one of keywords<font size="3"><tt>input</tt></font>
+and <font size="3"><tt>output</tt></font>. In the latter case the standard
+input or output is set.</font></p>
+<p><font face="Verdana" size="2">See also <a href="#2.13.">BINMODE</a></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.148.">
+<h2>2.148. TIMEVALUE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function gets zero or more, at most
+six arguments and interprets them as year, month, day, hour, minute and seconds
+and calculates the number of seconds elapsed since January 1, 1970. till
+the time specified. If some argument is missing or <font size="3"><tt>undef</tt></font>
+the default value is  January 1, 1970. 0:00 am.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.149.">
+<h2>2.149. TRIM()</h2>
+</a>Remove the space from both ends of the string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.150.">
+<h2>2.150. TRUE</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This built-in contant is implemented as
+an argument less function. Returns the value <font size="3"><tt>true</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.151.">
+<h2>2.151. TRUNCATE fn,new_length</h2>
+</a>Truncate a file to the specified size.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.152.">
+<h2>2.152. UCASE()</h2>
+</a>Uppercase a string.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.153.">
+<h2>2.153. UNDEF variable</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Undefines a variable or release whole array.
+When this command is used as a function, it simply returns the value <font
+ size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.153.1.">
+<h3>2.153.1. UNDEF Details</h3>
+</a></font></p>
+<p><font face="Verdana" size="2">Note that when this command is called in
+a function then the local variable is undefed and the caller variable passed
+by reference is not changed. Therefore</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE"></font></font></p>
+<pre><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">sub xx(a)<br> undef a<br>end sub<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">q = 1<br>xx q<br>print q<br></font></font></p></pre>
+<p><font face="Verdana" size="2">will print 1 and not <font size="3"><tt>undef</tt></font>.
+</font></p>
+<p><font face="Verdana" size="2">On the other hand</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE"></font></font></p>
+<pre><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">sub xx(a)<br> a = undef<br>end sub<br></font></font></p><p>
+<font face="Verdana" size="2"><font size="3" color="BLUE">q = 1<br>xx q<br>print q<br></font></font></p></pre>
+<p><font face="Verdana" size="2">does print <font size="3"><tt>undef</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.154.">
+<h2>2.154. UNPACK string BY format TO v1,v2,...,vn</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Unpack the binary string <font size="3"><tt>string</tt></font>
+using the format string into the variables. The format string should have
+the same format as the format string the in the function <a
+ href="#2.113.">PACK</a>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.155.">
+<h2>2.155. VAL</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Converts a string to numeric value. If the
+string is integer it returns a long. If the string contains a number presentation
+which is a float number the returned value is double. In case the argument
+is long or double no conversion is done.</font></p>
+<p><font face="Verdana" size="2"><font size="3"><tt>VAL(undef)</tt></font>
+is <font size="3"><tt>undef</tt></font></font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.156.">
+<h2>2.156. WEEKDAY</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the week day value of that time. If the argument is missing
+it uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.157.">
+<h2>2.157. WHILE condition</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">Implements the while loop as it is usually
+done in most basic implementations.</font></p>
+<p><font face="Verdana" size="2"><font size="3" color="BLUE">
+<pre>while expression<br>  ...<br>  commands to repeat<br>  ...<br>wend<br></pre>
+</font></font></p>
+<p><font face="Verdana" size="2">This command implements a looping construct
+checking the condition at start and  does loop when the condition is <font
+ size="3"><tt>TRUE</tt></font>.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.158.">
+<h2>2.158. YEAR</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the year value of that time. If the argument is missing it
+uses the actual local time.</font></p>
+<p><font face="Verdana" size="2"><a href="#contents">[Contents]</a><br>
+</font></p>
+<p><font face="Verdana" size="2"><a name="2.159.">
+<h2>2.159. YEARDAY</h2>
+</a></font></p>
+<p><font face="Verdana" size="2">This function accepts one argument that
+should express the time in number of seconds since January 1, 1970. 0:00
+am and returns the year-day value of that time. If the argument is missing
+it uses the actual local time.</font></p>
+<p></p>
+<br>
+</body>
+</html>

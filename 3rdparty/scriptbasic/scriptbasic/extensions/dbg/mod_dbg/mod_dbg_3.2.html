@@ -1,0 +1,62 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.2. Single Stepping</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Single Stepping">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Single Stepping">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.2. Single Stepping</H1>
+<A HREF="mod_dbg_3.1.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.3.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+After you have started the program the most frequent thing you will do is single-step. Single step means executing one line of the BASIC program at a time. To do this press <font size="3"><tt>s</tt></font> and <font size="3"><tt>ENTER</tt></font>. Because this is the command you will issue most frequently it is enough just to press <font size="3"><tt>ENTER</tt></font>.
+<P>
+Now what you see is (also recalling the lines that were already presented in the previous section):
+<P>
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+ScriptBasic debugger, executing
+  debugtest.bas
+For help type 'h'
+<P>
+-----------------------------------------------------
+ &gt;001. print "hello\n"
+  002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#s
+hello
+<P>
+-----------------------------------------------------
+  001. print "hello\n"
+ &gt;002. a = 3
+  003.
+  004. sub MyFunction(t)
+  005. local a,b,c
+<P>
+-----------------------------------------------------
+#_
+</PRE></FONT>
+<P>
+You can see that the program has written to the console <font size="3"><tt>hello</tt></font> that actually came from the BASIC program and a new listing. Notice that the actual line now is the second line and the character <font size="3"><tt>&gt;</tt></font> points this line.<HR>
+<A HREF="mod_dbg_3.1.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.3.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>

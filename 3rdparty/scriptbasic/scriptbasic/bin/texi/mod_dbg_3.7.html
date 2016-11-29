@@ -1,0 +1,96 @@
+<HEAD>
+<TITLE>ScriptBasic Debugger Users' Guide: 3.7. Walking Along the Stack</TITLE>
+
+<META NAME="description" CONTENT="ScriptBasic Debugger Users' Guide: Walking Along the Stack">
+<META NAME="keywords" CONTENT="ScriptBasic Debugger Users' Guide: Walking Along the Stack">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="t2h.pl">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#C7C1A7" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<FONT FACE="Verdana" Size="2">
+
+<UL><a href="mod_dbg_toc.html">[Contents]</A><BR>
+<UL><a href="mod_dbg_3.html">3. Using the Debugger</A><BR>
+</UL>
+</UL>
+<P>
+<H1>3.7. Walking Along the Stack</H1>
+<A HREF="mod_dbg_3.6.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.8.html">[&gt;&gt;&gt;]</A>
+</UL>
+<HR>
+<P>
+
+Examine the variable <font size="3"><tt>a</tt></font> again.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#R 11
+ 34 23 1 * *
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#? a
+undef
+#_
+</PRE></FONT>
+
+This is <font size="3"><tt>undef</tt></font> because now we examine the local variable. Issue the command <font size="3"><tt>u</tt></font> and examine the variable again.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#u
+done
+#?a
+3
+#_
+</PRE></FONT>
+
+Issuing the command <font size="3"><tt>u</tt></font> we stepped one level up in the call stack. At that point the variable <font size="3"><tt>a</tt></font> is global and has value. That is actually a different variable that happens to have the same name.
+
+Issue the command <font size="3"><tt>l</tt></font> to see where we are.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#l
+
+-----------------------------------------------------
+  012. end sub
+  013.
+ &gt;014. MyFunction a
+  015.
+  016. a = a + 2
+
+-----------------------------------------------------
+#
+</PRE></FONT>
+
+To get one level deeper in the stack issue the command <font size="3"><tt>d</tt></font>.
+
+<FONT SIZE="3" COLOR="BLUE"><PRE>
+#d
+done
+#l
+
+-----------------------------------------------------
+  009. print " ",t
+  010. if t &gt; 1 then MyFunction t-1
+ &gt;011. print " *"
+  012. end sub
+  013.
+
+-----------------------------------------------------
+#_
+</PRE></FONT>
+
+If you stepped several levels up in the stack you should issue that many commands <font size="3"><tt>d</tt></font> or just one <font size="3"><tt>D</tt></font> to go to the bottom of the stack.
+<HR>
+<A HREF="mod_dbg_3.6.html">[&lt;&lt;&lt;]</A> <A HREF="mod_dbg_3.8.html">[&gt;&gt;&gt;]</A>
+</FONT>
+</BODY>
+
+</HTML>
